@@ -20,16 +20,18 @@ namespace Seen.Controllers
         }
         [HttpGet]
         [Route("")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return Ok(sightingRepository.SelectAll());
+            var listOfSightings = await sightingRepository.SelectAll();
+            return Ok(listOfSightings);
         }
 
         [HttpPost]
         [Route("")]
-        public IActionResult Index(Sighting sighting)
+        public IActionResult Index([FromBody] Sighting sighting)
         {
-            return Ok(sightingRepository.Create(sighting));
+            sightingRepository.Create(sighting);
+            return Ok(sighting);
         }
     }
 }

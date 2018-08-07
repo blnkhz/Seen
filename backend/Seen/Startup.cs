@@ -28,6 +28,12 @@ namespace Seen
             services.AddMvc();
             services.AddScoped<SightingRepository>();
             services.AddScoped<Answers>();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +43,8 @@ namespace Seen
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseMvc();
         }
