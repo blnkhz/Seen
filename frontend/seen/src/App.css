@@ -1,20 +1,35 @@
+.navbar {
+  background-color: #dc82a4;
+  height: 50px;
+}
+
+.bar {
+  left: 8%;
+  position: absolute;
+}
+
+.search {
+  top: 10%;
+  position: absolute;
+  right: 0%;
+  height: 45px;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 1s linear;
-  height: 85px;
-  right: 46%;
-  top: 0%;
+  animation: App-logo-spin infinite 5s linear;
+  height: 65px;
+  left: 3%;
+  top: -1%;
   position: absolute;
 }
 
 .App-header {
-  background-color: #dc82a4;
-  height: 90px;
-  padding: 10px;
-  color: white;
+  color: grey;
+  top: -1%;
 }
 
 .App-title {
