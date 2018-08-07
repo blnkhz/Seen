@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './TWC-logo.png';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Seenek vagyunk</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Itt nagyon sok okosság lesz!
         </p>
       </div>
     );
