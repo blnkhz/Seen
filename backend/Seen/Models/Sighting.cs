@@ -7,7 +7,6 @@ namespace Seen.Models
 {
     public class Sighting
     {
-		[Required]
         [BsonId]
         public ObjectId Id { get; set; }
         [BsonElement("Longitude")]
@@ -16,7 +15,6 @@ namespace Seen.Models
         public double Latitude { get; set; }
         [BsonElement("Day")]
         public string Day { get; set; }
-        [Required]
         [BsonElement("SocialHandle")]
         public string SocialHandle { get; set; }
         [BsonElement("Gender")]
