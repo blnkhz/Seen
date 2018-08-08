@@ -27,9 +27,10 @@ class NavbarFeatures extends React.Component {
     }
 
     render() {
+        const kep = <img src="https://preview.ibb.co/miXnmK/benji.png" className="profilePicture" alt="avatar image"/>;
         return (
             <Router>
-                <Navbar light color="transparent" expand="lg">
+                <Navbar light color="transparent" expand="lg" fixed="top">
                     <NavbarBrand href="/">
                         <strong>Seen</strong>
                     </NavbarBrand>
@@ -59,9 +60,14 @@ class NavbarFeatures extends React.Component {
                         </NavbarNav>
                         <NavbarNav className="search" right>
                           <NavItem>
-                            <form className="form-inline md-form mt-0">
-                              <input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder="Search" aria-label="Search"/>
-                            </form>
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                <DropdownToggle nav caret>{kep}</DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem href="#">My Profile</DropdownItem>
+                                    <DropdownItem href="#">Messages</DropdownItem>
+                                    <DropdownItem href="#">Log out</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
                           </NavItem>
                         </NavbarNav>
                     </Collapse>
