@@ -16,10 +16,11 @@ class FooterPage extends React.Component {
                         <h5 className="dark-grey-text">Links</h5>
                         <hr className="grey accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: '30px'}}/>
                         <ul>
-                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Link 1</a></li>
-                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Link 2</a></li>
-                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Link 3</a></li>
-                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Link 4</a></li>
+                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Home</a></li>
+                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Seen</a></li>
+                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Have Seen</a></li>
+                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">About</a></li>
+                        <li className="list-unstyled"><a className="dark-grey-text" href="#!">Faq</a></li>
                         </ul>
                     </Col>
                     </Row>
