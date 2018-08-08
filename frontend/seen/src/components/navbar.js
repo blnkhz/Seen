@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ class NavbarFeatures extends React.Component {
         const kep = <img src="https://preview.ibb.co/miXnmK/benji.png" className="profilePicture" alt="avatar image"/>;
         return (
             <Router>
-                <Navbar light color="transparent" expand="lg" fixed="top">
+                <Navbar light color="white" expand="sm" fixed="top">
                     <NavbarBrand href="/">
                         <strong>Seen</strong>
                     </NavbarBrand>
@@ -58,7 +58,7 @@ class NavbarFeatures extends React.Component {
                               </Dropdown>
                           </NavItem>
                         </NavbarNav>
-                        <NavbarNav className="search" right>
+                        <NavbarNav right>
                           <NavItem>
                             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                 <DropdownToggle nav caret>{kep}</DropdownToggle>

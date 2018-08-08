@@ -12,12 +12,10 @@
 
 .profilePicture {
     margin: auto;
-    margin-top: -8px;
     border-radius: 50%!important;
     max-width: 40px;
     height: auto;
-    box-shadow: none!important;
-    vertical-align: top;
+    position: relative;
 }
 
 .mapCont {
@@ -27,13 +25,11 @@
 }
 
 .navbar {
-  background-color: #fcfcfc;
-  height: 50px;
 }
 
 .bar {
-  left: 8%;
-  position: absolute;
+  color: black;
+  position: relative;
 }
 
 .search {
@@ -45,14 +41,6 @@
 
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 5s linear;
-  height: 65px;
-  left: 3%;
-  top: -1%;
-  position: absolute;
 }
 
 .App-header {
