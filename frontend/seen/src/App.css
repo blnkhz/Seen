@@ -1,5 +1,23 @@
+.map {
+  height: 600px;
+  width: 80%;
+  margin: auto;
+  border-radius: 5%;
+  border: 5px solid;
+  border-color: #DC82A4;
+  padding: 10px;
+  opacity: 0.75;
+  margin-top: 100px;
+  }
+
+.mapCont {
+  height: 100%;
+  width: 60%;
+  margin: auto;
+}
+
 .navbar {
-  background-color: #dc82a4;
+  background-color: #dddddd;
   height: 50px;
 }
 
@@ -35,11 +53,6 @@
 .App-title {
   font-size: 1.0em;
   padding: 58px;
-}
-
-.App-intro {
-  font-size: large;
-  color: rgb(107, 107, 107);
 }
 
 @keyframes App-logo-spin {

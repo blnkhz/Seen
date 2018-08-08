@@ -29,7 +29,7 @@ class NavbarFeatures extends React.Component {
     render() {
         return (
             <Router>
-                <Navbar light color="transparent" expand="lg" scrolling>
+                <Navbar light color="transparent" expand="lg">
                     <NavbarBrand href="/">
                         <strong>Seen</strong>
                     </NavbarBrand>
