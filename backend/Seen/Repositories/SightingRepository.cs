@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using Seen.Interfaces;
 using Seen.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Seen.Repositories
 {
-    public class SightingRepository
+    public class SightingRepository : ICrudRepository<Sighting>
     {
         private IMongoClient client;
         private IMongoDatabase database;
@@ -21,14 +22,31 @@ namespace Seen.Repositories
             sightings = database.GetCollection<Sighting>("Sightings");
         }
 
-        public async Task Create(Sighting sighting)
+        public async Task CreateAsync(Sighting sighting)
         {
             await sightings.InsertOneAsync(sighting);
         }
 
-        public async Task<List<Sighting>> SelectAll()
+        public async Task DeleteAsync(string id)
+        {
+            var filter = Builders<Sighting>.Filter.Eq("Id", new ObjectId(id));
+            await sightings.DeleteOneAsync(filter);
+        }
+
+        public async Task<List<Sighting>> SelectAllAsync()
         {
             return await sightings.Find(new BsonDocument()).ToListAsync();
+        }
+
+        public async Task<Sighting> SelectByFieldAsync(string id)
+        {
+            var filter = Builders<Sighting>.Filter.Eq("Id", new ObjectId(id));
+            return await sightings.Find(filter).FirstOrDefaultAsync();
+        }
+
+        public Task UpdateAsync(Sighting item)
+        {
+            throw new NotImplementedException();
         }
     }
 }
