@@ -9,6 +9,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
+import ReadPos from './components/read.js'
+import Button from './components/button.js';
 
 const Sightings = () =>   
   <div className="App">
@@ -49,6 +51,23 @@ const routes = [
 ]
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      dzseszonsz: []
+    };
+
+    this.getDzseszonsz = this.getDzseszonsz.bind(this);
+  }
+
+  getDzseszonsz = () => {
+    return fetch('http://localhost:59379/beenseen', { mode: 'cors' })
+      .then(res => res.json())
+      .then(dzsesszonsziz => this.setState({
+        dzseszonsz: dzsesszonsziz
+      }))
+  };
+
   render() {
     return (
       <Router>
@@ -60,6 +79,8 @@ class App extends Component {
                 component={route.component}
               />
             ))}
+        <Button label="Get Yo People" handleClick={this.getDzseszonsz}/>
+        <DisplayDzseszon tomb={this.state.dzseszonsz}/>
         </div>
       </Router>
     );
