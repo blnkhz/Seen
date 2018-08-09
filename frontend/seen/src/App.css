@@ -121,6 +121,7 @@
 
 .box:hover .text {
   visibility: visible;
+  white-space: nowrap;
 }
 
 .icon {
