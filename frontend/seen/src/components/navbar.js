@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class NavbarFeatures extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class NavbarFeatures extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.toggle = this.toggle.bind(this);
     }
-
+    
     onClick(){
         this.setState({
             collapse: !this.state.collapse,
@@ -29,7 +29,6 @@ class NavbarFeatures extends React.Component {
     render() {
         const kep = <img src="https://preview.ibb.co/miXnmK/benji.png" className="profilePicture" alt="avatar image"/>;
         return (
-            <Router>
                 <Navbar light color="white" expand="sm" fixed="top">
                     <NavbarBrand href="/">
                         <strong>Seen</strong>
@@ -41,16 +40,16 @@ class NavbarFeatures extends React.Component {
                               <NavLink to="seendex.html">Home</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">Seen</NavLink>
+                              <NavLink to="/seen">Seen</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">Have seen</NavLink>
+                              <NavLink to="/have">Have seen</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">About</NavLink>
+                              <NavLink to="/about">About</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">FAQ</NavLink>
+                              <NavLink to="/faq">FAQ</NavLink>
                           </NavItem>
                         </NavbarNav>
                         <NavbarNav right>
@@ -67,7 +66,6 @@ class NavbarFeatures extends React.Component {
                         </NavbarNav>
                     </Collapse>
                 </Navbar>
-            </Router>
         );
     }
 }
