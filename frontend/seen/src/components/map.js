@@ -9,8 +9,7 @@ class Map extends Component {
         defaultCenter = { { lat: 47.507589, lng: 19.066128 } }
         defaultZoom = { 13 }
         >
-        <Marker icon={require("../assets/seenpinkek.svg")} position={{ lat: tomb[1].lat, lng: tomb[1].lng }}/>
-        <Marker icon={require("../assets/seenpin.svg")} position={{ lat: props.lat, lng: props.lng }}/>
+        {tomb.map((element) => <Marker icon={require("../assets/seenpinkek.svg")} position={{ lat: element.lat, lng: element.lng }}/>)}
         </GoogleMap>
      );
     return(
