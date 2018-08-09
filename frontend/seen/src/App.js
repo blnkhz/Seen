@@ -3,6 +3,7 @@ import logo from './TWC-logo.png';
 import './App.css';
 import NavbarFeatures from './components/navbar.js';
 import Map from './components/map.js'
+import Seendex from './components/seendex.js'
 import FooterPage from './components/footer.js'
 import {
   BrowserRouter as Router,
@@ -42,6 +43,8 @@ const routes = [
 class App extends Component {
   render() {
     return (
+      <div className="App">
+        <Seendex/>
       <Router>
         <div>
         <NavbarFeatures className="navbar" />
@@ -54,7 +57,6 @@ class App extends Component {
           ))}
         </div>
       </Router>
-
     );
   }
 }
