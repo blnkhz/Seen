@@ -37,13 +37,13 @@ class NavbarFeatures extends React.Component {
                     <Collapse isOpen = { this.state.collapse } navbar>
                         <NavbarNav className="bar" left>
                           <NavItem active>
-                              <NavLink to="seendex.html">Home</NavLink>
+                              <NavLink to="/">Home</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="/seen">Seen</NavLink>
+                              <NavLink to="/sightings">Seen</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="/have">Have seen</NavLink>
+                              <NavLink to="/add">Have seen</NavLink>
                           </NavItem>
                           <NavItem>
                               <NavLink to="/about">About</NavLink>

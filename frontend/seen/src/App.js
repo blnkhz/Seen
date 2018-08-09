@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './TWC-logo.png';
 import './App.css';
 import NavbarFeatures from './components/navbar.js';
 import Map from './components/map.js'
@@ -11,7 +10,7 @@ import {
   Link,
 } from 'react-router-dom'
 
-const Seen = () =>   
+const Sightings = () =>   
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Map  className="map"/>
@@ -21,7 +20,7 @@ const Seen = () =>
     <FooterPage/>
   </div>
 
-const Have = () => 
+const Add = () => 
   <div className="App">
     <NavbarFeatures className="navbar" />
     <header className="App-header">
@@ -29,32 +28,38 @@ const Have = () =>
     </header>
   </div>
 
+const Start = () => 
+<div>
+  <Seendex/>
+</div>
+
 const routes = [
   {
-    path: '/seen',
-    component: Seen
+    path: '/sightings',
+    component: Sightings
   },
   {
-    path: '/have',
-    component: Have,
+    path: '/add',
+    component: Add,
+  },
+  {
+    path: '',
+    component: Start,
   }
 ]
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Seendex/>
       <Router>
-        <div>
-        <NavbarFeatures className="navbar" />
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              component={route.component}
-            />
-          ))}
+          <div>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                exact path={route.path}
+                component={route.component}
+              />
+            ))}
         </div>
       </Router>
     );
