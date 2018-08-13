@@ -121,6 +121,7 @@
 
 .box:hover .text {
   visibility: visible;
+  white-space: nowrap;
 }
 
 .icon {
@@ -128,9 +129,49 @@
 }
 
 .footer {
+  color: #6489c2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.5em;
-  text-align: center;
-  bottom: 100%;
+}
+
+.aboutus {
+  margin-top: 100px;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.abouttitle {
+  font-size: 3em;
+  letter-spacing: 0.5em;
+}
+
+.aboutperson {
   margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+.aboutphoto {
+  border-radius: 50%;
+  border: #DC82A4 4px solid;
+  width: inherit;
+}
+
+.aboutintroduction {
+  width: 70%;
+  color: rgb(116, 116, 116);
+  margin: auto;
+}
+
+.aboutnameofperson {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  letter-spacing: 0.2em;
+  font-size: 2em;
 }
