@@ -14,7 +14,7 @@ import {
 const Sightings = () =>   
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map"/>
+    <Map tomb = {[{lat: 47.507589, lng: 19.066128, gender: 'boi'}, {lat: 47.487000, lng: 19.066120, gender: 'girla'}]} className="map"/>
     <header className="App-header">
       <h1 className="App-title">Seenek vagyunk</h1>
     </header>
