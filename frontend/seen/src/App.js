@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import "./App.css";
-import NavbarFeatures from "./components/navbar.js";
-import Map from "./components/map.js";
+import React, { Component } from 'react';
+import './App.css';
+import NavbarFeatures from './components/navbar.js';
+import Map from './components/map.js';
 import About from "./components/about.js";
-import Seendex from "./components/seendex.js";
-import FooterPage from "./components/footer.js";
+import Seendex from './components/seendex.js';
 import AddMap from "./components/addmap.js";
+import FooterPage from './components/footer.js';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map" />
+    <Map className="map"/>
     <header className="App-header">
       <h1 className="App-title">Seenek vagyunk</h1>
     </header>
