@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import NavbarFeatures from './components/navbar.js';
-import Map from './components/map.js';
+import React, { Component } from "react";
+import "./App.css";
+import NavbarFeatures from "./components/navbar.js";
+import Map from "./components/map.js";
+import Faq from "./components/faq.js";
 import About from "./components/about.js";
 import Seendex from './components/seendex.js';
 import AddMap from "./components/addmap.js";
@@ -23,6 +24,13 @@ const AboutUs = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <About className="About" />
+  </div>
+);
+
+const FrequentlyAsked = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <Faq className="Faq" />
   </div>
 );
 
@@ -59,6 +67,10 @@ const routes = [
   {
     path: "/about",
     component: AboutUs
+  },
+  {
+    path: "/faq",
+    component: FrequentlyAsked
   }
 ];
 
