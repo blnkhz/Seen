@@ -50,7 +50,7 @@ class Seendex extends React.Component {
                 alt="about"
               />
             </a>
-            <p class="text">ABOUT</p>
+            <p class="text">ABOUT US</p>
           </div>
         </div>
         <div class="footer">

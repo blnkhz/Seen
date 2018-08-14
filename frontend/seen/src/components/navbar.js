@@ -49,22 +49,25 @@ class NavbarFeatures extends React.Component {
     return (
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand href="/">
-          <strong>Seen</strong>
+        <img
+            src={require("../assets/seenlogo.png")}
+            height="40px"
+          />
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}
         <Collapse isOpen={this.state.collapse} navbar>
           <NavbarNav className="bar" left>
             <NavItem>
-              <NavLink to="/add">have seen</NavLink>
+              <NavLink className="navlink" to="/add">have seen</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/sightings">been seen</NavLink>
+              <NavLink className="navlink" to="/sightings">been seen</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/about">about</NavLink>
+              <NavLink className="navlink" to="/about">about</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/faq">FAQ</NavLink>
+              <NavLink className="navlink" to="/faq">FAQ</NavLink>
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
