@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Faq extends React.Component {
   render() {
     return (
-      <div className="faq">
+      <div className="faqpage">
         <h1 className="faqtitle">mink vogymuk a seenek.</h1>
         <div className="faqcontainer">
         </div>
