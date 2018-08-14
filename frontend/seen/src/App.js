@@ -4,14 +4,15 @@ import NavbarFeatures from "./components/navbar.js";
 import Map from "./components/map.js";
 import Faq from "./components/faq.js";
 import About from "./components/about.js";
-import Seendex from "./components/seendex.js";
-import FooterPage from "./components/footer.js";
+import Seendex from './components/seendex.js';
+import AddMap from "./components/addmap.js";
+import FooterPage from './components/footer.js';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map" />
+    <Map className="map"/>
     <header className="App-header">
       <h1 className="App-title">Seenek vagyunk</h1>
     </header>
@@ -36,9 +37,11 @@ const FrequentlyAsked = () => (
 const Add = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
+    <AddMap className="map" />
     <header className="App-header">
       <h1 className="App-title">Seenek vagyunk</h1>
     </header>
+    <FooterPage />
   </div>
 );
 
