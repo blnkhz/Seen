@@ -36,20 +36,23 @@
 
 .bar {
   margin-top: 10px;
-  letter-spacing: 0.2em;
+  /* letter-spacing: 0.2em; */
   color: black;
   position: relative;
 }
 
 .navlink {
-  font-weight: 200;
+  font-weight: 300;
+  letter-spacing: 0.1 em;
   -webkit-transition: font-weight 0.5s;
   transition: font-weight 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
 }
 
 .navlink:hover {
-  color: #dc82a4;
   font-weight: 600;
+  letter-spacing: 0.3em;
 }
 
 .search {
