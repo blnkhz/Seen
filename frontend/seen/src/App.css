@@ -200,6 +200,7 @@
   text-align: left;
   margin-left: 10%;
 }
+
 .faquestion {
   color: #dc82a4;
   margin-top: 50px;
@@ -212,4 +213,28 @@
   color: grey;
   margin-left: 30px;
   margin-right: 10%;
+}
+
+.endoffaq {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.stillhavequestions {
+  letter-spacing: 0.3em;
+  font-weight: 300;
+}
+
+.askawaylink {
+  color: #6489c2;
+  -webkit-transition: font-weight 0.5s;
+  transition: font-weight 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
+}
+
+.askawaylink:hover {
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  color: #dc82a4;
 }
