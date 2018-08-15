@@ -15,6 +15,15 @@ class Map extends Component {
         <GoogleMap 
         defaultCenter = { { lat: 47.507589, lng: 19.066128 } }
         defaultZoom = { 13 }
+        defaultOptions={{
+          streetViewControl: true,
+          scaleControl: true,
+          mapTypeControl: false,
+          panControl: true,
+          zoomControl: true,
+          rotateControl: true,
+          fullscreenControl: true
+        }}
         >
         {this.state.users.map((element) => <Marker icon={require("../assets/seenpinkek.svg")} position={{ lat: element.latitude, lng: element.longitude }}/>)}
         </GoogleMap>
@@ -26,6 +35,7 @@ class Map extends Component {
           containerElement={ <div className="mapCont" /> }
           mapElement={ <div className="map" /> }
           onMarkerClick={true}
+          disableDefaultUI= {true}
         />
       </div>
     );
