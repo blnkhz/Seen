@@ -13,9 +13,6 @@ const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Map className="map"/>
-    <header className="App-header">
-      <h1 className="App-title">Seenek vagyunk</h1>
-    </header>
     <FooterPage />
   </div>
 );
@@ -38,9 +35,6 @@ const Add = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <AddMap className="map" />
-    <header className="App-header">
-      <h1 className="App-title">Seenek vagyunk</h1>
-    </header>
     <FooterPage />
   </div>
 );
