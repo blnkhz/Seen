@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import InfoBox from 'react-google-maps/lib/components/addons/InfoBox';
+import React, { Component } from "react";
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
 
 class Map extends Component {
-  state = {users: []}
-  
+  state = { users: [] };
+
   componentDidMount = () => {
-    fetch('http://localhost:52210/beenseen', { mode: 'cors' })
-    .then(res => res.json())
-    .then(users => this.setState({ users }));
-  }
-  render(){
-    const GoogleMapExample = withGoogleMap(props =>
-        <GoogleMap 
-        defaultCenter = { { lat: 47.507589, lng: 19.066128 } }
-        defaultZoom = { 13 }
+    fetch("http://localhost:52210/beenseen", { mode: "cors" })
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  };
+  render() {
+    const GoogleMapExample = withGoogleMap(props => (
+      <GoogleMap
+        defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
+        defaultZoom={13}
         defaultOptions={{
           streetViewControl: true,
           scaleControl: false,
@@ -25,167 +25,182 @@ class Map extends Component {
           fullscreenControl: true,
           styles: [
             {
-                "featureType": "administrative",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#444444"
-                    },
-                    {
-                        "lightness": "-50"
-                    }
-                ]
+              featureType: "administrative",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  color: "#444444"
+                },
+                {
+                  lightness: "-50"
+                }
+              ]
             },
             {
-                "featureType": "landscape",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "color": "#f2f2f2"
-                    }
-                ]
+              featureType: "landscape",
+              elementType: "all",
+              stylers: [
+                {
+                  color: "#f2f2f2"
+                }
+              ]
             },
             {
-                "featureType": "landscape",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "lightness": "-80"
-                    }
-                ]
+              featureType: "landscape",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  lightness: "-80"
+                }
+              ]
             },
             {
-                "featureType": "landscape",
-                "elementType": "labels.text.stroke",
-                "stylers": [
-                    {
-                        "lightness": "0"
-                    }
-                ]
+              featureType: "landscape",
+              elementType: "labels.text.stroke",
+              stylers: [
+                {
+                  lightness: "0"
+                }
+              ]
             },
             {
-                "featureType": "landscape.natural",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "lightness": "-71"
-                    }
-                ]
+              featureType: "landscape.natural",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  lightness: "-71"
+                }
+              ]
             },
             {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
+              featureType: "poi",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "off"
+                }
+              ]
             },
             {
-                "featureType": "poi",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "visibility": "on"
-                    },
-                    {
-                        "saturation": "-100"
-                    },
-                    {
-                        "lightness": "-30"
-                    }
-                ]
+              featureType: "poi",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  visibility: "on"
+                },
+                {
+                  saturation: "-100"
+                },
+                {
+                  lightness: "-30"
+                }
+              ]
             },
             {
-                "featureType": "poi",
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "on"
-                    },
-                    {
-                        "hue": "#00a2ff"
-                    }
-                ]
+              featureType: "poi",
+              elementType: "labels.icon",
+              stylers: [
+                {
+                  visibility: "on"
+                },
+                {
+                  hue: "#00a2ff"
+                }
+              ]
             },
             {
-                "featureType": "road",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 45
-                    }
-                ]
+              featureType: "road",
+              elementType: "all",
+              stylers: [
+                {
+                  saturation: -100
+                },
+                {
+                  lightness: 45
+                }
+              ]
             },
             {
-                "featureType": "road",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "lightness": "-50"
-                    }
-                ]
+              featureType: "road",
+              elementType: "labels.text.fill",
+              stylers: [
+                {
+                  lightness: "-50"
+                }
+              ]
             },
             {
-                "featureType": "road.highway",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "simplified"
-                    }
-                ]
+              featureType: "road.highway",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "simplified"
+                }
+              ]
             },
             {
-                "featureType": "road.arterial",
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
+              featureType: "road.arterial",
+              elementType: "labels.icon",
+              stylers: [
+                {
+                  visibility: "off"
+                }
+              ]
             },
             {
-                "featureType": "transit",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
+              featureType: "transit",
+              elementType: "all",
+              stylers: [
+                {
+                  visibility: "off"
+                }
+              ]
             },
             {
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "color": "#ebb5c9"
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
+              featureType: "water",
+              elementType: "all",
+              stylers: [
+                {
+                  color: "#ebb5c9"
+                },
+                {
+                  visibility: "on"
+                }
+              ]
             }
-        ]
+          ]
         }}
-        >
-        {this.state.users.map((element) => <Marker icon={require("../assets/seenpinkek.svg")} position={{ lat: element.latitude, lng: element.longitude }}/>)}
-        </GoogleMap>
-     );
-    return(
-        // <div>
+      >
+        {this.state.users.map(element => (
+          <Marker
+            icon={require("../assets/seenpinkek.svg")}
+            position={{ lat: element.latitude, lng: element.longitude }}
+          />
+        ))}
+      </GoogleMap>
+    ));
+    return (
+      <div className="mapandinfobar">
         <GoogleMapExample
           isMarkerShown
-          containerElement={ <div className="mapCont" /> }
-          mapElement={ <div className="map" /> }
+          containerElement={<div className="mapCont" />}
+          mapElement={<div className="map" />}
           onMarkerClick={true}
-          disableDefaultUI= {true}
+          disableDefaultUI={true}
         />
-      // </div>
+        <div className="infobarcontainer">
+          <h4 className="seenpropertytitle">Gender</h4>
+          <p className="seenswer">Male</p>
+          <h4 className="seenpropertytitle">Hair</h4>
+          <p className="seenswer">Special, Medium</p>
+          <h4 className="seenpropertytitle">Glasses</h4>
+          <p className="seenswer">yea boii</p>
+          <h4 className="seenpropertytitle">Message</h4>
+          <p className="seenswer">Male</p>
+        </div>
+      </div>
     );
   }
-};
+}
 
 export default Map;

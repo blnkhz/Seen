@@ -14,7 +14,6 @@ const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Map className="map"/>
-    <Infobar/>
     <FooterPage />
   </div>
 );
