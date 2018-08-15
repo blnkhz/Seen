@@ -1,7 +1,7 @@
 .map {
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   margin: 0;
   padding: 0;
   /* position: absolute; */
@@ -12,15 +12,8 @@
   height: 100%;
   margin: 0;
   padding: 0;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
-  display: inline-block;
   left: 0;
   /* position: relative; */
-}
-
-.mapCont:hover {
-  width: 75%;
 }
 
 .profilePicture {
@@ -32,10 +25,9 @@
 }
 
 .kicsiFooter {
-  height: 2em;
+  height: 5%;
   color: white;
   background-color: #dc82a4;
-  /* bottom: 100%; */
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -248,12 +240,4 @@
   font-weight: 500;
   letter-spacing: 0.5em;
   color: #dc82a4;
-}
-
-.infobarcontainer {
-  width: 25%;
-  color: #444;
-  margin-right: 0;
-  margin-left: auto;
-  display: inline-block;
 }
