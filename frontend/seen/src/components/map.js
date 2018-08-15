@@ -180,25 +180,13 @@ class Map extends Component {
       </GoogleMap>
     ));
     return (
-      <div className="mapandinfobar">
-        <GoogleMapExample
-          isMarkerShown
-          containerElement={<div className="mapCont" />}
-          mapElement={<div className="map" />}
-          onMarkerClick={true}
-          disableDefaultUI={true}
-        />
-        <div className="infobarcontainer">
-          <h4 className="seenpropertytitle">Gender</h4>
-          <p className="seenswer">Male</p>
-          <h4 className="seenpropertytitle">Hair</h4>
-          <p className="seenswer">Special, Medium</p>
-          <h4 className="seenpropertytitle">Glasses</h4>
-          <p className="seenswer">yea boii</p>
-          <h4 className="seenpropertytitle">Message</h4>
-          <p className="seenswer">Male</p>
-        </div>
-      </div>
+      <GoogleMapExample
+        isMarkerShown
+        containerElement={<div className="mapCont" />}
+        mapElement={<div className="map" />}
+        onMarkerClick={true}
+        disableDefaultUI={true}
+      />
     );
   }
 }
