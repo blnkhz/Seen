@@ -238,3 +238,11 @@
   letter-spacing: 0.5em;
   color: #dc82a4;
 }
+
+.blankaprobalkozik {
+  width: 100%;
+  padding: 150px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
