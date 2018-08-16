@@ -25,10 +25,14 @@
 .kicsiFooter {
   height: 5%;
   color: white;
+  font-weight: 300;
+  letter-spacing: 0.3em;
   background-color: #dc82a4;
+  font-family: Arial, Helvetica, sans-serif;
   position: fixed;
   bottom: 0;
   width: 100%;
+  text-align: center;
 }
 
 .footerke {
@@ -237,12 +241,4 @@
   font-weight: 500;
   letter-spacing: 0.5em;
   color: #dc82a4;
-}
-
-.blankaprobalkozik {
-  width: 100%;
-  padding: 150px 0;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 20px;
 }

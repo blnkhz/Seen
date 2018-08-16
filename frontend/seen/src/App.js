@@ -29,6 +29,7 @@ const AboutUs = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <About className="About" />
+    <FooterPage />
   </div>
 );
 
@@ -36,6 +37,7 @@ const FrequentlyAsked = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Faq className="Faq" />
+    <FooterPage />
   </div>
 );
 
@@ -50,6 +52,7 @@ const Add = () => (
 const Start = () => (
   <div>
     <Seendex />
+    <FooterPage />
   </div>
 );
 
