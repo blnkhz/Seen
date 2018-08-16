@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
+import Infos from './infobar.js';
 
 class Map extends Component {
-  state = { users: [] };
+  state = { users: [], clickedIndex: null };
 
   componentDidMount = () => {
     fetch("http://localhost:52210/beenseen", { mode: "cors" })
       .then(res => res.json())
       .then(users => this.setState({ users }));
   };
+
+  changeClickedIndex(id) {
+    this.setState({
+      clickedIndex: id
+    });
+  }
+
   render() {
     const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
@@ -171,34 +179,26 @@ class Map extends Component {
           ]
         }}
       >
-        {this.state.users.map(element => (
+        {this.state.users.map((element, index) => (
           <Marker
+            key = {index}
             icon={require("../assets/seenpinkek.svg")}
             position={{ lat: element.latitude, lng: element.longitude }}
+            onClick={() => this.changeClickedIndex(index)}
           />
         ))}
       </GoogleMap>
     ));
     return (
-      <div className="mapandinfobar">
+      <div>
         <GoogleMapExample
           isMarkerShown
           containerElement={<div className="mapCont" />}
           mapElement={<div className="map" />}
-          onMarkerClick={true}
           disableDefaultUI={true}
         />
-        <div className="infobarcontainer">
-          <h4 className="seenpropertytitle">Gender</h4>
-          <p className="seenswer">Male</p>
-          <h4 className="seenpropertytitle">Hair</h4>
-          <p className="seenswer">Special, Medium</p>
-          <h4 className="seenpropertytitle">Glasses</h4>
-          <p className="seenswer">yea boii</p>
-          <h4 className="seenpropertytitle">Message</h4>
-          <p className="seenswer">Male</p>
+      <Infos indexke = {this.state.clickedIndex} tomb = {this.state.users}/>
         </div>
-      </div>
     );
   }
 }
