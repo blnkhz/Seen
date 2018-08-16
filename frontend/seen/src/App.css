@@ -111,7 +111,7 @@
 .about {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  width: 10em;
+  width: 13vw;
   -webkit-transition: width 0.5s, filter 0.5s;
   transition: width 0.5s, filter 0.5s;
 }
@@ -133,7 +133,7 @@
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
   opacity: 1;
-  width: 12em;
+  width: 15vw;
   visibility: visible;
 }
 

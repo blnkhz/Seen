@@ -56,6 +56,13 @@ const Start = () => (
   </div>
 );
 
+const Contact = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <FooterPage />
+  </div>
+);
+
 const routes = [
   {
     path: "/sightings",
@@ -80,6 +87,10 @@ const routes = [
   {
     path: "/infobar",
     component: Infobarr
+  },
+  {
+    path: "/contact",
+    component: Contact
   }
 ];
 
