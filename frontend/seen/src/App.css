@@ -1,26 +1,17 @@
 .map {
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   margin: 0;
   padding: 0;
-  /* position: absolute; */
 }
 
 .mapCont {
-  width: 75%;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
-  display: inline-block;
   left: 0;
-  /* position: relative; */
-}
-
-.mapCont:hover {
-  width: 75%;
 }
 
 .profilePicture {
@@ -32,10 +23,9 @@
 }
 
 .kicsiFooter {
-  height: 2em;
+  height: 5%;
   color: white;
   background-color: #dc82a4;
-  /* bottom: 100%; */
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -47,7 +37,6 @@
 
 .bar {
   margin-top: 10px;
-  /* letter-spacing: 0.2em; */
   color: black;
   position: relative;
 }
@@ -250,10 +239,10 @@
   color: #dc82a4;
 }
 
-.infobarcontainer {
-  width: 25%;
-  color: #444;
-  margin-right: 0;
-  margin-left: auto;
-  display: inline-block;
+.blankaprobalkozik {
+  width: 100%;
+  padding: 150px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
 }

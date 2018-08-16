@@ -4,20 +4,27 @@ import NavbarFeatures from "./components/navbar.js";
 import Map from "./components/map.js";
 import Faq from "./components/faq.js";
 import About from "./components/about.js";
-import Seendex from './components/seendex.js';
+import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
-import FooterPage from './components/footer.js';
-import Infobar from './components/infobar.js';
+import FooterPage from "./components/footer.js";
+import Infobar from "./components/infobar.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map"/>
+    <Map className="map" />
     <FooterPage />
   </div>
 );
 
+const Infobarr = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <Infobar />
+    <FooterPage />
+  </div>
+);
 const AboutUs = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
@@ -66,6 +73,10 @@ const routes = [
   {
     path: "/faq",
     component: FrequentlyAsked
+  },
+  {
+    path: "/infobar",
+    component: Infobarr
   }
 ];
 

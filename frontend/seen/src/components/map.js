@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
+import maplayout from "./mapstyle.js";
 
 class Map extends Component {
   state = { users: [] };
@@ -23,152 +24,7 @@ class Map extends Component {
           zoomControl: true,
           rotateControl: true,
           fullscreenControl: true,
-          styles: [
-            {
-              featureType: "administrative",
-              elementType: "labels.text.fill",
-              stylers: [
-                {
-                  color: "#444444"
-                },
-                {
-                  lightness: "-50"
-                }
-              ]
-            },
-            {
-              featureType: "landscape",
-              elementType: "all",
-              stylers: [
-                {
-                  color: "#f2f2f2"
-                }
-              ]
-            },
-            {
-              featureType: "landscape",
-              elementType: "labels.text.fill",
-              stylers: [
-                {
-                  lightness: "-80"
-                }
-              ]
-            },
-            {
-              featureType: "landscape",
-              elementType: "labels.text.stroke",
-              stylers: [
-                {
-                  lightness: "0"
-                }
-              ]
-            },
-            {
-              featureType: "landscape.natural",
-              elementType: "labels.text.fill",
-              stylers: [
-                {
-                  lightness: "-71"
-                }
-              ]
-            },
-            {
-              featureType: "poi",
-              elementType: "all",
-              stylers: [
-                {
-                  visibility: "off"
-                }
-              ]
-            },
-            {
-              featureType: "poi",
-              elementType: "labels.text.fill",
-              stylers: [
-                {
-                  visibility: "on"
-                },
-                {
-                  saturation: "-100"
-                },
-                {
-                  lightness: "-30"
-                }
-              ]
-            },
-            {
-              featureType: "poi",
-              elementType: "labels.icon",
-              stylers: [
-                {
-                  visibility: "on"
-                },
-                {
-                  hue: "#00a2ff"
-                }
-              ]
-            },
-            {
-              featureType: "road",
-              elementType: "all",
-              stylers: [
-                {
-                  saturation: -100
-                },
-                {
-                  lightness: 45
-                }
-              ]
-            },
-            {
-              featureType: "road",
-              elementType: "labels.text.fill",
-              stylers: [
-                {
-                  lightness: "-50"
-                }
-              ]
-            },
-            {
-              featureType: "road.highway",
-              elementType: "all",
-              stylers: [
-                {
-                  visibility: "simplified"
-                }
-              ]
-            },
-            {
-              featureType: "road.arterial",
-              elementType: "labels.icon",
-              stylers: [
-                {
-                  visibility: "off"
-                }
-              ]
-            },
-            {
-              featureType: "transit",
-              elementType: "all",
-              stylers: [
-                {
-                  visibility: "off"
-                }
-              ]
-            },
-            {
-              featureType: "water",
-              elementType: "all",
-              stylers: [
-                {
-                  color: "#ebb5c9"
-                },
-                {
-                  visibility: "on"
-                }
-              ]
-            }
-          ]
+          styles: maplayout
         }}
       >
         {this.state.users.map(element => (
@@ -180,25 +36,13 @@ class Map extends Component {
       </GoogleMap>
     ));
     return (
-      <div className="mapandinfobar">
-        <GoogleMapExample
-          isMarkerShown
-          containerElement={<div className="mapCont" />}
-          mapElement={<div className="map" />}
-          onMarkerClick={true}
-          disableDefaultUI={true}
-        />
-        <div className="infobarcontainer">
-          <h4 className="seenpropertytitle">Gender</h4>
-          <p className="seenswer">Male</p>
-          <h4 className="seenpropertytitle">Hair</h4>
-          <p className="seenswer">Special, Medium</p>
-          <h4 className="seenpropertytitle">Glasses</h4>
-          <p className="seenswer">yea boii</p>
-          <h4 className="seenpropertytitle">Message</h4>
-          <p className="seenswer">Male</p>
-        </div>
-      </div>
+      <GoogleMapExample
+        isMarkerShown
+        containerElement={<div className="mapCont" />}
+        mapElement={<div className="map" />}
+        onMarkerClick={true}
+        disableDefaultUI={true}
+      />
     );
   }
 }
