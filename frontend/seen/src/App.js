@@ -8,6 +8,7 @@ import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
+import ItsAMatch from "./components/match.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
@@ -63,6 +64,14 @@ const Contact = () => (
   </div>
 );
 
+const Match = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <ItsAMatch />
+    <FooterPage />
+  </div>
+)
+
 const routes = [
   {
     path: "/sightings",
@@ -91,6 +100,10 @@ const routes = [
   {
     path: "/contact",
     component: Contact
+  },
+  {
+    path: "/itsamatch",
+    component: Match
   }
 ];
 
