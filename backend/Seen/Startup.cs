@@ -27,7 +27,6 @@ namespace Seen
         {
             services.AddMvc();
             services.AddScoped<SightingRepository>();
-            services.AddScoped<Answers>();
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
