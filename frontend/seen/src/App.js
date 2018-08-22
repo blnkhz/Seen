@@ -9,13 +9,14 @@ import AddMap from "./components/addmap.js";
 import PostDzseszonForm from "./components/notstolencode.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
+import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map" />
+    <Renderz/>
     <FooterPage />
   </div>
 );
