@@ -36,7 +36,7 @@ class Map extends Component {
         {this.props.users.map((element, kulcs) => (
           <Marker
             key = {kulcs}
-            icon={require("../assets/seenpinkek.svg")}
+            icon={require("../assets/pin2.svg")}
             position={{ lat: element.latitude, lng: element.longitude }}
             onClick={() => this.onClick(kulcs, element.latitude, element.longitude)}
           />
