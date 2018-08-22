@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "longitude": 19.069346,
     "latitude": 47.498894,
     "day": "2018-08-18",
@@ -11,6 +12,7 @@
     "message": "ay dios mio"
   },
   {
+    "id": 1,
     "longitude": 19.065458,
     "latitude": 47.501063,
     "day": "2018-08-18",
@@ -22,6 +24,7 @@
     "message": "all you had to do was follow the damn train CJ"
   },
   {
+    "id": 2,
     "longitude": 19.061967,
     "latitude": 47.507389,
     "day": "2018-08-18",
@@ -33,6 +36,7 @@
     "message": "grove street, home."
   },
   {
+    "id": 3,
     "longitude": 19.059478,
     "latitude": 47.504374,
     "day": "2018-08-18",
@@ -44,6 +48,7 @@
     "message": "time is a flat circle."
   },
   {
+    "id": 4,
     "longitude": 19.072625,
     "latitude": 47.483998,
     "day": "2018-08-18",
