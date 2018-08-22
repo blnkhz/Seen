@@ -244,7 +244,6 @@
   color: #dc82a4;
 }
 
-
 .meccs {
   text-align: center;
   margin-top: 15%;
@@ -285,10 +284,11 @@
 
 .infochild {
   width: 25%;
-  line-height: 3em;
   color: #6489c2;
-  margin-top: 15%;
+  margin-top: 10%;
+  padding: 0px 50px 0px 50px;
   order: 1;
+  font-size: 1.5em;
 }
 
 .mapchild {
@@ -298,4 +298,23 @@
 
 .seenpropertytitle {
   color: #444;
+  letter-spacing: 0.2em;
+}
+
+.seenswer {
+  font-size: 75%;
+}
+
+.it-is-me-button {
+  margin-top: 50px;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.it-is-me-button:hover {
+  background: #dc82a4;
 }
