@@ -104,6 +104,15 @@
   margin-top: 50px;
 }
 
+.box .text {
+  visibility: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5em;
+  font-weight: 800;
+  color: #6489c2;
+  text-align: right;
+}
+
 .box,
 .beenseen,
 .haveseen,
@@ -114,15 +123,6 @@
   width: 13vw;
   -webkit-transition: width 0.5s, filter 0.5s;
   transition: width 0.5s, filter 0.5s;
-}
-
-.box .text {
-  visibility: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.5em;
-  font-weight: 800;
-  color: #6489c2;
-  text-align: right;
 }
 
 .box:hover,
@@ -245,14 +245,6 @@
 }
 
 
-.blankaprobalkozik {
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 0px;
-}
-
 .meccs {
   text-align: center;
   margin-top: 15%;
@@ -263,7 +255,6 @@
 .congratstext {
   margin-bottom: 5%;
   font-size: 2em;
-
 }
 
 .socmedtext {
@@ -282,4 +273,29 @@
 .socmedhandle:hover {
   font-weight: 600;
   letter-spacing: 0.3em;
+}
+
+.flexdaddy {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+}
+
+.infochild {
+  width: 25%;
+  line-height: 3em;
+  color: #6489c2;
+  margin-top: 15%;
+  order: 1;
+}
+
+.mapchild {
+  width: 75%;
+  order: 0;
+}
+
+.seenpropertytitle {
+  color: #444;
 }
