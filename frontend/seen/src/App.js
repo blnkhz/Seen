@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Renderz  />
+    <Renderz/>
     <FooterPage />
   </div>
 );

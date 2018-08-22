@@ -1,23 +1,33 @@
 import React, { Component } from "react";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
-import Infos from './infobar.js';
 import maplayout from "./mapstyle.js";
 
 
 class Map extends Component {
-  state = { users: [], hasRendered: false};
+  state = { users: [], data2: 1, zoomka: 13, centerke:{lat:47.507589, lng:19.066128}};
   
-  onClick = (data) => {
+  onClick(data, latika, longika){
+    this.setState({data2: data});
     this.props.onClick(data);
-    this.setState({hasRendered: true})
+    this.setState({centerke:{lat:latika, lng:longika}});
+    this.setState({zoomka: 15});
   };
+
+//   shouldComponentUpdate() {
+//     if(!this.update){
+//     return false;
+//     } // Will cause component to never re-render.
+// }
+
   
   render() {
+    console.log(this.props.users[this.state.data2])
   const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
         defaultZoom={13}
+        center={this.state.centerke}
+        zoom={this.state.zoomka}
         defaultOptions={{
           streetViewControl: true,
           scaleControl: false,
@@ -29,12 +39,12 @@ class Map extends Component {
           styles: maplayout
         }}
       >
-        {this.props.users.map((element, index) => (
+        {this.props.users.map((element, kulcs) => (
           <Marker
-            key = {index}
+            key = {kulcs}
             icon={require("../assets/seenpinkek.svg")}
             position={{ lat: element.latitude, lng: element.longitude }}
-            onClick={() => this.onClick(index)}
+            onClick={() => this.onClick(kulcs, element.latitude, element.longitude)}
           />
         ))}
       </GoogleMap>
