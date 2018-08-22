@@ -13,12 +13,6 @@ class Map extends Component {
     this.setState({zoomka: 15});
   };
 
-//   shouldComponentUpdate() {
-//     if(!this.update){
-//     return false;
-//     } // Will cause component to never re-render.
-// }
-
   
   render() {
     console.log(this.props.users[this.state.data2])
