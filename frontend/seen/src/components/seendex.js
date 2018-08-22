@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Seendex extends React.Component {
   render() {
     return (
-      <div className="jaj">
+      <div className="seendex">
         <a href="/">
           <img
             src={require("../assets/seenlogo.png")}

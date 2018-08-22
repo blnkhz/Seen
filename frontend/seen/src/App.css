@@ -14,10 +14,6 @@
   left: 0;
 }
 
-.jaj {
-  margin-top: 300px;
-}
-
 .profilePicture {
   margin: auto;
   border-radius: 50% !important;
@@ -255,6 +251,7 @@
   text-align: center;
   background-color: lightblue;
   margin-top: 0px;
+}
 
 .meccs {
   text-align: center;
