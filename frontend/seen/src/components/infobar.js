@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-const Readgend = ( {tomb, indexke} ) => (
+const Readgend = ( {userDatas, indexke} ) => (
   <div>
-    {tomb.map((element, index) =>       
+    {userDatas.map((element, index) =>       
       index === indexke ? <h1>{element.gender}</h1> : null)}
   </div>
 );

@@ -8,12 +8,13 @@ import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
+import Renderz from "./components/renderMap.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Map className="map" />
+    <Renderz  />
     <FooterPage />
   </div>
 );
