@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Seen.Repositories
 {
-    public class SightingRepository : ICrudRepository<Sighting>
+    public class SightingRepository 
     {
         private IMongoClient client;
         private IMongoDatabase database;
@@ -38,10 +38,16 @@ namespace Seen.Repositories
             return await sightings.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task<Sighting> SelectByFieldAsync(string id)
+        public async Task<Sighting> SelectByIdAsync(string id)
         {
             var filter = Builders<Sighting>.Filter.Eq("Id", new ObjectId(id));
             return await sightings.Find(filter).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Sighting>> SelectByFieldAsync(string field, string value)
+        {
+            var filter = Builders<Sighting>.Filter.Eq(field, value);
+            return await sightings.Find(filter).ToListAsync();
         }
 
         public Task UpdateAsync(Sighting item)

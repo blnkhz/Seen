@@ -12,12 +12,10 @@ namespace Seen.Controllers
     public class HomeController : Controller
     {
         private SightingRepository sightingRepository;
-        private Answers answers;
 
-        public HomeController(SightingRepository sightingRepository, Answers answers)
+        public HomeController(SightingRepository sightingRepository)
         {
             this.sightingRepository = sightingRepository;
-            this.answers = answers;
         }
         [HttpGet]
         [Route("beenseen")]
@@ -29,10 +27,18 @@ namespace Seen.Controllers
 
         [HttpGet]
         [Route("beenseenone/{id}")]
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await sightingRepository.SelectByFieldAsync(id);
-            return Ok(oneOfSightings);
+            var oneOfSightings = await sightingRepository.SelectByIdAsync(id);
+            return Ok(oneOfSightings.Id.ToString());
+        }
+
+        [HttpPost]
+        [Route("beenseensome")]
+        public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
+        {
+            var resultOfSightings = await sightingRepository.SelectByFieldAsync(filter.Field, filter.Value);
+            return Ok(resultOfSightings);
         }
 
         [HttpDelete]
