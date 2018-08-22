@@ -6,6 +6,7 @@ import Faq from "./components/faq.js";
 import About from "./components/about.js";
 import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
+import PostDzseszonForm from "./components/notstolencode.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import ItsAMatch from "./components/match.js";
@@ -44,8 +45,7 @@ const FrequentlyAsked = () => (
 
 const Add = () => (
   <div className="App">
-    <NavbarFeatures className="navbar" />
-    <AddMap className="map" />
+    <PostDzseszonForm className="jaj"/>
     <FooterPage />
   </div>
 );
