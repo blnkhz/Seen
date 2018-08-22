@@ -7,7 +7,11 @@ class PostDzseszonForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       gender: '',
-      socialHandle: ''
+      socialHandle: '',
+      hairColor:'',
+      hairStyle:'',
+      glasses:'',
+      message:''
     };
   }
 
@@ -21,10 +25,13 @@ class PostDzseszonForm extends React.Component {
     event.preventDefault();
     const data = {
       gender: this.state.gender,
-      socialHandle: this.state.socialHandle
-
+      socialHandle: this.state.socialHandle,
+      hairColor: this.state.hairColor,
+      hairStyle: this.state.hairStyle,
+      glasses: this.state.glasses,
+      message: this.state.message
     };
-    console.log(data);
+    console.log(data);  
 
     fetch('http://localhost:52210/haveseen', {
       method: 'POST',
@@ -42,6 +49,10 @@ class PostDzseszonForm extends React.Component {
       <form method="post" onSubmit={this.handleSubmit}>
         <input type="text" name="gender" placeholder="ird ide a gendert" onChange={this.handleChange}/>
         <input type="text" name="socialHandle" placeholder="ird ide a szósölhendlit" onChange={this.handleChange}/>
+        <input type="text" name="hairColor" placeholder="írjá hairsColorst" onChange={this.handleChange}/>
+        <input type="text" name="hairStyle" placeholder="írj sztájlszokszot" onChange={this.handleChange}/>
+        <input type="text" name="glasses" placeholder="grassesü?" onChange={this.handleChange}/>
+        <input type="text" name="message" placeholder="SZPESÖL MASSZÁZS" onChange={this.handleChange}/>
         <button type="submit">adjad neki tess</button>
       </form>
     );
