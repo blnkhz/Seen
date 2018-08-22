@@ -53,9 +53,6 @@ class Seendex extends React.Component {
             <p class="text">ABOUT US</p>
           </div>
         </div>
-        <div class="footer">
-          <p>- 2018 -</p>
-        </div>
       </div>
     );
   }

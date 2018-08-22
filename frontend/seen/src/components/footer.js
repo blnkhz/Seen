@@ -7,7 +7,7 @@ class FooterPage extends React.Component {
             <Footer>
             <div className="kicsiFooter">
                     <Container className="footerText" fluid>
-                        &copy; {(new Date().getFullYear())} Copyright: <a href="/"> Seen.com </a>
+                        &copy; {(new Date().getFullYear())} Copyright: <a href="/"> Seen</a>
                     </Container>
                 </div>
             </Footer>

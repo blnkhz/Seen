@@ -6,9 +6,11 @@ import Faq from "./components/faq.js";
 import About from "./components/about.js";
 import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
+import PostDzseszonForm from "./components/notstolencode.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
+import ItsAMatch from "./components/match.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
@@ -30,6 +32,7 @@ const AboutUs = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <About className="About" />
+    <FooterPage />
   </div>
 );
 
@@ -37,13 +40,13 @@ const FrequentlyAsked = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Faq className="Faq" />
+    <FooterPage />
   </div>
 );
 
 const Add = () => (
   <div className="App">
-    <NavbarFeatures className="navbar" />
-    <AddMap className="map" />
+    <PostDzseszonForm className="jaj"/>
     <FooterPage />
   </div>
 );
@@ -51,8 +54,24 @@ const Add = () => (
 const Start = () => (
   <div>
     <Seendex />
+    <FooterPage />
   </div>
 );
+
+const Contact = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <FooterPage />
+  </div>
+);
+
+const Match = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <ItsAMatch />
+    <FooterPage />
+  </div>
+)
 
 const routes = [
   {
@@ -78,6 +97,14 @@ const routes = [
   {
     path: "/infobar",
     component: Infobarr
+  },
+  {
+    path: "/contact",
+    component: Contact
+  },
+  {
+    path: "/itsamatch",
+    component: Match
   }
 ];
 

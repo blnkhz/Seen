@@ -14,6 +14,10 @@
   left: 0;
 }
 
+.jaj {
+  margin-top: 300px;
+}
+
 .profilePicture {
   margin: auto;
   border-radius: 50% !important;
@@ -25,10 +29,14 @@
 .kicsiFooter {
   height: 5%;
   color: white;
+  font-weight: 300;
+  letter-spacing: 0.3em;
   background-color: #dc82a4;
+  font-family: Arial, Helvetica, sans-serif;
   position: fixed;
   bottom: 0;
   width: 100%;
+  text-align: center;
 }
 
 .footerke {
@@ -107,7 +115,7 @@
 .about {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  width: 10em;
+  width: 13vw;
   -webkit-transition: width 0.5s, filter 0.5s;
   transition: width 0.5s, filter 0.5s;
 }
@@ -129,7 +137,7 @@
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
   opacity: 1;
-  width: 12em;
+  width: 15vw;
   visibility: visible;
 }
 
@@ -158,6 +166,7 @@
   content: "";
   display: table;
   clear: both;
+  height: 95vh;
 }
 
 .abouttitle {
@@ -239,10 +248,41 @@
   color: #dc82a4;
 }
 
+
 .blankaprobalkozik {
   width: 100%;
   padding: 20px;
   text-align: center;
   background-color: lightblue;
   margin-top: 0px;
+
+.meccs {
+  text-align: center;
+  margin-top: 15%;
+  -webkit-transition: font-weight 0.5s;
+  transition: font-weight 0.5s;
+}
+
+.congratstext {
+  margin-bottom: 5%;
+  font-size: 2em;
+
+}
+
+.socmedtext {
+  margin-bottom: 5%;
+}
+
+.socmedhandle {
+  font-weight: 300;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+  color: #6489c2;
+}
+
+.socmedhandle:hover {
+  font-weight: 600;
+  letter-spacing: 0.3em;
 }
