@@ -86,7 +86,7 @@ class PostForm extends React.Component {
         <div className="dropsdowns">
           <form>
             <select
-              className="gender-dropdown"
+              className="dropdown-newsighting"
               name="gender"
               onChange={this.handleChange}
             >
@@ -98,59 +98,58 @@ class PostForm extends React.Component {
               <option value="other">other</option>
             </select>
           </form>
-          <div className="dropdown-newsighting">
-            <form>
-              <select
-                className="haircolor-dropdown"
-                name="hairColor"
-                onChange={this.handleChange}
-              >
-                <option value="" disabled selected>
-                  hair color
-                </option>
-                <option value="black">black</option>
-                <option value="brown">brown</option>
-                <option value="blond(e)">blonde</option>
-                <option value="red">red</option>
-                <option value="special">special</option>
-                <option value="salt n pepper">salt n pepper</option>
-              </select>
-            </form>
-            <form>
-              <select
-                className="hairstyle-dropdown"
-                name="hairStyle"
-                onChange={this.handleChange}
-              >
-                <option value="" disabled selected>
-                  hairstyle
-                </option>
-                <option value="short">short</option>
-                <option value="medium">medium</option>
-                <option value="long">long</option>
-                <option value="bald">bald</option>
-              </select>
-            </form>
-            <form>
-              <select
-                className="glasses-dropdown"
-                name="glasses"
-                onChange={this.handleChange}
-              >
-                <option value="" disabled selected>
-                  glasses?
-                </option>
-                <option value="true">yes</option>
-                <option value="false">no</option>
-              </select>
-            </form>
-          </div>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="hairColor"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                hair color
+              </option>
+              <option value="black">black</option>
+              <option value="brown">brown</option>
+              <option value="blond(e)">blonde</option>
+              <option value="red">red</option>
+              <option value="special">special</option>
+              <option value="salt n pepper">salt n pepper</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="hairStyle"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                hairstyle
+              </option>
+              <option value="short">short</option>
+              <option value="medium">medium</option>
+              <option value="long">long</option>
+              <option value="bald">bald</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="glasses"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                glasses?
+              </option>
+              <option value="true">yes</option>
+              <option value="false">no</option>
+            </select>
+          </form>
         </div>
         <input
           type="text"
           name="message"
           placeholder="anything else?"
           onChange={this.handleChange}
+          className="messageinput"
         />
         <a href="/itsamatch">
           <button type="submit" className="submit-button">

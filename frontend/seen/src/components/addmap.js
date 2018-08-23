@@ -2,55 +2,54 @@ import React, { Component } from "react";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import maplayout from "./mapstyle.js";
 import update from "react-addons-update";
-import PostForm from "./notstolencode.js"
+import PostForm from "./notstolencode.js";
 
 class AddMap extends Component {
   state = {
     marker: {
       position: {
         lat: null,
-        lng: null,
+        lng: null
       },
       draggable: true,
       key: "Greenfoxok",
       defaultAnimation: 2
     },
     centerke: { lat: 47.507589, lng: 19.066128 },
-    savedPos: {lat: null, lng: null}
-  }
+    savedPos: { lat: null, lng: null }
+  };
 
-  handleMapClick (event) {
-    var {marker} = this.state;
+  handleMapClick(event) {
+    var { marker } = this.state;
     marker = update(marker, {
-      $set: 
-        {
-          position: event.latLng,
-          draggable: true,
-          defaultAnimation: 2,
-          key: Date.now(),
-        },
+      $set: {
+        position: event.latLng,
+        draggable: true,
+        defaultAnimation: 2,
+        key: Date.now()
+      }
     });
     this.setState({ marker });
     this.setState({ centerke: event.latLng });
     console.log(event.latLng.toString());
-    this.setState({savedPos:
-      {
-        lat:parseFloat(parseFloat(event.latLng.toString().substr(1))), 
-        lng:parseFloat(parseFloat(event.latLng.toString().substr(20)))}
-      });
+    this.setState({
+      savedPos: {
+        lat: parseFloat(parseFloat(event.latLng.toString().substr(1))),
+        lng: parseFloat(parseFloat(event.latLng.toString().substr(20)))
+      }
+    });
     console.log(this.state.savedPos);
   }
 
-  handleMarkerRightclick () {
-    var {marker} = this.state;
+  handleMarkerRightclick() {
+    var { marker } = this.state;
     marker = update(marker, {
-      $set: 
-        {
-          position: null,
-          draggable: true,
-          defaultAnimation: 2,
-          key: Date.now(),
-        },
+      $set: {
+        position: null,
+        draggable: true,
+        defaultAnimation: 2,
+        key: Date.now()
+      }
     });
     this.setState({ marker });
   }
@@ -60,7 +59,7 @@ class AddMap extends Component {
         defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
         zoom={13}
         center={this.state.centerke}
-        onClick={(e) => this.handleMapClick(e)}
+        onClick={e => this.handleMapClick(e)}
         defaultOptions={{
           streetViewControl: true,
           scaleControl: false,
@@ -73,11 +72,11 @@ class AddMap extends Component {
           styles: maplayout
         }}
       >
-      <Marker
-        onRightClick={()=> this.handleMarkerRightclick()}
-        icon={require("../assets/pin2.svg")}
-        {...this.state.marker}
-          />
+        <Marker
+          onRightClick={() => this.handleMarkerRightclick()}
+          icon={require("../assets/pin2.svg")}
+          {...this.state.marker}
+        />
       </GoogleMap>
     ));
     return (

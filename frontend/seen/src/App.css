@@ -299,10 +299,8 @@
 .formchild {
   width: 25%;
   color: #6489c2;
-  margin-top: 10%;
-  padding: 0px 0px 0px 0px;
+  margin-top: 5%;
   order: 1;
-  font-size: 1.5em;
 }
 
 .seenpropertytitle {
@@ -341,4 +339,38 @@
 
 option[value=""][disabled] {
   display: none;
+}
+
+.dropdown-newsighting {
+  width: 90%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #c2d6f3;
+  border: none;
+  height: 2em;
+  margin-top: 5px;
+}
+
+.handleinput {
+  width: 90%;
+  background-color: #c2d6f3;
+  border: none;
+  height: 2em;
+  border-radius: 5px;
+}
+
+.messageinput {
+  width: 90%;
+  background: #c2d6f3;
+  border: none;
+  height: 2em;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 1; /* Firefox */
 }
