@@ -300,7 +300,7 @@
   width: 25%;
   color: #6489c2;
   margin-top: 10%;
-  padding: 0px 50px 0px 50px;
+  padding: 0px 0px 0px 0px;
   order: 1;
   font-size: 1.5em;
 }
@@ -336,8 +336,4 @@
   background: #6489c2;
   box-shadow: none;
   border-radius: 0px;
-}
-
-.datepicker {
-  size: 70%;
 }
