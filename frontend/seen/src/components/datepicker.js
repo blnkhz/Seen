@@ -7,7 +7,7 @@ export default class DatePicker extends React.Component {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
-      selectedDay: undefined,
+      selectedDay: undefined
     };
   }
   handleDayClick(day, { selected }) {
@@ -24,7 +24,8 @@ export default class DatePicker extends React.Component {
           onDayClick={this.handleDayClick}
           selectedDays={this.state.selectedDay}
         />
-        {this.state.selectedDay ? (
+        {this.state.selectedDay ? ( 
+    console.log(this.state.selectedDay),
           <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
         ) : (
           <p>Please select a day.</p>

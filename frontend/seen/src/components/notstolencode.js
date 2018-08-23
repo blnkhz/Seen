@@ -16,7 +16,8 @@ class PostForm extends React.Component {
       glasses:'',
       message:'',
       latitude: null,
-      longitude: null
+      longitude: null,
+      day: ''
     };
   }
 

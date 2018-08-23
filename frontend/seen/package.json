@@ -5,9 +5,8 @@
   "dependencies": {
     "mdbreact": "^4.6.1",
     "react": "^16.4.2",
-    "react-day-picker": "^7.1.10",
     "react-addons-update": "^15.6.2",
-
+    "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.2",
     "react-google-maps": "^9.4.5",
     "react-google-maps-loader": "^4.2.3",
