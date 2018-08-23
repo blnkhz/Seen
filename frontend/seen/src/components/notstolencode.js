@@ -1,13 +1,13 @@
 import React from "react";
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
-import DatePicker from "./datepicker.js";
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 class PostForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
       gender: "",
       socialHandle: "",
@@ -17,7 +17,7 @@ class PostForm extends React.Component {
       message: "",
       latitude: null,
       longitude: null,
-      day: ""
+      day: undefined
     };
   }
 
@@ -25,6 +25,14 @@ class PostForm extends React.Component {
     console.log(event.target.name, event.target.value);
 
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleDayClick(day, { selected }) {
+    if (selected) {
+      this.setState({ selectedDay: undefined });
+      return;
+    }
+    this.setState({ selectedDay: day });
   }
 
   handleSubmit(event) {
@@ -37,7 +45,8 @@ class PostForm extends React.Component {
       glasses: this.state.glasses,
       message: this.state.message,
       latitude: this.props.savedPos.lat,
-      longitude: this.props.savedPos.lng
+      longitude: this.props.savedPos.lng,
+      day: this.state.selectedDay.toLocaleDateString()
     };
     console.log(data);
 
@@ -54,9 +63,18 @@ class PostForm extends React.Component {
   render() {
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
-        <div className="datepicker">
-          <DatePicker />
-        </div>
+        <div>
+        <DayPicker
+          onDayClick={this.handleDayClick}
+          selectedDays={this.state.selectedDay}
+        />
+        {this.state.selectedDay ? ( 
+    console.log(this.state.selectedDay),
+          <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
+        ) : (
+          <p>Please select a day.</p>
+        )}
+      </div>
         <input
           type="text"
           name="socialHandle"
