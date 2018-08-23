@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
-    <Renderz/>
+    <Renderz />
     <FooterPage />
   </div>
 );
@@ -46,7 +46,11 @@ const FrequentlyAsked = () => (
 
 const Add = () => (
   <div className="App">
-    <PostDzseszonForm className="jaj"/>
+    <NavbarFeatures />
+    <div className="flexdaddy">
+      <AddMap classname="mapchild" />
+      <PostDzseszonForm classname="formchild" />
+    </div>
     <FooterPage />
   </div>
 );
@@ -71,7 +75,7 @@ const Match = () => (
     <ItsAMatch />
     <FooterPage />
   </div>
-)
+);
 
 const routes = [
   {

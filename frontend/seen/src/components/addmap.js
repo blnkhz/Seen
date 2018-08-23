@@ -21,7 +21,7 @@ class AddMap extends Component {
       />
     ));
     return (
-      <div>
+      <div className="mapchild">
         <GoogleMapExample
           containerElement={<div className="mapCont" />}
           mapElement={<div className="map" />}

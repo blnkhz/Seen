@@ -296,6 +296,15 @@
   order: 0;
 }
 
+.formchild {
+  width: 25%;
+  color: #6489c2;
+  margin-top: 10%;
+  padding: 0px 50px 0px 50px;
+  order: 1;
+  font-size: 1.5em;
+}
+
 .seenpropertytitle {
   color: #444;
   letter-spacing: 0.2em;
@@ -315,6 +324,16 @@
   border-radius: 0px;
 }
 
-.it-is-me-button:hover {
+.it-is-me-button:hover, .submit-button:hover {
   background: #dc82a4;
+}
+
+.submit-button {
+  margin-top: 50px;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
+  border-radius: 0px;
 }

@@ -46,14 +46,21 @@ class PostDzseszonForm extends React.Component {
   
   render() {
     return (
-      <form method="post" onSubmit={this.handleSubmit}>
+      <form method="post" onSubmit={this.handleSubmit} className="formchild">
         <input type="text" name="gender" placeholder="ird ide a gendert" onChange={this.handleChange}/>
         <input type="text" name="socialHandle" placeholder="ird ide a szósölhendlit" onChange={this.handleChange}/>
         <input type="text" name="hairColor" placeholder="írjá hairsColorst" onChange={this.handleChange}/>
         <input type="text" name="hairStyle" placeholder="írj sztájlszokszot" onChange={this.handleChange}/>
         <input type="text" name="glasses" placeholder="grassesü?" onChange={this.handleChange}/>
         <input type="text" name="message" placeholder="SZPESÖL MASSZÁZS" onChange={this.handleChange}/>
-        <button type="submit">adjad neki tess</button>
+        <a href="/itsamatch">
+              <button
+                type="submit"
+                className="submit-button"
+              >
+                FIND THEM
+              </button>
+            </a>
       </form>
     );
   }
