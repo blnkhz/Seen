@@ -51,9 +51,9 @@ namespace Seen.Controllers
 
         [HttpPost]
         [Route("haveseen")]
-        public async Task<IActionResult> HaveSeen([FromBody] Sighting sighting)
+        public async Task<IActionResult> HaveSeen([FromBody] User user)
         {
-            await sightingRepository.CreateAsync(sighting);
+            await sightingRepository.CreateAsync(user);
             return RedirectToAction("BeenSeen");
         }
     }
