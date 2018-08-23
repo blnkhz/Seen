@@ -9,12 +9,12 @@ class PostForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
-      gender: '',
-      socialHandle: '',
-      hairColor:'',
-      hairStyle:'',
-      glasses:'',
-      message:'',
+      gender: "",
+      socialHandle: "",
+      hairColor: "",
+      hairStyle: "",
+      glasses: "",
+      message: "",
       latitude: null,
       longitude: null,
       day: undefined
@@ -77,38 +77,60 @@ class PostForm extends React.Component {
       </div>
         <input
           type="text"
-          name="gender"
-          placeholder="ird ide a gendert"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
           name="socialHandle"
-          placeholder="ird ide a szósölhendlit"
+          placeholder="your social handle"
           onChange={this.handleChange}
+          className="handleinput"
         />
-        <input
-          type="text"
-          name="hairColor"
-          placeholder="írjá hairsColorst"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="hairStyle"
-          placeholder="írj sztájlszokszot"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="glasses"
-          placeholder="grassesü?"
-          onChange={this.handleChange}
-        />
+        <form>
+          <select className="gender-dropdown" name="gender" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              gender
+            </option>
+            <option value="female">female</option>
+            <option value="male">male</option>
+            <option value="other">other</option>
+          </select>
+        </form>
+        <div className="dropdown-newsighting">
+        <form>
+          <select className="haircolor-dropdown" name="hairColor" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              hair color
+            </option>
+            <option value="black">black</option>
+            <option value="brown">brown</option>
+            <option value="blond(e)">blonde</option>
+            <option value="red">red</option>
+            <option value="special">special</option>
+            <option value="salt n pepper">salt n pepper</option>
+          </select>
+        </form>
+        <form>
+          <select className="hairstyle-dropdown" name="hairStyle" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              hairstyle
+            </option>
+            <option value="short">short</option>
+            <option value="medium">medium</option>
+            <option value="long">long</option>
+            <option value="bald">bald</option>
+          </select>
+        </form>
+        <form>
+          <select className="glasses-dropdown" name="glasses" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              glasses?
+            </option>
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </select>
+        </form>
+        </div>
         <input
           type="text"
           name="message"
-          placeholder="SZPESÖL MASSZÁZS"
+          placeholder="anything else?"
           onChange={this.handleChange}
         />
         <a href="/itsamatch">

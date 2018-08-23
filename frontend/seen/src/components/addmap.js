@@ -58,7 +58,7 @@ class AddMap extends Component {
     const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
-        defaultZoom={13}
+        zoom={13}
         center={this.state.centerke}
         onClick={(e) => this.handleMapClick(e)}
         defaultOptions={{
