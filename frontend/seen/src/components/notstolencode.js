@@ -1,6 +1,6 @@
 import React from "react";
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 class PostForm extends React.Component {
   constructor() {
@@ -64,68 +64,87 @@ class PostForm extends React.Component {
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
         <div>
-        <DayPicker
-          onDayClick={this.handleDayClick}
-          selectedDays={this.state.selectedDay}
-        />
-        {this.state.selectedDay ? ( 
-    console.log(this.state.selectedDay),
-          <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
-        ) : (
-          <p>Please select a day.</p>
-        )}
-      </div>
+          <DayPicker
+            onDayClick={this.handleDayClick}
+            selectedDays={this.state.selectedDay}
+          />
+          {this.state.selectedDay ? (
+            (console.log(this.state.selectedDay),
+            <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>)
+          ) : (
+            <p>Please select a day.</p>
+          )}
+        </div>
         <input
           type="text"
           name="socialHandle"
           placeholder="your social handle"
           onChange={this.handleChange}
           className="handleinput"
+          required
         />
-        <form>
-          <select className="gender-dropdown" name="gender" onChange={this.handleChange}>
-            <option value="" disabled selected>
-              gender
-            </option>
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="other">other</option>
-          </select>
-        </form>
-        <div className="dropdown-newsighting">
-        <form>
-          <select className="haircolor-dropdown" name="hairColor" onChange={this.handleChange}>
-            <option value="" disabled selected>
-              hair color
-            </option>
-            <option value="black">black</option>
-            <option value="brown">brown</option>
-            <option value="blond(e)">blonde</option>
-            <option value="red">red</option>
-            <option value="special">special</option>
-            <option value="salt n pepper">salt n pepper</option>
-          </select>
-        </form>
-        <form>
-          <select className="hairstyle-dropdown" name="hairStyle" onChange={this.handleChange}>
-            <option value="" disabled selected>
-              hairstyle
-            </option>
-            <option value="short">short</option>
-            <option value="medium">medium</option>
-            <option value="long">long</option>
-            <option value="bald">bald</option>
-          </select>
-        </form>
-        <form>
-          <select className="glasses-dropdown" name="glasses" onChange={this.handleChange}>
-            <option value="" disabled selected>
-              glasses?
-            </option>
-            <option value="true">yes</option>
-            <option value="false">no</option>
-          </select>
-        </form>
+        <div className="dropsdowns">
+          <form>
+            <select
+              className="gender-dropdown"
+              name="gender"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                gender
+              </option>
+              <option value="female">female</option>
+              <option value="male">male</option>
+              <option value="other">other</option>
+            </select>
+          </form>
+          <div className="dropdown-newsighting">
+            <form>
+              <select
+                className="haircolor-dropdown"
+                name="hairColor"
+                onChange={this.handleChange}
+              >
+                <option value="" disabled selected>
+                  hair color
+                </option>
+                <option value="black">black</option>
+                <option value="brown">brown</option>
+                <option value="blond(e)">blonde</option>
+                <option value="red">red</option>
+                <option value="special">special</option>
+                <option value="salt n pepper">salt n pepper</option>
+              </select>
+            </form>
+            <form>
+              <select
+                className="hairstyle-dropdown"
+                name="hairStyle"
+                onChange={this.handleChange}
+              >
+                <option value="" disabled selected>
+                  hairstyle
+                </option>
+                <option value="short">short</option>
+                <option value="medium">medium</option>
+                <option value="long">long</option>
+                <option value="bald">bald</option>
+              </select>
+            </form>
+            <form>
+              <select
+                className="glasses-dropdown"
+                name="glasses"
+                onChange={this.handleChange}
+              >
+                <option value="" disabled selected>
+                  glasses?
+                </option>
+                <option value="true">yes</option>
+                <option value="false">no</option>
+              </select>
+            </form>
+          </div>
         </div>
         <input
           type="text"
