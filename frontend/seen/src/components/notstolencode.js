@@ -57,45 +57,62 @@ class PostForm extends React.Component {
         <div className="datepicker">
           <DatePicker />
         </div>
-        <form>
-          <select className="gender-dropdown" name="gender">
-            <option value="au">Female</option>
-            <option value="ca">Male</option>
-            <option value="usa">Other</option>
-          </select>
-        </form>
         <input
           type="text"
           name="socialHandle"
-          placeholder="ird ide a szósölhendlit"
+          placeholder="your social handle"
           onChange={this.handleChange}
           className="handleinput"
         />
-        <input
-          type="text"
-          name="hairColor"
-          placeholder="írjá hairsColorst"
-          onChange={this.handleChange}
-          className="haircolorinput"
-        />
-        <input
-          type="text"
-          name="hairStyle"
-          placeholder="írj sztájlszokszot"
-          onChange={this.handleChange}
-          className="hairstyleinput"
-        />
-        <input
-          type="text"
-          name="glasses"
-          placeholder="grassesü?"
-          onChange={this.handleChange}
-          className="glassinput"
-        />
+        <form>
+          <select className="gender-dropdown" name="gender" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              gender
+            </option>
+            <option value="female">female</option>
+            <option value="male">male</option>
+            <option value="other">other</option>
+          </select>
+        </form>
+        <div className="dropdown-newsighting">
+        <form>
+          <select className="haircolor-dropdown" name="hairColor" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              hair color
+            </option>
+            <option value="black">black</option>
+            <option value="brown">brown</option>
+            <option value="blond(e)">blonde</option>
+            <option value="red">red</option>
+            <option value="special">special</option>
+            <option value="salt n pepper">salt n pepper</option>
+          </select>
+        </form>
+        <form>
+          <select className="hairstyle-dropdown" name="hairStyle" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              hairstyle
+            </option>
+            <option value="short">short</option>
+            <option value="medium">medium</option>
+            <option value="long">long</option>
+            <option value="bald">bald</option>
+          </select>
+        </form>
+        <form>
+          <select className="glasses-dropdown" name="glasses" onChange={this.handleChange}>
+            <option value="" disabled selected>
+              glasses?
+            </option>
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </select>
+        </form>
+        </div>
         <input
           type="text"
           name="message"
-          placeholder="SZPESÖL MASSZÁZS"
+          placeholder="anything else?"
           onChange={this.handleChange}
         />
         <a href="/itsamatch">
