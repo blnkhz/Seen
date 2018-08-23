@@ -1,6 +1,6 @@
-import React from 'react';
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import React from "react";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 export default class DatePicker extends React.Component {
   constructor(props) {
@@ -24,9 +24,9 @@ export default class DatePicker extends React.Component {
           onDayClick={this.handleDayClick}
           selectedDays={this.state.selectedDay}
         />
-        {this.state.selectedDay ? ( 
-    console.log(this.state.selectedDay),
-          <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
+        {this.state.selectedDay ? (
+          (console.log(this.state.selectedDay),
+          <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>)
         ) : (
           <p>Please select a day.</p>
         )}
