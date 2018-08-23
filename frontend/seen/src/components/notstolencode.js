@@ -3,18 +3,20 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import DatePicker from "./datepicker.js";
 
-class PostDzseszonForm extends React.Component {
+class PostForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      gender: "",
-      socialHandle: "",
-      hairColor: "",
-      hairStyle: "",
-      glasses: "",
-      message: ""
+      gender: '',
+      socialHandle: '',
+      hairColor:'',
+      hairStyle:'',
+      glasses:'',
+      message:'',
+      latitude: null,
+      longitude: null
     };
   }
 
@@ -32,7 +34,9 @@ class PostDzseszonForm extends React.Component {
       hairColor: this.state.hairColor,
       hairStyle: this.state.hairStyle,
       glasses: this.state.glasses,
-      message: this.state.message
+      message: this.state.message,
+      latitude: this.props.savedPos.lat,
+      longitude: this.props.savedPos.lng
     };
     console.log(data);
 
@@ -98,4 +102,4 @@ class PostDzseszonForm extends React.Component {
   }
 }
 
-export default PostDzseszonForm;
+export default PostForm;
