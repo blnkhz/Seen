@@ -9,15 +9,15 @@ class PostForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      gender: '',
-      socialHandle: '',
-      hairColor:'',
-      hairStyle:'',
-      glasses:'',
-      message:'',
+      gender: "",
+      socialHandle: "",
+      hairColor: "",
+      hairStyle: "",
+      glasses: "",
+      message: "",
       latitude: null,
       longitude: null,
-      day: ''
+      day: ""
     };
   }
 
@@ -57,35 +57,40 @@ class PostForm extends React.Component {
         <div className="datepicker">
           <DatePicker />
         </div>
-        <input
-          type="text"
-          name="gender"
-          placeholder="ird ide a gendert"
-          onChange={this.handleChange}
-        />
+        <form>
+          <select className="gender-dropdown" name="gender">
+            <option value="au">Female</option>
+            <option value="ca">Male</option>
+            <option value="usa">Other</option>
+          </select>
+        </form>
         <input
           type="text"
           name="socialHandle"
           placeholder="ird ide a szósölhendlit"
           onChange={this.handleChange}
+          className="handleinput"
         />
         <input
           type="text"
           name="hairColor"
           placeholder="írjá hairsColorst"
           onChange={this.handleChange}
+          className="haircolorinput"
         />
         <input
           type="text"
           name="hairStyle"
           placeholder="írj sztájlszokszot"
           onChange={this.handleChange}
+          className="hairstyleinput"
         />
         <input
           type="text"
           name="glasses"
           placeholder="grassesü?"
           onChange={this.handleChange}
+          className="glassinput"
         />
         <input
           type="text"

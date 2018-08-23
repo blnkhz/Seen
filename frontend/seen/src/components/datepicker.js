@@ -26,7 +26,7 @@ export default class DatePicker extends React.Component {
         />
         {this.state.selectedDay ? (
           (console.log(this.state.selectedDay),
-          <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>)
+          <p>{this.state.selectedDay.toLocaleDateString()}</p>)
         ) : (
           <p>Please select a day.</p>
         )}
