@@ -4,10 +4,9 @@ import maplayout from "./mapstyle.js";
 
 
 class Map extends Component {
-  state = { users: [], data2: 1, zoomka: 13, centerke:{lat:47.507589, lng:19.066128}};
+  state = { users: [], zoomka: 13, centerke:{lat:47.507589, lng:19.066128}};
   
   onClick(data, latika, longika){
-    this.setState({data2: data});
     this.props.onClick(data);
     this.setState({centerke:{lat:latika, lng:longika}});
     this.setState({zoomka: 15});
@@ -18,7 +17,6 @@ class Map extends Component {
 }
   
   render() {
-    console.log(this.props.users[this.state.data2])
   const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
