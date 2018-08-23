@@ -13,6 +13,9 @@ class Map extends Component {
     this.setState({zoomka: 15});
   };
 
+  shouldComponentUpdate(nextProps) {
+    return (this.props.users !== nextProps.users);
+}
   
   render() {
     console.log(this.props.users[this.state.data2])
