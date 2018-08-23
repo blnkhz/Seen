@@ -1,4 +1,7 @@
-import React from 'react';
+import React from "react";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
+import DatePicker from "./datepicker.js";
 
 class PostDzseszonForm extends React.Component {
   constructor() {
@@ -6,18 +9,18 @@ class PostDzseszonForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      gender: '',
-      socialHandle: '',
-      hairColor:'',
-      hairStyle:'',
-      glasses:'',
-      message:''
+      gender: "",
+      socialHandle: "",
+      hairColor: "",
+      hairStyle: "",
+      glasses: "",
+      message: ""
     };
   }
 
   handleChange(event) {
     console.log(event.target.name, event.target.value);
-    
+
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -31,36 +34,65 @@ class PostDzseszonForm extends React.Component {
       glasses: this.state.glasses,
       message: this.state.message
     };
-    console.log(data);  
+    console.log(data);
 
-    fetch('http://localhost:52210/haveseen', {
-      method: 'POST',
+    fetch("http://localhost:52210/haveseen", {
+      method: "POST",
       body: JSON.stringify(data),
-      mode: 'cors',
+      mode: "cors",
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       })
-    })
-    .catch(error => `Error: ${error}`);
+    }).catch(error => `Error: ${error}`);
   }
-  
+
   render() {
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
-        <input type="text" name="gender" placeholder="ird ide a gendert" onChange={this.handleChange}/>
-        <input type="text" name="socialHandle" placeholder="ird ide a szósölhendlit" onChange={this.handleChange}/>
-        <input type="text" name="hairColor" placeholder="írjá hairsColorst" onChange={this.handleChange}/>
-        <input type="text" name="hairStyle" placeholder="írj sztájlszokszot" onChange={this.handleChange}/>
-        <input type="text" name="glasses" placeholder="grassesü?" onChange={this.handleChange}/>
-        <input type="text" name="message" placeholder="SZPESÖL MASSZÁZS" onChange={this.handleChange}/>
+        <div className="datepicker">
+          <DatePicker />
+        </div>
+        <input
+          type="text"
+          name="gender"
+          placeholder="ird ide a gendert"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="socialHandle"
+          placeholder="ird ide a szósölhendlit"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="hairColor"
+          placeholder="írjá hairsColorst"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="hairStyle"
+          placeholder="írj sztájlszokszot"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="glasses"
+          placeholder="grassesü?"
+          onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="message"
+          placeholder="SZPESÖL MASSZÁZS"
+          onChange={this.handleChange}
+        />
         <a href="/itsamatch">
-              <button
-                type="submit"
-                className="submit-button"
-              >
-                FIND THEM
-              </button>
-            </a>
+          <button type="submit" className="submit-button">
+            FIND THEM
+          </button>
+        </a>
       </form>
     );
   }
