@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PostDzseszonForm extends React.Component {
+class PostForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -11,7 +11,9 @@ class PostDzseszonForm extends React.Component {
       hairColor:'',
       hairStyle:'',
       glasses:'',
-      message:''
+      message:'',
+      latitude: null,
+      longitude: null
     };
   }
 
@@ -29,7 +31,9 @@ class PostDzseszonForm extends React.Component {
       hairColor: this.state.hairColor,
       hairStyle: this.state.hairStyle,
       glasses: this.state.glasses,
-      message: this.state.message
+      message: this.state.message,
+      latitude: this.props.savedPos.lat,
+      longitude: this.props.savedPos.lng
     };
     console.log(data);  
 
@@ -66,4 +70,4 @@ class PostDzseszonForm extends React.Component {
   }
 }
 
-export default PostDzseszonForm;
+export default PostForm;

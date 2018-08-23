@@ -6,7 +6,6 @@ import Faq from "./components/faq.js";
 import About from "./components/about.js";
 import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
-import PostDzseszonForm from "./components/notstolencode.js";
 import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
@@ -49,7 +48,6 @@ const Add = () => (
     <NavbarFeatures />
     <div className="flexdaddy">
       <AddMap classname="mapchild" />
-      <PostDzseszonForm classname="formchild" />
     </div>
     <FooterPage />
   </div>
