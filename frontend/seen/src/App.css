@@ -355,7 +355,7 @@ option[value=""][disabled] {
   padding: 16px 20px;
   border: none;
   border-radius: 4px;
-  background-color: #c2d6f3;
+  background-color: #dadada;
   border: none;
   height: 2em;
   margin-top: 10px;
@@ -365,7 +365,7 @@ option[value=""][disabled] {
 
 .handleinput {
   width: 90%;
-  background-color: #c2d6f3;
+  background-color: #dadada;
   border: none;
   height: 2em;
   border-radius: 5px;
@@ -374,7 +374,7 @@ option[value=""][disabled] {
 
 .messageinput {
   width: 90%;
-  background: #c2d6f3;
+  background: #dadada;
   border: none;
   height: 2em;
   border-radius: 5px;

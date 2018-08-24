@@ -17,6 +17,7 @@ const GoogleMapExample = withGoogleMap(props => (
       zoomControl: true,
       rotateControl: true,
       fullscreenControl: true,
+      minZoom: 3,
       styles: maplayout
     }}
   >
