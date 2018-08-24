@@ -10,6 +10,8 @@ namespace Seen.Models
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        [BsonElement("Email")]
+        public string Email { get; set; }
         [BsonElement("SocialHandle")]
         public string SocialHandle { get; set; }
         [BsonElement("UserGender")]

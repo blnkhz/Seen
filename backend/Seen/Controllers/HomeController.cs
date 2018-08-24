@@ -11,17 +11,17 @@ namespace Seen.Controllers
 {
     public class HomeController : Controller
     {
-        private SightingRepository sightingRepository;
+        private UserRepository userRepository;
 
-        public HomeController(SightingRepository sightingRepository)
+        public HomeController(UserRepository userRepository)
         {
-            this.sightingRepository = sightingRepository;
+            this.userRepository = userRepository;
         }
         [HttpGet]
         [Route("beenseen")]
         public async Task<IActionResult> BeenSeen()
         {
-            var listOfSightings = await sightingRepository.SelectAllAsync();
+            var listOfSightings = await userRepository.SelectAllAsync();
             return Ok(listOfSightings);
         }
 
@@ -29,7 +29,7 @@ namespace Seen.Controllers
         [Route("beenseenone/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await sightingRepository.SelectByIdAsync(id);
+            var oneOfSightings = await userRepository.SelectByIdAsync(id);
             return Ok(oneOfSightings.Id.ToString());
         }
 
@@ -37,7 +37,7 @@ namespace Seen.Controllers
         [Route("beenseensome")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
-            var resultOfSightings = await sightingRepository.SelectByFieldAsync(filter.Field, filter.Value);
+            var resultOfSightings = await userRepository.SelectByFieldAsync(filter.Field, filter.Value);
             return Ok(resultOfSightings);
         }
 
@@ -45,7 +45,7 @@ namespace Seen.Controllers
         [Route("beendeleted/{id}")]
         public async Task<IActionResult> BeenDeleted(string id)
         {
-            await sightingRepository.DeleteAsync(id);
+            await userRepository.DeleteAsync(id);
             return RedirectToAction("BeenSeen");
         }
 
@@ -53,8 +53,15 @@ namespace Seen.Controllers
         [Route("haveseen")]
         public async Task<IActionResult> HaveSeen([FromBody] User user)
         {
-            await sightingRepository.CreateAsync(user);
+            await userRepository.CreateAsync(user);
             return RedirectToAction("BeenSeen");
+        }
+
+        [HttpGet]
+        [Route("findmyonlyonetruepair")]
+        public IActionResult FindThem ()
+        {
+            return Ok(userRepository.Finder());
         }
     }
 }

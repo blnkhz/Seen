@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace Seen.Repositories
 {
-    public class SightingRepository 
+    public class UserRepository
     {
         private IMongoClient client;
         private IMongoDatabase database;
         private IMongoCollection<User> sightings;
 
-        public SightingRepository()
+        public UserRepository()
         {
             client = new MongoClient("mongodb://localhost:27017/");
             database = client.GetDatabase("Seen");
-            sightings = database.GetCollection<User>("Sightings");
+            sightings = database.GetCollection<User>("Users");
         }
 
         public async Task CreateAsync(User sighting)
@@ -53,6 +53,24 @@ namespace Seen.Repositories
         public Task UpdateAsync(User item)
         {
             throw new NotImplementedException();
+        }
+
+        public List<User> Finder ()
+        {
+            var aLista = sightings.Find(new BsonDocument()).ToList();
+            var results = new List<User>();
+            for (int i = 0; i < aLista.Count; i++)
+            {
+
+                    for (int j = 0; j < aLista[i].Sightings.Count; j++)
+                    {
+                        if (aLista[i].UserGender == aLista[i].Sightings[j].Gender && aLista[0].UserHairColor == aLista[i].Sightings[j].HairColor && aLista[0].UserHairStyle == aLista[i].Sightings[j].HairStyle)
+                        {
+                            results.Add(aLista[i]);
+                        }
+                    }
+            }
+            return results;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Seen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<SightingRepository>();
+            services.AddScoped<UserRepository>();
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
