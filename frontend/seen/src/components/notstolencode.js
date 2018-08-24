@@ -68,12 +68,6 @@ class PostForm extends React.Component {
             onDayClick={this.handleDayClick}
             selectedDays={this.state.selectedDay}
           />
-          {this.state.selectedDay ? (
-            (console.log(this.state.selectedDay),
-            <p>{this.state.selectedDay.toLocaleDateString()}</p>)
-          ) : (
-            <p> </p>
-          )}
         </div>
         <input
           type="text"
