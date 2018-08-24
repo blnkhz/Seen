@@ -46,6 +46,7 @@ class Map extends Component {
         ))}
       </GoogleMap>
     ));
+    console.log(this.props);
     return (
       <div>
         <GoogleMapExample

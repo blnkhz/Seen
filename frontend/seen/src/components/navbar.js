@@ -12,7 +12,8 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./login.js";
+import FacebookLogin from "react-facebook-login";
 
 class NavbarFeatures extends React.Component {
   constructor(props) {
@@ -20,7 +21,12 @@ class NavbarFeatures extends React.Component {
     this.state = {
       collapse: false,
       isWideEnough: false,
-      dropdownOpen: false
+      dropdownOpen: false,
+      isLoggedIn: false,
+      userID: "",
+      name: "",
+      email: "",
+      picture: ""
     };
     this.onClick = this.onClick.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -38,14 +44,19 @@ class NavbarFeatures extends React.Component {
     });
   }
 
+  responseFacebook = response => {
+    console.log(response);
+
+   this.setState({
+     isLoggedIn: true,
+     userID: response.userID,
+     name: response.name,
+     email: response.email,
+     picture: response.picture.data.url
+   });
+ };
+
   render() {
-    const kep = (
-      <img
-        src="https://preview.ibb.co/miXnmK/benji.png"
-        className="profilePicture"
-        alt="avatar image"
-      />
-    );
     return (
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand href="/">
@@ -71,18 +82,21 @@ class NavbarFeatures extends React.Component {
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
-            <NavItem>
-              <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                <DropdownToggle nav caret>
-                  {kep}
-                </DropdownToggle>
+                {!this.state.isLoggedIn ? <FacebookLogin
+                  appId="322492561654479"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={this.responseFacebook}
+                  /> :               <NavItem>
+                  <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <DropdownToggle nav caret><img className="profilePicture" src={this.state.picture} alt={this.state.name} /></DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem href="#">My Profile</DropdownItem>
                   <DropdownItem href="#">Messages</DropdownItem>
                   <DropdownItem href="#">Log out</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-            </NavItem>
+            </NavItem>}
           </NavbarNav>
         </Collapse>
       </Navbar>
