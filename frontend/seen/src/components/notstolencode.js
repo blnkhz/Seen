@@ -70,15 +70,15 @@ class PostForm extends React.Component {
           />
           {this.state.selectedDay ? (
             (console.log(this.state.selectedDay),
-            <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>)
+            <p>{this.state.selectedDay.toLocaleDateString()}</p>)
           ) : (
-            <p>Please select a day.</p>
+            <p> </p>
           )}
         </div>
         <input
           type="text"
           name="socialHandle"
-          placeholder="your social handle"
+          placeholder=" your social handle"
           onChange={this.handleChange}
           className="handleinput"
           required
@@ -147,7 +147,7 @@ class PostForm extends React.Component {
         <input
           type="text"
           name="message"
-          placeholder="anything else?"
+          placeholder=" anything else?"
           onChange={this.handleChange}
           className="messageinput"
         />

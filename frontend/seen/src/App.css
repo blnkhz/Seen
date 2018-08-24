@@ -4,6 +4,8 @@
   height: 95vh;
   margin: 0;
   padding: 0;
+  top: 0px;
+  position: sticky;
 }
 
 .mapCont {
@@ -12,6 +14,8 @@
   margin: 0;
   padding: 0;
   left: 0;
+  top: 0px;
+  position: sticky;
 }
 
 .profilePicture {
@@ -294,13 +298,17 @@
 .mapchild {
   width: 75%;
   order: 0;
+  top: 0px;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .formchild {
   width: 25%;
   color: #6489c2;
-  margin-top: 5%;
+  margin-top: 10%;
   order: 1;
+  min-width: 300px;
 }
 
 .seenpropertytitle {
@@ -329,6 +337,7 @@
 
 .submit-button {
   margin-top: 50px;
+  margin-bottom: 50px;
   font-weight: 300;
   color: #fff;
   border: 0;
@@ -349,7 +358,9 @@ option[value=""][disabled] {
   background-color: #c2d6f3;
   border: none;
   height: 2em;
-  margin-top: 5px;
+  margin-top: 10px;
+  color: #6489c2;
+  letter-spacing: 0.2em;
 }
 
 .handleinput {
@@ -358,6 +369,7 @@ option[value=""][disabled] {
   border: none;
   height: 2em;
   border-radius: 5px;
+  letter-spacing: 0.2em;
 }
 
 .messageinput {
@@ -366,11 +378,11 @@ option[value=""][disabled] {
   border: none;
   height: 2em;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
+  letter-spacing: 0.2em;
 }
 
 ::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #000;
-  opacity: 1; /* Firefox */
+  color: #6489c2;
+  opacity: 1;
 }
