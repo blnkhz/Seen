@@ -1,26 +1,38 @@
-import React from 'react';
+import React from "react";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 class PostForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
-      gender: '',
-      socialHandle: '',
-      hairColor:'',
-      hairStyle:'',
-      glasses:'',
-      message:'',
+      gender: "",
+      socialHandle: "",
+      hairColor: "",
+      hairStyle: "",
+      glasses: "",
+      message: "",
       latitude: null,
-      longitude: null
+      longitude: null,
+      day: undefined
     };
   }
 
   handleChange(event) {
     console.log(event.target.name, event.target.value);
-    
+
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleDayClick(day, { selected }) {
+    if (selected) {
+      this.setState({ selectedDay: undefined });
+      return;
+    }
+    this.setState({ selectedDay: day });
   }
 
   handleSubmit(event) {
@@ -33,38 +45,117 @@ class PostForm extends React.Component {
       glasses: this.state.glasses,
       message: this.state.message,
       latitude: this.props.savedPos.lat,
-      longitude: this.props.savedPos.lng
+      longitude: this.props.savedPos.lng,
+      day: this.state.selectedDay.toLocaleDateString()
     };
-    console.log(data);  
+    console.log(data);
 
-    fetch('http://localhost:52210/haveseen', {
-      method: 'POST',
+    fetch("http://localhost:52210/haveseen", {
+      method: "POST",
       body: JSON.stringify(data),
-      mode: 'cors',
+      mode: "cors",
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       })
-    })
-    .catch(error => `Error: ${error}`);
+    }).catch(error => `Error: ${error}`);
   }
-  
+
   render() {
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
-        <input type="text" name="gender" placeholder="ird ide a gendert" onChange={this.handleChange}/>
-        <input type="text" name="socialHandle" placeholder="ird ide a szósölhendlit" onChange={this.handleChange}/>
-        <input type="text" name="hairColor" placeholder="írjá hairsColorst" onChange={this.handleChange}/>
-        <input type="text" name="hairStyle" placeholder="írj sztájlszokszot" onChange={this.handleChange}/>
-        <input type="text" name="glasses" placeholder="grassesü?" onChange={this.handleChange}/>
-        <input type="text" name="message" placeholder="SZPESÖL MASSZÁZS" onChange={this.handleChange}/>
+        <div>
+          <DayPicker
+            onDayClick={this.handleDayClick}
+            selectedDays={this.state.selectedDay}
+          />
+          {this.state.selectedDay ? (
+            (console.log(this.state.selectedDay),
+            <p>{this.state.selectedDay.toLocaleDateString()}</p>)
+          ) : (
+            <p> </p>
+          )}
+        </div>
+        <input
+          type="text"
+          name="socialHandle"
+          placeholder=" your social handle"
+          onChange={this.handleChange}
+          className="handleinput"
+          required
+        />
+        <div className="dropsdowns">
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="gender"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                gender
+              </option>
+              <option value="female">female</option>
+              <option value="male">male</option>
+              <option value="other">other</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="hairColor"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                hair color
+              </option>
+              <option value="black">black</option>
+              <option value="brown">brown</option>
+              <option value="blond(e)">blonde</option>
+              <option value="red">red</option>
+              <option value="special">special</option>
+              <option value="salt n pepper">salt n pepper</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="hairStyle"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                hairstyle
+              </option>
+              <option value="short">short</option>
+              <option value="medium">medium</option>
+              <option value="long">long</option>
+              <option value="bald">bald</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
+              name="glasses"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                glasses?
+              </option>
+              <option value="true">yes</option>
+              <option value="false">no</option>
+            </select>
+          </form>
+        </div>
+        <input
+          type="text"
+          name="message"
+          placeholder=" anything else?"
+          onChange={this.handleChange}
+          className="messageinput"
+        />
         <a href="/itsamatch">
-              <button
-                type="submit"
-                className="submit-button"
-              >
-                FIND THEM
-              </button>
-            </a>
+          <button type="submit" className="submit-button">
+            FIND THEM
+          </button>
+        </a>
       </form>
     );
   }

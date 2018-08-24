@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import maplayout from "./mapstyle.js";
 import update from "react-addons-update";
-import PostForm from "./notstolencode.js"
+import PostForm from "./notstolencode.js";
 
 const GoogleMapExample = withGoogleMap(props => (
   <GoogleMap
@@ -35,7 +35,7 @@ class AddMap extends Component {
     marker: {
       position: {
         lat: null,
-        lng: null,
+        lng: null
       },
       draggable: true,
       key: "Greenfoxok",
@@ -44,8 +44,8 @@ class AddMap extends Component {
     savedPos: {lat: null, lng: null}
   }}
 
-  handleMapClick (event) {
-    var {marker} = this.state;
+  handleMapClick(event) {
+    var { marker } = this.state;
     marker = update(marker, {
       $set: 
         {
@@ -63,15 +63,15 @@ class AddMap extends Component {
       });
   }
 
-  handleMarkerRightclick () {
-    var {marker} = this.state;
+  handleMarkerRightclick() {
+    var { marker } = this.state;
     marker = update(marker, {
       $set: 
         {
           position: null,
           defaultAnimation: 2,
-          key: Date.now(),
-        },
+          key: Date.now()
+        }
     });
     this.setState({ marker });
   }

@@ -31,6 +31,7 @@ class Map extends Component {
           zoomControl: true,
           rotateControl: true,
           fullscreenControl: true,
+          minZoom: 3,
           styles: maplayout
         }}
       >
