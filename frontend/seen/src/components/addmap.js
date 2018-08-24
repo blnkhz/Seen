@@ -4,8 +4,34 @@ import maplayout from "./mapstyle.js";
 import update from "react-addons-update";
 import PostForm from "./notstolencode.js";
 
+const GoogleMapExample = withGoogleMap(props => (
+  <GoogleMap
+    defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
+    defaultZoom={13}
+    onClick={(e) => props.onMapClick(e)}
+    defaultOptions={{
+      streetViewControl: true,
+      scaleControl: false,
+      mapTypeControl: false,
+      panControl: true,
+      zoomControl: true,
+      rotateControl: true,
+      fullscreenControl: true,
+      styles: maplayout
+    }}
+  >
+  <Marker
+    onRightClick={()=> props.onMapRightClick()}
+    icon={require("../assets/pin2.svg")}
+    {...props.marker}
+      />
+  </GoogleMap>
+));
+
 class AddMap extends Component {
-  state = {
+  constructor() {
+    super();
+    this.state = {
     marker: {
       position: {
         lat: null,
@@ -15,75 +41,48 @@ class AddMap extends Component {
       key: "Greenfoxok",
       defaultAnimation: 2
     },
-    centerke: { lat: 47.507589, lng: 19.066128 },
-    savedPos: { lat: null, lng: null }
-  };
+    savedPos: {lat: null, lng: null}
+  }}
 
   handleMapClick(event) {
     var { marker } = this.state;
     marker = update(marker, {
-      $set: {
-        position: event.latLng,
-        draggable: true,
-        defaultAnimation: 2,
-        key: Date.now()
-      }
+      $set: 
+        {
+          position: event.latLng,
+          defaultAnimation: 2,
+          key: Date.now(),
+        },
     });
     this.setState({ marker });
     this.setState({ centerke: event.latLng });
-    console.log(event.latLng.toString());
-    this.setState({
-      savedPos: {
-        lat: parseFloat(parseFloat(event.latLng.toString().substr(1))),
-        lng: parseFloat(parseFloat(event.latLng.toString().substr(20)))
-      }
-    });
-    console.log(this.state.savedPos);
+    this.setState({savedPos:
+      {
+        lat:parseFloat(parseFloat(event.latLng.toString().substr(1))), 
+        lng:parseFloat(parseFloat(event.latLng.toString().substr(20)))}
+      });
   }
 
   handleMarkerRightclick() {
     var { marker } = this.state;
     marker = update(marker, {
-      $set: {
-        position: null,
-        draggable: true,
-        defaultAnimation: 2,
-        key: Date.now()
-      }
+      $set: 
+        {
+          position: null,
+          defaultAnimation: 2,
+          key: Date.now()
+        }
     });
     this.setState({ marker });
   }
   render() {
-    const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
-        zoom={13}
-        center={this.state.centerke}
-        onClick={e => this.handleMapClick(e)}
-        defaultOptions={{
-          streetViewControl: true,
-          scaleControl: false,
-          mapTypeControl: false,
-          panControl: true,
-          zoomControl: true,
-          rotateControl: true,
-          fullscreenControl: true,
-          minZoom: 3,
-          styles: maplayout
-        }}
-      >
-        <Marker
-          onRightClick={() => this.handleMarkerRightclick()}
-          icon={require("../assets/pin2.svg")}
-          {...this.state.marker}
-        />
-      </GoogleMap>
-    ));
     return (
       <div className="flexdaddy">
         <PostForm savedPos={this.state.savedPos} classname="formchild" />
         <GoogleMapExample
-          savedPos={this.state.savedPos}
+          onMapClick={(e) => this.handleMapClick(e)}
+          onMapRightClick={() => this.handleMarkerRightclick()}
+          marker={this.state.marker}
           containerElement={<div className="mapCont" />}
           mapElement={<div className="map" />}
         />
