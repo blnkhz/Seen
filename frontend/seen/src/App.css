@@ -1,5 +1,9 @@
 /* MAPOS DOLGOK */
 
+.sb {
+  margin-top: 500px;
+}
+
 .map {
   height: 95vh;
   position: sticky;
@@ -30,6 +34,7 @@
   margin-top: 10%;
   order: 2;
   min-width: 300px;
+  right: 0;
 }
 
 /* SIGHTINGS */
