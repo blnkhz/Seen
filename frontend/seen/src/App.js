@@ -46,9 +46,7 @@ const FrequentlyAsked = () => (
 const Add = () => (
   <div className="App">
     <NavbarFeatures />
-    <div className="flexdaddy">
-      <AddMap classname="mapchild" />
-    </div>
+    <AddMap />
     <FooterPage />
   </div>
 );
