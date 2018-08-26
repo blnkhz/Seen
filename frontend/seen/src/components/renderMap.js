@@ -29,10 +29,7 @@ class Renderz extends Component {
           <Map onClick={this.onChild2ButtonClick} users={this.state.users} />
         </div>
         <div className="infochild">
-          <Infos
-            indexke={this.state.infoIndex}
-            userDatas={this.state.users}
-          />
+          <Infos indexke={this.state.infoIndex} userDatas={this.state.users} />
         </div>
       </div>
     );
