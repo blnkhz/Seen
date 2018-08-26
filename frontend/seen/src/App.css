@@ -164,9 +164,18 @@
 .aboutus {
   margin-top: 100px;
   content: "";
-  display: table;
+  /* display: table; */
   clear: both;
   height: 95vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .abouttitle {
@@ -174,10 +183,24 @@
   letter-spacing: 0.5em;
 }
 
-.aboutperson {
+.about-mate,
+.about-blanka,
+.about-peti {
   margin-top: 50px;
   float: left;
   width: 33.33%;
+}
+
+.about-mate {
+  order: 1;
+}
+
+.about-blanka {
+  order: 2;
+}
+
+.about-peti {
+  order: 3;
 }
 
 .aboutphoto {
