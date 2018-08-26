@@ -19,10 +19,7 @@ const Readgend = ({ userDatas, indexke }) => (
             <h4 className="seenpropertytitle">HANDLE</h4>
             <p className="seenswer">{element.socialHandle}</p>
             <a href="/itsamatch">
-              <button
-                type="submit"
-                className="it-is-me-button"
-              >
+              <button type="submit" className="it-is-me-button">
                 HELLO IT'S ME
               </button>
             </a>

@@ -10,12 +10,21 @@ import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
+import Modalka from "./components/modalconcept.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
   <div className="App">
     <NavbarFeatures className="navbar" />
     <Renderz />
+    <FooterPage />
+  </div>
+);
+
+const SamplePageWithModal = () => (
+  <div className="App">
+    <NavbarFeatures classname="navbar" />
+    <Modalka classname="modalka"/>
     <FooterPage />
   </div>
 );
@@ -107,6 +116,10 @@ const routes = [
   {
     path: "/itsamatch",
     component: Match
+  },
+  {
+    path: "/modal",
+    component: SamplePageWithModal
   }
 ];
 
