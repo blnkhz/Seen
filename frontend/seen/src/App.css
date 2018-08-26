@@ -1,3 +1,5 @@
+/* MAPOS DOLGOK */
+
 .map {
   height: 95vh;
   position: sticky;
@@ -11,12 +13,18 @@
   position: sticky;
 }
 
-.profilePicture {
-  margin: auto;
-  border-radius: 50% !important;
-  max-width: 40px;
-  height: auto;
-  position: relative;
+.mapchild {
+  width: 75%;
+  order: 0;
+  top: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+/* FOOTER */
+
+.footerke {
+  box-shadow: 2px 2px 10px black;
 }
 
 .kicsiFooter {
@@ -32,8 +40,14 @@
   text-align: center;
 }
 
-.footerke {
-  box-shadow: 2px 2px 10px black;
+/* HEADER */
+
+.profilePicture {
+  margin: auto;
+  border-radius: 50% !important;
+  max-width: 40px;
+  height: auto;
+  position: relative;
 }
 
 .bar {
@@ -286,14 +300,6 @@
   padding: 0px 50px 0px 50px;
   order: 1;
   font-size: 1.5em;
-}
-
-.mapchild {
-  width: 75%;
-  order: 0;
-  top: 0px;
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 .formchild {
