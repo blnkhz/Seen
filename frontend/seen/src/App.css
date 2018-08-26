@@ -7,6 +7,7 @@
 .map {
   height: 95vh;
   position: sticky;
+  width: 100%;
 }
 
 /* ADD */
@@ -29,7 +30,7 @@
 }
 
 .formchild {
-  width: 25%;
+  /* width: 25%; */
   color: #6489c2;
   margin-top: 10%;
   order: 2;
@@ -48,7 +49,7 @@
 }
 
 .mapchild {
-  width: 75%;
+  width: 100%;
   order: 1;
   top: 0px;
   position: -webkit-sticky;
@@ -56,10 +57,8 @@
 }
 
 .infochild {
-  width: 25%;
   color: #6489c2;
-  margin-top: 10%;
-  padding: 0px 50px 0px 50px;
+  margin-top: 100px;
   order: 1;
   font-size: 1.5em;
 }
@@ -335,6 +334,9 @@
 
 .seenswer {
   font-size: 75%;
+  max-width: 300px;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .it-is-me-button {
@@ -401,4 +403,8 @@ option[value=""][disabled] {
 ::placeholder {
   color: #6489c2;
   opacity: 1;
+}
+
+.seenswercontainer {
+  padding: 20px;
 }
