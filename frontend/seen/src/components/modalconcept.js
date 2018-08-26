@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import PostForm from "./notstolencode.js";
+import PostForm from "./addform.js";
 
 class Modalka extends React.Component {
   constructor() {

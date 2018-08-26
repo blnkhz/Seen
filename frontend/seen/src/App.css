@@ -26,13 +26,6 @@
   position: relative;
 }
 
-.modalka {
-}
-
-.modalelocsalogato {
-  margin-top: 500px;
-}
-
 .kicsiFooter {
   height: 5%;
   color: white;
@@ -311,6 +304,14 @@
 }
 
 .formchild {
+  width: 25%;
+  color: #6489c2;
+  margin-top: 10%;
+  order: 1;
+  min-width: 300px;
+}
+
+.modalka {
   width: 25%;
   color: #6489c2;
   margin-top: 10%;
