@@ -10,6 +10,7 @@ import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
+import Profile from "./components/profile.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Sightings = () => (
@@ -54,6 +55,14 @@ const Add = () => (
 const Start = () => (
   <div>
     <Seendex />
+    <FooterPage />
+  </div>
+);
+
+const ProfilePage = () =>  (
+  <div className="App">
+    <NavbarFeatures />
+    <Profile />
     <FooterPage />
   </div>
 );
@@ -105,6 +114,10 @@ const routes = [
   {
     path: "/itsamatch",
     component: Match
+  },
+  {
+    path: "/profile",
+    component: ProfilePage
   }
 ];
 
