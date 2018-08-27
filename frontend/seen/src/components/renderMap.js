@@ -14,7 +14,7 @@ class Renderz extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:52210/haveseen", {
+    fetch("http://localhost:52210/beenseen", {
       mode: "cors"
     })
       .then(res => res.json())

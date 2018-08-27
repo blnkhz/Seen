@@ -23,6 +23,7 @@ const GoogleMapExample = withGoogleMap(props => (
     }}
   >
     <Marker
+      onClick={(open) => props.onMarker(open)}
       onRightClick={() => props.onMapRightClick()}
       icon={require("../assets/pin2.svg")}
       {...props.marker}
@@ -103,6 +104,7 @@ class AddMap extends Component {
           pullRight="true"
         />
         <GoogleMapExample
+          onMarker={open => this.onMarkerClick(open)}
           onMapClick={e => this.handleMapClick(e)}
           onMapRightClick={() => this.handleMarkerRightclick()}
           marker={this.state.marker}
