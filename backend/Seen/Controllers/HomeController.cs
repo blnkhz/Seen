@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using Seen.Models;
 using Seen.Repositories;
+using Seen.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,18 @@ namespace Seen.Controllers
 {
     public class HomeController : Controller
     {
-        private UserRepository userRepository;
+        private UserService userService;
 
-        public HomeController(UserRepository userRepository)
+        public HomeController(UserService userService)
         {
-            this.userRepository = userRepository;
+            this.userService = userService;
         }
+
         [HttpGet]
         [Route("beenseen")]
         public async Task<IActionResult> BeenSeen()
         {
-            var listOfSightings = await userRepository.SelectAllAsync();
+            var listOfSightings = await userService.ReadAllUsers();
             return Ok(listOfSightings);
         }
 
@@ -29,7 +31,7 @@ namespace Seen.Controllers
         [Route("beenseenone/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await userRepository.SelectByIdAsync(id);
+            var oneOfSightings = await userService.ReadOneUser(id);
             return Ok(oneOfSightings.Id.ToString());
         }
 
@@ -37,7 +39,7 @@ namespace Seen.Controllers
         [Route("beenseensome")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
-            var resultOfSightings = await userRepository.SelectByFieldAsync(filter.Field, filter.Value);
+            var resultOfSightings = await userService.FilterUser(filter.Field, filter.Value);
             return Ok(resultOfSightings);
         }
 
@@ -45,7 +47,7 @@ namespace Seen.Controllers
         [Route("beendeleted/{id}")]
         public async Task<IActionResult> BeenDeleted(string id)
         {
-            await userRepository.DeleteAsync(id);
+            await userService.DeleteUser(id);
             return RedirectToAction("BeenSeen");
         }
 
@@ -53,15 +55,15 @@ namespace Seen.Controllers
         [Route("haveseen")]
         public async Task<IActionResult> HaveSeen([FromBody] User user)
         {
-            await userRepository.CreateAsync(user);
+            await userService.AddUser(user);
             return RedirectToAction("BeenSeen");
         }
 
         [HttpGet]
-        [Route("findmyonlyonetruepair")]
-        public IActionResult FindThem ()
+        [Route("findmyonlyonetruepair/{id}")]
+        public IActionResult FindThem (string id)
         {
-            return Ok(userRepository.Finder());
+            return Ok(userService.Finder(id));
         }
     }
 }

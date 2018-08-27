@@ -54,24 +54,5 @@ namespace Seen.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public List<User> Finder ()
-        {
-            var aLista = sightings.Find(new BsonDocument()).ToList();
-            var aSzemely = aLista[0];
-            var results = new List<User>();
-            for (int i = 0; i < aLista.Count; i++)
-            {
-
-                    for (int j = 0; j < aLista[i].Sightings.Count; j++)
-                    {
-                        if (aSzemely.UserGender == aLista[i].Sightings[j].Gender && aSzemely.UserHairColor == aLista[i].Sightings[j].HairColor && aSzemely.UserHairStyle == aLista[i].Sightings[j].HairStyle && aSzemely.Email != aLista[i].Email)
-                        {
-                            results.Add(aLista[i]);
-                        }
-                    }
-            }
-            return results;
-        }
     }
 }
