@@ -5,7 +5,7 @@ const Readgend = ({ userDatas, indexke }) => (
     {userDatas.map(
       (element, UnIndex) =>
         UnIndex === indexke ? (
-          <div className="blankaprobalkozik">
+          <div className="seenswercontainer">
             <h4 className="seenpropertytitle">GENDER</h4>
             <p className="seenswer">{element.gender}</p>
             <h4 className="seenpropertytitle">HAIR</h4>

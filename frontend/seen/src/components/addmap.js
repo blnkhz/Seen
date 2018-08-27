@@ -3,6 +3,7 @@ import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import maplayout from "./mapstyle.js";
 import update from "react-addons-update";
 import PostForm from "./notstolencode.js";
+import Sidebar from "react-sidebar";
 
 const GoogleMapExample = withGoogleMap(props => (
   <GoogleMap
@@ -22,6 +23,7 @@ const GoogleMapExample = withGoogleMap(props => (
     }}
   >
     <Marker
+      onClick={(open) => props.onMarker(open)}
       onRightClick={() => props.onMapRightClick()}
       icon={require("../assets/pin2.svg")}
       {...props.marker}
@@ -33,6 +35,7 @@ class AddMap extends Component {
   constructor() {
     super();
     this.state = {
+      sidebarOpen: false,
       marker: {
         position: {
           lat: null,
@@ -44,6 +47,7 @@ class AddMap extends Component {
       },
       savedPos: { lat: null, lng: null }
     };
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
   handleMapClick(event) {
@@ -63,6 +67,7 @@ class AddMap extends Component {
         lng: parseFloat(parseFloat(event.latLng.toString().substr(20)))
       }
     });
+    this.onSetSidebarOpen(true);
   }
 
   handleMarkerRightclick() {
@@ -76,11 +81,30 @@ class AddMap extends Component {
     });
     this.setState({ marker });
   }
+
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
+
+  onMarkerClick(open) {
+    this.setState(this.onSetSidebarOpen(open));
+  }
+
   render() {
     return (
       <div className="flexmommy">
-        <PostForm savedPos={this.state.savedPos} classname="formchild" />
+        <Sidebar
+          sidebar={
+            <PostForm savedPos={this.state.savedPos} className="formchild" />
+          }
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          styles={{ sidebar: { background: "white" } }}
+          className="formchild"
+          pullRight="true"
+        />
         <GoogleMapExample
+          onMarker={open => this.onMarkerClick(open)}
           onMapClick={e => this.handleMapClick(e)}
           onMapRightClick={() => this.handleMarkerRightclick()}
           marker={this.state.marker}

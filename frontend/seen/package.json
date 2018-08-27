@@ -10,7 +10,8 @@
     "react-dom": "^16.4.2",
     "react-google-maps": "^9.4.5",
     "react-google-maps-loader": "^4.2.3",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-sidebar": "^3.0.2"
   },
   "scripts": {
     "start": "set PORT=3006 && react-scripts start",
