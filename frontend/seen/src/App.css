@@ -406,6 +406,37 @@ option[value=""][disabled] {
   padding: 20px;
 }
 
-.profilecontainer {
+.profile-container {
   margin-top:10%;
+}
+
+.profile-greeter {
+  letter-spacing: 0.2em;
+}
+
+.profile-page-photo {
+  margin-top: 50px;
+  border-radius: 50%;
+  border: #dc82a4 4px solid;
+  width: 20%;
+}
+.profile-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.user-preferences {
+  order: 1;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+.user-details {
+  order: 2;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
 }
