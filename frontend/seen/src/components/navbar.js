@@ -56,7 +56,18 @@ class NavbarFeatures extends React.Component {
    });
  };
 
+  shouldComponentUpdate(nextState){
+    return (this.state.isLoggedIn !== nextState.isLoggedIn);
+  }
   render() {
+    const gomb = (
+      <FacebookLogin
+      appId="322492561654479"
+      autoLoad={true}
+      fields="name,email,picture"
+      callback={this.responseFacebook}
+      />
+    );
     return (
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand href="/">
@@ -82,12 +93,8 @@ class NavbarFeatures extends React.Component {
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
-                {!this.state.isLoggedIn ? <FacebookLogin
-                  appId="322492561654479"
-                  autoLoad={true}
-                  fields="name,email,picture"
-                  callback={this.responseFacebook}
-                  /> :               <NavItem>
+                {
+                  !this.state.isLoggedIn ? gomb :<NavItem>
                   <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                     <DropdownToggle nav caret><img className="profilePicture" src={this.state.picture} alt={this.state.name} /></DropdownToggle>
                 <DropdownMenu>
@@ -96,7 +103,8 @@ class NavbarFeatures extends React.Component {
                   <DropdownItem href="#">Log out</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-            </NavItem>}
+            </NavItem>
+          }
           </NavbarNav>
         </Collapse>
       </Navbar>
