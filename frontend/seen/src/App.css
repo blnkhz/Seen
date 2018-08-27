@@ -1,9 +1,5 @@
 /* MAPOS DOLGOK */
 
-.sb {
-  margin-top: 500px;
-}
-
 .map {
   height: 95vh;
   position: sticky;
@@ -80,6 +76,7 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  z-index: 999;
 }
 
 /* HEADER */
