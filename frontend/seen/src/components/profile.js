@@ -13,10 +13,14 @@ class Profile extends React.Component {
         <h3 className="profile-details-title">profile details</h3>
         <div className="profile-details-container">
           <div className="user-details">
-            <p>ezekadetailsek</p>
+            <h4>ezekadetailsek</h4>
+            <p>name</p>
+            <p>egyeb dolgok</p>
           </div>
           <div className="user-preferences">
-            <p>ezekapreferenciak</p>
+            <h4>ezekapreferenciak</h4>
+            <p>I am looking for [zsender/ek]</p>
+            <p>(idevalamiopciomodositot)</p>
           </div>
         </div>
       </div>

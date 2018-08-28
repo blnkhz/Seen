@@ -419,15 +419,20 @@ option[value=""][disabled] {
 .profile-page-photo {
   margin-top: 50px;
   border-radius: 50%;
-  border: #dc82a4 4px solid;
+  border: #dc82a4 5px solid;
   width: 20%;
   opacity: 0.75;
 }
+
 .profile-details-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+
+.profile-details-title {
+  margin-top: 50px;
 }
 
 .user-details {
