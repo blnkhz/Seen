@@ -47,15 +47,13 @@ namespace Seen.Services
             List<User> aLista = new List<User>();
             if (aSzemely.Orientation == "Heterosexual")
             {
-                string genderValue;
-                genderValue = (aSzemely.UserGender == "Male") ? "Female" : "Male";
+                string genderValue = (aSzemely.UserGender == "Male") ? "Female" : "Male";
                 aLista = await userRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
             if (aSzemely.Orientation == "Homosexual")
             {
-                string genderValue;
-                genderValue = (aSzemely.UserGender == "Male") ? "Male" : "Female";
+                string genderValue = (aSzemely.UserGender == "Male") ? "Male" : "Female";
                 aLista = await userRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
@@ -71,7 +69,7 @@ namespace Seen.Services
                 for (int j = 0; j < aLista[i].Sightings.Count; j++)
                 {
                     int realmatch = await MatchMeister(aSzemely, aLista[i].Sightings[j]);
-                    if (realmatch == 3 && aSzemely.Email != aLista[i].Email)
+                    if (realmatch >= 4 && aSzemely.Email != aLista[i].Email)
                     {
                         results.Add(aLista[i]);
                     }
@@ -83,18 +81,12 @@ namespace Seen.Services
         public async Task<int> MatchMeister (User user, Sighting sighting)
         {
             int count = 0;
-            if (user.UserHairColor == sighting.HairColor)
-            {
-                count++;
-            }
-            if (user.UserHairStyle == sighting.HairStyle)
-            {
-                count++;
-            }
-            if (user.UserGender == sighting.Gender)
-            {
-                count++;
-            }
+            count = (user.UserHairColor == sighting.HairColor) ? count + 1 : count;
+            count = (user.UserHairStyle == sighting.HairStyle) ? count + 1 : count;
+            count = (user.UserGlasses == sighting.Glasses) ? count + 1 : count;
+            count = (user.UserHeight == sighting.Height) ? count + 1 : count;
+            count = (user.UserBuild == sighting.Build) ? count + 1 : count;
+            count = (user.UserAge == sighting.Age) ? count + 1 : count;
             return count;
         }
     }
