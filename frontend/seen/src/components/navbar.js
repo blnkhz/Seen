@@ -12,8 +12,6 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
-import Login from "./login.js";
-import FacebookLogin from "react-facebook-login";
 
 class NavbarFeatures extends React.Component {
   constructor(props) {
@@ -22,11 +20,6 @@ class NavbarFeatures extends React.Component {
       collapse: false,
       isWideEnough: false,
       dropdownOpen: false,
-      isLoggedIn: false,
-      userID: "",
-      name: "",
-      email: "",
-      picture: ""
     };
     this.onClick = this.onClick.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -44,30 +37,7 @@ class NavbarFeatures extends React.Component {
     });
   }
 
-  responseFacebook = response => {
-    console.log(response);
-
-   this.setState({
-     isLoggedIn: true,
-     userID: response.userID,
-     name: response.name,
-     email: response.email,
-     picture: response.picture.data.url
-   });
- };
-
-  shouldComponentUpdate(nextState){
-    return (this.state.isLoggedIn !== nextState.isLoggedIn);
-  }
   render() {
-    const gomb = (
-      <FacebookLogin
-      appId="322492561654479"
-      autoLoad={true}
-      fields="name,email,picture"
-      callback={this.responseFacebook}
-      />
-    );
     return (
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand href="/">
@@ -93,10 +63,9 @@ class NavbarFeatures extends React.Component {
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
-                {
-                  !this.state.isLoggedIn ? gomb :<NavItem>
+               <NavItem>
                   <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                    <DropdownToggle nav caret><img className="profilePicture" src={this.state.picture} alt={this.state.name} /></DropdownToggle>
+                    <DropdownToggle nav caret><img className="profilePicture" src={this.props.user.picture} alt={this.state.name} /></DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem href="#">My Profile</DropdownItem>
                   <DropdownItem href="#">Messages</DropdownItem>
@@ -104,7 +73,6 @@ class NavbarFeatures extends React.Component {
                 </DropdownMenu>
               </Dropdown>
             </NavItem>
-          }
           </NavbarNav>
         </Collapse>
       </Navbar>

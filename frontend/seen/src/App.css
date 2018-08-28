@@ -385,3 +385,13 @@ option[value=""][disabled] {
   color: #6489c2;
   opacity: 1;
 }
+
+.valamitokrandom{
+  position: fixed;
+  z-index: 999;
+  /* margin-top: 100px; */
+}
+
+.navbar{
+  z-index: 1;
+}
