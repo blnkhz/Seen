@@ -406,8 +406,10 @@ option[value=""][disabled] {
   padding: 20px;
 }
 
+/* PROFILE */
+
 .profile-container {
-  margin-top:10%;
+  margin-top: 10%;
 }
 
 .profile-greeter {
@@ -419,6 +421,7 @@ option[value=""][disabled] {
   border-radius: 50%;
   border: #dc82a4 4px solid;
   width: 20%;
+  opacity: 0.75;
 }
 .profile-details-container {
   display: flex;
@@ -427,14 +430,14 @@ option[value=""][disabled] {
   flex-direction: row;
 }
 
-.user-preferences {
+.user-details {
   order: 1;
   margin-top: 50px;
   float: left;
   width: 33.33%;
 }
 
-.user-details {
+.user-preferences {
   order: 2;
   margin-top: 50px;
   float: left;
