@@ -10,6 +10,8 @@ namespace Seen.Models
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        [BsonElement("FbId")]
+        public string FbId { get; set; }
         [BsonElement("Email")]
         public string Email { get; set; }
         [BsonElement("SocialHandle")]
@@ -28,6 +30,8 @@ namespace Seen.Models
         public string UserBuild { get; set; }
         [BsonElement("UserAge")]
         public string UserAge { get; set; }
+        [BsonElement("Orientation")]
+        public string Orientation { get; set; }
         [BsonElement("Sightings")]
         public List<Sighting> Sightings { get; set; }
     }

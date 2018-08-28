@@ -20,6 +20,14 @@ namespace Seen.Models
             public string HairColor { get; set; }
             [BsonElement("HairStyle")]
             public string HairStyle { get; set; }
+            [BsonElement("Glasses")]
+            public string Glasses { get; set; }
+            [BsonElement("Height")]
+            public string Height { get; set; }
+            [BsonElement("Build")]
+            public string Build { get; set; }
+            [BsonElement("Age")]
+            public string Age { get; set; }
             [BsonElement("Message")]
             public string Message { get; set; }
         }
