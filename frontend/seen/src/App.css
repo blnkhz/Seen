@@ -405,3 +405,46 @@ option[value=""][disabled] {
 .seenswercontainer {
   padding: 20px;
 }
+
+/* PROFILE */
+
+.profile-container {
+  margin-top: 10%;
+}
+
+.profile-greeter {
+  letter-spacing: 0.2em;
+}
+
+.profile-page-photo {
+  margin-top: 50px;
+  border-radius: 50%;
+  border: #dc82a4 5px solid;
+  width: 20%;
+  opacity: 0.75;
+}
+
+.profile-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.profile-details-title {
+  margin-top: 50px;
+}
+
+.user-details {
+  order: 1;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+.user-preferences {
+  order: 2;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
