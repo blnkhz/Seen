@@ -449,3 +449,25 @@ option[value=""][disabled] {
   float: left;
   width: 33.33%;
 }
+
+/* LOGIN */
+.login-container {
+  height: 100%;
+  width: 100%;
+}
+
+.seenlogo-login {
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.login-map {
+  width: 60%;
+  height: 30%;
+  margin: auto;
+  margin-top: 100px;
+
+}

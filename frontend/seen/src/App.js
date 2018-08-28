@@ -10,8 +10,16 @@ import FooterPage from "./components/footer.js";
 import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
+import LoginPage from "./components/loginpage.js";
 import Profile from "./components/profile.js";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+const Login = () => (
+  <div className="App">
+    <LoginPage />
+    <FooterPage />
+  </div>
+);
 
 const Sightings = () => (
   <div className="App">
@@ -59,7 +67,7 @@ const Start = () => (
   </div>
 );
 
-const ProfilePage = () =>  (
+const ProfilePage = () => (
   <div className="App">
     <NavbarFeatures />
     <Profile />
@@ -86,6 +94,10 @@ const routes = [
   {
     path: "/sightings",
     component: Sightings
+  },
+  {
+    path: "/login",
+    component: Login
   },
   {
     path: "/add",
