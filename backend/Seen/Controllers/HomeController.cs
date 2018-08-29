@@ -73,5 +73,13 @@ namespace Seen.Controllers
             await userService.AddSighting(id, sighting);
             return Ok(sighting);
         }
+
+        [HttpPost]
+        [Route("updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]List<FilterJson> filterszek)
+        {
+            await userService.UpdateUser(id, filterszek);
+            return Ok();
+        }
     }
 }

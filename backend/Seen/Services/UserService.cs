@@ -45,7 +45,12 @@ namespace Seen.Services
         {
             var selectedUser = await userRepository.SelectByIdAsync(id);
             selectedUser.Sightings.Add(sighting);
-            await userRepository.UpdateAsync(id, selectedUser.Sightings);
+            await userRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
+        }
+
+        public async Task UpdateUser (string id, List<FilterJson> filterszek)
+        {
+            await userRepository.UpdateUserAsync(id, filterszek); 
         }
 
         public async Task<List<User>> Finder(string id)

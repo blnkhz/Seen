@@ -50,12 +50,22 @@ namespace Seen.Repositories
             return await users.Find(filter).ToListAsync();
         }
 
-        public async Task UpdateAsync(string id, List<Sighting> sightingsok)
+        public async Task UpdateSightingsAsync(string id, List<Sighting> sightingsok)
         {
             var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
             var update = Builders<User>.Update.Set("Sightings", sightingsok);
 
             var result = await users.UpdateOneAsync(filter, update);
         }
+        public async Task UpdateUserAsync(string id, List<FilterJson> filterszek)
+        {
+            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
+            for (int i = 0; i < filterszek.Count; i++)
+            {
+                var update = Builders<User>.Update.Set(filterszek[i].Field, filterszek[i].Value);
+                var result = await users.UpdateOneAsync(filter, update);
+            }
+        }
+        
     }
 }
