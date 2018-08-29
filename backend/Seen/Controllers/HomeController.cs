@@ -52,8 +52,8 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("haveseen")]
-        public async Task<IActionResult> HaveSeen([FromBody] User user)
+        [Route("AddUser")]
+        public async Task<IActionResult> AddUser([FromBody] User user)
         {
             await userService.AddUser(user);
             return RedirectToAction("BeenSeen");
@@ -61,9 +61,17 @@ namespace Seen.Controllers
 
         [HttpGet]
         [Route("findmyonlyonetruepair/{id}")]
-        public IActionResult FindThem (string id)
+        public IActionResult FindThem(string id)
         {
             return Ok(userService.Finder(id));
+        }
+
+        [HttpPost]
+        [Route("haveseen/{id}")]
+        public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
+        {
+            await userService.AddSighting(id, sighting);
+            return Ok(sighting);
         }
     }
 }

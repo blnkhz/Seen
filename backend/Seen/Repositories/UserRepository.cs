@@ -13,46 +13,49 @@ namespace Seen.Repositories
     {
         private IMongoClient client;
         private IMongoDatabase database;
-        private IMongoCollection<User> sightings;
+        private IMongoCollection<User> users;
 
         public UserRepository()
         {
             client = new MongoClient("mongodb://localhost:27017/");
             database = client.GetDatabase("Seen");
-            sightings = database.GetCollection<User>("Users");
+            users = database.GetCollection<User>("Users");
         }
 
         public async Task CreateAsync(User sighting)
         {
-            await sightings.InsertOneAsync(sighting);
+            await users.InsertOneAsync(sighting);
         }
 
         public async Task DeleteAsync(string id)
         {
             var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
-            await sightings.DeleteOneAsync(filter);
+            await users.DeleteOneAsync(filter);
         }
 
         public async Task<List<User>> SelectAllAsync()
         {
-            return await sightings.Find(new BsonDocument()).ToListAsync();
+            return await users.Find(new BsonDocument()).ToListAsync();
         }
 
         public async Task<User> SelectByIdAsync(string id)
         {
             var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
-            return await sightings.Find(filter).FirstOrDefaultAsync();
+            return await users.Find(filter).FirstOrDefaultAsync();
         }
 
         public async Task<List<User>> SelectByFieldAsync(string field, string value)
         {
             var filter = Builders<User>.Filter.Eq(field, value);
-            return await sightings.Find(filter).ToListAsync();
+            return await users.Find(filter).ToListAsync();
         }
 
-        public Task UpdateAsync(User item)
+        public async Task UpdateAsync(string id, List<Sighting> sightingsok)
         {
-            throw new NotImplementedException();
+            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
+            var update = Builders<User>.Update.Set("Sightings", sightingsok);
+
+            var result = await users.UpdateOneAsync(filter, update);
         }
     }
 }

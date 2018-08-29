@@ -41,6 +41,13 @@ namespace Seen.Services
             return await userRepository.SelectByFieldAsync(field, value);
         }
 
+        public async Task AddSighting(string id, Sighting sighting)
+        {
+            var selectedUser = await userRepository.SelectByIdAsync(id);
+            selectedUser.Sightings.Add(sighting);
+            await userRepository.UpdateAsync(id, selectedUser.Sightings);
+        }
+
         public async Task<List<User>> Finder(string id)
         {
             var aSzemely = await userRepository.SelectByIdAsync(id);
