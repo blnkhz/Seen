@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Map from "./map.js";
+import LoginMap from "./loginmap.js";
 import Infos from "./infobar.js";
 
 class LoginPage extends Component {
@@ -33,7 +33,7 @@ class LoginPage extends Component {
           alt="s e e n"
         />
         <div className="login-map">
-          <Map users={this.state.users} />
+          <LoginMap users={this.state.users} />
         </div>
       </div>
     );
