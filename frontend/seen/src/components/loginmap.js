@@ -5,7 +5,7 @@ import maplayout from "./mapstyle.js";
 class LoginMap extends Component {
   state = {
     users: [],
-    zoomka: 13,
+    zoomka: 12,
     centerke: { lat: 47.507589, lng: 19.066128 }
   };
 
@@ -25,7 +25,7 @@ class LoginMap extends Component {
           scaleControl: false,
           mapTypeControl: false,
           panControl: true,
-          zoomControl: true,
+          zoomControl: false,
           rotateControl: true,
           fullscreenControl: false,
           minZoom: 3,

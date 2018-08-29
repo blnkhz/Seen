@@ -452,22 +452,42 @@ option[value=""][disabled] {
 
 /* LOGIN */
 .login-container {
-  height: 30%;
+  height: 100%;
   width: 100%;
 }
 
 .seenlogo-login {
-  width: 40%;
+  height: 25vh;
+  padding-top: 30px;
+  width: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
+  margin: auto;
+}
+
+.login-flex {
+  display: flex;
+  width: 90%;
+  align-content: center;
+  margin: auto;
+  height: 70vh;
 }
 
 .login-map {
-  width: 500px;
-  height: 500px;
+  width: 60vh;
+  height: 60vh;
   margin: auto;
-  margin-top: 50px;
   border-radius: 50%;
+  order: 2;
+  align-content: center;
+  /* border: 5px solid #6489c2; */
+}
+
+.login-firstcolumn {
+  margin: auto;
+  order: 1;
+}
+
+.login-thirdcolumn {
+  margin: auto;
+  order: 3;
 }
