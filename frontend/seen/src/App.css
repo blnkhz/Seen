@@ -26,12 +26,16 @@
 }
 
 .formchild {
-  /* width: 25%; */
   color: #6489c2;
   margin-top: 10%;
   order: 2;
-  min-width: 300px;
+  min-width: 350px;
   right: 0;
+}
+
+.calendar {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 /* SIGHTINGS */
@@ -479,7 +483,6 @@ option[value=""][disabled] {
   border-radius: 50%;
   order: 2;
   align-content: center;
-  /* border: 5px solid #6489c2; */
 }
 
 .login-firstcolumn {
