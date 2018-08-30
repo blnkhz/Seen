@@ -50,7 +50,7 @@ class PostForm extends React.Component {
     };
     console.log(data);
 
-    fetch("http://localhost:52210/haveseen", {
+    fetch("http://localhost:52210/haveseen/5b87d011f6228e45349277a1", {
       method: "POST",
       body: JSON.stringify(data),
       mode: "cors",
