@@ -449,3 +449,62 @@ option[value=""][disabled] {
   float: left;
   width: 33.33%;
 }
+
+/* LOGIN */
+.login-container {
+  height: 100%;
+  width: 100%;
+}
+
+.seenlogo-login {
+  height: 25vh;
+  padding-top: 30px;
+  width: auto;
+  display: block;
+  margin: auto;
+}
+
+.login-flex {
+  display: flex;
+  width: 90%;
+  align-content: center;
+  margin: auto;
+  height: 70vh;
+}
+
+.login-map {
+  width: 60vh;
+  height: 60vh;
+  margin: auto;
+  border-radius: 50%;
+  order: 2;
+  align-content: center;
+  /* border: 5px solid #6489c2; */
+}
+
+.login-firstcolumn {
+  margin: auto;
+  order: 1;
+}
+
+.login-thirdcolumn {
+  margin: auto;
+  order: 3;
+}
+
+.login-button {
+  padding: 30px;
+  background-color: #dc82a4;
+  text-decoration: none;
+  color: #444;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #6489c2;
+  color: #fff;
+}

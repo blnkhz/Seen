@@ -26,7 +26,9 @@ class Faq extends React.Component {
             your guesses are close enough.
           </p>
           <h4 className="faquestion">Who are the people behind Seen?</h4>
-          <p className="faqanswer">You are always welcome to visit our <a href="/about">about page</a></p>
+          <p className="faqanswer">
+            Máté, Blanka & Peti. You are always welcome to visit our <a href="/about">about page</a>
+          </p>
           <h4 className="faquestion">How do I use the website?</h4>
           <p className="faqanswer">na ez egy szep hosszu bekezdes lesz</p>
           <h4 className="faquestion">mik vogymuk?</h4>
