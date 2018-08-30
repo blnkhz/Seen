@@ -11,7 +11,7 @@ class LoginPage extends Component {
   }
 
   componentDidMount = () => {
-    fetch("https://raw.githubusercontent.com/blnkhz/Seen/master/db.json", {
+    fetch("http://localhost:52210/loginmap", {
       mode: "cors"
     })
       .then(res => res.json())
