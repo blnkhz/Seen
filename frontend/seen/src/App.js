@@ -1,19 +1,153 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import NavbarFeatures from "./components/navbar.js";
+import Map from "./components/map.js";
+import Faq from "./components/faq.js";
+import About from "./components/about.js";
+import Seendex from "./components/seendex.js";
+import AddMap from "./components/addmap.js";
+import FooterPage from "./components/footer.js";
+import Infobar from "./components/infobar.js";
+import Renderz from "./components/renderMap.js";
+import ItsAMatch from "./components/match.js";
+import LoginPage from "./components/loginpage.js";
+import Profile from "./components/profile.js";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+const Login = () => (
+  <div className="App">
+    <LoginPage />
+    <FooterPage />
+  </div>
+);
+
+const Sightings = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <Renderz />
+    <FooterPage />
+  </div>
+);
+
+const Infobarr = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <Infobar />
+    <FooterPage />
+  </div>
+);
+const AboutUs = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <About className="About" />
+    <FooterPage />
+  </div>
+);
+
+const FrequentlyAsked = () => (
+  <div className="App">
+    <NavbarFeatures className="navbar" />
+    <Faq className="Faq" />
+    <FooterPage />
+  </div>
+);
+
+const Add = () => (
+  <div className="App">
+    <NavbarFeatures />
+    <AddMap />
+    <FooterPage />
+  </div>
+);
+
+const Start = () => (
+  <div>
+    <Seendex />
+    <FooterPage />
+  </div>
+);
+
+const ProfilePage = () => (
+  <div className="App">
+    <NavbarFeatures />
+    <Profile />
+    <FooterPage />
+  </div>
+);
+
+const Contact = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <FooterPage />
+  </div>
+);
+
+const Match = () => (
+  <div>
+    <NavbarFeatures className="navbar" />
+    <ItsAMatch />
+    <FooterPage />
+  </div>
+);
+
+const routes = [
+  {
+    path: "/sightings",
+    component: Sightings
+  },
+  {
+    path: "/login",
+    component: Login
+  },
+  {
+    path: "/add",
+    component: Add
+  },
+  {
+    path: "",
+    component: Start
+  },
+  {
+    path: "/about",
+    component: AboutUs
+  },
+  {
+    path: "/faq",
+    component: FrequentlyAsked
+  },
+  {
+    path: "/infobar",
+    component: Infobarr
+  },
+  {
+    path: "/contact",
+    component: Contact
+  },
+  {
+    path: "/itsamatch",
+    component: Match
+  },
+  {
+    path: "/profile",
+    component: ProfilePage
+  }
+];
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Seenek vagyunk</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <div>
+          {routes.map(route => (
+            <Route
+              key={route.path}
+              exact
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </div>
+      </Router>
     );
   }
 }

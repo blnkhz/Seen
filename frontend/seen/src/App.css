@@ -1,29 +1,510 @@
+/* MAPOS DOLGOK */
+
+.map {
+  height: 95vh;
+  position: sticky;
+  width: 100%;
+}
+
+/* ADD */
+
+.flexmommy {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+}
+
+.mapCont {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: sticky;
+  order: 1;
+}
+
+.formchild {
+  /* width: 25%; */
+  color: #6489c2;
+  margin-top: 10%;
+  order: 2;
+  min-width: 300px;
+  right: 0;
+}
+
+/* SIGHTINGS */
+
+.flexdaddy {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+}
+
+.mapchild {
+  width: 100%;
+  order: 1;
+  top: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.infochild {
+  color: #6489c2;
+  margin-top: 100px;
+  order: 1;
+  font-size: 1.5em;
+}
+
+/* FOOTER */
+
+.footerke {
+  box-shadow: 2px 2px 10px black;
+}
+
+.kicsiFooter {
+  height: 5%;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  background-color: #dc82a4;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+}
+
+/* HEADER */
+
+.profilePicture {
+  margin: auto;
+  border-radius: 50% !important;
+  max-width: 40px;
+  height: auto;
+  position: relative;
+}
+
+.bar {
+  margin-top: 10px;
+  color: black;
+  position: relative;
+}
+
+.navlink {
+  font-weight: 300;
+  letter-spacing: 0.1 em;
+  -webkit-transition: font-weight 0.5s;
+  transition: font-weight 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
+}
+
+.navlink:hover {
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.search {
+  top: 10%;
+  position: absolute;
+  right: 0%;
+  height: 45px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 50px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: white;
+  color: grey;
+  top: -1%;
 }
 
 .App-title {
-  font-size: 1.5em;
-  height: 50px;
+  font-size: 1em;
+  padding: 58px;
 }
 
-.App-intro {
-  font-size: large;
+.seenlogo {
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.seenlogo:hover {
+  width: 45%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 10% 10%;
+  grid-gap: 25%;
+  background-color: #fff;
+  color: #444;
+  margin-left: 30%;
+  margin-top: 50px;
+}
+
+.box .text {
+  visibility: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5em;
+  font-weight: 800;
+  color: #6489c2;
+  text-align: right;
+}
+
+.box,
+.beenseen,
+.haveseen,
+.faq,
+.about {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  width: 13vw;
+  -webkit-transition: width 0.5s, filter 0.5s;
+  transition: width 0.5s, filter 0.5s;
+}
+
+.box:hover,
+.beenseen:hover,
+.haveseen:hover,
+.faq:hover,
+.about:hover {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  opacity: 1;
+  width: 15vw;
+  visibility: visible;
+}
+
+.box:hover .text {
+  visibility: visible;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 70%;
+}
+
+.footer {
+  color: #6489c2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5em;
+}
+
+.aboutus {
+  margin-top: 100px;
+  content: "";
+  display: table;
+  clear: both;
+  height: 95vh;
+}
+
+.abouttitle {
+  font-size: 3em;
+  letter-spacing: 0.5em;
+}
+
+.aboutperson {
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+.aboutphoto {
+  border-radius: 50%;
+  border: #dc82a4 4px solid;
+  width: inherit;
+}
+
+.aboutintroduction {
+  width: 70%;
+  color: rgb(116, 116, 116);
+  margin: auto;
+}
+
+.aboutnameofperson {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  letter-spacing: 0.2em;
+  font-size: 2em;
+}
+
+.faqtitle {
+  margin-top: 100px;
+  font-size: 3em;
+  letter-spacing: 0.5em;
+  color: #6489c2;
+}
+
+.faqcontainer {
+  text-align: left;
+  margin-left: 10%;
+}
+
+.faquestion {
+  color: #dc82a4;
+  margin-top: 50px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.faqanswer {
+  color: grey;
+  margin-left: 30px;
+  margin-right: 10%;
+}
+
+.endoffaq {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.stillhavequestions {
+  letter-spacing: 0.3em;
+  font-weight: 300;
+}
+
+.askawaylink {
+  color: #6489c2;
+  -webkit-transition: font-weight 0.5s;
+  transition: font-weight 0.5s;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
+}
+
+.askawaylink:hover {
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  color: #dc82a4;
+}
+
+.meccs {
+  text-align: center;
+  margin-top: 15%;
+  -webkit-transition: font-weight 0.5s;
+  transition: font-weight 0.5s;
+}
+
+.congratstext {
+  margin-bottom: 5%;
+  font-size: 2em;
+}
+
+.socmedtext {
+  margin-bottom: 5%;
+}
+
+.socmedhandle {
+  font-weight: 300;
+  -webkit-transition: letter-spacing 0.5s;
+  transition: letter-spacing 0.5s;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+  color: #6489c2;
+}
+
+.socmedhandle:hover {
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.seenpropertytitle {
+  color: #444;
+  letter-spacing: 0.2em;
+}
+
+.seenswer {
+  font-size: 75%;
+  max-width: 300px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.it-is-me-button {
+  margin-top: 50px;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.it-is-me-button:hover,
+.submit-button:hover {
+  background: #dc82a4;
+}
+
+.submit-button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+option[value=""][disabled] {
+  display: none;
+}
+
+.dropdown-newsighting {
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  background-color: #dadada;
+  border: none;
+  height: 2em;
+  margin-top: 10px;
+  color: #6489c2;
+  letter-spacing: 0.2em;
+}
+
+.handleinput {
+  width: 90%;
+  background-color: #dadada;
+  border: none;
+  height: 2em;
+  border-radius: 5px;
+  letter-spacing: 0.2em;
+}
+
+.messageinput {
+  width: 90%;
+  background: #dadada;
+  border: none;
+  height: 2em;
+  border-radius: 5px;
+  margin-top: 10px;
+  letter-spacing: 0.2em;
+}
+
+::placeholder {
+  color: #6489c2;
+  opacity: 1;
+}
+
+.seenswercontainer {
+  padding: 20px;
+}
+
+/* PROFILE */
+
+.profile-container {
+  margin-top: 10%;
+}
+
+.profile-greeter {
+  letter-spacing: 0.2em;
+}
+
+.profile-page-photo {
+  margin-top: 50px;
+  border-radius: 50%;
+  border: #dc82a4 5px solid;
+  width: 20%;
+  opacity: 0.75;
+}
+
+.profile-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.profile-details-title {
+  margin-top: 50px;
+}
+
+.user-details {
+  order: 1;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+.user-preferences {
+  order: 2;
+  margin-top: 50px;
+  float: left;
+  width: 33.33%;
+}
+
+/* LOGIN */
+.login-container {
+  height: 100%;
+  width: 100%;
+}
+
+.seenlogo-login {
+  height: 25vh;
+  padding-top: 30px;
+  width: auto;
+  display: block;
+  margin: auto;
+}
+
+.login-flex {
+  display: flex;
+  width: 90%;
+  align-content: center;
+  margin: auto;
+  height: 70vh;
+}
+
+.login-map {
+  width: 60vh;
+  height: 60vh;
+  margin: auto;
+  border-radius: 50%;
+  order: 2;
+  align-content: center;
+  /* border: 5px solid #6489c2; */
+}
+
+.login-firstcolumn {
+  margin: auto;
+  order: 1;
+}
+
+.login-thirdcolumn {
+  margin: auto;
+  order: 3;
+}
+
+.login-button {
+  padding: 30px;
+  background-color: #dc82a4;
+  text-decoration: none;
+  color: #444;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #6489c2;
+  color: #fff;
 }
