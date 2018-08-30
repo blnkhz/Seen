@@ -24,7 +24,7 @@ class LoginMap extends Component {
           streetViewControl: false,
           scaleControl: false,
           mapTypeControl: false,
-          panControl: true,
+          panControl: false,
           zoomControl: false,
           rotateControl: true,
           fullscreenControl: false,

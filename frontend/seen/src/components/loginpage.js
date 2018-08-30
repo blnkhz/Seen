@@ -41,6 +41,9 @@ class LoginPage extends Component {
           </div>
           <div className="login-thirdcolumn">
             <h4>itt lehet majd bejelentkezni</h4>
+            <a href="/">
+              <h3 className="login-button">login</h3>
+            </a>
           </div>
         </div>
       </div>

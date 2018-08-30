@@ -491,3 +491,20 @@ option[value=""][disabled] {
   margin: auto;
   order: 3;
 }
+
+.login-button {
+  padding: 30px;
+  background-color: #dc82a4;
+  text-decoration: none;
+  color: #444;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #6489c2;
+  color: #fff;
+}
