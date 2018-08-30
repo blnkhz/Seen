@@ -69,14 +69,6 @@ class PostForm extends React.Component {
             selectedDays={this.state.selectedDay}
           />
         </div>
-        <input
-          type="text"
-          name="socialHandle"
-          placeholder=" your social handle"
-          onChange={this.handleChange}
-          className="handleinput"
-          required
-        />
         <div className="dropsdowns">
           <form>
             <select
