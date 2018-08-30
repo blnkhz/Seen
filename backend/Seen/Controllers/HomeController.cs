@@ -75,6 +75,25 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
+        [Route("newuser")]
+        public async Task<IActionResult> NewUser([FromBody]User user)
+        {
+            await userService.AddUser(user);
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("newuserfastload")]
+        public async Task<IActionResult> NewUserFastLoad([FromBody]List<User> users)
+        {
+            foreach (var user in users)
+            {
+                await userService.AddUser(user);
+            }
+            return Ok(users);
+        }
+
+        [HttpPost]
         [Route("updateuser/{id}")]
         public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]List<FilterJson> filterszek)
         {

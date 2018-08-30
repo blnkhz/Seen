@@ -53,44 +53,44 @@ namespace Seen.Services
             await userRepository.UpdateUserAsync(id, filterszek); 
         }
 
-        public async Task<List<User>> Finder(string id)
+        public async Task<List<Sighting>> Finder(string id)
         {
             var aSzemely = await userRepository.SelectByIdAsync(id);
             List<User> aLista = new List<User>();
-            if (aSzemely.Orientation == "Heterosexual")
+            if (aSzemely.Orientation == "straight")
             {
-                string genderValue = (aSzemely.UserGender == "Male") ? "Female" : "Male";
+                string genderValue = (aSzemely.UserGender == "male") ? "female" : "male";
                 aLista = await userRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
-            if (aSzemely.Orientation == "Homosexual")
+            if (aSzemely.Orientation == "gay")
             {
-                string genderValue = (aSzemely.UserGender == "Male") ? "Male" : "Female";
+                string genderValue = (aSzemely.UserGender == "male") ? "male" : "female";
                 aLista = await userRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
-            if (aSzemely.Orientation == "Bisexual")
+            if (aSzemely.Orientation == "bi")
             {
                 aLista = await userRepository.SelectAllAsync();
             }
 
-            var results = new List<User>();
+            var results = new List<Sighting>();
             for (int i = 0; i < aLista.Count; i++)
             {
 
                 for (int j = 0; j < aLista[i].Sightings.Count; j++)
                 {
-                    int realmatch = await MatchMeister(aSzemely, aLista[i].Sightings[j]);
+                    int realmatch = MatchMeister(aSzemely, aLista[i].Sightings[j]);
                     if (realmatch >= 4 && aSzemely.Email != aLista[i].Email)
                     {
-                        results.Add(aLista[i]);
+                        results.Add(aLista[i].Sightings[j]);
                     }
                 }
             }
             return results;
         }
 
-        public async Task<int> MatchMeister (User user, Sighting sighting)
+        public int MatchMeister (User user, Sighting sighting)
         {
             int count = 0;
             count = (user.UserHairColor == sighting.HairColor) ? count + 1 : count;
