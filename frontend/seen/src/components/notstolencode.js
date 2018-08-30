@@ -87,6 +87,22 @@ class PostForm extends React.Component {
           <form>
             <select
               className="dropdown-newsighting"
+              name="age"
+              onChange={this.handleChange}
+            >
+              <option value="" disabled selected>
+                age
+              </option>
+              <option value="teen">teen</option>
+              <option value="young adult">young adult</option>
+              <option value="adult">adult</option>
+              <option value="middle-aged">middle-aged</option>
+              <option value="elderly">elderly</option>
+            </select>
+          </form>
+          <form>
+            <select
+              className="dropdown-newsighting"
               name="hairColor"
               onChange={this.handleChange}
             >
