@@ -508,3 +508,26 @@ option[value=""][disabled] {
   background-color: #6489c2;
   color: #fff;
 }
+
+.hover-box {
+  width: 100%;
+  background-color: #6489c2;
+  border-radius: 5px;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+.hover-box:hover {
+  background-color: #fff;
+}
+
+.hover-text {
+  color: #fff;
+}
+
+.hover-handle {
+  color: #6489c2;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+  bottom: 50%;
+}

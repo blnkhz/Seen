@@ -22,14 +22,11 @@ const Readgend = ({ userDatas, indexke }) => (
             </p>
             <h4 className="seenpropertytitle">MESSAGE</h4>
             <p className="seenswer">{element.message}</p>
-            <h4 className="seenpropertytitle">HANDLE</h4>
-            <p className="seenswer">hover to reveal</p>
-            <p className="hover-handle">{element.socialHandle}</p>
-            <a href="/itsamatch">
-              <button type="submit" className="it-is-me-button">
-                HELLO IT'S ME
-              </button>
-            </a>
+            <div className="hover-box">
+              <br />
+              <p className="hover-text">reveal handle</p>
+              <p className="hover-handle">{element.socialHandle}</p>
+            </div>
           </div>
         ) : null
     )}
