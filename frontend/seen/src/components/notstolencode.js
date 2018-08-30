@@ -1,5 +1,5 @@
 import React from "react";
-import DayPicker from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 class PostForm extends React.Component {
@@ -7,7 +7,7 @@ class PostForm extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleDayClick = this.handleDayClick.bind(this);
+    this.handleDayChange = this.handleDayChange.bind(this);
     this.state = {
       gender: "",
       socialHandle: "",
@@ -21,18 +21,14 @@ class PostForm extends React.Component {
     };
   }
 
+  handleDayChange(day) {
+    this.setState({ selectedDay: day });
+  }
+
   handleChange(event) {
     console.log(event.target.name, event.target.value);
 
     this.setState({ [event.target.name]: event.target.value });
-  }
-
-  handleDayClick(day, { selected }) {
-    if (selected) {
-      this.setState({ selectedDay: undefined });
-      return;
-    }
-    this.setState({ selectedDay: day });
   }
 
   handleSubmit(event) {
@@ -61,13 +57,13 @@ class PostForm extends React.Component {
   }
 
   render() {
+    const { day } = this.state;
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
-        <div>
-          <DayPicker
-            onDayClick={this.handleDayClick}
-            selectedDays={this.state.selectedDay}
-          />
+        <div className="calendar">
+          {day && <p>Day: {day.toLocaleDateString()}</p>}
+          {!day && <p>Choose a day</p>}
+          <DayPickerInput onDayChange={this.handleDayChange} />
         </div>
         <input
           type="text"
@@ -83,6 +79,7 @@ class PostForm extends React.Component {
               className="dropdown-newsighting"
               name="gender"
               onChange={this.handleChange}
+              required={true}
             >
               <option value="" disabled selected>
                 gender
@@ -145,7 +142,7 @@ class PostForm extends React.Component {
           onChange={this.handleChange}
           className="messageinput"
         />
-        <a href="/itsamatch">
+        <a href="/">
           <button type="submit" className="submit-button">
             FIND THEM
           </button>
