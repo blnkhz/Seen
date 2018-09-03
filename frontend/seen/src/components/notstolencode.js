@@ -70,11 +70,11 @@ class PostForm extends React.Component {
           />
         </div>
         <div className="dropsdowns">
-          <form>
             <select
               className="dropdown-newsighting"
               name="gender"
               onChange={this.handleChange}
+              required="required"
             >
               <option value="" disabled selected>
                 gender
@@ -83,12 +83,11 @@ class PostForm extends React.Component {
               <option value="male">male</option>
               <option value="other">other</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="age"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 age
@@ -99,12 +98,11 @@ class PostForm extends React.Component {
               <option value="middle-aged">middle-aged</option>
               <option value="elderly">elderly</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="height"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 height
@@ -113,12 +111,11 @@ class PostForm extends React.Component {
               <option value="average">average</option>
               <option value="tall">tall</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="build"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 build
@@ -129,12 +126,11 @@ class PostForm extends React.Component {
               <option value="ripped">ripped</option>
               <option value="chubby">chubby</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="hairColor"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 hair color
@@ -146,12 +142,11 @@ class PostForm extends React.Component {
               <option value="special">special</option>
               <option value="salt n pepper">salt n pepper</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="hairStyle"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 hairstyle
@@ -161,12 +156,11 @@ class PostForm extends React.Component {
               <option value="long">long</option>
               <option value="bald">bald</option>
             </select>
-          </form>
-          <form>
             <select
               className="dropdown-newsighting"
               name="glasses"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 glasses?
@@ -174,15 +168,16 @@ class PostForm extends React.Component {
               <option value="true">yes</option>
               <option value="false">no</option>
             </select>
-          </form>
-        </div>
         <input
           type="text"
           name="message"
           placeholder=" anything else?"
           onChange={this.handleChange}
           className="messageinput"
+          required
         />
+        
+        </div>
         <a href="/itsamatch">
           <button type="submit" className="submit-button">
             FIND THEM
