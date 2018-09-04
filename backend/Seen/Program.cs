@@ -20,6 +20,7 @@ namespace Seen
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseUrls("http://0.0.0.0:52210")
                 .Build();
     }
 }
