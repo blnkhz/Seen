@@ -499,18 +499,21 @@ option[value=""][disabled] {
 }
 
 .login-button {
-  padding: 30px;
+  margin: auto;
   background-color: #dc82a4;
-  text-decoration: none;
-  color: #444;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
-  border-radius: 5px;
+  width: 10%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 5vh;
+  z-index: 9999;
 }
 
 .login-button:hover {
   background-color: #6489c2;
-  color: #fff;
 }

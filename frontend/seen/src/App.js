@@ -187,7 +187,7 @@ class App extends Component {
             fields="name,email,picture.height(480)"
             callback={this.responseFacebook}
             render={renderProps => (
-              <a  href="/index"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button login-thirdcolumn">login</h3></a>
+              <a  href="/index"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3></a>
             )}
           />
           {routes.map(route => (
