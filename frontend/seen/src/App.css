@@ -489,11 +489,13 @@ option[value=""][disabled] {
 .login-firstcolumn {
   margin: auto;
   order: 1;
+  width: 20%;
 }
 
 .login-thirdcolumn {
   margin: auto;
   order: 3;
+  width: 20%;
 }
 
 .login-button {
