@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavbarFeatures from "./components/navbar.js";
-import Map from "./components/map.js";
 import Faq from "./components/faq.js";
 import About from "./components/about.js";
 import Seendex from "./components/seendex.js";
@@ -12,7 +11,7 @@ import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
 import Profile from "./components/profile.js";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class App extends Component {
@@ -30,8 +29,6 @@ class App extends Component {
   }
 
   responseFacebook = response => {
-    console.log(response);
-
    this.setState({fbUser:{
       isLoggedIn: true,
       userID: response.userID,
@@ -40,7 +37,6 @@ class App extends Component {
       picture: response.picture.data.url
     }
    });
-   console.log(this.state.fbUser);
  };
 
   render() {
@@ -129,7 +125,7 @@ class App extends Component {
         component: Sightings
       },
       {
-        path: "/",
+        path: "/login",
         component: Login
       },
       {
@@ -137,7 +133,7 @@ class App extends Component {
         component: Add
       },
       {
-        path: "/index",
+        path: "/",
         component: Start
       },
       {
@@ -166,18 +162,6 @@ class App extends Component {
       }
     ];
 
-    const LOGINEK =() => {
-      return(
-      <FacebookLogin
-          appId="322492561654479"
-          autoLoad={true}
-          fields="name,email,picture"
-          callback={this.responseFacebook}
-          render={renderProps => (
-            <a href="/index"><h3 onClick={renderProps.onClick} className="login-button login-thirdcolumn">login</h3></a>
-          )}
-        />
-      )};
     return (
       <Router>
         <div>
