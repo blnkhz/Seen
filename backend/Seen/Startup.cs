@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Seen.Models;
 using Seen.Repositories;
+using Seen.Services;
 
 namespace Seen
 {
@@ -26,7 +27,8 @@ namespace Seen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<SightingRepository>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<UserService>();
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()

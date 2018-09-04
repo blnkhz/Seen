@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using Seen.Models;
 using Seen.Repositories;
+using Seen.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,18 @@ namespace Seen.Controllers
 {
     public class HomeController : Controller
     {
-        private SightingRepository sightingRepository;
+        private UserService userService;
 
-        public HomeController(SightingRepository sightingRepository)
+        public HomeController(UserService userService)
         {
-            this.sightingRepository = sightingRepository;
+            this.userService = userService;
         }
+
         [HttpGet]
         [Route("beenseen")]
         public async Task<IActionResult> BeenSeen()
         {
-            var listOfSightings = await sightingRepository.SelectAllAsync();
+            var listOfSightings = await userService.ReadAllUsers();
             return Ok(listOfSightings);
         }
 
@@ -29,7 +31,7 @@ namespace Seen.Controllers
         [Route("beenseenone/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await sightingRepository.SelectByIdAsync(id);
+            var oneOfSightings = await userService.ReadOneUser(id);
             return Ok(oneOfSightings.Id.ToString());
         }
 
@@ -37,7 +39,7 @@ namespace Seen.Controllers
         [Route("beenseensome")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
-            var resultOfSightings = await sightingRepository.SelectByFieldAsync(filter.Field, filter.Value);
+            var resultOfSightings = await userService.FilterUser(filter.Field, filter.Value);
             return Ok(resultOfSightings);
         }
 
@@ -45,16 +47,58 @@ namespace Seen.Controllers
         [Route("beendeleted/{id}")]
         public async Task<IActionResult> BeenDeleted(string id)
         {
-            await sightingRepository.DeleteAsync(id);
+            await userService.DeleteUser(id);
             return RedirectToAction("BeenSeen");
         }
 
         [HttpPost]
-        [Route("haveseen")]
-        public async Task<IActionResult> HaveSeen([FromBody] Sighting sighting)
+        [Route("AddUser")]
+        public async Task<IActionResult> AddUser([FromBody] User user)
         {
-            await sightingRepository.CreateAsync(sighting);
+            await userService.AddUser(user);
             return RedirectToAction("BeenSeen");
+        }
+
+        [HttpGet]
+        [Route("findmyonlyonetruepair/{id}")]
+        public IActionResult FindThem(string id)
+        {
+            return Ok(userService.Finder(id));
+        }
+
+        [HttpPost]
+        [Route("haveseen/{id}")]
+        public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
+        {
+            await userService.AddSighting(id, sighting);
+            return Ok(sighting);
+        }
+
+        [HttpPost]
+        [Route("newuser")]
+        public async Task<IActionResult> NewUser([FromBody]User user)
+        {
+            await userService.AddUser(user);
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("newuserfastload")]
+        public async Task<IActionResult> NewUserFastLoad([FromBody]List<User> users)
+        {
+            foreach (var user in users)
+            {
+                await userService.AddUser(user);
+            }
+            return Ok(users);
+        }
+
+        [HttpPost]
+        [Route("updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]List<FilterJson> filterszek)
+        {
+            await userService.UpdateUser(id, filterszek);
+            return Ok();
         }
     }
 }
