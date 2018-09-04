@@ -23,7 +23,7 @@ class App extends Component {
         userID: "",
         name: "",
         email: "",
-        picture: ""
+        picture: "",
       }
     };
   }

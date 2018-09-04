@@ -1,12 +1,14 @@
+
 import React, { Component } from "react";
 
 class Profile extends React.Component {
   render() {
+    const {user} = this.props;
     return (
       <div className="profile-container">
-        <h1 className="profile-greeter">hello, {this.props.user.name}</h1>
+        <h1 className="profile-greeter">hello, {user.name}</h1>
         <img
-          src={this.props.user.picture}
+          src={user.picture}
           className="profile-page-photo"
           alt="avatar"
         />
@@ -14,8 +16,8 @@ class Profile extends React.Component {
         <div className="profile-details-container">
           <div className="user-details">
             <h4>details</h4>
-            <p>{this.props.user.name}</p>
-            <p>{this.props.user.email}</p>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
           </div>
           <div className="user-preferences">
             <h4>ezekapreferenciak</h4>
