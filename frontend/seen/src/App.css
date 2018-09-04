@@ -434,6 +434,7 @@ option[value=""][disabled] {
 
 .profile-details-title {
   margin-top: 50px;
+  letter-spacing: 0.2em;
 }
 
 .user-details {

@@ -184,7 +184,7 @@ class App extends Component {
           <FacebookLogin
             appId="322492561654479"
             autoLoad={true}
-            fields="name,email,picture"
+            fields="name,email,picture.height(480)"
             callback={this.responseFacebook}
             render={renderProps => (
               <a  href="/index"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button login-thirdcolumn">login</h3></a>

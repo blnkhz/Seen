@@ -78,7 +78,6 @@ class NavbarFeatures extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem href="/profile">My Profile</DropdownItem>
-                  <DropdownItem href="#">Messages</DropdownItem>
                   <DropdownItem href="#">Log out</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
