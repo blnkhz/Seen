@@ -17,7 +17,7 @@ class LoginMap extends Component {
     const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter={{ lat: 47.507589, lng: 19.066128 }}
-        defaultZoom={13}
+        defaultZoom={10}
         center={this.state.centerke}
         zoom={this.state.zoomka}
         defaultOptions={{
