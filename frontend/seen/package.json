@@ -8,6 +8,7 @@
     "react-addons-update": "^15.6.2",
     "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.2",
+    "react-facebook-login": "^4.0.1",
     "react-google-maps": "^9.4.5",
     "react-google-maps-loader": "^4.2.3",
     "react-scripts": "1.1.4",

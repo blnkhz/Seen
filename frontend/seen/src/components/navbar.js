@@ -41,9 +41,9 @@ class NavbarFeatures extends React.Component {
   render() {
     const kep = (
       <img
-        src="https://preview.ibb.co/miXnmK/benji.png"
+        src={this.props.user.picture}
         className="profilePicture"
-        alt="avatar image"
+        alt="avatar"
       />
     );
     return (
