@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import LoginMap from "./loginmap.js";
-import Infos from "./infobar.js";
 
 class LoginPage extends Component {
   constructor() {
