@@ -5,9 +5,7 @@ import "react-day-picker/lib/style.css";
 class PostForm extends React.Component {
   constructor() {
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDayClick = this.handleDayClick.bind(this);
+    this.bindEverything();
     this.state = {
       gender: "",
       socialHandle: "",
@@ -21,9 +19,14 @@ class PostForm extends React.Component {
     };
   }
 
+  bindEverything() {
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleDayClick = this.handleDayClick.bind(this);
+  }
+
   handleChange(event) {
     console.log(event.target.name, event.target.value);
-
     this.setState({ [event.target.name]: event.target.value });
   }
 
