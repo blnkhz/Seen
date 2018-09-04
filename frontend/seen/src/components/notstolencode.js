@@ -78,11 +78,12 @@ class PostForm extends React.Component {
           required
         />
         <div className="dropsdowns">
-          <form>
+          {/* <form> */}
             <select
               className="dropdown-newsighting"
               name="gender"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 gender
@@ -91,12 +92,13 @@ class PostForm extends React.Component {
               <option value="male">male</option>
               <option value="other">other</option>
             </select>
-          </form>
-          <form>
+          {/* </form> */}
+          {/* <form> */}
             <select
               className="dropdown-newsighting"
               name="hairColor"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 hair color
@@ -108,12 +110,13 @@ class PostForm extends React.Component {
               <option value="special">special</option>
               <option value="salt n pepper">salt n pepper</option>
             </select>
-          </form>
-          <form>
+          {/* </form> */}
+          {/* <form> */}
             <select
               className="dropdown-newsighting"
               name="hairStyle"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 hairstyle
@@ -123,12 +126,13 @@ class PostForm extends React.Component {
               <option value="long">long</option>
               <option value="bald">bald</option>
             </select>
-          </form>
-          <form>
+          {/* </form> */}
+          {/* <form> */}
             <select
               className="dropdown-newsighting"
               name="glasses"
               onChange={this.handleChange}
+              required
             >
               <option value="" disabled selected>
                 glasses?
@@ -136,7 +140,7 @@ class PostForm extends React.Component {
               <option value="true">yes</option>
               <option value="false">no</option>
             </select>
-          </form>
+          {/* </form> */}
         </div>
         <input
           type="text"
