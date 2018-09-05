@@ -14,7 +14,7 @@ import {
 } from "mdbreact";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-class NavbarFeatures extends React.Component {
+class NavbarFeatures extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -82,7 +82,11 @@ class NavbarFeatures extends React.Component {
                   {kep}
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem href="/profile">My Profile</DropdownItem>
+                  <DropdownItem>
+                    <NavLink className="navlink" to="/profile">
+                      profile
+                    </NavLink>
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavItem>
