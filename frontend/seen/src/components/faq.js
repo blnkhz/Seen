@@ -23,6 +23,16 @@ const faqContent = (
         still lets you match with the mysterious stranger you fancy if your
         guesses are close enough.
       </p>
+      <h4 className="faquestion">
+        How do I log out? There is no button for that :(
+      </h4>
+      <p className="faqanswer">
+        You don't.
+        <br />
+        <br />
+        Just kidding. Seen uses Facebook login so you stay logged in as long as
+        you are on Facebook.
+      </p>
       <h4 className="faquestion">Who are the people behind Seen?</h4>
       <p className="faqanswer">
         Máté, Blanka & Peti. You are always welcome to visit our{" "}
@@ -34,7 +44,9 @@ const faqContent = (
       <p className="faqanswer">seenek.</p>
     </div>
     <div className="endoffaq">
-      <a className="stillhavequestions" href="/contact">still have questions?</a>
+      <a className="stillhavequestions" href="/contact">
+        still have questions?
+      </a>
     </div>
   </div>
 );
