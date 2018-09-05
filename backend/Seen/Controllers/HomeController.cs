@@ -28,11 +28,11 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("beenseenone/{id}")]
+        [Route("getuser/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
             var oneOfSightings = await userService.ReadOneUser(id);
-            return Ok(oneOfSightings.Id.ToString());
+            return Ok(oneOfSightings);
         }
 
         [HttpPost]
