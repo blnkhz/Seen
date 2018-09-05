@@ -29,7 +29,7 @@ namespace Seen.Repositories
 
         public async Task DeleteAsync(string id)
         {
-            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
+            var filter = Builders<User>.Filter.Eq("FbId", id);
             await users.DeleteOneAsync(filter);
         }
 
@@ -53,14 +53,14 @@ namespace Seen.Repositories
 
         public async Task UpdateSightingsAsync(string id, List<Sighting> sightingsok)
         {
-            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
+            var filter = Builders<User>.Filter.Eq("FbId", id);
             var update = Builders<User>.Update.Set("Sightings", sightingsok);
 
             var result = await users.UpdateOneAsync(filter, update);
         }
         public async Task UpdateUserAsync(string id, List<FilterJson> filterszek)
         {
-            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
+            var filter = Builders<User>.Filter.Eq("FbId", id);
             for (int i = 0; i < filterszek.Count; i++)
             {
                 var update = Builders<User>.Update.Set(filterszek[i].Field, filterszek[i].Value);
