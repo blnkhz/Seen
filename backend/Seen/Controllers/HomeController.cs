@@ -36,7 +36,7 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("beenseensome")]
+        [Route("filterusers")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
             var resultOfSightings = await userService.FilterUser(filter.Field, filter.Value);
@@ -44,7 +44,7 @@ namespace Seen.Controllers
         }
 
         [HttpDelete]
-        [Route("beendeleted/{id}")]
+        [Route("deleteuser/{id}")]
         public async Task<IActionResult> BeenDeleted(string id)
         {
             await userService.DeleteUser(id);
@@ -76,7 +76,7 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("haveseen/{id}")]
+        [Route("addsighting/{id}")]
         public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
         {
             await userService.AddSighting(id, sighting);
