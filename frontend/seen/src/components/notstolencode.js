@@ -57,7 +57,7 @@ class PostForm extends React.Component {
     };
     console.log(data);
 
-    fetch("http://localhost:52210/haveseen", {
+    fetch("http://localhost:52210/addsighting/" + this.props.FbId, {
       method: "POST",
       body: JSON.stringify(data),
       mode: "cors",
@@ -65,6 +65,7 @@ class PostForm extends React.Component {
         "Content-Type": "application/json"
       })
     }).catch(error => `Error: ${error}`);
+    console.log(this.props.FbId);
   }
 
   render() {

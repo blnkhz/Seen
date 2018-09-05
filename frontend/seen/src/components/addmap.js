@@ -95,7 +95,7 @@ class AddMap extends Component {
       <div className="flexmommy">
         <Sidebar
           sidebar={
-            <PostForm savedPos={this.state.savedPos} className="formchild" />
+            <PostForm FbId={this.props.FbId} savedPos={this.state.savedPos} className="formchild" />
           }
           open={this.state.sidebarOpen}
           onSetOpen={this.onSetSidebarOpen}

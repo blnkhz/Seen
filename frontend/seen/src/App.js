@@ -61,7 +61,7 @@ class App extends Component {
     const Sightings = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Renderz FbId={this.state.fbUser.userID} />
+        <Renderz FbId={this.state.fbUser.fbId} />
         <FooterPage />
       </div>
     );
@@ -92,7 +92,7 @@ class App extends Component {
     const Add = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar"/>
-        <AddMap />
+        <AddMap FbId={this.state.fbUser.fbId}/>
         <FooterPage />
       </div>
     );
