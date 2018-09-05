@@ -81,69 +81,61 @@ class PostForm extends React.Component {
           required
         />
         <div className="dropsdowns">
-          {/* <form> */}
-            <select
-              className="dropdown-newsighting"
-              name="gender"
-              onChange={this.handleChange}
-              required
-            >
-              <option value="" disabled selected>
-                gender
-              </option>
-              <option value="female">female</option>
-              <option value="male">male</option>
-              <option value="other">other</option>
-            </select>
-          {/* </form> */}
-          {/* <form> */}
-            <select
-              className="dropdown-newsighting"
-              name="hairColor"
-              onChange={this.handleChange}
-              required
-            >
-              <option value="" disabled selected>
-                hair color
-              </option>
-              <option value="black">black</option>
-              <option value="brown">brown</option>
-              <option value="blond(e)">blonde</option>
-              <option value="red">red</option>
-              <option value="special">special</option>
-              <option value="salt n pepper">salt n pepper</option>
-            </select>
-          {/* </form> */}
-          {/* <form> */}
-            <select
-              className="dropdown-newsighting"
-              name="hairStyle"
-              onChange={this.handleChange}
-              required
-            >
-              <option value="" disabled selected>
-                hairstyle
-              </option>
-              <option value="short">short</option>
-              <option value="medium">medium</option>
-              <option value="long">long</option>
-              <option value="bald">bald</option>
-            </select>
-          {/* </form> */}
-          {/* <form> */}
-            <select
-              className="dropdown-newsighting"
-              name="glasses"
-              onChange={this.handleChange}
-              required
-            >
-              <option value="" disabled selected>
-                glasses?
-              </option>
-              <option value="true">yes</option>
-              <option value="false">no</option>
-            </select>
-          {/* </form> */}
+          <select
+            className="dropdown-newsighting"
+            name="gender"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              gender
+            </option>
+            <option value="female">female</option>
+            <option value="male">male</option>
+            <option value="other">other</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="hairColor"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              hair color
+            </option>
+            <option value="black">black</option>
+            <option value="brown">brown</option>
+            <option value="blond(e)">blonde</option>
+            <option value="red">red</option>
+            <option value="special">special</option>
+            <option value="salt n pepper">salt n pepper</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="hairStyle"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              hairstyle
+            </option>
+            <option value="short">short</option>
+            <option value="medium">medium</option>
+            <option value="long">long</option>
+            <option value="bald">bald</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="glasses"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              glasses?
+            </option>
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </select>
         </div>
         <input
           type="text"
