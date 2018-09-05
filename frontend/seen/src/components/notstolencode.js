@@ -30,7 +30,11 @@ class PostForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleDayClick(day, { selected }) {
+  handleDayClick(day, { selected, disabled }) {
+    if (disabled)
+    {
+      return;
+    }
     if (selected) {
       this.setState({ selectedDay: undefined });
       return;
@@ -70,6 +74,7 @@ class PostForm extends React.Component {
           <DayPicker
             onDayClick={this.handleDayClick}
             selectedDays={this.state.selectedDay}
+            disabledDays={{ after: new Date() }}
           />
         </div>
         <input
