@@ -14,9 +14,22 @@ class Profile extends React.Component {
       userBuild: "",
       userAge: "",
       orientation: "",
-      isHidden: true
+      isHidden: true,
+      fbuser: ""
     };
   }
+
+  componentDidMount(){
+    fetch("http://localhost:52210/getuser/karamell", {
+      mode: "cors"})
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+        this.setState({
+          fbuser: json,
+        });
+      })
+    };
 
   toggleHidden() {
     this.setState({
@@ -49,7 +62,7 @@ class Profile extends React.Component {
     };
     console.log(data);
 
-    fetch("http://localhost:52210/newuser", {
+    fetch("http://localhost:52210/updateuser/727112864294707", {
       method: "POST",
       body: JSON.stringify(data),
       mode: "cors",
@@ -202,17 +215,17 @@ class Profile extends React.Component {
         <div className="profile-details-container">
           <div className="user-details">
             <h4>details</h4>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p>{this.state.userGender}</p>
-            <p>{this.state.socialHandle}</p>
-            <p>{this.state.userHairColor}</p>
-            <p>{this.state.userHairStyle}</p>
-            <p>{this.state.userGlasses}</p>
-            <p>{this.state.userHeight}</p>
-            <p>{this.state.userBuild}</p>
-            <p>{this.state.userAge}</p>
-            <p>{this.state.orientation}</p>
+            <p>id: {this.state.fbuser.fbId}</p>
+            <p>email: {this.state.fbuser.email}</p>
+            <p>gender: {this.state.fbuser.userGender}</p>
+            <p>handle: {this.state.fbuser.socialHandle}</p>
+            <p>haircolor: {this.state.fbuser.userHairColor}</p>
+            <p>hairstyle: {this.state.fbuser.userHairStyle}</p>
+            <p>glasses: {this.state.fbuser.userGlasses}</p>
+            <p>height: {this.state.fbuser.userHeight}</p>
+            <p>build: {this.state.fbuser.userBuild}</p>
+            <p>age: {this.state.fbuser.userAge}</p>
+            <p>orientation: {this.state.fbuser.orientation}</p>
           </div>
           <div className="user-preferences">
             <h4>ezekapreferenciak</h4>

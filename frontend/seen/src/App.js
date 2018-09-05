@@ -45,7 +45,6 @@ class App extends Component {
       "Content-Type": "application/json"
     })
   }).catch(error => `Error: ${error}`);
-  console.log(this.state.fbUser.fbId)
  };
 
 
