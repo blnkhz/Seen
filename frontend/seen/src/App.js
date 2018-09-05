@@ -20,7 +20,7 @@ class App extends Component {
     this.state = {
       fbUser:{
         isLoggedIn: false,
-        userID: "",
+        fbId: "",
         name: "",
         email: "",
         picture: "",
@@ -31,17 +31,25 @@ class App extends Component {
   responseFacebook = response => {
    this.setState({fbUser:{
       isLoggedIn: true,
-      userID: response.userID,
+      fbId: response.userID,
       name: response.name,
       email: response.email,
       picture: response.picture.data.url
     }
    });
+   fetch("http://localhost:52210/adduser", {
+    method: "POST",
+    body: JSON.stringify(this.state.fbUser),
+    mode: "cors",
+    headers: new Headers({
+      "Content-Type": "application/json"
+    })
+  }).catch(error => `Error: ${error}`);
+  console.log(this.state.fbUser.fbId)
  };
 
-  render() {
-    
 
+  render() {
     const Login = () => (
       <div className="App">
         <LoginPage>
@@ -53,7 +61,7 @@ class App extends Component {
     const Sightings = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Renderz />
+        <Renderz FbId={this.state.fbUser.userID} />
         <FooterPage />
       </div>
     );
@@ -171,7 +179,7 @@ class App extends Component {
             fields="name,email,picture.height(480)"
             callback={this.responseFacebook}
             render={renderProps => (
-              <a  href="/index"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3></a>
+              <a  href="/"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3></a>
             )}
           />
           {routes.map(route => (
