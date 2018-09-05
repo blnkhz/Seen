@@ -137,7 +137,8 @@ class PostForm extends React.Component {
             <option value="false">no</option>
           </select>
         </div>
-        <input
+        <textarea
+          rows="4"
           type="text"
           name="message"
           placeholder=" anything else?"
