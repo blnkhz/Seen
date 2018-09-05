@@ -56,7 +56,7 @@ class PostForm extends React.Component {
       longitude: this.props.savedPos.lng,
       day: this.state.selectedDay.toLocaleDateString()
     };
-    console.log(data);
+    console.log(this.state);
 
     fetch("http://localhost:52210/haveseen/5b87d011f6228e45349277a1", {
       method: "POST",
