@@ -1,55 +1,56 @@
 import React, { Component } from "react";
+import {  NavLink } from "mdbreact";
 
 class Seendex extends React.Component {
   render() {
     return (
       <div className="seendex">
-        <a href="/">
+        <NavLink to="/">
           <img
             src={require("../assets/seenlogo.png")}
             className="seenlogo"
             alt="s e e n"
           />
-        </a>
+        </NavLink>
         <div class="wrapper">
           <div className="box a">
-            <a href="/add">
+            <NavLink to="/add">
               <img
                 src={require("../assets/plusz.png")}
                 className="haveseen"
                 alt="have seen"
               />
-            </a>
+            </NavLink>
             <p class="text">HAVE SEEN</p>
           </div>
           <div className="box b">
-            <a href="/sightings">
+            <NavLink to="/sightings">
               <img
                 src={require("../assets/nagyito2.png")}
                 className="beenseen"
                 alt="been seen?"
               />
-            </a>
+            </NavLink>
             <p class="text">BEEN SEEN?</p>
           </div>
           <div className="box c">
-            <a href="/faq">
+            <NavLink to="/faq">
               <img
                 src={require("../assets/pinkquesttion.png")}
                 className="faq"
                 alt="faq"
               />
-            </a>
+            </NavLink>
             <p class="text">FAQ</p>
           </div>
           <div className="box d">
-            <a href="about">
+            <NavLink to="/about">
               <img
                 src={require("../assets/mink.png")}
                 className="about"
                 alt="about"
               />
-            </a>
+            </NavLink>
             <p class="text">ABOUT US</p>
           </div>
         </div>

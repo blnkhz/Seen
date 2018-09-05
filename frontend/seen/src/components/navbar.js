@@ -48,8 +48,10 @@ class NavbarFeatures extends Component {
     );
     return (
       <Navbar light color="white" expand="sm" fixed="top">
-        <NavbarBrand href="/">
-          <img src={require("../assets/seenlogo.png")} height="40px" />
+        <NavbarBrand>
+          <NavLink to="/">
+            <img src={require("../assets/seenlogo.png")} height="40px" />
+          </NavLink>
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}
         <Collapse isOpen={this.state.collapse} navbar>

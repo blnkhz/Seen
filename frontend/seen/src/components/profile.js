@@ -20,7 +20,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:52210/getuser/karamell", {
+    fetch("http://localhost:52210/getuser/" + this.props.id, {
       mode: "cors"})
       .then(response => response.json())
       .then(json => {

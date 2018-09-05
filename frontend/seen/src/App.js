@@ -13,6 +13,7 @@ import LoginPage from "./components/loginpage.js";
 import Profile from "./components/profile.js";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import {  NavLink } from "mdbreact";
 
 class App extends Component {
   constructor() {
@@ -106,7 +107,7 @@ class App extends Component {
     const ProfilePage = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar"/>
-        <Profile user={this.state.fbUser}  />
+        <Profile user={this.state.fbUser} id={this.state.fbUser.fbId}  />
         <FooterPage />
       </div>
     );
@@ -178,7 +179,7 @@ class App extends Component {
             fields="name,email,picture.height(480)"
             callback={this.responseFacebook}
             render={renderProps => (
-              <a  href="/"><h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3></a>
+              <h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3>
             )}
           />
           {routes.map(route => (
