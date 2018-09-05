@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class About extends React.Component {
   render() {
-    return (
+    const aboutContent = (
       <div className="aboutus">
         <h1 className="abouttitle">mink vogymuk a seenek.</h1>
         <div className="aboutperson">
@@ -63,6 +63,7 @@ class About extends React.Component {
         </div>
       </div>
     );
+    return aboutContent;
   }
 }
 
