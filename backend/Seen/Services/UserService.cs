@@ -16,9 +16,13 @@ namespace Seen.Services
             this.userRepository = userRepository;
         }
 
-        public async Task AddUser(User sighting)
+        public async Task AddUser(User user)
         {
-            await userRepository.CreateAsync(sighting);
+            var newUser = userRepository.SelectByIdAsync(user.FbId);
+            if (newUser.Result == null)
+            {
+                await userRepository.CreateAsync(user);
+            }
         }
 
         public async Task DeleteUser(string id)

@@ -52,7 +52,7 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("AddUser")]
+        [Route("adduser")]
         public async Task<IActionResult> AddUser([FromBody] User user)
         {
             await userService.AddUser(user);
@@ -81,14 +81,6 @@ namespace Seen.Controllers
         {
             await userService.AddSighting(id, sighting);
             return Ok(sighting);
-        }
-
-        [HttpPost]
-        [Route("newuser")]
-        public async Task<IActionResult> NewUser([FromBody]User user)
-        {
-            await userService.AddUser(user);
-            return Ok(user);
         }
 
         [HttpPost]

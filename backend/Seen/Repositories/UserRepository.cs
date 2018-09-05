@@ -40,8 +40,9 @@ namespace Seen.Repositories
 
         public async Task<User> SelectByIdAsync(string id)
         {
-            var filter = Builders<User>.Filter.Eq("Id", new ObjectId(id));
-            return await users.Find(filter).FirstOrDefaultAsync();
+            var filter = Builders<User>.Filter.Eq("FbId", id);
+            var result = await users.Find(filter).FirstOrDefaultAsync();
+            return result;
         }
 
         public async Task<List<User>> SelectByFieldAsync(string field, string value)
