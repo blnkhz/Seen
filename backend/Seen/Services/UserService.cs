@@ -53,6 +53,20 @@ namespace Seen.Services
             await userRepository.UpdateUserAsync(id, filterszek); 
         }
 
+        public async Task<List<LocationDTO>> ReadAllLocations()
+        {
+            var users = await userRepository.SelectAllAsync();
+            List<LocationDTO> locations = new List<LocationDTO>();
+            for (int i = 0; i < users.Count; i++)
+            {
+                for (int j = 0; j < users[i].Sightings.Count; j++)
+                {
+                    locations.Add(new LocationDTO { Latitude = users[i].Sightings[j].Latitude, Longitude = users[i].Sightings[j].Longitude });
+                }
+            }
+            return locations;
+        }
+
         public async Task<List<Sighting>> Finder(string id)
         {
             var aSzemely = await userRepository.SelectByIdAsync(id);
@@ -74,7 +88,7 @@ namespace Seen.Services
                 aLista = await userRepository.SelectAllAsync();
             }
 
-            var results = new List<Sighting>();
+            var users = new List<Sighting>();
             for (int i = 0; i < aLista.Count; i++)
             {
 
@@ -83,11 +97,11 @@ namespace Seen.Services
                     int realmatch = MatchMeister(aSzemely, aLista[i].Sightings[j]);
                     if (realmatch >= 4 && aSzemely.Email != aLista[i].Email)
                     {
-                        results.Add(aLista[i].Sightings[j]);
+                        users.Add(aLista[i].Sightings[j]);
                     }
                 }
             }
-            return results;
+            return users;
         }
 
         public int MatchMeister (User user, Sighting sighting)

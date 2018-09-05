@@ -60,10 +60,19 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("findmyonlyonetruepair/{id}")]
-        public IActionResult FindThem(string id)
+        [Route("matchfilter/{id}")]
+        public async Task<IActionResult> FindThem(string id)
         {
-            return Ok(userService.Finder(id));
+            var foundIt = await userService.Finder(id);
+            return Ok(foundIt);
+        }
+
+        [HttpGet]
+        [Route("loginmap")]
+        public async Task<IActionResult> LoginMap ()
+        {
+            var locations = await userService.ReadAllLocations();
+            return Ok(locations);
         }
 
         [HttpPost]
