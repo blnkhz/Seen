@@ -5,28 +5,27 @@ import "react-day-picker/lib/style.css";
 class PostForm extends React.Component {
   constructor() {
     super();
-    this.bindEverything();
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
       gender: "",
-      socialHandle: "",
       hairColor: "",
       hairStyle: "",
       glasses: "",
       message: "",
+      build: "",
+      height: "",
+      age: "",
       latitude: null,
       longitude: null,
       day: undefined
     };
   }
 
-  bindEverything() {
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDayClick = this.handleDayClick.bind(this);
-  }
-
   handleChange(event) {
     console.log(event.target.name, event.target.value);
+
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -46,12 +45,14 @@ class PostForm extends React.Component {
     event.preventDefault();
     const data = {
       gender: this.state.gender,
-      socialHandle: this.state.socialHandle,
       hairColor: this.state.hairColor,
       hairStyle: this.state.hairStyle,
       glasses: this.state.glasses,
       message: this.state.message,
       latitude: this.props.savedPos.lat,
+      build: this.state.build,
+      age: this.state.age,
+      height: this.state.height,
       longitude: this.props.savedPos.lng,
       day: this.state.selectedDay.toLocaleDateString()
     };
@@ -78,20 +79,12 @@ class PostForm extends React.Component {
             disabledDays={{ after: new Date() }}
           />
         </div>
-        <input
-          type="text"
-          name="socialHandle"
-          placeholder=" your social handle"
-          onChange={this.handleChange}
-          className="handleinput"
-          required
-        />
         <div className="dropsdowns">
           <select
             className="dropdown-newsighting"
             name="gender"
             onChange={this.handleChange}
-            required
+            required="required"
           >
             <option value="" disabled selected>
               gender
@@ -99,6 +92,49 @@ class PostForm extends React.Component {
             <option value="female">female</option>
             <option value="male">male</option>
             <option value="other">other</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="age"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              age
+            </option>
+            <option value="teen">teen</option>
+            <option value="young adult">young adult</option>
+            <option value="adult">adult</option>
+            <option value="middle-aged">middle-aged</option>
+            <option value="elderly">elderly</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="height"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              height
+            </option>
+            <option value="short">short</option>
+            <option value="average">average</option>
+            <option value="tall">tall</option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="build"
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled selected>
+              build
+            </option>
+            <option value="thin">thin</option>
+            <option value="average">average</option>
+            <option value="athletic">athletic</option>
+            <option value="ripped">ripped</option>
+            <option value="chubby">chubby</option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -142,15 +178,15 @@ class PostForm extends React.Component {
             <option value="true">yes</option>
             <option value="false">no</option>
           </select>
+          <textarea
+            rows="4"
+            type="text"
+            name="message"
+            placeholder=" anything else?"
+            onChange={this.handleChange}
+            className="messageinput"
+          />
         </div>
-        <textarea
-          rows="4"
-          type="text"
-          name="message"
-          placeholder=" anything else?"
-          onChange={this.handleChange}
-          className="messageinput"
-        />
         <a href="/itsamatch">
           <button type="submit" className="submit-button">
             FIND THEM
