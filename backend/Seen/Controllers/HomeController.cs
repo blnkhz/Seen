@@ -6,6 +6,7 @@ using Seen.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Seen.Controllers
@@ -95,11 +96,28 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("updateuser/{id}")]
-        public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]List<FilterJson> filterszek)
+        [Route("updateuserwithfilter/{id}")]
+        public async Task<IActionResult> UpdateUserWithFilter([FromRoute] string id, [FromBody]List<FilterJson> filterszek)
         {
-            await userService.UpdateUser(id, filterszek);
+            await userService.UpdateUserWithFilter(id, filterszek);
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]User user)
+        {
+            List<FilterJson> filterszek = new List<FilterJson>();
+            //await userService.UpdateUser(id, user);
+            foreach (PropertyInfo prop in user.GetType().GetProperties())
+            {
+                if (prop.GetValue(user) != null && prop.GetValue(user).ToString() != "" && prop.PropertyType == typeof(string))
+                {
+                    filterszek.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
+                }
+            }
+            await userService.UpdateUserWithFilter(id, filterszek);
+            return RedirectToAction("BeenSeen");
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Seen.Repositories
 
             var result = await users.UpdateOneAsync(filter, update);
         }
-        public async Task UpdateUserAsync(string id, List<FilterJson> filterszek)
+        public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filterszek)
         {
             var filter = Builders<User>.Filter.Eq("FbId", id);
             for (int i = 0; i < filterszek.Count; i++)
@@ -67,6 +67,13 @@ namespace Seen.Repositories
                 var result = await users.UpdateOneAsync(filter, update);
             }
         }
-        
+
+        public async Task UpdateUserAsync(string id, User user)
+        {
+            var filter = Builders<User>.Filter.Eq("FbId", id);
+            var update = Builders<User>.Update.Set("UserHairColor", user.UserHairColor);
+            var result = await users.UpdateOneAsync(filter, update);
+        }
+
     }
 }

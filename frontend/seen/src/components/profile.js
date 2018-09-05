@@ -20,7 +20,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:52210/getuser/karamell", {
+    fetch("http://localhost:52210/getuser/" + this.props.user.fbId, {
       mode: "cors"})
       .then(response => response.json())
       .then(json => {
@@ -62,7 +62,7 @@ class Profile extends React.Component {
     };
     console.log(data);
 
-    fetch("http://localhost:52210/updateuser/727112864294707", {
+    fetch("http://localhost:52210/updateuser/" + this.props.user.fbId, {
       method: "POST",
       body: JSON.stringify(data),
       mode: "cors",
@@ -82,13 +82,11 @@ class Profile extends React.Component {
           placeholder=" your social handle"
           onChange={this.handleChange}
           className="handleinput"
-          required
         />
         <select
           className="dropdown-newsighting"
           name="userGender"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             gender
@@ -101,7 +99,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="orientation"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             orientation?
@@ -115,7 +112,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userAge"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             age
@@ -131,7 +127,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userHeight"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             height
@@ -145,7 +140,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userBuild"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             build
@@ -161,7 +155,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userHairColor"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             hair color
@@ -177,7 +170,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userHairStyle"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             hairstyle
@@ -191,7 +183,6 @@ class Profile extends React.Component {
           className="dropdown-newsighting"
           name="userGlasses"
           onChange={this.handleChange}
-          required
         >
           <option value="" disabled selected>
             glasses?

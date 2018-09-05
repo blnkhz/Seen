@@ -52,9 +52,14 @@ namespace Seen.Services
             await userRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
         }
 
-        public async Task UpdateUser (string id, List<FilterJson> filterszek)
+        public async Task UpdateUserWithFilter (string id, List<FilterJson> filterszek)
         {
-            await userRepository.UpdateUserAsync(id, filterszek); 
+            await userRepository.UpdateUserWithFilterAsync(id, filterszek); 
+        }
+
+        public async Task UpdateUser(string id, User user)
+        {
+            await userRepository.UpdateUserAsync(id, user);
         }
 
         public async Task<List<LocationDTO>> ReadAllLocations()
