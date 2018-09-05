@@ -3,6 +3,7 @@ using Seen.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Seen.Services
@@ -52,14 +53,17 @@ namespace Seen.Services
             await userRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
         }
 
-        public async Task UpdateUserWithFilter (string id, List<FilterJson> filterszek)
+        public async Task UpdateUserWithFilter (string id, User user)
         {
+            List<FilterJson> filterszek = new List<FilterJson>();
+            foreach (PropertyInfo prop in user.GetType().GetProperties())
+            {
+                if (prop.GetValue(user) != null && prop.GetValue(user).ToString() != "" && prop.PropertyType == typeof(string))
+                {
+                    filterszek.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
+                }
+            }
             await userRepository.UpdateUserWithFilterAsync(id, filterszek); 
-        }
-
-        public async Task UpdateUser(string id, User user)
-        {
-            await userRepository.UpdateUserAsync(id, user);
         }
 
         public async Task<List<LocationDTO>> ReadAllLocations()
