@@ -91,7 +91,6 @@ class PostForm extends React.Component {
             </option>
             <option value="female">female</option>
             <option value="male">male</option>
-            <option value="other">other</option>
           </select>
           <select
             className="dropdown-newsighting"
