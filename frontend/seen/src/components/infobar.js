@@ -6,6 +6,8 @@ const Readgend = ({ userDatas, indexke }) => (
       (element, UnIndex) =>
         UnIndex === indexke ? (
           <div className="seenswercontainer">
+          <h4 className="seenpropertytitle">ezvotvajon?</h4>
+            <img className="infobar-picture" src={element.picture} alt="hmmm"></img>
             <h4 className="seenpropertytitle">WHEN?</h4>
             <p className="seenswer">{element.day}</p>
             <h4 className="seenpropertytitle">GENDER</h4>
