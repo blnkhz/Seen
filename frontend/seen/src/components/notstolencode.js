@@ -52,6 +52,7 @@ class PostForm extends React.Component {
       build: this.state.build,
       age: this.state.age,
       height: this.state.height,
+      picture: this.props.picture,
       longitude: this.props.savedPos.lng,
       day: this.state.selectedDay.toLocaleDateString()
     };
@@ -70,7 +71,7 @@ class PostForm extends React.Component {
 
   render() {
     return (
-      <form method="post" onSubmit={this.handleSubmit} className="formchild">
+      <form method="post" onSubmit={this.handleSubmit} className="formchild" onKeyDown="Enter">
         <div>
           <DayPicker
             onDayClick={this.handleDayClick}
@@ -186,7 +187,7 @@ class PostForm extends React.Component {
           />
         </div>
         <a href="/">
-          <button type="submit" className="submit-button" style={{ visibility: this.state.selectedDay != undefined ? 'visible': 'hidden'}}>
+          <button type="submit" className="submit-button" style={{ visibility: this.state.selectedDay !== undefined ? 'visible': 'hidden'}}>
             FIND THEM
           </button>
         </a>

@@ -92,7 +92,7 @@ class App extends Component {
     const Add = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar"/>
-        <AddMap FbId={this.state.fbUser.fbId}/>
+        <AddMap FbId={this.state.fbUser.fbId} picture={this.state.fbUser.picture}/>
         <FooterPage />
       </div>
     );
