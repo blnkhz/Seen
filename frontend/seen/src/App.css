@@ -26,11 +26,10 @@
 }
 
 .formchild {
-  /* width: 25%; */
   color: #6489c2;
-  margin-top: 10%;
+  margin-top: 10vh;
   order: 2;
-  min-width: 300px;
+  min-width: 350px;
   right: 0;
 }
 
@@ -378,6 +377,9 @@ option[value=""][disabled] {
   letter-spacing: 0.2em;
 }
 
+.dropsdowns {
+  max-width: 350px;
+}
 .handleinput {
   width: 90%;
   background-color: #dadada;
