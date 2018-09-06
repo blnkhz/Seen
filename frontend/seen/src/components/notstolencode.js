@@ -175,8 +175,8 @@ class PostForm extends React.Component {
             <option value="" disabled selected>
               glasses?
             </option>
-            <option value="true">yes</option>
-            <option value="false">no</option>
+            <option value="yes">yes</option>
+            <option value="no">no</option>
           </select>
           <textarea
             rows="4"
