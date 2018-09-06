@@ -28,6 +28,8 @@ namespace Seen.Models
         public string Build { get; set; }
         [BsonElement("Age")]
         public string Age { get; set; }
+		[BsonElement("Picture")]
+        public string Picture { get; set; }
         [BsonElement("Message")]
         public string Message { get; set; }
     }
