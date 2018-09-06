@@ -161,7 +161,7 @@ class Profile extends React.Component {
           </option>
           <option value="black">black</option>
           <option value="brown">brown</option>
-          <option value="blond(e)">blonde</option>
+          <option value="blond(e)">blond(e)</option>
           <option value="red">red</option>
           <option value="special">special</option>
           <option value="salt n pepper">salt n pepper</option>
