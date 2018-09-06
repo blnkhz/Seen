@@ -41,7 +41,6 @@ class Renderz extends Component {
               <Infos
                 indexke={this.state.infoIndex}
                 userDatas={this.state.users}
-                className="infochild"
               />
             </div>
           }
