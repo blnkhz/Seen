@@ -96,7 +96,7 @@ namespace Seen.Services
                 aLista = await userRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
-            if (aSzemely.Orientation == "bi")
+            if (aSzemely.Orientation == "bisexual")
             {
                 aLista = await userRepository.SelectAllAsync();
             }
