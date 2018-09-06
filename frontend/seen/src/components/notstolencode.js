@@ -30,12 +30,11 @@ class PostForm extends React.Component {
   }
 
   handleDayClick(day, { selected, disabled }) {
-    if (disabled)
-    {
+    if (disabled) {
       return;
     }
     if (selected) {
-      this.setState({ selectedDay: undefined });
+      this.setState({ selectedDay: new Date() });
       return;
     }
     this.setState({ selectedDay: day });
@@ -178,7 +177,7 @@ class PostForm extends React.Component {
             <option value="no">no</option>
           </select>
           <textarea
-            rows="4"
+            rows="3"
             type="text"
             name="message"
             placeholder=" anything else?"
@@ -186,8 +185,8 @@ class PostForm extends React.Component {
             className="messageinput"
           />
         </div>
-        <a href="/itsamatch">
-          <button type="submit" className="submit-button">
+        <a href="/">
+          <button type="submit" className="submit-button" style={{ visibility: this.state.selectedDay != undefined ? 'visible': 'hidden'}}>
             FIND THEM
           </button>
         </a>
