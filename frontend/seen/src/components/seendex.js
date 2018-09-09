@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {  NavLink } from "mdbreact";
 
-class Seendex extends React.Component {
+class Seendex extends Component {
   render() {
     return (
       <div className="seendex">

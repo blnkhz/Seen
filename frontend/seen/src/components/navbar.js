@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class NavbarFeatures extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class NavbarFeatures extends Component {
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand>
           <NavLink to="/">
-            <img src={require("../assets/seenlogo.png")} height="40px" />
+            <img src={require("../assets/seenlogo.png")} height="40px" alt="fbprofilepic" />
           </NavLink>
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}

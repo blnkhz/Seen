@@ -13,7 +13,6 @@ import LoginPage from "./components/loginpage.js";
 import Profile from "./components/profile.js";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import {  NavLink } from "mdbreact";
 
 class App extends Component {
   constructor() {
