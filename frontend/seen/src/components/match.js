@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ItsAMatch extends React.Component {
+class ItsAMatch extends Component {
 
   render() {
     return (
