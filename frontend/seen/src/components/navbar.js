@@ -50,7 +50,7 @@ class NavbarFeatures extends Component {
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand>
           <NavLink to="/">
-            <img src={require("../assets/seenlogo.png")} height="40px" alt="fbprofilepic" />
+            <img src={require("../assets/seenlogo.png")} height="40px" alt="seenlogo" />
           </NavLink>
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}

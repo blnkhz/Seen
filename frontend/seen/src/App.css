@@ -208,27 +208,38 @@
 
 .aboutus {
   margin-top: 100px;
-  content: "";
-  display: table;
-  clear: both;
   height: 95vh;
+}
+
+#about-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .abouttitle {
   font-size: 3em;
   letter-spacing: 0.5em;
+  text-align: center;
 }
 
 .aboutperson {
   margin-top: 50px;
-  float: left;
-  width: 33.33%;
+}
+
+@media (max-width: 800px) {
+  #about-container {
+    flex-direction: column;
+    margin-bottom: 100px;
+    align-content: center;
+    text-align: center;
+  }
 }
 
 .aboutphoto {
   border-radius: 50%;
   border: #dc82a4 4px solid;
-  width: inherit;
+  max-width: 250px;
+  min-width: 20%;
 }
 
 .aboutintroduction {
