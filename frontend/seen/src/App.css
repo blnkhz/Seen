@@ -438,14 +438,15 @@ option[value=""][disabled] {
 
 .profile-greeter {
   letter-spacing: 0.2em;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .profile-page-photo {
-  margin-top: 50px;
+  margin-top: 30px;
   border-radius: 50%;
   border: #dc82a4 5px solid;
-  width: 20%;
+  max-width: 250px;
+  min-width: 20%;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
