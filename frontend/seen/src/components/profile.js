@@ -19,17 +19,18 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch("http://localhost:52210/getuser/" + this.props.user.fbId, {
-      mode: "cors"})
+      mode: "cors"
+    })
       .then(response => response.json())
       .then(json => {
         console.log(json);
         this.setState({
-          fbuser: json,
+          fbuser: json
         });
-      })
-    };
+      });
+  }
 
   toggleHidden() {
     this.setState({
@@ -75,11 +76,11 @@ class Profile extends Component {
   render() {
     const { user } = this.props;
     const menjekMarAludni = (
-      <form method="post" onSubmit={this.handleSubmit} className="formchild">
+      <form method="post" onSubmit={this.handleSubmit} className="profile-form">
         <input
           type="text"
           name="socialHandle"
-          placeholder=" your social handle"
+          placeholder={this.state.fbuser.socialHandle}
           onChange={this.handleChange}
           className="handleinput"
         />
@@ -88,8 +89,8 @@ class Profile extends Component {
           name="userGender"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            gender
+          <option value="" disabled selected hidden>
+            Gender? {this.state.fbuser.userGender}
           </option>
           <option value="female">female</option>
           <option value="male">male</option>
@@ -100,8 +101,8 @@ class Profile extends Component {
           name="orientation"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            orientation?
+          <option value="" disabled selected hidden>
+            Orientation? {this.state.fbuser.orientation}
           </option>
           <option value="straight">straight</option>
           <option value="gay">gay</option>
@@ -113,8 +114,8 @@ class Profile extends Component {
           name="userAge"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            age
+          <option value="" disabled selected hidden>
+            Age? {this.state.fbuser.userAge}
           </option>
           <option value="teen">teen</option>
           <option value="young adult">young adult</option>
@@ -128,8 +129,8 @@ class Profile extends Component {
           name="userHeight"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            height
+          <option value="" disabled selected hidden>
+            Height? {this.state.fbuser.userHeight}
           </option>
           <option value="short">short</option>
           <option value="average">average</option>
@@ -141,8 +142,8 @@ class Profile extends Component {
           name="userBuild"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            build
+          <option value="" disabled selected hidden>
+            Build? {this.state.fbuser.userBuild}
           </option>
           <option value="thin">thin</option>
           <option value="average">average</option>
@@ -156,8 +157,8 @@ class Profile extends Component {
           name="userHairColor"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            hair color
+          <option value="" disabled selected hidden>
+            Hair color? {this.state.fbuser.userHairColor}
           </option>
           <option value="black">black</option>
           <option value="brown">brown</option>
@@ -171,8 +172,8 @@ class Profile extends Component {
           name="userHairStyle"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            hairstyle
+          <option value="" disabled selected hidden>
+            Hairstyle? {this.state.fbuser.userHairStyle}
           </option>
           <option value="short">short</option>
           <option value="medium">medium</option>
@@ -184,47 +185,47 @@ class Profile extends Component {
           name="userGlasses"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected>
-            glasses?
+          <option value="glasses?" disabled selected hidden>
+            Glasses? {this.state.fbuser.userGlasses}
           </option>
           <option value="yes">yes</option>
           <option value="no">no</option>
         </select>
 
         <a href="">
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-changes-button">
             save changes
           </button>
         </a>
       </form>
     );
     const profile = (
-      <div className="profile-container">
+      <div id="profile-container">
         <h1 className="profile-greeter">hello, {user.name}</h1>
         <img src={user.picture} className="profile-page-photo" alt="avatar" />
         <h3 className="profile-details-title">profile details</h3>
         <div className="profile-details-container">
           <div className="user-details">
-            <h4>details</h4>
-            <p>id: {this.state.fbuser.fbId}</p>
             <p>email: {this.state.fbuser.email}</p>
             <p>gender: {this.state.fbuser.userGender}</p>
             <p>handle: {this.state.fbuser.socialHandle}</p>
-            <p>haircolor: {this.state.fbuser.userHairColor}</p>
-            <p>hairstyle: {this.state.fbuser.userHairStyle}</p>
+            <p>
+              hair: {this.state.fbuser.userHairColor},{" "}
+              {this.state.fbuser.userHairStyle}
+            </p>
             <p>glasses: {this.state.fbuser.userGlasses}</p>
             <p>height: {this.state.fbuser.userHeight}</p>
             <p>build: {this.state.fbuser.userBuild}</p>
             <p>age: {this.state.fbuser.userAge}</p>
             <p>orientation: {this.state.fbuser.orientation}</p>
           </div>
-          <div className="user-preferences">
-            <h4>ezekapreferenciak</h4>
-            <p>I am looking for [zsender/ek]</p>
-            <p>(idevalamiopciomodositot)</p>
-            <button onClick={this.toggleHidden.bind(this)}>click</button>
-            {!this.state.isHidden && menjekMarAludni}
-          </div>
+          <button
+            onClick={this.toggleHidden.bind(this)}
+            className="edit-profile"
+          >
+            EDIT
+          </button>
+          {!this.state.isHidden && menjekMarAludni}
         </div>
       </div>
     );

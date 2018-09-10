@@ -432,12 +432,13 @@ option[value=""][disabled] {
 
 /* PROFILE */
 
-.profile-container {
+#profile-container {
   margin-top: 10%;
 }
 
 .profile-greeter {
   letter-spacing: 0.2em;
+  margin-top: 2em;
 }
 
 .profile-page-photo {
@@ -453,30 +454,54 @@ option[value=""][disabled] {
   opacity: 0.75;
 }
 
-.profile-details-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-
 .profile-details-title {
   margin-top: 50px;
   letter-spacing: 0.2em;
 }
 
+.profile-details-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-form {
+  width: 50%;
+  align-content: center;
+  margin: auto;
+}
+
+@media (max-width: 450px) {
+  .profile-form {
+    width: 100%;
+  }
+}
+
+.submit-changes-button {
+  margin-top: 20px;
+  margin-bottom: 7vh;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
+  border-radius: 0px;
+  display: block;
+  height: 50px;
+  width: 100%;
+}
+
 .user-details {
   order: 1;
   margin-top: 50px;
-  float: left;
-  width: 33.33%;
 }
 
-.user-preferences {
-  order: 2;
-  margin-top: 50px;
-  float: left;
-  width: 33.33%;
+.edit-profile {
+  margin-bottom: 50px;
+  font-weight: 300;
+  color: #fff;
+  border: 0;
+  background: #6489c2;
+  box-shadow: none;
 }
 
 /* LOGIN */
