@@ -150,8 +150,17 @@
   width: 45%;
 }
 
-.icon-text {
-  display: none;
+.seendex-icon .icon-text {
+  visibility: hidden;
+}
+
+.seendex-icon:hover .icon-text {
+  visibility: visible;
+  font-weight: 400;
+  color: #c1c1c1;
+  letter-spacing: 0.5em;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .index-icon {
