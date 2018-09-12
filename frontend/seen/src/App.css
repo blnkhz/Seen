@@ -207,6 +207,13 @@
     max-width: 30vw;
     filter: grayscale(0%);
   }
+  .index-icon:hover {
+    padding: 5%;
+    max-width: 30vw;
+  }
+  .seendex-icon:hover .icon-text {
+    visibility: hidden;
+  }
 }
 
 .footer {
@@ -234,10 +241,18 @@
   font-size: 3em;
   letter-spacing: 0.5em;
   text-align: center;
+  color: #6489c2;
 }
 
 .aboutperson {
   margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 450px) {
+  .abouttitle {
+    font-size: 2em;
+  }
 }
 
 @media (max-width: 800px) {
@@ -269,6 +284,8 @@
   font-size: 2em;
 }
 
+/* FAQ */
+
 .faqtitle {
   margin-top: 100px;
   font-size: 3em;
@@ -298,6 +315,20 @@
 .endoffaq {
   text-align: center;
   margin-top: 30px;
+}
+
+@media (max-width: 450px) {
+  .faqtitle {
+    font-size: 2em;
+  }
+
+  .faquestion {
+    font-weight: 400;
+  }
+
+  .faqanswer {
+    margin-left: 10px;
+  }
 }
 
 .stillhavequestions {
