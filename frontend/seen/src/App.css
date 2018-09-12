@@ -129,8 +129,15 @@
   padding: 58px;
 }
 
+/* INDEX PAGE */
+
+#seendex {
+  height: 95vh;
+}
+
 .seenlogo {
   width: 40%;
+  max-height: 30vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -143,56 +150,63 @@
   width: 45%;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 10% 10%;
-  grid-gap: 25%;
-  background-color: #fff;
-  color: #444;
-  margin-left: 30%;
-  margin-top: 50px;
-}
-
-.box .text {
+.seendex-icon .icon-text {
   visibility: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.seendex-icon:hover .icon-text {
+  visibility: visible;
+  font-weight: 400;
+  color: #c1c1c1;
   letter-spacing: 0.5em;
-  font-weight: 800;
-  color: #6489c2;
   text-align: right;
-}
-
-.box,
-.beenseen,
-.haveseen,
-.faq,
-.about {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  width: 13vw;
-  -webkit-transition: width 0.5s, filter 0.5s;
-  transition: width 0.5s, filter 0.5s;
-}
-
-.box:hover,
-.beenseen:hover,
-.haveseen:hover,
-.faq:hover,
-.about:hover {
-  -webkit-filter: grayscale(0%);
-  filter: grayscale(0%);
-  opacity: 1;
-  width: 15vw;
-  visibility: visible;
-}
-
-.box:hover .text {
-  visibility: visible;
   white-space: nowrap;
 }
 
-.icon {
-  width: 70%;
+.index-icon {
+  padding: 10%;
+  max-width: 15vw;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: padding 0.5s, filter 0.5s;
+  transition: padding 0.5s, filter 0.5s;
+}
+
+.index-icon:hover {
+  padding: 0;
+  max-width: 15vw;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+#seendex-container {
+  width: 40vw;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+@media (max-width: 450px) {
+  .seenlogo {
+    width: 70%;
+    max-height: 20vh;
+  }
+
+  #seendex-container {
+    height: 75vh;
+    width: 80vw;
+  }
+
+  .index-icon {
+    padding: 5%;
+    max-width: 30vw;
+    filter: grayscale(0%);
+  }
 }
 
 .footer {
@@ -345,6 +359,7 @@
   font-size: 75%;
   text-align: center;
   word-wrap: break-word;
+  max-width: 80%;
 }
 
 .it-is-me-button {
@@ -438,14 +453,15 @@ option[value=""][disabled] {
 
 .profile-greeter {
   letter-spacing: 0.2em;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .profile-page-photo {
-  margin-top: 50px;
+  margin-top: 30px;
   border-radius: 50%;
   border: #dc82a4 5px solid;
-  width: 20%;
+  max-width: 250px;
+  min-width: 20%;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
