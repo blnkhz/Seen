@@ -157,13 +157,17 @@
 .index-icon {
   padding: 10%;
   max-width: 15vw;
-  -webkit-transition: padding 0.5s;
-  transition: padding 0.5s;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: padding 0.5s, filter 0.5s;
+  transition: padding 0.5s, filter 0.5s;
 }
 
 .index-icon:hover {
   padding: 0;
   max-width: 15vw;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
 }
 
 #seendex-container {
