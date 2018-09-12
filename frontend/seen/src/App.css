@@ -191,28 +191,11 @@
   padding-top: 5%;
 }
 
-/* #seendex-container > div {
-  display: flex;
-  flex-basis: calc(50% - 40px);
-  justify-content: center;
-  flex-direction: row;
-}
-
-#seendex-container > div > div {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-} */
-
 @media (max-width: 450px) {
   .seenlogo {
     width: 70%;
     max-height: 20vh;
   }
-
-  /* .icon-text {
-    display: inline;
-  } */
 
   #seendex-container {
     height: 75vh;
@@ -222,6 +205,7 @@
   .index-icon {
     padding: 5%;
     max-width: 30vw;
+    filter: grayscale(0%);
   }
 }
 
