@@ -15,21 +15,19 @@ class Profile extends React.Component {
       userAge: "",
       orientation: "",
       isHidden: true,
-      fbuser: ""
+      fbuser: null
     };
   }
 
-  componentDidMount(){
-    fetch("http://localhost:52210/getuser/" + this.props.user.fbId, {
+  componentWillMount = () =>{
+    if(this.props.id === null){
+      console.log("THE WOLRDO!!!")
+    }else{
+    fetch("http://localhost:52210/getuser/" + this.props.id, {
       mode: "cors"})
-      .then(response => response.json())
-      .then(json => {
-        console.log(json);
-        this.setState({
-          fbuser: json,
-        });
-      })
-    };
+      .then(res => res.json())
+      .then(fbuser => {this.setState({ fbuser })});
+  }};
 
   toggleHidden() {
     this.setState({
@@ -73,6 +71,9 @@ class Profile extends React.Component {
   }
 
   render() {
+    if (this.props.id === null || this.state.fbuser === null) {
+      return <div>SANYIKAM!</div>;}
+      
     const { user } = this.props;
     const menjekMarAludni = (
       <form method="post" onSubmit={this.handleSubmit} className="formchild">
@@ -198,37 +199,34 @@ class Profile extends React.Component {
         </a>
       </form>
     );
-    const profile = (
-      <div className="profile-container">
-        <h1 className="profile-greeter">hello, {user.name}</h1>
-        <img src={user.picture} className="profile-page-photo" alt="avatar" />
-        <h3 className="profile-details-title">profile details</h3>
-        <div className="profile-details-container">
-          <div className="user-details">
-            <h4>details</h4>
-            <p>id: {this.state.fbuser.fbId}</p>
-            <p>email: {this.state.fbuser.email}</p>
-            <p>gender: {this.state.fbuser.userGender}</p>
-            <p>handle: {this.state.fbuser.socialHandle}</p>
-            <p>haircolor: {this.state.fbuser.userHairColor}</p>
-            <p>hairstyle: {this.state.fbuser.userHairStyle}</p>
-            <p>glasses: {this.state.fbuser.userGlasses}</p>
-            <p>height: {this.state.fbuser.userHeight}</p>
-            <p>build: {this.state.fbuser.userBuild}</p>
-            <p>age: {this.state.fbuser.userAge}</p>
-            <p>orientation: {this.state.fbuser.orientation}</p>
-          </div>
-          <div className="user-preferences">
-            <h4>ezekapreferenciak</h4>
-            <p>I am looking for [zsender/ek]</p>
-            <p>(idevalamiopciomodositot)</p>
-            <button onClick={this.toggleHidden.bind(this)}>click</button>
-            {!this.state.isHidden && menjekMarAludni}
-          </div>
-        </div>
-      </div>
-    );
-    return profile;
+       return (      <div className="profile-container">
+       <h1 className="profile-greeter">hello, {user.name}</h1>
+       <img src={user.picture} className="profile-page-photo" alt="avatar" />
+       <h3 className="profile-details-title">profile details</h3>
+       <div className="profile-details-container">
+         <div className="user-details">
+           <h4>details</h4>
+           <p>id: {this.state.fbuser.fbId}</p>
+           <p>email: {this.state.fbuser.email}</p>
+           <p>gender: {this.state.fbuser.userGender}</p>
+           <p>handle: {this.state.fbuser.socialHandle}</p>
+           <p>haircolor: {this.state.fbuser.userHairColor}</p>
+           <p>hairstyle: {this.state.fbuser.userHairStyle}</p>
+           <p>glasses: {this.state.fbuser.userGlasses}</p>
+           <p>height: {this.state.fbuser.userHeight}</p>
+           <p>build: {this.state.fbuser.userBuild}</p>
+           <p>age: {this.state.fbuser.userAge}</p>
+           <p>orientation: {this.state.fbuser.orientation}</p>
+         </div>
+         <div className="user-preferences">
+           <h4>ezekapreferenciak</h4>
+           <p>I am looking for [zsender/ek]</p>
+           <p>(idevalamiopciomodositot)</p>
+           <button onClick={this.toggleHidden.bind(this)}>click</button>
+           {!this.state.isHidden && menjekMarAludni}
+         </div>
+       </div>
+     </div>)
   }
 }
 

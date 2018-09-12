@@ -21,7 +21,7 @@ class App extends Component {
     this.state = {
       fbUser:{
         isLoggedIn: false,
-        fbId: "",
+        fbId: null,
         name: "",
         email: "",
         picture: "",

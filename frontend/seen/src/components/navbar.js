@@ -41,7 +41,7 @@ class NavbarFeatures extends Component {
   render() {
     const kep = (
       <img
-        src={this.props.user.picture}
+        src={this.props.user.picture === "" ? require("../assets/loading2.gif") : this.props.user.picture}
         className="profilePicture"
         alt="avatar"
       />

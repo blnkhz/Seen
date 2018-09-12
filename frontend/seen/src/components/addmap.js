@@ -24,7 +24,7 @@ const GoogleMapExample = withGoogleMap(props => (
     <Marker
       onClick={(open) => props.onMarker(open)}
       onRightClick={() => props.onMapRightClick()}
-      icon={require("../assets/pin2.svg")}
+      icon={require("../assets/pin1.svg")}
       {...props.marker}
     />
   </GoogleMap>

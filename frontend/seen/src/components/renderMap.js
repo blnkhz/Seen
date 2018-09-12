@@ -13,7 +13,7 @@ class Renderz extends Component {
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     fetch("http://localhost:52210/matchfilter/" + this.props.FbId, {
       mode: "cors"
     })
@@ -33,6 +33,9 @@ class Renderz extends Component {
   }
 
   render() {
+  //   if (this.props.FbId === null) {
+  //     return <div />
+  // }
     return (
       <div className="flexdaddy">
         <Sidebar
