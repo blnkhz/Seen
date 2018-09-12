@@ -1,61 +1,55 @@
 import React, { Component } from "react";
-import {  NavLink } from "mdbreact";
+import { NavLink } from "mdbreact";
+
+const ezleszenittenazigaziindex = (
+  <div id="seendex">
+    <NavLink to="/">
+      <img
+        src={require("../assets/seenlogo.png")}
+        className="seenlogo"
+        alt="s e e n"
+      />
+    </NavLink>
+    <div id="seendex-container">
+      <NavLink to="/add">
+        <img
+          src={require("../assets/plusz.png")}
+          className="index-icon add-logo"
+          alt="add"
+        />
+      </NavLink>
+      <p className="icon-text">HAVE SEEN</p>
+      <NavLink to="/sightings">
+        <img
+          src={require("../assets/nagyito2.png")}
+          className="index-icon sightings-logo"
+          alt="sightings"
+        />
+      </NavLink>
+      <p className="icon-text">BEEN SEEN?</p>
+      <NavLink to="/faq">
+        <img
+          src={require("../assets/pinkquestion.png")}
+          className="index-icon faq-logo"
+          alt="faq"
+        />
+      </NavLink>
+      <p className="icon-text">FAQ</p>
+      <NavLink to="/about">
+        <img
+          src={require("../assets/mink.png")}
+          className="index-icon about-logo"
+          alt="about"
+        />
+      </NavLink>
+      <p className="icon-text">ABOUT</p>
+    </div>
+  </div>
+);
 
 class Seendex extends Component {
   render() {
-    return (
-      <div className="seendex">
-        <NavLink to="/">
-          <img
-            src={require("../assets/seenlogo.png")}
-            className="seenlogo"
-            alt="s e e n"
-          />
-        </NavLink>
-        <div class="wrapper">
-          <div className="box a">
-            <NavLink to="/add">
-              <img
-                src={require("../assets/plusz.png")}
-                className="haveseen"
-                alt="have seen"
-              />
-            </NavLink>
-            <p class="text">HAVE SEEN</p>
-          </div>
-          <div className="box b">
-            <NavLink to="/sightings">
-              <img
-                src={require("../assets/nagyito2.png")}
-                className="beenseen"
-                alt="been seen?"
-              />
-            </NavLink>
-            <p class="text">BEEN SEEN?</p>
-          </div>
-          <div className="box c">
-            <NavLink to="/faq">
-              <img
-                src={require("../assets/pinkquesttion.png")}
-                className="faq"
-                alt="faq"
-              />
-            </NavLink>
-            <p class="text">FAQ</p>
-          </div>
-          <div className="box d">
-            <NavLink to="/about">
-              <img
-                src={require("../assets/mink.png")}
-                className="about"
-                alt="about"
-              />
-            </NavLink>
-            <p class="text">ABOUT US</p>
-          </div>
-        </div>
-      </div>
-    );
+    return ezleszenittenazigaziindex;
   }
 }
 

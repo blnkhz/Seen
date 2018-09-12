@@ -129,8 +129,15 @@
   padding: 58px;
 }
 
+/* INDEX PAGE */
+
+#seendex {
+  height: 95vh;
+}
+
 .seenlogo {
   width: 40%;
+  max-height: 30vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -143,56 +150,66 @@
   width: 45%;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 10% 10%;
-  grid-gap: 25%;
-  background-color: #fff;
-  color: #444;
-  margin-left: 30%;
-  margin-top: 50px;
+.icon-text {
+  display: none;
 }
 
-.box .text {
-  visibility: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.5em;
-  font-weight: 800;
-  color: #6489c2;
-  text-align: right;
+.index-icon {
+  padding: 10%;
+  max-width: 15vw;
+  -webkit-transition: padding 0.5s;
+  transition: padding 0.5s;
 }
 
-.box,
-.beenseen,
-.haveseen,
-.faq,
-.about {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  width: 13vw;
-  -webkit-transition: width 0.5s, filter 0.5s;
-  transition: width 0.5s, filter 0.5s;
+.index-icon:hover {
+  padding: 0;
+  max-width: 15vw;
 }
 
-.box:hover,
-.beenseen:hover,
-.haveseen:hover,
-.faq:hover,
-.about:hover {
-  -webkit-filter: grayscale(0%);
-  filter: grayscale(0%);
-  opacity: 1;
-  width: 15vw;
-  visibility: visible;
+#seendex-container {
+  width: 40vw;
+  height: 60vh;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  padding-top: 5%;
 }
 
-.box:hover .text {
-  visibility: visible;
-  white-space: nowrap;
+/* #seendex-container > div {
+  display: flex;
+  flex-basis: calc(50% - 40px);
+  justify-content: center;
+  flex-direction: row;
 }
 
-.icon {
-  width: 70%;
+#seendex-container > div > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+} */
+
+@media (max-width: 450px) {
+  .seenlogo {
+    width: 70%;
+    max-height: 20vh;
+  }
+
+  /* .icon-text {
+    display: inline;
+  } */
+
+  #seendex-container {
+    height: 75vh;
+    width: 80vw;
+  }
+
+  .index-icon {
+    padding: 5%;
+    max-width: 30vw;
+  }
 }
 
 .footer {
@@ -345,6 +362,7 @@
   font-size: 75%;
   text-align: center;
   word-wrap: break-word;
+  max-width: 80%;
 }
 
 .it-is-me-button {
