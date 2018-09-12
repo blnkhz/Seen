@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "mdbreact";
 
-const ezleszenittenazigaziindex = (
+const seendex = (
   <div id="seendex">
     <NavLink to="/">
       <img
@@ -57,7 +57,7 @@ const ezleszenittenazigaziindex = (
 
 class Seendex extends Component {
   render() {
-    return ezleszenittenazigaziindex;
+    return seendex;
   }
 }
 
