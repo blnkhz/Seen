@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace Seen.Models
 {
     public class Sighting
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
         [BsonElement("Longitude")]
         public double Longitude { get; set; }
         [BsonElement("Latitude")]
@@ -37,7 +40,7 @@ namespace Seen.Models
 
         public Sighting()
         {
-
+            Id = ObjectId.GenerateNewId();
             HelloItsMes = new List<HelloItsMe>();
         }
     }

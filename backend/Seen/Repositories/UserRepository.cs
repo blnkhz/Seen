@@ -58,6 +58,15 @@ namespace Seen.Repositories
 
             var result = await users.UpdateOneAsync(filter, update);
         }
+
+        public async Task UpdateHelloItsMeAsync(string id, int sightingIndex, HelloItsMe helloItsMe)
+        {
+            var filter = Builders<User>.Filter.Eq("FbId", id);
+            var update = Builders<User>.Update.AddToSet(items => items.Sightings[sightingIndex].HelloItsMes, helloItsMe);
+
+            var result = await users.UpdateOneAsync(filter, update);
+        }
+
         public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filterszek)
         {
             var filter = Builders<User>.Filter.Eq("FbId", id);
