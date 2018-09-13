@@ -97,10 +97,8 @@
 .navlink {
   font-weight: 300;
   letter-spacing: 0.1 em;
-  -webkit-transition: font-weight 0.5s;
-  transition: font-weight 0.5s;
-  -webkit-transition: letter-spacing 0.5s;
-  transition: letter-spacing 0.5s;
+  -webkit-transition: font-weight 0.5s, letter-spacing 0.5s;
+  transition: font-weight 0.5s, letter-spacing 0.5s;
 }
 
 .navlink:hover {
@@ -335,10 +333,8 @@
   letter-spacing: 0.3em;
   font-weight: 300;
   color: #6489c2;
-  -webkit-transition: font-weight 0.5s;
-  transition: font-weight 0.5s;
-  -webkit-transition: letter-spacing 0.5s;
-  transition: letter-spacing 0.5s;
+  -webkit-transition: font-weight 0.5s, letter-spacing 0.5s;
+  transition: font-weight 0.5s, letter-spacing 0.5s;
   padding-bottom: 50px;
   font-size: 1.5em;
 }
