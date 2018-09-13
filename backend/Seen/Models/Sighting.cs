@@ -35,7 +35,7 @@ namespace Seen.Models
         public string Picture { get; set; }
         [BsonElement("Message")]
         public string Message { get; set; }
-        [BsonElement("HelloItsMe")]
+        [BsonElement("HelloItsMes")]
         public List<HelloItsMe> HelloItsMes { get; set; }
 
         public Sighting()
