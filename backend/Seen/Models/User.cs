@@ -34,7 +34,6 @@ namespace Seen.Models
         public string Orientation { get; set; }
         [BsonElement("Sightings")]
         public List<Sighting> Sightings { get; set; }
-
         public User()
         {
             Sightings = new List<Sighting>();
