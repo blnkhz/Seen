@@ -1,7 +1,10 @@
 import React from "react";
 
-const Readgend = ({ userDatas, indexke }) => (
+
+const Readgend = ({ socialHandle, userDatas, indexke }) => (
   <div>
+    
+    {console.log(socialHandle)}
     {userDatas.map(
       (element, UnIndex) =>
         UnIndex === indexke ? (
