@@ -53,6 +53,25 @@ namespace Seen.Services
             await userRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
         }
 
+        public async Task AddHelloItsMe(string id, HelloItsMe helloItsMe)
+        {
+            var allUsers = await userRepository.SelectAllAsync();
+            string selectedUsersId = null;
+            int sightingIndex = 0;
+            for (int i = 0; i < allUsers.Count; i++)
+            {
+                for (int j = 0; j < allUsers[i].Sightings.Count; j++)
+                {
+                    if (id == allUsers[i].Sightings[j].Id.ToString())
+                    {
+                        selectedUsersId = allUsers[i].FbId.ToString();
+                       sightingIndex = j;
+                    }
+                }
+            }
+            await userRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
+        }
+
         public async Task UpdateUserWithFilter (string id, User user)
         {
             List<FilterJson> filterszek = new List<FilterJson>();

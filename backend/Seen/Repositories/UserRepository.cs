@@ -17,7 +17,7 @@ namespace Seen.Repositories
 
         public UserRepository()
         {
-            client = new MongoClient("mongodb://18.216.102.17:27017/");
+            client = new MongoClient("mongodb://localhost:27017/");
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
@@ -58,6 +58,15 @@ namespace Seen.Repositories
 
             var result = await users.UpdateOneAsync(filter, update);
         }
+
+        public async Task UpdateHelloItsMeAsync(string id, int sightingIndex, HelloItsMe helloItsMe)
+        {
+            var filter = Builders<User>.Filter.Eq("FbId", id);
+            var update = Builders<User>.Update.AddToSet(items => items.Sightings[sightingIndex].HelloItsMes, helloItsMe);
+
+            var result = await users.UpdateOneAsync(filter, update);
+        }
+
         public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filterszek)
         {
             var filter = Builders<User>.Filter.Eq("FbId", id);

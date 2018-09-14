@@ -102,5 +102,13 @@ namespace Seen.Controllers
             await userService.UpdateUserWithFilter(id, user);
             return RedirectToAction("BeenSeen");
         }
+
+        [HttpPost]
+        [Route("addhelloitsme/{id}")]
+        public async Task<IActionResult> AddHelloItsMe([FromRoute] string id, [FromBody] HelloItsMe helloitsme)
+        {
+            await userService.AddHelloItsMe(id, helloitsme);
+            return RedirectToAction("BeenSeen");
+        }
     }
 }
