@@ -14,7 +14,7 @@ class Renderz extends Component {
   }
 
   componentWillMount = () => {
-    fetch("http://localhost:52210/matchfilter/" + this.props.FbId, {
+    fetch("http://localhost:52210/matchfilter/" + this.props.FbUser.fbId, {
       mode: "cors"
     })
       .then(res => res.json())
@@ -33,15 +33,15 @@ class Renderz extends Component {
   }
 
   render() {
-  //   if (this.props.FbId === null) {
-  //     return <div />
-  // }
     return (
+      
+      console.log(this.props.FbUser.socialHandle),
       <div className="flexdaddy">
         <Sidebar
           sidebar={
             <div className="infochild">
               <Infos
+                socialHandle={this.props.FbUser.socialHandle}
                 indexke={this.state.infoIndex}
                 userDatas={this.state.users}
               />

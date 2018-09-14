@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
-class PostForm extends Component {
+class PostForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);

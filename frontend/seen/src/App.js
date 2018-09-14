@@ -6,7 +6,6 @@ import About from "./components/about.js";
 import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
 import FooterPage from "./components/footer.js";
-import Infobar from "./components/infobar.js";
 import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
@@ -24,6 +23,7 @@ class App extends Component {
         name: "",
         email: "",
         picture: "",
+        socialHandle: ""
       }
     };
   }
@@ -45,10 +45,16 @@ class App extends Component {
       "Content-Type": "application/json"
     })
   }).catch(error => `Error: ${error}`);
+  fetch("http://localhost:52210/getuser/" + this.state.fbUser.fbId, {
+    mode: "cors"})
+    .then(res => res.json())
+    .then(retek => {this.setState(prevState => ({fbUser: {...prevState.fbUser, socialHandle: retek.socialHandle }}))});
  };
 
 
+
   render() {
+    console.log(this.state.fbUser)
     const Login = () => (
       <div className="App">
         <LoginPage>
@@ -60,18 +66,11 @@ class App extends Component {
     const Sightings = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Renderz FbId={this.state.fbUser.fbId} />
+        <Renderz FbUser={this.state.fbUser} />
         <FooterPage />
       </div>
     );
     
-    const Infobarr = () => (
-      <div className="App">
-        <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Infobar />
-        <FooterPage />
-      </div>
-    );
     const AboutUs = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -150,10 +149,6 @@ class App extends Component {
       {
         path: "/faq",
         component: FrequentlyAsked
-      },
-      {
-        path: "/infobar",
-        component: Infobarr
       },
       {
         path: "/contact",
