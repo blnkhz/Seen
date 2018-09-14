@@ -11,13 +11,14 @@ import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
 import Profile from "./components/profile.js";
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      loaded: false,
       fbUser:{
         isLoggedIn: false,
         fbId: null,
@@ -45,7 +46,14 @@ class App extends Component {
       "Content-Type": "application/json"
     })
   }).catch(error => `Error: ${error}`);
+  this.setState({loaded: true})
  };
+
+ puki =()=>{
+   <Redirect to="login"/>
+   this.setState({loaded: true});
+   console.log('sanci');
+ }
 
 
   render() {
@@ -125,50 +133,8 @@ class App extends Component {
         <FooterPage />
       </div>
     );
-    
-    const routes = [
-      {
-        path: "/sightings",
-        component: Sightings
-      },
-      {
-        path: "/login",
-        component: Login
-      },
-      {
-        path: "/add",
-        component: Add
-      },
-      {
-        path: "/",
-        component: Start
-      },
-      {
-        path: "/about",
-        component: AboutUs
-      },
-      {
-        path: "/faq",
-        component: FrequentlyAsked
-      },
-      {
-        path: "/infobar",
-        component: Infobarr
-      },
-      {
-        path: "/contact",
-        component: Contact
-      },
-      {
-        path: "/itsamatch",
-        component: Match
-      },
-      {
-        path: "/profile",
-        component: ProfilePage
-      }
-    ];
-
+    console.log(this.state.fbUser.isLoggedIn);
+    console.log(this.state.loaded);
     return (
       <Router>
         <div>
@@ -177,18 +143,23 @@ class App extends Component {
             autoLoad={true}
             fields="name,email,picture.height(480)"
             callback={this.responseFacebook}
+            onFailure={this.puki}
             render={renderProps => (
               <h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3>
             )}
           />
-          {routes.map(route => (
-            <Route
-              key={route.path}
-              exact
-              path={route.path}
-              component={route.component}
-            />
-          ))}
+          <Switch>
+            <Route exact path="/profile"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <ProfilePage/> : <Login/>)}/>
+            <Route exact path="/itsamatch" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Match/> : <Login/>)}/>
+            <Route exact path="/contact" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Contact/> : <Login/>)}/>
+            <Route exact path="/infobar" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Infobarr/> : <Login/>)}/>
+            <Route exact path="/faq" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <FrequentlyAsked/> : <Login/>)}/>
+            <Route exact path="/about"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <AboutUs/> : <Login/>)}/>
+            <Route exact path="/"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
+            <Route exact path="/add"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Add/> : <Login/>)}/>
+            <Route exact path="/login" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
+            <Route exact path="/sightings" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Sightings/> : <Login/>)}/>
+          </Switch>
         </div>
       </Router>
     );
