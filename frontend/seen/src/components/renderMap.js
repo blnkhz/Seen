@@ -34,8 +34,6 @@ class Renderz extends Component {
 
   render() {
     return (
-      
-      console.log(this.props.FbUser.socialHandle),
       <div className="flexdaddy">
         <Sidebar
           sidebar={
