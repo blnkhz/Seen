@@ -149,16 +149,16 @@ class App extends Component {
             )}
           />
           <Switch>
-            <Route exact path="/profile"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <ProfilePage/> : <Login/>)}/>
-            <Route exact path="/itsamatch" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Match/> : <Login/>)}/>
-            <Route exact path="/contact" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Contact/> : <Login/>)}/>
-            <Route exact path="/infobar" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Infobarr/> : <Login/>)}/>
-            <Route exact path="/faq" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <FrequentlyAsked/> : <Login/>)}/>
-            <Route exact path="/about"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <AboutUs/> : <Login/>)}/>
-            <Route exact path="/"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
-            <Route exact path="/add"  render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Add/> : <Login/>)}/>
-            <Route exact path="/login" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
-            <Route exact path="/sightings" render={() => (this.state.loaded && this.state.fbUser.isLoggedIn ? <Sightings/> : <Login/>)}/>
+            <Route exact path="/profile"  render={() => ( this.state.fbUser.isLoggedIn ? <ProfilePage/> : <Login/>)}/>
+            <Route exact path="/itsamatch" render={() => ( this.state.fbUser.isLoggedIn ? <Match/> : <Login/>)}/>
+            <Route exact path="/contact" render={() => ( this.state.fbUser.isLoggedIn ? <Contact/> : <Login/>)}/>
+            <Route exact path="/infobar" render={() => ( this.state.fbUser.isLoggedIn ? <Infobarr/> : <Login/>)}/>
+            <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked/> : <Login/>)}/>
+            <Route exact path="/about"  render={() => ( this.state.fbUser.isLoggedIn ? <AboutUs/> : <Login/>)}/>
+            <Route exact path="/"  render={() => ( this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
+            <Route exact path="/add"  render={() => (this.state.fbUser.isLoggedIn ? <Add/> : <Login/>)}/>
+            <Route exact path="/login" render={() => ( this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
+            <Route exact path="/sightings" render={() => ( this.state.fbUser.isLoggedIn ? <Sightings/> : <Login/>)}/>
           </Switch>
         </div>
       </Router>
