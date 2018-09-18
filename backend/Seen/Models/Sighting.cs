@@ -10,7 +10,7 @@ namespace Seen.Models
     public class Sighting
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
         [BsonElement("Longitude")]
         public double Longitude { get; set; }
         [BsonElement("Latitude")]
@@ -40,7 +40,7 @@ namespace Seen.Models
 
         public Sighting()
         {
-            Id = ObjectId.GenerateNewId();
+            Id = ObjectId.GenerateNewId().ToString();
             HelloItsMes = new List<HelloItsMe>();
         }
     }

@@ -1,13 +1,11 @@
 import React from "react";
 
-
 const Readgend = ({ socialHandle, userDatas, indexke }) => (
   <div>
-    
-    {console.log(socialHandle)}
     {userDatas.map(
       (element, UnIndex) =>
         UnIndex === indexke ? (
+          console.log(element.id),
           <div className="seenswercontainer">
           <h4 className="infotitle">looks familiar?</h4>
             <img className="infobar-picture" src={element.picture} alt="hmmm"></img>
