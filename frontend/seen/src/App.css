@@ -609,3 +609,11 @@ option[value=""][disabled] {
 .login-button:hover {
   background-color: #6489c2;
 }
+
+.load {
+  position: absolute;
+  bottom: 30%;
+  left: 40%;
+  margin: auto;
+  align-content: center;
+}

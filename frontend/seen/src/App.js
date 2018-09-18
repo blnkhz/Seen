@@ -9,8 +9,9 @@ import FooterPage from "./components/footer.js";
 import Renderz from "./components/renderMap.js";
 import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
+import Loading from "./components/loading.js";
 import Profile from "./components/profile.js";
-import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
     super();
     this.state = {
       loaded: false,
-      fbUser:{
+      fbUser: {
         isLoggedIn: false,
         fbId: null,
         name: "",
@@ -30,46 +31,48 @@ class App extends Component {
   }
 
   responseFacebook = response => {
-   this.setState({fbUser:{
-      isLoggedIn: true,
-      fbId: response.userID,
-      name: response.name,
-      email: response.email,
-      picture: response.picture.data.url
-    }
-   });
-   fetch("http://localhost:52210/adduser", {
-    method: "POST",
-    body: JSON.stringify(this.state.fbUser),
-    mode: "cors",
-    headers: new Headers({
-      "Content-Type": "application/json"
+    this.setState({
+      fbUser: {
+        isLoggedIn: true,
+        fbId: response.userID,
+        name: response.name,
+        email: response.email,
+        picture: response.picture.data.url
+      }
+    });
+    fetch("http://localhost:52210/adduser", {
+      method: "POST",
+      body: JSON.stringify(this.state.fbUser),
+      mode: "cors",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    }).catch(error => `Error: ${error}`);
+    fetch("http://localhost:52210/getuser/" + this.state.fbUser.fbId, {
+      mode: "cors"
     })
-  }).catch(error => `Error: ${error}`);
-  fetch("http://localhost:52210/getuser/" + this.state.fbUser.fbId, {
-    mode: "cors"})
-    .then(res => res.json())
-    .then(retek => {this.setState(prevState => ({fbUser: {...prevState.fbUser, socialHandle: retek.socialHandle }}))});
- };
-
- puki =()=>{
-   <Redirect to="login"/>
-   this.setState({loaded: true});
-   console.log('sanci');
- }
-
-
+      .then(res => res.json())
+      .then(retek => { this.setState(prevState => ({ fbUser: { ...prevState.fbUser, socialHandle: retek.socialHandle } })) });
+  };
 
   render() {
-    console.log(this.state.fbUser)
-    const Login = () => (
+    console.log(this.state.fbUser);
+
+    const Load = () => (
       <div className="App">
-        <LoginPage>
-        </LoginPage>
+        <NavbarFeatures user={this.state.fbUser} className="navbar"/>
+        <Loading />
         <FooterPage />
       </div>
     );
-    
+
+    const Login = () => (
+      <div className="App">
+        <LoginPage/>
+        <FooterPage />
+      </div>
+    );
+
     const Sightings = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -77,7 +80,7 @@ class App extends Component {
         <FooterPage />
       </div>
     );
-    
+
     const AboutUs = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -85,7 +88,7 @@ class App extends Component {
         <FooterPage />
       </div>
     );
-    
+
     const FrequentlyAsked = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -93,37 +96,37 @@ class App extends Component {
         <FooterPage />
       </div>
     );
-    
+
     const Add = () => (
       <div className="App">
-        <NavbarFeatures user={this.state.fbUser} className="navbar"/>
-        <AddMap FbId={this.state.fbUser.fbId} picture={this.state.fbUser.picture}/>
+        <NavbarFeatures user={this.state.fbUser} className="navbar" />
+        <AddMap FbId={this.state.fbUser.fbId} picture={this.state.fbUser.picture} />
         <FooterPage />
       </div>
     );
-    
+
     const Start = () => (
       <div>
         <Seendex />
         <FooterPage />
       </div>
     );
-    
+
     const ProfilePage = () => (
       <div className="App">
-        <NavbarFeatures user={this.state.fbUser} className="navbar"/>
-        <Profile user={this.state.fbUser} id={this.state.fbUser.fbId}  />
+        <NavbarFeatures user={this.state.fbUser} className="navbar" />
+        <Profile user={this.state.fbUser} id={this.state.fbUser.fbId} />
         <FooterPage />
       </div>
     );
-    
+
     const Contact = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
         <FooterPage />
       </div>
     );
-    
+
     const Match = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -143,19 +146,20 @@ class App extends Component {
             callback={this.responseFacebook}
             onFailure={this.puki}
             render={renderProps => (
-              <h3 onClick={renderProps.onClick} style={{display:!this.state.fbUser.isLoggedIn ? 'block': 'none'}}  className="login-button">login</h3>
+              <h3 onClick={renderProps.onClick} style={{ display: !this.state.fbUser.isLoggedIn ? 'block' : 'none' }} className="login-button">login</h3>
             )}
           />
           <Switch>
-            <Route exact path="/profile"  render={() => ( this.state.fbUser.isLoggedIn ? <ProfilePage/> : <Login/>)}/>
-            <Route exact path="/itsamatch" render={() => ( this.state.fbUser.isLoggedIn ? <Match/> : <Login/>)}/>
-            <Route exact path="/contact" render={() => ( this.state.fbUser.isLoggedIn ? <Contact/> : <Login/>)}/>
-            <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked/> : <Login/>)}/>
-            <Route exact path="/about"  render={() => ( this.state.fbUser.isLoggedIn ? <AboutUs/> : <Login/>)}/>
-            <Route exact path="/"  render={() => ( this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
-            <Route exact path="/add"  render={() => (this.state.fbUser.isLoggedIn ? <Add/> : <Login/>)}/>
-            <Route exact path="/login" render={() => ( this.state.fbUser.isLoggedIn ? <Start/> : <Login/>)}/>
-            <Route exact path="/sightings" render={() => ( this.state.fbUser.isLoggedIn ? <Sightings/> : <Login/>)}/>
+            <Route exact path="/profile" render={() => (this.state.fbUser.isLoggedIn ? <ProfilePage /> : <Load />)} />
+            <Route exact path="/itsamatch" render={() => (this.state.fbUser.isLoggedIn ? <Match /> : <Load />)} />
+            <Route exact path="/contact" render={() => (this.state.fbUser.isLoggedIn ? <Contact /> : <Load />)} />
+            <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked /> : <Load />)} />
+            <Route exact path="/about" render={() => (this.state.fbUser.isLoggedIn ? <AboutUs /> : <Load />)} />
+            <Route exact path="/" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
+            <Route exact path="/add" render={() => (this.state.fbUser.isLoggedIn ? <Add /> : <Load />)} />
+            <Route exact path="/login" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
+            <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />)} />
+            <Route exact path="/load" render={() => ( <Load />)} />
           </Switch>
         </div>
       </Router>
