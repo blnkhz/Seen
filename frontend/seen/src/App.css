@@ -486,7 +486,7 @@ option[value=""][disabled] {
 .profile-page-photo {
   margin-top: 30px;
   border-radius: 50%;
-  border: #dc82a4 5px solid;
+  border: #dc82a4 3px solid;
   max-width: 250px;
   min-width: 20%;
   -webkit-transition: opacity 0.5s;
