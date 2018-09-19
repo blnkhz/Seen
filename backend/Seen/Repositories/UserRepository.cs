@@ -17,7 +17,7 @@ namespace Seen.Repositories
 
         public UserRepository()
         {
-            client = new MongoClient("mongodb://localhost:27017/");
+			client = new MongoClient("mongodb:http://18.216.102.17");
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
