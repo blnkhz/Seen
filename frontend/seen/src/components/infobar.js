@@ -1,14 +1,18 @@
 import React from "react";
 
 class Readgend extends React.Component{
+  constructor() {
+    super();
+  this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleSubmit(event) {
     event.preventDefault();
     const data = {
       socialHandle: this.props.FbUser.socialHandle,
-      img: this.props.FbUser.picture
+      picture: this.props.FbUser.picture
     };
 
-  fetch("http://localhost:52210/updateuser/" + this.props.userDatas[this.props.indexke].id, {
+  fetch("http://localhost:52210/addhelloitsme/" + this.props.userDatas[this.props.indexke].id, {
     method: "POST",
     body: JSON.stringify(data),
     mode: "cors",
@@ -16,8 +20,13 @@ class Readgend extends React.Component{
       "Content-Type": "application/json"
     })
   }).catch(error => `Error: ${error}`);
+  
+  console.log("haha, hihi")
 }
+
   render(){
+    
+{console.log(this.props.FbUser.picture)}
     return(
       <div>
       {this.props.userDatas.map(
@@ -30,12 +39,9 @@ class Readgend extends React.Component{
               <p className="seenswer">{element.day}</p>
               <h4 className="seenpropertytitle">MESSAGE</h4>
               <p className="seenswer">{element.message}</p>
-              <a href="/itsamatch">
-                <button type="submit" className="it-is-me-button">
+                <button type="submit" onClick={this.handleSubmit} className="it-is-me-button">
                   YES!
                 </button>
-              </a>
-              {console.log(this.props.userDatas[this.props.indexke].id)}
             </div>
           ) : null
           
