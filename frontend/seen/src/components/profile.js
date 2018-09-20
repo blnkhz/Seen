@@ -27,7 +27,6 @@ class Profile extends Component {
         mode: "cors"})
         .then(res => res.json())
         .then(fbuser => {this.setState({ fbuser })});
-        alert('DURR');
   }};
 
   toggleHidden() {
