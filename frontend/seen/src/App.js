@@ -131,7 +131,7 @@ class App extends Component {
     const Mecsek = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Meccsek style={{marginTop:'200px'}}/>
+        <Meccsek id={this.state.fbUser.fbId} style={{marginTop:'200px'}}/>
         <FooterPage />
       </div>
     );
