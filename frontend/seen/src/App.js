@@ -11,6 +11,7 @@ import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
 import Loading from "./components/loading.js";
 import Profile from "./components/profile.js";
+import Meccsek from "./components/mecsek.jsx";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
@@ -127,10 +128,10 @@ class App extends Component {
       </div>
     );
 
-    const Match = () => (
+    const Mecsek = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <ItsAMatch />
+        <Meccsek style={{marginTop:'200px'}}/>
         <FooterPage />
       </div>
     );
@@ -151,7 +152,7 @@ class App extends Component {
           />
           <Switch>
             <Route exact path="/profile" render={() => (this.state.fbUser.isLoggedIn ? <ProfilePage /> : <Load />)} />
-            <Route exact path="/itsamatch" render={() => (this.state.fbUser.isLoggedIn ? <Match /> : <Load />)} />
+            <Route exact path="/itsamatch" render={() => (this.state.fbUser.isLoggedIn ? <Mecsek /> : <Load />)} />
             <Route exact path="/contact" render={() => (this.state.fbUser.isLoggedIn ? <Contact /> : <Load />)} />
             <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked /> : <Load />)} />
             <Route exact path="/about" render={() => (this.state.fbUser.isLoggedIn ? <AboutUs /> : <Load />)} />

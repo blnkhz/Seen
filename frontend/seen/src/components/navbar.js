@@ -88,6 +88,9 @@ class NavbarFeatures extends Component {
                     <NavLink className="navlink" to="/profile">
                       profile
                     </NavLink>
+                    <NavLink className="navlink" to="/itsamatch">
+                      sightings
+                    </NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>

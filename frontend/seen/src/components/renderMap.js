@@ -40,7 +40,7 @@ class Renderz extends Component {
           sidebar={
             <div className="infochild">
               <Infos
-                socialHandle={this.props.FbUser.socialHandle}
+                FbUser={this.props.FbUser}
                 indexke={this.state.infoIndex}
                 userDatas={this.state.users}
               />
