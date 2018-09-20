@@ -21,7 +21,6 @@ const GoogleMapExample = withGoogleMap(props => (
     }}
   >
     {props.users.map((element, kulcs) => (
-      <div>
         <Marker
           key={kulcs}
           defaultAnimation="2"
@@ -32,12 +31,7 @@ const GoogleMapExample = withGoogleMap(props => (
           onClick={() =>
             props.setKeksz(kulcs)
           }
-        >
-          {props.showInfoWindow && (<InfoWindow position={props.boxPosValue}>
-            <span>krumpli</span>
-          </InfoWindow>)}
-        </Marker>
-      </div>
+        />
     ))}
   </GoogleMap>
 ));
@@ -49,7 +43,6 @@ class Map extends Component {
     centerke: { lat: 47.507589, lng: 19.066128 },
     showInfoWindow: false,
     indkeksz: 0,
-    ind: 0
   };
 
   handleMouseOver = e => {
@@ -62,10 +55,6 @@ class Map extends Component {
       showInfoWindow: false
     });
   };
-
-  getBoxPos(data, lato, lngo) {
-    this.setState({centerke: {lat:lato, lng:lngo}, ind: data})
-  }
 
   setIndkeksz = (data) =>{
     this.setState({indkeksz: data});
