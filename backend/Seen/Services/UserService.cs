@@ -62,17 +62,36 @@ namespace Seen.Services
             {
                 for (int j = 0; j < allUsers[i].Sightings.Count; j++)
                 {
-                    if (id == allUsers[i].Sightings[j].Id.ToString())
+                    if (allUsers[i].Sightings[j].HelloItsMes.Count == 0)
                     {
-                        selectedUsersId = allUsers[i].FbId.ToString();
-                       sightingIndex = j;
+                        if (id == allUsers[i].Sightings[j].Id.ToString())
+                        {
+                            selectedUsersId = allUsers[i].FbId.ToString();
+                            sightingIndex = j;
+                        }
+                    }
+                    else
+                    {
+                        for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
+                        {
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle)
+                            {
+                                selectedUsersId = null;
+                                break;
+                            }
+                            if (id == allUsers[i].Sightings[j].Id.ToString())
+                            {
+                                selectedUsersId = allUsers[i].FbId.ToString();
+                                sightingIndex = j;
+                            }
+                        }
                     }
                 }
             }
             await userRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
         }
 
-        public async Task UpdateUserWithFilter (string id, User user)
+        public async Task UpdateUserWithFilter(string id, User user)
         {
             List<FilterJson> filterszek = new List<FilterJson>();
             foreach (PropertyInfo prop in user.GetType().GetProperties())
@@ -82,7 +101,7 @@ namespace Seen.Services
                     filterszek.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
                 }
             }
-            await userRepository.UpdateUserWithFilterAsync(id, filterszek); 
+            await userRepository.UpdateUserWithFilterAsync(id, filterszek);
         }
 
         public async Task<List<LocationDTO>> ReadAllLocations()
@@ -136,7 +155,7 @@ namespace Seen.Services
             return users;
         }
 
-        public int MatchMeister (User user, Sighting sighting)
+        public int MatchMeister(User user, Sighting sighting)
         {
             int count = 0;
             count = (user.UserHairColor == sighting.HairColor) ? count + 1 : count;
