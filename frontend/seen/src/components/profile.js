@@ -21,12 +21,13 @@ class Profile extends Component {
 
   componentWillMount = () =>{
     if(this.props.id === null){
-      console.log("THE WOLRDO!!!")
+      console.log("THE WOLRDO!!!");
     }else{
-    fetch("http://localhost:52210/getuser/" + this.props.id, {
-      mode: "cors"})
-      .then(res => res.json())
-      .then(fbuser => {this.setState({ fbuser })});
+      fetch("http://localhost:52210/getuser/" + this.props.id, {
+        mode: "cors"})
+        .then(res => res.json())
+        .then(fbuser => {this.setState({ fbuser })});
+        alert('DURR');
   }};
 
   toggleHidden() {

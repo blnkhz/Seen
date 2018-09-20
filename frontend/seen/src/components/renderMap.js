@@ -26,6 +26,7 @@ class Renderz extends Component {
       infoIndex: dataFromChild2
     });
     this.onSetSidebarOpen(true);
+    console.log(this.state.infoIndex);
   };
 
   onSetSidebarOpen(open) {
@@ -51,7 +52,7 @@ class Renderz extends Component {
           pullRight={true}
         />
         <div className="mapchild">
-          <Map onClick={this.onChild2ButtonClick} users={this.state.users} />
+          <Map setKeksz={this.onChild2ButtonClick} users={this.state.users} />
         </div>
       </div>
     );

@@ -49,6 +49,7 @@ const faqContent = (
       </a>
     </div>
   </div>
+  
 );
 
 class Faq extends Component {

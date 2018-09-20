@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTooltip from 'react-tooltip'
 
 class Readgend extends React.Component{
   constructor() {
@@ -20,8 +21,6 @@ class Readgend extends React.Component{
       "Content-Type": "application/json"
     })
   }).catch(error => `Error: ${error}`);
-  
-  console.log("haha, hihi")
 }
 
   render(){
