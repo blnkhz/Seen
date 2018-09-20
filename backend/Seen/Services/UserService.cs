@@ -74,13 +74,15 @@ namespace Seen.Services
                     {
                         for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
                         {
-                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle != helloItsMe.SocialHandle)
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle)
                             {
-                                if (id == allUsers[i].Sightings[j].Id.ToString())
-                                {
-                                    selectedUsersId = allUsers[i].FbId.ToString();
-                                    sightingIndex = j;
-                                }
+                                selectedUsersId = null;
+                                break;
+                            }
+                            if (id == allUsers[i].Sightings[j].Id.ToString())
+                            {
+                                selectedUsersId = allUsers[i].FbId.ToString();
+                                sightingIndex = j;
                             }
                         }
                     }
