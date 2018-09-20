@@ -33,7 +33,7 @@ class Readgend extends React.Component{
           UnIndex === this.props.indexke ? (
             <div className="seenswercontainer">
             <h4 className="infotitle">looks familiar?</h4>
-              <img className="infobar-picture" src={element.picture} alt="hmmm"></img>
+              <img data-tip data-for="aha" className="infobar-picture" src={element.picture} alt="hmmm"></img>
               <h4 className="seenpropertytitle">WHEN?</h4>
               <p className="seenswer">{element.day}</p>
               <h4 className="seenpropertytitle">MESSAGE</h4>
@@ -41,6 +41,7 @@ class Readgend extends React.Component{
                 <button type="submit" onClick={this.handleSubmit} className="it-is-me-button">
                   YES!
                 </button>
+                <ReactTooltip id="aha">I Like Your Smell!</ReactTooltip>
             </div>
           ) : null
           
