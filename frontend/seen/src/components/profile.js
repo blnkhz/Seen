@@ -193,7 +193,7 @@ class Profile extends Component {
         </select>
 
         <a href="">
-          <button type="submit" className="submit-changes-button">
+          <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
             save changes
           </button>
         </a>
