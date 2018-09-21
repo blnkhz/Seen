@@ -1,6 +1,8 @@
 import React from "react";
 import ReactTooltip from 'react-tooltip'
 
+const niceThings = ['You look good', 'What a beauty', 'You smell nice']
+
 class Readgend extends React.Component{
   constructor() {
     super();
@@ -34,7 +36,6 @@ class Readgend extends React.Component{
 }
 
   render(){
-    
 {console.log(this.props.FbUser.picture)}
     return(
       <div>
@@ -58,7 +59,7 @@ class Readgend extends React.Component{
                 <button type="submit" onClick={this.handleSubmit} className="it-is-me-button">
                   YES!
                 </button>
-                <ReactTooltip id="aha">I Like Your Smell!</ReactTooltip>
+                <ReactTooltip id="aha">{niceThings[Math.floor(Math.random() * niceThings.length)]}</ReactTooltip>
             </div>
           ) : null
           
