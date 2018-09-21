@@ -74,7 +74,7 @@ namespace Seen.Services
                     {
                         for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
                         {
-                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle)
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle && id == allUsers[i].Sightings[j].Id.ToString())
                             {
                                 selectedUsersId = null;
                                 break;
