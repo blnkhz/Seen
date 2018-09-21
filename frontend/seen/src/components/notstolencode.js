@@ -19,8 +19,14 @@ class PostForm extends React.Component {
       age: "",
       latitude: null,
       longitude: null,
-      day: undefined
+      day: undefined,
+      buttonPressed: false,
+      buttonValue: 'Sent'
     };
+  }
+
+  klikk(){
+    this.setState({buttonPressed: true});
   }
 
   handleChange(event) {
@@ -66,7 +72,8 @@ class PostForm extends React.Component {
         "Content-Type": "application/json"
       })
     }).catch(error => `Error: ${error}`);
-    console.log(this.props.FbId);
+    
+    this.klikk();
   }
 
   render() {
@@ -186,11 +193,10 @@ class PostForm extends React.Component {
             className="messageinput"
           />
         </div>
-        <a href="/">
-          <button type="submit" className="submit-button" style={{ visibility: this.state.selectedDay !== undefined ? 'visible': 'hidden'}}>
+          <span className="sentMessage" style={{display: !this.state.buttonPressed ? 'none' : 'block'}}>Sent!</span>
+          <button type="submit" className="submit-button" style={{ display: this.state.selectedDay !== undefined && !this.state.buttonPressed ? 'inline': 'none'}}>
             FIND THEM
           </button>
-        </a>
       </form>
     );
   }
