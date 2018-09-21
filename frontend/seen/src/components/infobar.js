@@ -5,13 +5,23 @@ class Readgend extends React.Component{
   constructor() {
     super();
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.handleChange = this.handleChange.bind(this);
+  this.state = {
+    message: ""
+  };
+  }
+  handleChange(event) {
+    console.log(event.target.name, event.target.value);
+    this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
     const data = {
       socialHandle: this.props.FbUser.socialHandle,
-      picture: this.props.FbUser.picture
+      picture: this.props.FbUser.picture,
+      message: this.state.message
     };
+    
 
   fetch("http://localhost:52210/addhelloitsme/" + this.props.userDatas[this.props.indexke].id, {
     method: "POST",
@@ -38,6 +48,13 @@ class Readgend extends React.Component{
               <p className="seenswer">{element.day}</p>
               <h4 className="seenpropertytitle">MESSAGE</h4>
               <p className="seenswer">{element.message}</p>
+              <textarea rows="3"
+            type="text"
+            name="message"
+            onChange={this.handleChange}
+            placeholder="Send a nice message!"
+            className="messageinput">
+            </textarea>
                 <button type="submit" onClick={this.handleSubmit} className="it-is-me-button">
                   YES!
                 </button>
