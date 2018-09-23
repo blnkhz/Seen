@@ -620,6 +620,36 @@ option[value=""][disabled] {
   align-content: center;
 }
 
-.sentMessage{
+.sentMessage {
   margin-bottom: 50px;
+}
+
+/* MECCSES KOMPONENS */
+
+.match-container {
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.match-day {
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.match-applicant {
+  background: -webkit-linear-gradient(rgb(255, 176, 205), rgb(255, 255, 255));
+  background: linear-gradient(rgb(255, 176, 205), rgb(255, 255, 255));
+  padding: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.match-text {
+  order: 2;
+}
+
+.match-picture {
+  order: 1;
 }

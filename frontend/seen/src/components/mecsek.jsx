@@ -23,18 +23,20 @@ class Mecsek extends Component {
     return (
       <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
-          <div id="match-container">
+          <div id="match">
             {element.helloItsMes.map(hello => (
-              <div className="match">
-                <h1 className="match-day">{element.day}</h1>
+              <div className="match-container">
+                <h4 className="match-day">{element.day}</h4>
                 <div className="match-applicant">
-                <h4 className="match-handle">{hello.socialHandle}</h4>
-                <img
-                  src={hello.picture}
-                  className="match-picture"
-                  alt="seems familiar?"
-                />
-                <p>{hello.message}</p>
+                  <img
+                    src={hello.picture}
+                    className="match-picture"
+                    alt="seems familiar?"
+                  />
+                  <div className="match-text">
+                    <h4 className="match-handle">{hello.socialHandle}</h4>
+                    <p className="match-message">{hello.message}</p>
+                  </div>
                 </div>
               </div>
             ))}
