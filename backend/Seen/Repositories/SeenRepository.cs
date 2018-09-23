@@ -19,9 +19,9 @@ namespace Seen.Repositories
             users = database.GetCollection<User>("Users");
         }
 
-        public async Task CreateAsync(User sighting)
+        public async Task CreateAsync(User user)
         {
-            await users.InsertOneAsync(sighting);
+            await users.InsertOneAsync(user);
         }
 
         public async Task DeleteAsync(string id)
@@ -48,10 +48,10 @@ namespace Seen.Repositories
             return await users.Find(filter).ToListAsync();
         }
 
-        public async Task UpdateSightingsAsync(string id, List<Sighting> sightingsok)
+        public async Task UpdateSightingsAsync(string id, List<Sighting> sightings)
         {
             var filter = Builders<User>.Filter.Eq("FbId", id);
-            var update = Builders<User>.Update.Set("Sightings", sightingsok);
+            var update = Builders<User>.Update.Set("Sightings", sightings);
 
             var result = await users.UpdateOneAsync(filter, update);
         }
@@ -64,12 +64,12 @@ namespace Seen.Repositories
             var result = await users.UpdateOneAsync(filter, update);
         }
 
-        public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filterszek)
+        public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filters)
         {
             var filter = Builders<User>.Filter.Eq("FbId", id);
-            for (int i = 0; i < filterszek.Count; i++)
+            for (int i = 0; i < filters.Count; i++)
             {
-                var update = Builders<User>.Update.Set(filterszek[i].Field, filterszek[i].Value);
+                var update = Builders<User>.Update.Set(filters[i].Field, filters[i].Value);
                 var result = await users.UpdateOneAsync(filter, update);
             }
         }

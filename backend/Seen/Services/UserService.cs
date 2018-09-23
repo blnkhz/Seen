@@ -46,15 +46,15 @@ namespace Seen.Services
 
         public async Task UpdateUserWithFilter(string id, User user)
         {
-            List<FilterJson> filterszek = new List<FilterJson>();
+            List<FilterJson> filters = new List<FilterJson>();
             foreach (PropertyInfo prop in user.GetType().GetProperties())
             {
                 if (prop.GetValue(user) != null && prop.GetValue(user).ToString() != "" && prop.PropertyType == typeof(string))
                 {
-                    filterszek.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
+                    filters.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
                 }
             }
-            await seenRepository.UpdateUserWithFilterAsync(id, filterszek);
+            await seenRepository.UpdateUserWithFilterAsync(id, filters);
         }
     }
 }

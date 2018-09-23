@@ -21,54 +21,53 @@ namespace Seen.Services
             await seenRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
         }
 
-        public async Task<List<LocationDTO>> ReadAllLocations()
+        public async Task<List<Location>> ReadAllLocations()
         {
             var users = await seenRepository.SelectAllAsync();
-            List<LocationDTO> locations = new List<LocationDTO>();
+            List<Location> locations = new List<Location>();
             for (int i = 0; i < users.Count; i++)
             {
                 for (int j = 0; j < users[i].Sightings.Count; j++)
                 {
-                    locations.Add(new LocationDTO { Latitude = users[i].Sightings[j].Latitude, Longitude = users[i].Sightings[j].Longitude });
+                    locations.Add(new Location { Latitude = users[i].Sightings[j].Latitude, Longitude = users[i].Sightings[j].Longitude });
                 }
             }
             return locations;
         }
         public async Task<List<Sighting>> Finder(string id)
         {
-            var aSzemely = await seenRepository.SelectByIdAsync(id);
-            List<User> aLista = new List<User>();
-            if (aSzemely.Orientation == "straight")
+            var selectedUser = await seenRepository.SelectByIdAsync(id);
+            List<User> possibleSightings = new List<User>();
+            if (selectedUser.Orientation == "straight")
             {
-                string genderValue = (aSzemely.UserGender == "male") ? "female" : "male";
-                aLista = await seenRepository.SelectByFieldAsync("UserGender", genderValue);
+                string genderValue = (selectedUser.UserGender == "male") ? "female" : "male";
+                possibleSightings = await seenRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
-            if (aSzemely.Orientation == "gay")
+            if (selectedUser.Orientation == "gay")
             {
-                string genderValue = (aSzemely.UserGender == "male") ? "male" : "female";
-                aLista = await seenRepository.SelectByFieldAsync("UserGender", genderValue);
+                string genderValue = (selectedUser.UserGender == "male") ? "male" : "female";
+                possibleSightings = await seenRepository.SelectByFieldAsync("UserGender", genderValue);
             }
 
-            if (aSzemely.Orientation == "bisexual")
+            if (selectedUser.Orientation == "bisexual")
             {
-                aLista = await seenRepository.SelectAllAsync();
+                possibleSightings = await seenRepository.SelectAllAsync();
             }
 
-            var users = new List<Sighting>();
-            for (int i = 0; i < aLista.Count; i++)
+            var filteredSightings = new List<Sighting>();
+            for (int i = 0; i < possibleSightings.Count; i++)
             {
-
-                for (int j = 0; j < aLista[i].Sightings.Count; j++)
+                for (int j = 0; j < possibleSightings[i].Sightings.Count; j++)
                 {
-                    int realmatch = MatchMeister(aSzemely, aLista[i].Sightings[j]);
-                    if (realmatch >= 4 && aSzemely.Email != aLista[i].Email)
+                    int realmatch = MatchMeister(selectedUser, possibleSightings[i].Sightings[j]);
+                    if (realmatch >= 4 && selectedUser.Email != possibleSightings[i].Email)
                     {
-                        users.Add(aLista[i].Sightings[j]);
+                        filteredSightings.Add(possibleSightings[i].Sightings[j]);
                     }
                 }
             }
-            return users;
+            return filteredSightings;
         }
 
         public int MatchMeister(User user, Sighting sighting)
