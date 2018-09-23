@@ -1,15 +1,11 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 
-<<<<<<< HEAD
-class Readgend extends React.Component {
-=======
 const niceThings = ["You're a gift to those around you.", "You look good!", "What a beauty!", "You smell nice.", "You're a smart cookie.", "You are awesome!", "I like your style.", "You have the best laugh.", "You light up the room.", "You deserve a hug right now.", "You're all that and a super-size bag of chips.", "On a scale from 1 to 10, you're an 11.",
 "You're like a ray of sunshine on a really dreary day.", "Everything would be better if more people were like you!", "Colors seem brighter when you're around.", "You're wonderful.", 
 "You have cute elbows. For reals!", "You're someone's reason to smile.", "There's ordinary, and then there's you."]
 
 class Readgend extends React.Component{
->>>>>>> e7497ac6c09a332788ac85071b7d01371bc0d65d
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,14 +40,8 @@ class Readgend extends React.Component{
     ).catch(error => `Error: ${error}`);
   }
 
-<<<<<<< HEAD
-  render() {
-    return (
-=======
   render(){
-{console.log(this.props.FbUser.picture)}
     return(
->>>>>>> e7497ac6c09a332788ac85071b7d01371bc0d65d
       <div>
         {this.props.userDatas.map(
           (element, UnIndex) =>
@@ -84,19 +74,11 @@ class Readgend extends React.Component{
                 >
                   YES!
                 </button>
-<<<<<<< HEAD
-                <ReactTooltip id="aha">I Like Your Smell!</ReactTooltip>
-              </div>
-            ) : null
-        )}
-      </div>
-=======
                 <ReactTooltip id="aha">{niceThings[Math.floor(Math.random() * niceThings.length)]}</ReactTooltip>
             </div>
           ) : null
           
       )}</div>
->>>>>>> e7497ac6c09a332788ac85071b7d01371bc0d65d
     );
   }
 }
