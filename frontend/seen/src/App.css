@@ -668,7 +668,7 @@ option[value=""][disabled] {
 }
 
 .match-message {
-  font-style: italic;
+  font-style: oblique;
 }
 
 .match-message:before {

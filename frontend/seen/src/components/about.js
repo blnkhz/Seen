@@ -33,16 +33,14 @@ class About extends Component {
             />
             <h4 className="aboutnameofperson">Blanka Eszter Hooz</h4>
             <p className="aboutintroduction">
-              I think human consciousness, is a tragic misstep in evolution. We
-              became too self-aware, nature created an aspect of nature separate
-              from itself, we are creatures that should not exist by natural
-              law. We are things that labor under the illusion of having a self;
-              an accretion of sensory, experience and feeling, programmed with
-              total assurance that we are each somebody, when in fact everybody
-              is nobody. Maybe the honorable thing for our species to do is deny
-              our programming, stop reproducing, walk hand in hand into
-              extinction, one last midnight - brothers and sisters opting out of
-              a raw deal.
+              Blanka is a 23-year-old fresh business graduate from Pécs,
+              Hungary, who’s only been coding since the beginning of this year,
+              just like these two gentlemen to her right and left. Being a proud
+              introvert and procrastinator, she can recall many occasions where
+              this app would had come in handy in these past few years. When she
+              is not typing code, there is a good chance that she is reading,
+              drawing, taking pictures of something mildly interesting or is
+              cartwheeling around the world.
             </p>
           </div>
           <div className="aboutperson">
