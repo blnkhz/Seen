@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 import maplayout from "./mapstyle.js";
 
 const GoogleMapExample = withGoogleMap(props => (

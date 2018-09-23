@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "mdbreact";
-
 
 class Mecsek extends Component {
   constructor() {

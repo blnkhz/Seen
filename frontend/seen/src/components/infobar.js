@@ -38,7 +38,6 @@ class Readgend extends React.Component{
 }
 
   render(){
-{console.log(this.props.FbUser.picture)}
     return(
       <div>
       {this.props.userDatas.map(
