@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using Seen.Models;
-using Seen.Repositories;
 using Seen.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Seen.Controllers
@@ -28,24 +23,24 @@ namespace Seen.Controllers
         [Route("beenseen")]
         public async Task<IActionResult> BeenSeen()
         {
-            var listOfSightings = await userService.ReadAllUsers();
-            return Ok(listOfSightings);
+            var listOfUsers = await userService.ReadAllUsers();
+            return Ok(listOfUsers);
         }
 
         [HttpGet]
         [Route("getuser/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await userService.ReadOneUser(id);
-            return Ok(oneOfSightings);
+            var selectedUser = await userService.ReadOneUser(id);
+            return Ok(selectedUser);
         }
 
         [HttpPost]
         [Route("filterusers")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
-            var resultOfSightings = await userService.FilterUser(filter.Field, filter.Value);
-            return Ok(resultOfSightings);
+            var filteredUsers = await userService.FilterUser(filter.Field, filter.Value);
+            return Ok(filteredUsers);
         }
 
         [HttpDelete]
@@ -66,10 +61,10 @@ namespace Seen.Controllers
 
         [HttpGet]
         [Route("matchfilter/{id}")]
-        public async Task<IActionResult> FindThem(string id)
+        public async Task<IActionResult> MatchFilter(string id)
         {
-            var foundIt = await sightingService.Finder(id);
-            return Ok(foundIt);
+            var possibleSightings = await sightingService.Finder(id);
+            return Ok(possibleSightings);
         }
 
         [HttpGet]
