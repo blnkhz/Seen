@@ -14,10 +14,14 @@ namespace Seen.Controllers
     public class HomeController : Controller
     {
         private UserService userService;
+        private SightingService sightingService;
+        private HelloItsMeService helloItsMeService;
 
-        public HomeController(UserService userService)
+        public HomeController(UserService userService, SightingService sightingService, HelloItsMeService helloItsMeService)
         {
             this.userService = userService;
+            this.sightingService = sightingService;
+            this.helloItsMeService = helloItsMeService;
         }
 
         [HttpGet]
@@ -64,7 +68,7 @@ namespace Seen.Controllers
         [Route("matchfilter/{id}")]
         public async Task<IActionResult> FindThem(string id)
         {
-            var foundIt = await userService.Finder(id);
+            var foundIt = await sightingService.Finder(id);
             return Ok(foundIt);
         }
 
@@ -72,7 +76,7 @@ namespace Seen.Controllers
         [Route("loginmap")]
         public async Task<IActionResult> LoginMap ()
         {
-            var locations = await userService.ReadAllLocations();
+            var locations = await sightingService.ReadAllLocations();
             return Ok(locations);
         }
 
@@ -80,7 +84,7 @@ namespace Seen.Controllers
         [Route("addsighting/{id}")]
         public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
         {
-            await userService.AddSighting(id, sighting);
+            await sightingService.AddSighting(id, sighting);
             return Ok(sighting);
         }
 
@@ -107,7 +111,7 @@ namespace Seen.Controllers
         [Route("addhelloitsme/{id}")]
         public async Task<IActionResult> AddHelloItsMe([FromRoute] string id, [FromBody] HelloItsMe helloitsme)
         {
-            await userService.AddHelloItsMe(id, helloitsme);
+            await helloItsMeService.AddHelloItsMe(id, helloitsme);
             return RedirectToAction("BeenSeen");
         }
     }

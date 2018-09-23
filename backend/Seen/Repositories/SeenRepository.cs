@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Seen.Repositories
 {
-    public class UserRepository
+    public class SeenRepository
     {
         private IMongoClient client;
         private IMongoDatabase database;
         private IMongoCollection<User> users;
 
-        public UserRepository()
+        public SeenRepository()
         {
-			      client = new MongoClient("mongodb://18.216.102.17:27017");
+			client = new MongoClient("mongodb://localhost:27017");
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
