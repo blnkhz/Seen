@@ -1,10 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Seen.Interfaces;
 using Seen.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Seen.Repositories
