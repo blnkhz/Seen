@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "mdbreact";
 
 class Mecsek extends Component {
   constructor() {
@@ -22,20 +21,26 @@ class Mecsek extends Component {
       return <h1 style={{ margin: "200px" }}>SANYIKAM!</h1>;
     }
     return (
-      <div id="match-container">
+      <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
-          <div className="meccsiz">
-            <h1>{element.day}</h1>
+          <div id="match-container">
             {element.helloItsMes.map(hello => (
-              <div className="sighting-applicants">
-                <h4>{hello.socialHandle}</h4>
-                <img src={hello.picture} />
+              <div className="match">
+                <h1 className="match-day">{element.day}</h1>
+                <div className="match-applicant">
+                <h4 className="match-handle">{hello.socialHandle}</h4>
+                <img
+                  src={hello.picture}
+                  className="match-picture"
+                  alt="seems familiar?"
+                />
                 <p>{hello.message}</p>
+                </div>
               </div>
             ))}
           </div>
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }

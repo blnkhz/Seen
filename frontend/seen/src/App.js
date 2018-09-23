@@ -7,12 +7,11 @@ import Seendex from "./components/seendex.js";
 import AddMap from "./components/addmap.js";
 import FooterPage from "./components/footer.js";
 import Renderz from "./components/renderMap.js";
-import ItsAMatch from "./components/match.js";
 import LoginPage from "./components/loginpage.js";
 import Loading from "./components/loading.js";
 import Profile from "./components/profile.js";
 import Meccsek from "./components/mecsek.jsx";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class App extends Component {
