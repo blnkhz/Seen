@@ -636,20 +636,56 @@ option[value=""][disabled] {
   margin: auto;
   text-align: center;
   justify-content: center;
+  font-size: 2em;
+  padding: 50px;
+  letter-spacing: 0.2em;
 }
 
 .match-applicant {
-  background: -webkit-linear-gradient(rgb(255, 176, 205), rgb(255, 255, 255));
-  background: linear-gradient(rgb(255, 176, 205), rgb(255, 255, 255));
-  padding: 100px;
+  background: #e6e6e6;
+  box-shadow: 10px 10px #dc82a4;
   display: flex;
   flex-direction: row;
+  width: 70%;
+  margin: auto;
+  padding: 50px;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .match-text {
   order: 2;
+  margin-left: 20%;
+  padding-right: 50px;
+  font-size: 2em;
+  letter-spacing: 0.1em;
+}
+
+.match-handle {
+  align-self: flex-end;
+  vertical-align: bottom;
+  color: #444;
+}
+
+.match-message {
+  font-style: italic;
+}
+
+.match-message:before {
+  content: open-quote;
+  font-weight: bold;
+  color: #6489c2;
+}
+
+.match-message:after {
+  content: close-quote;
+  font-weight: bold;
+  color: #6489c2;
 }
 
 .match-picture {
   order: 1;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
 }

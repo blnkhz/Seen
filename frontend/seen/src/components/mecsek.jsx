@@ -34,8 +34,8 @@ class Mecsek extends Component {
                     alt="seems familiar?"
                   />
                   <div className="match-text">
-                    <h4 className="match-handle">{hello.socialHandle}</h4>
                     <p className="match-message">{hello.message}</p>
+                    <h4 className="match-handle">{hello.socialHandle}</h4>
                   </div>
                 </div>
               </div>
