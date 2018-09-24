@@ -47,9 +47,9 @@ class About extends Component {
           </div>
           <div className="aboutperson">
             <img
-              src={require("../assets/mockupportrait.png")}
+              src={require("../assets/Peti.jpg")}
               className="aboutphoto"
-              alt="neve az illetonek"
+              alt="Peter Nemeth"
             />
             <h4 className="aboutnameofperson">Peter Nemeth</h4>
             <p className="aboutintroduction">
