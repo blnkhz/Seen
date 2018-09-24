@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using Seen.Models;
-using Seen.Repositories;
 using Seen.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Seen.Controllers
@@ -14,34 +9,38 @@ namespace Seen.Controllers
     public class HomeController : Controller
     {
         private UserService userService;
+        private SightingService sightingService;
+        private HelloItsMeService helloItsMeService;
 
-        public HomeController(UserService userService)
+        public HomeController(UserService userService, SightingService sightingService, HelloItsMeService helloItsMeService)
         {
             this.userService = userService;
+            this.sightingService = sightingService;
+            this.helloItsMeService = helloItsMeService;
         }
 
         [HttpGet]
         [Route("beenseen")]
         public async Task<IActionResult> BeenSeen()
         {
-            var listOfSightings = await userService.ReadAllUsers();
-            return Ok(listOfSightings);
+            var listOfUsers = await userService.ReadAllUsers();
+            return Ok(listOfUsers);
         }
 
         [HttpGet]
         [Route("getuser/{id}")]
         public async Task<IActionResult> SearchById(string id)
         {
-            var oneOfSightings = await userService.ReadOneUser(id);
-            return Ok(oneOfSightings);
+            var selectedUser = await userService.ReadOneUser(id);
+            return Ok(selectedUser);
         }
 
         [HttpPost]
         [Route("filterusers")]
         public async Task<IActionResult> SearchByField([FromBody] FilterJson filter)
         {
-            var resultOfSightings = await userService.FilterUser(filter.Field, filter.Value);
-            return Ok(resultOfSightings);
+            var filteredUsers = await userService.FilterUser(filter.Field, filter.Value);
+            return Ok(filteredUsers);
         }
 
         [HttpDelete]
@@ -62,17 +61,17 @@ namespace Seen.Controllers
 
         [HttpGet]
         [Route("matchfilter/{id}")]
-        public async Task<IActionResult> FindThem(string id)
+        public async Task<IActionResult> MatchFilter(string id)
         {
-            var foundIt = await userService.Finder(id);
-            return Ok(foundIt);
+            var possibleSightings = await sightingService.Finder(id);
+            return Ok(possibleSightings);
         }
 
         [HttpGet]
         [Route("loginmap")]
         public async Task<IActionResult> LoginMap ()
         {
-            var locations = await userService.ReadAllLocations();
+            var locations = await sightingService.ReadAllLocations();
             return Ok(locations);
         }
 
@@ -80,7 +79,7 @@ namespace Seen.Controllers
         [Route("addsighting/{id}")]
         public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
         {
-            await userService.AddSighting(id, sighting);
+            await sightingService.AddSighting(id, sighting);
             return Ok(sighting);
         }
 
@@ -107,7 +106,7 @@ namespace Seen.Controllers
         [Route("addhelloitsme/{id}")]
         public async Task<IActionResult> AddHelloItsMe([FromRoute] string id, [FromBody] HelloItsMe helloitsme)
         {
-            await userService.AddHelloItsMe(id, helloitsme);
+            await helloItsMeService.AddHelloItsMe(id, helloitsme);
             return RedirectToAction("BeenSeen");
         }
     }
