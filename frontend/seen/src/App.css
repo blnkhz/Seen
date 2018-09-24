@@ -233,6 +233,7 @@
 #about-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .abouttitle {
@@ -245,6 +246,8 @@
 .aboutperson {
   margin-top: 50px;
   margin-bottom: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 @media (max-width: 450px) {
