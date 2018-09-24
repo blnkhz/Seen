@@ -33,16 +33,16 @@ class About extends Component {
             />
             <h4 className="aboutnameofperson">Blanka Eszter Hooz</h4>
             <p className="aboutintroduction">
-              I think human consciousness, is a tragic misstep in evolution. We
-              became too self-aware, nature created an aspect of nature separate
-              from itself, we are creatures that should not exist by natural
-              law. We are things that labor under the illusion of having a self;
-              an accretion of sensory, experience and feeling, programmed with
-              total assurance that we are each somebody, when in fact everybody
-              is nobody. Maybe the honorable thing for our species to do is deny
-              our programming, stop reproducing, walk hand in hand into
-              extinction, one last midnight - brothers and sisters opting out of
-              a raw deal.
+              Blanka is a 23-year-old fresh business graduate from Pécs,
+              Hungary, who’s only been coding since the beginning of this year,
+              just like these two gentlemen to her right and left. Being a proud
+              introvert and procrastinator, she can recall many occasions where
+              this app would had come in handy in these past few years. Apart
+              from the core idea of the website, she is mainly responsible for
+              the UI and the front-end part of Seen, the visible stuff. When she
+              is not typing code, there is a good chance that she is reading,
+              drawing, taking pictures of something mildly interesting or is
+              cartwheeling around the world.
             </p>
           </div>
           <div className="aboutperson">
@@ -53,14 +53,17 @@ class About extends Component {
             />
             <h4 className="aboutnameofperson">Peter Nemeth</h4>
             <p className="aboutintroduction">
-              In eternity, where there is no time, nothing can grow. Nothing can
-              become. Nothing changes. So death created time to grow the things
-              that it would kill... and you are reborn but into the same life
-              that you've always been born into. I mean, how many times have we
-              had this conversation, detectives? Well, who knows? When you can't
-              remember your lives, you can't change your lives, and that is the
-              terrible and the secret fate of all life. You're trapped... like a
-              nightmare you keep waking up into.
+              Peter Nemeth is a junior software developer, who just finished at
+              Green Fox Academy where he learnt embedded C and .Net backend.
+              There he was part of the developer team in a exciting self-driving
+              car project. Now he is working on the Seen application and also
+              fighting against the darkness which is spread by the agents of
+              unemployment. He is both driven and self-motivated, and constantly
+              experimenting with new technologies and techniques. Before he
+              started to reedem the world with coding he worked as a manager in
+              a coffee shop for 2 years. In his free time, he plays the piano
+              and tries not to be the worst player in Overwatch. He also has a
+              cat.
             </p>
           </div>
         </div>
