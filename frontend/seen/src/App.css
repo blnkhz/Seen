@@ -642,7 +642,7 @@ option[value=""][disabled] {
 }
 
 .match-applicant {
-  background: #e6e6e6;
+  background: #ebebeb;
   box-shadow: 10px 10px #dc82a4;
   display: flex;
   flex-direction: row;
@@ -688,4 +688,5 @@ option[value=""][disabled] {
   max-width: 300px;
   max-height: 300px;
   border-radius: 50%;
+  border: #dc82a4 solid 5px;
 }
