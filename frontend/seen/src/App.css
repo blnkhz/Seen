@@ -650,7 +650,6 @@ option[value=""][disabled] {
   margin: auto;
   padding: 50px;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .match-text {
@@ -685,8 +684,35 @@ option[value=""][disabled] {
 
 .match-picture {
   order: 1;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 350px;
+  /* min-width: 100px; */
+  /* min-height: 100px; */
+  max-height: 350px;
   border-radius: 50%;
   border: #dc82a4 solid 5px;
+}
+
+@media (max-width: 768px) {
+  .match-applicant {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .match-picture {
+    align-content: center;
+    margin: auto;
+    max-width: 250px;
+    min-width: 100px;
+    min-height: 100px;
+    max-height: 250px;
+  }
+
+  .match-text {
+    text-align: center;
+  }
+  .match-handle {
+    align-self: flex-end;
+  }
 }
