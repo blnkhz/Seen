@@ -8,9 +8,9 @@ class About extends Component {
         <div id="about-container">
           <div className="aboutperson">
             <img
-              src={require("../assets/mockupportrait.png")}
+              src={require("../assets/Mate.jpg")}
               className="aboutphoto"
-              alt="neve az illetonek"
+              alt="Mate Dugas"
             />
             <h4 className="aboutnameofperson">Mate Dugas</h4>
             <p className="aboutintroduction">
