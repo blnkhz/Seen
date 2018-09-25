@@ -477,6 +477,44 @@ option[value=""][disabled] {
   margin-bottom: 20px;
 }
 
+.infobar-closebutton {
+  display: none;
+}
+
+@media (max-width: 450px)
+{
+  .infobar-closebutton {
+    display: block;
+    background-color: #6489c2;
+    color: #fff;
+    margin: 20px;
+    border-radius: 50%;
+  }
+
+  .infochild {
+    width: 100vw;
+  }
+  .infobar-picture {
+    max-width: 80vw;
+  }
+
+  .it-is-me-button {
+    margin-bottom: 100px;
+    font-size: 1.5em;
+    border-radius: 5px;
+  }
+
+  .seenswer {
+    text-align: center;
+    margin: auto;
+  }
+
+  .messageinput {
+    margin-top: 30px;
+  }
+
+}
+
 /* PROFILE */
 
 #profile-container {

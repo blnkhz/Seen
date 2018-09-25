@@ -91,7 +91,6 @@ class NavbarFeatures extends Component {
                     <NavLink className="navlink" to="/itsamatch">
                       sightings
                     </NavLink>
-                    <a className="navlink" href="/login" onClick={()=>{window.FB.logout()}}>logout</a>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>

@@ -56,7 +56,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(window);
+    console.log(this.state.fbUser);
 
     const Load = () => (
       <div className="App">
