@@ -8,9 +8,9 @@ class About extends Component {
         <div id="about-container">
           <div className="aboutperson">
             <img
-              src={require("../assets/mockupportrait.png")}
+              src={require("../assets/Mate.jpg")}
               className="aboutphoto"
-              alt="neve az illetonek"
+              alt="Mate Dugas"
             />
             <h4 className="aboutnameofperson">Mate Dugas</h4>
             <p className="aboutintroduction">
@@ -27,9 +27,9 @@ class About extends Component {
           </div>
           <div className="aboutperson">
             <img
-              src={require("../assets/mockupportrait.png")}
+              src={require("../assets/Blank.jpg")}
               className="aboutphoto"
-              alt="neve az illetonek"
+              alt="Blanka Eszter Hooz"
             />
             <h4 className="aboutnameofperson">Blanka Eszter Hooz</h4>
             <p className="aboutintroduction">
@@ -47,9 +47,9 @@ class About extends Component {
           </div>
           <div className="aboutperson">
             <img
-              src={require("../assets/mockupportrait.png")}
+              src={require("../assets/Peti.jpg")}
               className="aboutphoto"
-              alt="neve az illetonek"
+              alt="Peter Nemeth"
             />
             <h4 className="aboutnameofperson">Peter Nemeth</h4>
             <p className="aboutintroduction">
