@@ -1,10 +1,31 @@
 import React, { Component } from "react";
 
+
+
+var ReactLanguage = require('react-language');
 class About extends Component {
+  
+  handleClick (lang) {
+    ReactLanguage.setLanguage(lang);
+    this.forceUpdate();
+  }
+  
   render() {
+    const Ja = ReactLanguage.create('ja');
+    const Cn = ReactLanguage.create('cn');
+    const En = ReactLanguage.create(true);
+    console.log(window.navigator.language);
     const aboutContent = (
       <div className="aboutus">
         <h1 className="abouttitle">mink vogymuk a seenek.</h1>
+        <button onClick={this.handleClick.bind(this, 'en')}>eng</button>
+        <button onClick={this.handleClick.bind(this, 'cn')}>cn</button>
+        <a href="javascript:;" onClick={this.handleClick.bind(this, 'ja')}>日本語</a>
+        <div>
+          <Cn>你好，世界</Cn>
+          <En tag="div">Hello world.</En>
+          <Ja>こんにちは世界</Ja>
+        </div>
         <div id="about-container">
           <div className="aboutperson">
             <img

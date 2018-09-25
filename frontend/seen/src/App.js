@@ -60,7 +60,7 @@ class App extends Component {
 
     const Load = () => (
       <div className="App">
-        <NavbarFeatures user={this.state.fbUser} className="navbar"/>
+        <NavbarFeatures user={this.state.fbUser} className="navbar" />
         <Loading />
         <FooterPage />
       </div>
@@ -68,7 +68,7 @@ class App extends Component {
 
     const Login = () => (
       <div className="App">
-        <LoginPage/>
+        <LoginPage />
         <FooterPage />
       </div>
     );
@@ -130,12 +130,10 @@ class App extends Component {
     const Mecsek = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Meccsek id={this.state.fbUser.fbId} style={{marginTop:'200px'}}/>
+        <Meccsek id={this.state.fbUser.fbId} style={{ marginTop: '200px' }} />
         <FooterPage />
       </div>
     );
-    console.log(this.state.fbUser.isLoggedIn);
-    console.log(this.state.loaded);
     return (
       <Router>
         <div>
@@ -159,7 +157,7 @@ class App extends Component {
             <Route exact path="/add" render={() => (this.state.fbUser.isLoggedIn ? <Add /> : <Load />)} />
             <Route exact path="/login" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
             <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />)} />
-            <Route exact path="/load" render={() => ( <Load />)} />
+            <Route exact path="/load" render={() => (<Load />)} />
           </Switch>
         </div>
       </Router>
