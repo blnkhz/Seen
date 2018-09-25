@@ -390,6 +390,7 @@
   text-align: center;
   word-wrap: break-word;
   max-width: 80%;
+  margin: auto;
 }
 
 .it-is-me-button {
@@ -400,6 +401,7 @@
   background: #6489c2;
   box-shadow: none;
   border-radius: 0px;
+  margin-bottom: 50px;
 }
 
 .it-is-me-button:hover,
@@ -452,7 +454,7 @@ option[value=""][disabled] {
   background: #dadada;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 30px;
   letter-spacing: 0.2em;
 }
@@ -481,8 +483,7 @@ option[value=""][disabled] {
   display: none;
 }
 
-@media (max-width: 450px)
-{
+@media (max-width: 450px) {
   .infobar-closebutton {
     display: block;
     background-color: #6489c2;
@@ -512,7 +513,6 @@ option[value=""][disabled] {
   .messageinput {
     margin-top: 30px;
   }
-
 }
 
 /* PROFILE */
