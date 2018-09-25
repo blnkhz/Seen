@@ -21,7 +21,8 @@ class PostForm extends React.Component {
       longitude: null,
       day: undefined,
       buttonPressed: false,
-      buttonValue: 'Sent'
+      buttonValue: 'Sent',
+      selectedDay: Date.now()
     };
   }
 

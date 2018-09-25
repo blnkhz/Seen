@@ -33,6 +33,10 @@ class Renderz extends Component {
     this.setState({ sidebarOpen: open });
   }
 
+  onSetSidebarClose=()=> {
+    this.setState({ sidebarOpen: false });
+  }
+
   render() {
     return (
       <div className="flexdaddy">
@@ -43,6 +47,7 @@ class Renderz extends Component {
                 FbUser={this.props.FbUser}
                 indexke={this.state.infoIndex}
                 userDatas={this.state.users}
+                
               />
             </div>
           }
