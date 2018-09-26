@@ -1,5 +1,7 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using Seen.Entities;
 using Seen.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,9 +14,9 @@ namespace Seen.Repositories
         private IMongoDatabase database;
         private IMongoCollection<User> users;
 
-        public SeenRepository()
+        public SeenRepository(IOptions<AppSettings> appSettings)
         {
-			client = new MongoClient("mongodb://mablape:numman77@18.216.102.17:27017");
+			client = new MongoClient(appSettings.Value.ConnectionString);
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
