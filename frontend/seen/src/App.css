@@ -33,6 +33,40 @@
   right: 0;
 }
 
+.addsighting-closebutton {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .formchild {
+    width: 100vw;
+    align-content: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+  .dropsdowns {
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .messageinput {
+    margin-bottom: 10vh;
+  }
+
+  .submit-button {
+    margin-bottom: 10vh;
+  }
+
+  .addsighting-closebutton {
+    display: block;
+    background-color: #6489c2;
+    color: #fff;
+    border-radius: 50%;
+    margin: 15vh 20px 20px 20px;
+  }
+}
+
 /* SIGHTINGS */
 
 .flexdaddy {
