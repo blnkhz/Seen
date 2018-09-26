@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+
+var ReactLanguage = require('react-language');
 class Profile extends Component {
   constructor() {
     super();
@@ -19,15 +21,17 @@ class Profile extends Component {
     };
   }
 
-  componentWillMount = () =>{
-    if(this.props.id === null){
+  componentWillMount = () => {
+    if (this.props.id === null) {
       console.log("THE WOLRDO!!!");
-    }else{
+    } else {
       fetch("http://localhost:52210/getuser/" + this.props.id, {
-        mode: "cors"})
+        mode: "cors"
+      })
         .then(res => res.json())
-        .then(fbuser => {this.setState({ fbuser })});
-  }};
+        .then(fbuser => { this.setState({ fbuser }) });
+    }
+  };
 
   toggleHidden() {
     this.setState({
@@ -58,7 +62,6 @@ class Profile extends Component {
       userAge: this.state.userAge,
       orientation: this.state.orientation
     };
-    console.log(data);
 
     fetch("http://localhost:52210/updateuser/" + this.props.user.fbId, {
       method: "POST",
@@ -72,8 +75,10 @@ class Profile extends Component {
 
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
-      return <div>SANYIKAM!</div>;}
-      
+      return <div></div>;
+    }
+    const Hu = ReactLanguage.create('hu');
+    const En = ReactLanguage.create(true);
     const { user } = this.props;
     const menjekMarAludni = (
       <form method="post" onSubmit={this.handleSubmit} className="profile-form">
@@ -90,7 +95,7 @@ class Profile extends Component {
           onChange={this.handleChange}
         >
           <option value="" disabled selected hidden>
-            Gender? {this.state.fbuser.userGender}
+            Gender: {this.state.fbuser.userGender}
           </option>
           <option value="female">female</option>
           <option value="male">male</option>
@@ -101,9 +106,14 @@ class Profile extends Component {
           name="orientation"
           onChange={this.handleChange}
         >
-          <option value="" disabled selected hidden>
-            Orientation? {this.state.fbuser.orientation}
+          <En><option value="" disabled selected hidden>
+            Orientation: {this.state.fbuser.orientation}
           </option>
+          </En>
+          <Hu><option value="" disabled selected hidden>
+            Nemi orientáció: {this.state.fbuser.orientation}
+          </option>
+          </Hu>
           <option value="straight">straight</option>
           <option value="gay">gay</option>
           <option value="bisexual">bisexual</option>
@@ -201,23 +211,23 @@ class Profile extends Component {
     );
     const profile = (
       <div id="profile-container">
-        <h1 className="profile-greeter">hello, {user.name}</h1>
+        <h1 className="profile-greeter"><En>hello</En><Hu>helló</Hu>, {user.name}</h1>
         <img src={user.picture} className="profile-page-photo" alt="avatar" />
-        <h3 className="profile-details-title">profile details</h3>
+        <h3 className="profile-details-title"><En>Profile details</En><Hu>Profil adatok</Hu></h3>
         <div className="profile-details-container">
           <div className="user-details">
             <p>email: {this.state.fbuser.email}</p>
-            <p>gender: {this.state.fbuser.userGender}</p>
-            <p>handle: {this.state.fbuser.socialHandle}</p>
+            <p><En>gender:</En><Hu>nem:</Hu> {this.state.fbuser.userGender}</p>
+            <p><En>handle</En><Hu>elérhetőség:</Hu> {this.state.fbuser.socialHandle}</p>
             <p>
-              hair: {this.state.fbuser.userHairColor},{" "}
+              <En>hair:</En><Hu>haj:</Hu> {this.state.fbuser.userHairColor},{" "}
               {this.state.fbuser.userHairStyle}
             </p>
-            <p>glasses: {this.state.fbuser.userGlasses}</p>
-            <p>height: {this.state.fbuser.userHeight}</p>
-            <p>build: {this.state.fbuser.userBuild}</p>
-            <p>age: {this.state.fbuser.userAge}</p>
-            <p>orientation: {this.state.fbuser.orientation}</p>
+            <p><En>glasses</En><Hu>szemüveg</Hu>: {this.state.fbuser.userGlasses}</p>
+            <p><En>height</En><Hu>magasság</Hu>: {this.state.fbuser.userHeight}</p>
+            <p><En>build</En><Hu>testalkat</Hu>: {this.state.fbuser.userBuild}</p>
+            <p><En>age</En><Hu>kor</Hu>: {this.state.fbuser.userAge}</p>
+            <p><En>orientation</En><Hu>nemi orientáció</Hu>: {this.state.fbuser.orientation}</p>
           </div>
           <button
             onClick={this.toggleHidden.bind(this)}
