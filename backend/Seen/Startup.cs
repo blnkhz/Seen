@@ -27,7 +27,7 @@ namespace Seen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.Configure<AppSettings>(Configuration.GetSection("DevConnection"));
+            services.Configure<AppSettings>(Configuration.GetSection("Connection"));
             services.AddScoped<SeenRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<SightingService>();
@@ -40,10 +40,10 @@ namespace Seen
             }));
         }
 
-        public void ConfigureRealServices(IServiceCollection services)
+        public void ConfigureLocalServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.Configure<AppSettings>(Configuration.GetSection("Connection"));
+            services.Configure<AppSettings>(Configuration.GetSection("DevConnection"));
             services.AddScoped<SeenRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<SightingService>();
