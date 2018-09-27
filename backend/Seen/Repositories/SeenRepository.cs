@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using Seen.Entities;
 using Seen.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Seen.Repositories
@@ -73,11 +74,18 @@ namespace Seen.Repositories
             await users.FindOneAndUpdateAsync(filter, update);
         }
 
-        //public async Task RemoveHelloItsMeAsync(string fbId, string sId, string socialHandle)
-        //{
-        //    var filter = Builders<User>.Filter.Eq("FbId", fbId);
-        //    await users.FindOneAndUpdateAsync(filter, update);
-        //}
+        public async Task RemoveHelloItsMeAsync(string id, string sId, string socialHandle, List<HelloItsMe> hellos)
+        {
+            await users.UpdateOneAsync(x => x.FbId == id,
+    Builders<User>.Update.Set("Sightings.$[g].HelloItsMes", hellos),
+    new UpdateOptions
+    {
+        ArrayFilters = new List<ArrayFilterDefinition>
+        {
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("g._id", sId))
+        }
+    });
+        }
 
         public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filters)
         {
