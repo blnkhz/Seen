@@ -1,5 +1,6 @@
 ﻿using Seen.Models;
 using Seen.Repositories;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Seen.Services
@@ -49,6 +50,14 @@ namespace Seen.Services
                 }
             }
             await seenRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
+        }
+
+        public async Task RemoveHelloItsMe(string fbId, string sId, string socialHandle)
+        {
+            var user = await seenRepository.SelectByIdAsync(fbId);
+            var hellos = user.Sightings.Where(x => x.Id == sId).First().HelloItsMes;
+            hellos.RemoveAll((x => x.SocialHandle == socialHandle));
+            await seenRepository.RemoveHelloItsMeAsync(fbId, sId, socialHandle, hellos);
         }
     }
 }

@@ -21,6 +21,11 @@ namespace Seen.Services
             await seenRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
         }
 
+        public async Task RemoveSighting (string fbId, string sId)
+        {
+            await seenRepository.RemoveSightingAsync(fbId, sId);
+        }
+
         public async Task<List<Location>> ReadAllLocations()
         {
             var users = await seenRepository.SelectAllAsync();

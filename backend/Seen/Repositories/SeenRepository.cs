@@ -1,7 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using Seen.Entities;
 using Seen.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Seen.Repositories
@@ -12,9 +15,9 @@ namespace Seen.Repositories
         private IMongoDatabase database;
         private IMongoCollection<User> users;
 
-        public SeenRepository()
+        public SeenRepository(IOptions<AppSettings> appSettings)
         {
-			client = new MongoClient("mongodb://mablape:numman77@18.216.102.17:27017");
+			client = new MongoClient(appSettings.Value.ConnectionString);
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
@@ -62,6 +65,26 @@ namespace Seen.Repositories
             var update = Builders<User>.Update.AddToSet(items => items.Sightings[sightingIndex].HelloItsMes, helloItsMe);
 
             var result = await users.UpdateOneAsync(filter, update);
+        }
+
+        public async Task RemoveSightingAsync(string fbId, string sId)
+        {
+            var filter = new BsonDocument("FbId", fbId);
+            var update = Builders<User>.Update.PullFilter("Sightings", Builders<Sighting>.Filter.Eq("_id", sId));
+            await users.FindOneAndUpdateAsync(filter, update);
+        }
+
+        public async Task RemoveHelloItsMeAsync(string id, string sId, string socialHandle, List<HelloItsMe> hellos)
+        {
+            await users.UpdateOneAsync(x => x.FbId == id,
+    Builders<User>.Update.Set("Sightings.$[g].HelloItsMes", hellos),
+    new UpdateOptions
+    {
+        ArrayFilters = new List<ArrayFilterDefinition>
+        {
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("g._id", sId))
+        }
+    });
         }
 
         public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filters)
