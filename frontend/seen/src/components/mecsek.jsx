@@ -26,8 +26,9 @@ class Mecsek extends Component {
           <div id="match">
             {element.helloItsMes.map(hello => (
               <div className="match-container">
-                <h4 className="match-day">{element.day}</h4>
+              <h4 className="match-day">{element.day}</h4>
                 <div className="match-applicant">
+                <button className="megsem">x</button>
                   <img
                     src={hello.picture}
                     className="match-picture"
