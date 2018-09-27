@@ -522,13 +522,14 @@ option[value=""][disabled] {
     display: block;
     background-color: #6489c2;
     color: #fff;
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     border-radius: 50%;
   }
 
   .infochild {
     width: 100vw;
   }
+
   .infobar-picture {
     max-width: 80vw;
   }

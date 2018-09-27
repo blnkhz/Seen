@@ -21,17 +21,18 @@ const GoogleMapExample = withGoogleMap(props => (
     }}
   >
     {props.users.map((element, kulcs) => (
-        <Marker
-          key={kulcs}
-          defaultAnimation="2"
-          icon={require("../assets/pin2.svg")}
-          onMouseOver={()=>props.mouseOver() && props.boxPos(kulcs, element.latitude, element.longitude)} 
-          onMouseOut={props.mouseExit}
-          position={{ lat: element.latitude, lng: element.longitude }}
-          onClick={() =>
-            props.setKeksz(kulcs)
-          }
-        />
+      <Marker
+        key={kulcs}
+        defaultAnimation="2"
+        icon={require("../assets/pin2.svg")}
+        onMouseOver={() =>
+          props.mouseOver() &&
+          props.boxPos(kulcs, element.latitude, element.longitude)
+        }
+        onMouseOut={props.mouseExit}
+        position={{ lat: element.latitude, lng: element.longitude }}
+        onClick={() => props.setKeksz(kulcs)}
+      />
     ))}
   </GoogleMap>
 ));
@@ -42,7 +43,7 @@ class Map extends Component {
     zoomka: 13,
     centerke: { lat: 47.507589, lng: 19.066128 },
     showInfoWindow: false,
-    indkeksz: 0,
+    indkeksz: 0
   };
 
   handleMouseOver = e => {
@@ -50,16 +51,17 @@ class Map extends Component {
       showInfoWindow: true
     });
   };
+  
   handleMouseExit = e => {
     this.setState({
       showInfoWindow: false
     });
   };
 
-  setIndkeksz = (data) =>{
-    this.setState({indkeksz: data});
+  setIndkeksz = data => {
+    this.setState({ indkeksz: data });
     this.props.setKeksz(data);
-  }
+  };
 
   render() {
     return (
