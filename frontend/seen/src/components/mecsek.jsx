@@ -18,7 +18,7 @@ class Mecsek extends Component {
   };
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
-      return <h1 style={{ margin: "200px" }}>SANYIKAM!</h1>;
+      return <h1 style={{ margin: "200px" }}></h1>;
     }
     return (
       <React.Fragment>

@@ -26,7 +26,6 @@ class Renderz extends Component {
       infoIndex: dataFromChild2
     });
     this.onSetSidebarOpen(true);
-    console.log(this.state.infoIndex);
   };
 
   onSetSidebarOpen(open) {

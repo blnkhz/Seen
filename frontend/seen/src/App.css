@@ -691,3 +691,10 @@ option[value=""][disabled] {
   border-radius: 50%;
   border: #dc82a4 solid 5px;
 }
+
+.flag{
+  border-radius: 50%;
+  width: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
+}

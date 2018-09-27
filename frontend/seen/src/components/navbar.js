@@ -90,8 +90,8 @@ class NavbarFeatures extends Component {
           </NavbarNav>
           <NavbarNav right>
             <NavItem>
-            <a href="" onClick={this.handleClick.bind(this, 'en')}>eng  </a>
-            <a href="" onClick={this.handleClick.bind(this, 'hu')}>hu</a>
+            <a href="" onClick={this.handleClick.bind(this, 'en')}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag"/></a>
+            <a href="" onClick={this.handleClick.bind(this, 'hu')}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag"/></a>
             </NavItem>
             <NavItem>
               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

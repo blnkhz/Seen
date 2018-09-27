@@ -1,6 +1,11 @@
 import React from "react";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
+import ReactTooltip from "react-tooltip";
+
+var ReactLanguage = require('react-language');
+const Hu = ReactLanguage.create('hu');
+const En = ReactLanguage.create(true);
 
 class PostForm extends React.Component {
   constructor() {
@@ -21,13 +26,12 @@ class PostForm extends React.Component {
       longitude: null,
       day: undefined,
       buttonPressed: false,
-      buttonValue: 'Sent',
-      selectedDay: Date.now()
+      buttonValue: 'Sent'
     };
   }
 
-  klikk(){
-    this.setState({buttonPressed: true});
+  klikk() {
+    this.setState({ buttonPressed: true });
   }
 
   handleChange(event) {
@@ -73,19 +77,22 @@ class PostForm extends React.Component {
         "Content-Type": "application/json"
       })
     }).catch(error => `Error: ${error}`);
-    
+
     this.klikk();
   }
 
   render() {
     return (
       <form method="post" onSubmit={this.handleSubmit} className="formchild" onKeyDown="Enter">
-        <div>
+        <div  data-tip data-for="date">
           <DayPicker
             onDayClick={this.handleDayClick}
             selectedDays={this.state.selectedDay}
             disabledDays={{ after: new Date() }}
           />
+          <ReactTooltip id="date">
+              <En>Select a date when you saw her/him</En><Hu>Válassz dátumot, amikor láttad őt!</Hu>
+          </ReactTooltip>
         </div>
         <div className="dropsdowns">
           <select
@@ -95,10 +102,10 @@ class PostForm extends React.Component {
             required="required"
           >
             <option value="" disabled selected>
-              gender
+              <En>gender</En><Hu>neme</Hu>
             </option>
-            <option value="female">female</option>
-            <option value="male">male</option>
+            <option value="female"><En>female</En><Hu>nő</Hu></option>
+            <option value="male"><En>male</En><Hu>férfi</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -107,13 +114,13 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              age
+            <En>age</En><Hu>kora</Hu>
             </option>
-            <option value="teen">teen</option>
-            <option value="young adult">young adult</option>
-            <option value="adult">adult</option>
-            <option value="middle-aged">middle-aged</option>
-            <option value="elderly">elderly</option>
+            <option value="teen"><En>teen</En><Hu>tini</Hu></option>
+            <option value="young adult"><En>young adult</En><Hu>fiatalember/hölgy</Hu></option>
+            <option value="adult"><En>adult</En><Hu>felnőtt</Hu></option>
+            <option value="middle-aged"><En>middle-aged</En><Hu>középkorú</Hu></option>
+            <option value="elderly"><En>elderly</En><Hu>idős</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -122,11 +129,11 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              height
+            <En>height</En><Hu>magasság</Hu>
             </option>
-            <option value="short">short</option>
-            <option value="average">average</option>
-            <option value="tall">tall</option>
+            <option value="short"><En>short</En><Hu>alacsony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="tall"><En>tall</En><Hu>magas</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -135,13 +142,13 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              build
+            <En>build</En><Hu>testfelépítése</Hu>
             </option>
-            <option value="thin">thin</option>
-            <option value="average">average</option>
-            <option value="athletic">athletic</option>
-            <option value="ripped">ripped</option>
-            <option value="chubby">chubby</option>
+            <option value="thin"><En>thin</En><Hu>vékony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="athletic"><En>athletic</En><Hu>sportos</Hu></option>
+            <option value="ripped"><En>ripped</En><Hu>kivanbaszva</Hu></option>
+            <option value="chubby"><En>chubby</En><Hu>husi</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -150,14 +157,14 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              hair color
+            <En>hair color</En><Hu>haj szín</Hu>
             </option>
-            <option value="black">black</option>
-            <option value="brown">brown</option>
-            <option value="blond(e)">blonde</option>
-            <option value="red">red</option>
-            <option value="special">special</option>
-            <option value="salt n pepper">salt n pepper</option>
+            <option value="black"><En>black</En><Hu>fekete</Hu></option>
+            <option value="brown"><En>brown</En><Hu>barna</Hu></option>
+            <option value="blond(e)"><En>blonde</En><Hu>szőke</Hu></option>
+            <option value="red"><En>red</En><Hu>vörös</Hu></option>
+            <option value="special"><En>special</En><Hu>speckó</Hu></option>
+            <option value="salt n pepper"><En>salt n pepper</En><Hu>ősz</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -166,12 +173,12 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              hairstyle
+            <En>hairstyle</En><Hu>haj stílus</Hu>
             </option>
-            <option value="short">short</option>
-            <option value="medium">medium</option>
-            <option value="long">long</option>
-            <option value="bald">bald</option>
+            <option value="short"><En>short</En><Hu>rövid</Hu></option>
+            <option value="medium"><En>medium</En><Hu>középhosszú</Hu></option>
+            <option value="long"><En>long</En><Hu>hosszú</Hu></option>
+            <option value="bald"><En>bald</En><Hu>kopaszocska</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -180,10 +187,10 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              glasses?
+            <En>glasses</En><Hu>szemüveg</Hu>
             </option>
-            <option value="yes">yes</option>
-            <option value="no">no</option>
+            <option value="yes"><En>yes</En><Hu>igen</Hu></option>
+            <option value="no"><En>no</En><Hu>nem</Hu></option>
           </select>
           <textarea
             rows="3"
@@ -194,9 +201,9 @@ class PostForm extends React.Component {
             className="messageinput"
           />
         </div>
-          <span className="sentMessage" style={{display: !this.state.buttonPressed ? 'none' : 'block'}}>Sent!</span>
-          <button type="submit" className="submit-button" style={{ display: this.state.selectedDay !== undefined && !this.state.buttonPressed ? 'inline': 'none'}}>
-            FIND THEM
+        <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'block' }}><En>Sent</En><Hu>Elküldve</Hu>!</span>
+        <button type="submit" className="submit-button" style={{ display: this.state.selectedDay !== undefined && !this.state.buttonPressed ? 'inline' : 'none' }}>
+          FIND THEM
           </button>
       </form>
     );
