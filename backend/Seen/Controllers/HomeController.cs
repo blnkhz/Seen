@@ -109,5 +109,13 @@ namespace Seen.Controllers
             await helloItsMeService.AddHelloItsMe(id, helloitsme);
             return RedirectToAction("BeenSeen");
         }
+
+        [HttpGet]
+        [Route("removesighting/{fbId}/{sId}")]
+        public async Task<IActionResult> RemoveSighting([FromRoute] string fbId, [FromRoute] string sId)
+        {
+            await sightingService.RemoveSighting(fbId, sId);
+            return RedirectToAction("BeenSeen");
+        }
     }
 }
