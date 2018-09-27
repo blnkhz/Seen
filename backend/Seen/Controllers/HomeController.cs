@@ -117,5 +117,13 @@ namespace Seen.Controllers
             await sightingService.RemoveSighting(fbId, sId);
             return RedirectToAction("BeenSeen");
         }
+
+        //[HttpGet]
+        //[Route("removehelloitsme/{fbId}/{sId}/{socialHandle}")]
+        //public async Task<IActionResult> RemoveHelloItsMe([FromRoute] string fbId, [FromRoute] string sId, [FromRoute] string socialHandle)
+        //{
+        //    await helloItsMeService.RemoveHelloItsMe(fbId, sId, socialHandle);
+        //    return RedirectToAction("BeenSeen");
+        //}
     }
 }

@@ -69,10 +69,15 @@ namespace Seen.Repositories
         public async Task RemoveSightingAsync(string fbId, string sId)
         {
             var filter = new BsonDocument("FbId", fbId);
-            var update = Builders<User>.Update.PullFilter("Sightings",
-    Builders<Sighting>.Filter.Eq("_id", sId));
+            var update = Builders<User>.Update.PullFilter("Sightings", Builders<Sighting>.Filter.Eq("_id", sId));
             await users.FindOneAndUpdateAsync(filter, update);
         }
+
+        //public async Task RemoveHelloItsMeAsync(string fbId, string sId, string socialHandle)
+        //{
+        //    var filter = Builders<User>.Filter.Eq("FbId", fbId);
+        //    await users.FindOneAndUpdateAsync(filter, update);
+        //}
 
         public async Task UpdateUserWithFilterAsync(string id, List<FilterJson> filters)
         {

@@ -50,5 +50,10 @@ namespace Seen.Services
             }
             await seenRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
         }
+
+        //public async Task RemoveHelloItsMe(string fbId, string sId, string socialHandle)
+        //{
+        //    await seenRepository.RemoveHelloItsMeAsync(fbId, sId, socialHandle);
+        //}
     }
 }
