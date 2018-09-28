@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 
 var ReactLanguage = require('react-language');
 const Hu = ReactLanguage.create('hu');
@@ -21,7 +22,7 @@ class Profile extends Component {
       orientation: "",
       isHidden: true,
       fbuser: null,
-      nem: <a><En>male</En><Hu>férfi</Hu></a>
+      nem: renderToStaticMarkup(window.navigator.ReactLanguage)
     };
   }
 
@@ -36,6 +37,11 @@ class Profile extends Component {
         .then(fbuser => { this.setState({ fbuser }) });
     }
   };
+
+  scrollnToggle(){
+    this.toggleHidden();
+    setTimeout(()=>  window.scrollTo(0,1000), 100);
+  }
 
   toggleHidden() {
     this.setState({
@@ -91,7 +97,7 @@ class Profile extends Component {
             data-for="handle"
             type="text"
             name="socialHandle"
-            placeholder={this.state.fbuser.socialHandle}
+            placeholder={this.state.nem + this.state.fbuser.socialHandle}
             onChange={this.handleChange}
             className="handleinput"
           />
@@ -151,8 +157,8 @@ class Profile extends Component {
             <option value="teen"><En>teen</En><Hu>tini</Hu></option>
             <option value="young adult"><En>yound adult</En><Hu>fiatalember/hölgy</Hu></option>
             <option value="adult"><En>adult</En><Hu>felnőtt</Hu></option>
-            <option value="middle-aged">middle-aged</option>
-            <option value="elderly">elderly</option>
+            <option value="middle-aged"><En>middle-aged</En><Hu>középkorú</Hu></option>
+            <option value="elderly"><En>elderly</En><Hu>idős</Hu></option>
           </select>
 
           <select
@@ -161,11 +167,13 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
             <option value="" disabled selected hidden>
-              Height? {this.state.fbuser.userHeight}
+            {this.state.fbuser.userHeight === "short" && <a><En>Height: short</En><Hu>Magasság: alacsony</Hu></a>}
+            {this.state.fbuser.userHeight === "average" && <a><En>Height: average</En><Hu>Magasság: átlagos</Hu></a>}
+            {this.state.fbuser.userHeight === "tall" && <a><En>Height: tall</En><Hu>Magasság: magas</Hu></a>}
             </option>
-            <option value="short">short</option>
-            <option value="average">average</option>
-            <option value="tall">tall</option>
+            <option value="short"><En>short</En><Hu>alacsony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="tall"><En>tall</En><Hu>magas</Hu></option>
           </select>
 
           <select
@@ -174,13 +182,17 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
             <option value="" disabled selected hidden>
-              Build? {this.state.fbuser.userBuild}
+            {this.state.fbuser.userBuild === "thin" && <a><En>Build: thin</En><Hu>Testfelépítés: vékony</Hu></a>}
+            {this.state.fbuser.userBuild === "average" && <a><En>Build: average</En><Hu>Testfelépítés: átlagos</Hu></a>}
+            {this.state.fbuser.userBuild === "athletic" && <a><En>Build: athletic</En><Hu>Testfelépítés: sportos</Hu></a>}
+            {this.state.fbuser.userBuild === "ripped" && <a><En>Build: ripped</En><Hu>Testfelépítés: kigyúrt</Hu></a>}
+            {this.state.fbuser.userBuild === "chubby" && <a><En>Build: chubby</En><Hu>Testfelépítés: husika</Hu></a>}
             </option>
-            <option value="thin">thin</option>
-            <option value="average">average</option>
-            <option value="athletic">athletic</option>
-            <option value="ripped">ripped</option>
-            <option value="chubby">chubby</option>
+            <option value="thin"><En>thin</En><Hu>vékony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="athletic"><En>athletic</En><Hu>sportos</Hu></option>
+            <option value="ripped"><En>ripped</En><Hu>kigyúrt</Hu></option>
+            <option value="chubby"><En>chubby</En><Hu>husika</Hu></option>
           </select>
 
           <select
@@ -189,14 +201,19 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
             <option value="" disabled selected hidden>
-              Hair color? {this.state.fbuser.userHairColor}
+            {this.state.fbuser.userHairColor === "black" && <a><En>Hair color: black</En><Hu>Hajszín: fekete</Hu></a>}
+            {this.state.fbuser.userHairColor === "brown" && <a><En>Hair color: brown</En><Hu>Hajszín: barna</Hu></a>}
+            {this.state.fbuser.userHairColor === "blond(e)" && <a><En>Hair color: blond(e)</En><Hu>Hajszín: szőke</Hu></a>}
+            {this.state.fbuser.userHairColor === "red" && <a><En>Hair color: red</En><Hu>Hajszín: red</Hu></a>}
+            {this.state.fbuser.userHairColor === "special" && <a><En>Hair color: special</En><Hu>Hajszín: speckó</Hu></a>}
+            {this.state.fbuser.userHairColor === "salt n pepper" && <a><En>Hair color: salt n pepper</En><Hu>Hajszín: ősz</Hu></a>}
             </option>
-            <option value="black">black</option>
-            <option value="brown">brown</option>
-            <option value="blond(e)">blond(e)</option>
-            <option value="red">red</option>
-            <option value="special">special</option>
-            <option value="salt n pepper">salt n pepper</option>
+            <option value="black"><En>black</En><Hu>fekete</Hu></option>
+            <option value="brown"><En>brown</En><Hu>barna</Hu></option>
+            <option value="blond(e)"><En>blond(e)</En><Hu>szőke</Hu></option>
+            <option value="red"><En>red</En><Hu>vörös</Hu></option>
+            <option value="special"><En>special</En><Hu>speckó</Hu></option>
+            <option value="salt n pepper"><En>salt n pepper</En><Hu>ősz</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -204,12 +221,15 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
             <option value="" disabled selected hidden>
-              Hairstyle? {this.state.fbuser.userHairStyle}
+            {this.state.fbuser.userHairStyle === "short" && <a><En>Hairstyle: short</En><Hu>Hajstílus: rövid</Hu></a>}
+            {this.state.fbuser.userHairStyle === "medium" && <a><En>Hairstyle: medium</En><Hu>Hajstílus: középhosszú</Hu></a>}
+            {this.state.fbuser.userHairStyle === "long" && <a><En>Hairstyle: long</En><Hu>Hajstílus: hosszú</Hu></a>}
+            {this.state.fbuser.userHairStyle === "bald" && <a><En>Hairstyle: bald</En><Hu>Hajstílus: kopaszka</Hu></a>}
             </option>
-            <option value="short">short</option>
-            <option value="medium">medium</option>
-            <option value="long">long</option>
-            <option value="bald">bald</option>
+            <option value="short"><En>short</En><Hu>rövid</Hu></option>
+            <option value="medium"><En>medium</En><Hu>középhosszú</Hu></option>
+            <option value="long"><En>long</En><Hu>hosszú</Hu></option>
+            <option value="bald"><En>bald</En><Hu>kopaszka</Hu></option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -217,10 +237,11 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
             <option value="glasses?" disabled selected hidden>
-              Glasses? {this.state.fbuser.userGlasses}
+            {this.state.fbuser.userGlasses === "yes" && <a><En>Glasses: yes</En><Hu>Szemüveges: igen</Hu></a>}
+            {this.state.fbuser.userGlasses === "no" && <a><En>Glasses: no</En><Hu>Szemüveges: nem</Hu></a>}
             </option>
-            <option value="yes">yes</option>
-            <option value="no">no</option>
+            <option value="yes"><En>yes</En><Hu>igen</Hu></option>
+            <option value="no"><En>no</En><Hu>nem</Hu></option>
           </select>
 
           <a href="">
@@ -286,7 +307,7 @@ class Profile extends Component {
           </div>
           <button
             href="#33"
-            onClick={this.toggleHidden.bind(this)}
+            onClick={()=> this.scrollnToggle()}
             className="edit-profile"
           >
             EDIT
