@@ -33,9 +33,16 @@ class Readgend extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      message: ""
+      message: "",
+      buttonPressed: false
     };
   }
+
+  showSent() {
+    this.setState({ buttonPressed: true });
+    setTimeout(()=> this.setState( {buttonPressed: false}), 1500);
+  }
+
   handleChange(event) {
     console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
@@ -60,6 +67,8 @@ class Readgend extends React.Component {
         })
       }
     ).catch(error => `Error: ${error}`);
+
+    this.showSent();
   }
 
   render() {
@@ -86,7 +95,7 @@ class Readgend extends React.Component {
                   type="text"
                   name="message"
                   onChange={this.handleChange}
-                  placeholder="Message"
+                  placeholder={ReactLanguage.getLanguage() === 'en' ? "Write here something nice" : "Írj valami kedveset neki ide"}
                   className="messageinput"
                 />
                 <button
@@ -94,8 +103,9 @@ class Readgend extends React.Component {
                   onClick={this.handleSubmit}
                   className="it-is-me-button"
                 >
-                  YES!
+                <En>YES!</En><Hu>IGEN!</Hu>
                 </button>
+                <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Sent!</En><Hu>  Elküldve!</Hu></span>
                 <ReactTooltip id="aha">
                   {niceThings[Math.floor(Math.random() * niceThings.length)]}
                 </ReactTooltip>

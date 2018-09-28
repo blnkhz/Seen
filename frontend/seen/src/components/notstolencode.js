@@ -196,15 +196,15 @@ class PostForm extends React.Component {
             rows="3"
             type="text"
             name="message"
-            placeholder=" anything else?"
+            placeholder={ReactLanguage.getLanguage() === 'en' ? "anything else?" : "egyéb jellemző?"}
             onChange={this.handleChange}
             className="messageinput"
           />
         </div>
         <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'block' }}><En>Sent</En><Hu>Elküldve</Hu>!</span>
         <button type="submit" className="submit-button" style={{ display: this.state.selectedDay !== undefined && !this.state.buttonPressed ? 'inline' : 'none' }}>
-          FIND THEM
-          </button>
+        <En>Find Them!</En><Hu>Találd meg!</Hu>
+        </button>
       </form>
     );
   }

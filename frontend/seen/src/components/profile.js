@@ -22,7 +22,7 @@ class Profile extends Component {
       orientation: "",
       isHidden: true,
       fbuser: null,
-      nem: renderToStaticMarkup(window.navigator.ReactLanguage)
+      buttonPressed: false
     };
   }
 
@@ -37,6 +37,11 @@ class Profile extends Component {
         .then(fbuser => { this.setState({ fbuser }) });
     }
   };
+
+  showSaved() {
+    this.setState({ buttonPressed: true });
+    setTimeout(()=> this.setState( {buttonPressed: false}), 1500);
+  }
 
   scrollnToggle(){
     this.toggleHidden();
@@ -81,13 +86,14 @@ class Profile extends Component {
         "Content-Type": "application/json"
       })
     }).catch(error => `Error: ${error}`);
+
+    this.showSaved();
   }
 
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
       return <div></div>;
     }
-
     const { user } = this.props;
     const menjekMarAludni = (
       <div id="33" ref={this.myRef}>
@@ -97,7 +103,7 @@ class Profile extends Component {
             data-for="handle"
             type="text"
             name="socialHandle"
-            placeholder={this.state.nem + this.state.fbuser.socialHandle}
+            placeholder={ReactLanguage.getLanguage() === 'en' ? "social handle: " + this.state.fbuser.socialHandle : "elérhetőséged: " + this.state.fbuser.socialHandle}
             onChange={this.handleChange}
             className="handleinput"
           />
@@ -138,7 +144,7 @@ class Profile extends Component {
             {this.state.fbuser.orientation === "bisexual" && <a><En>Orientation: bisexual</En><Hu>Nemi orientáció: biszexuális</Hu></a>}
             </option>
             <option value="straight"><En>Straight</En><Hu>Hetero</Hu></option>
-            <option value="gay"><En>Gay</En><Hu>homoszexuális</Hu></option>
+            <option value="gay"><En>gay</En><Hu>homoszexuális</Hu></option>
             <option value="bisexual"><En>bisexual</En><Hu>biszexuális</Hu></option>
           </select>
 
@@ -245,10 +251,11 @@ class Profile extends Component {
           </select>
 
           <a href="">
-            <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
-              save changes
+          <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
+          <En>save</En><Hu>mentés</Hu>
           </button>
           </a>
+          <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Saved!</En><Hu>  Mentve!</Hu></span>
         </form>
       </div>
     );
@@ -306,11 +313,10 @@ class Profile extends Component {
             </p>
           </div>
           <button
-            href="#33"
             onClick={()=> this.scrollnToggle()}
             className="edit-profile"
           >
-            EDIT
+          <En>EDIT</En><Hu>Szerkesztés</Hu>
           </button>
           {!this.state.isHidden && menjekMarAludni}
         </div>

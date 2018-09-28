@@ -531,9 +531,9 @@ option[value=""][disabled] {
   background: #6489c2;
   box-shadow: none;
   border-radius: 0px;
-  display: block;
+  display: inline;
   height: 50px;
-  width: 100%;
+  width: 100px;
 }
 
 .user-details {
