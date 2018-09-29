@@ -780,7 +780,6 @@ option[value=""][disabled] {
   border: #dc82a4 solid 5px;
 }
 
-<<<<<<< HEAD
 .megsem {
   height: 2em;
   background: rgb(175, 175, 175);
@@ -789,6 +788,13 @@ option[value=""][disabled] {
   border-radius: 10%;
   margin: 0;
   position: absolute;
+}
+
+.flag{
+  border-radius: 50%;
+  width: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -814,11 +820,4 @@ option[value=""][disabled] {
   .match-handle {
     align-self: flex-end;
   }
-=======
-.flag{
-  border-radius: 50%;
-  width: 25px;
-  margin-right: 10px;
-  margin-top: 10px;
->>>>>>> language
 }

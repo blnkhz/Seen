@@ -1,25 +1,16 @@
 import React, { Component } from "react";
 
-var ReactLanguage = require('react-language');
-const Hu = ReactLanguage.create('hu');
-const En = ReactLanguage.create(true);
-
 class About extends Component {
   render() {
-
     const aboutContent = (
       <div className="aboutus">
-<<<<<<< HEAD
         <h1 className="abouttitle">we are seen.</h1>
-=======
-        <h1 className="abouttitle"><En>We are Seen.</En><Hu>Seen csapata</Hu></h1>
->>>>>>> language
         <div id="about-container">
           <div className="aboutperson">
             <img
               src={require("../assets/Mate.jpg")}
               className="aboutphoto"
-              alt="Mate Dugas"
+              alt="Máté Dugas"
             />
             <h4 className="aboutnameofperson">Mate Dugas</h4>
             <p className="aboutintroduction">
@@ -30,7 +21,7 @@ class About extends Component {
             <img
               src={require("../assets/Blank.jpg")}
               className="aboutphoto"
-              alt="Blanka Eszter Hooz"
+              alt="Blanka Eszter Hoóz"
             />
             <h4 className="aboutnameofperson">Blanka Eszter Hooz</h4>
             <p className="aboutintroduction">
@@ -50,7 +41,7 @@ class About extends Component {
             <img
               src={require("../assets/Peti.jpg")}
               className="aboutphoto"
-              alt="Peter Nemeth"
+              alt="Péter Németh"
             />
             <h4 className="aboutnameofperson">Peter Nemeth</h4>
             <p className="aboutintroduction">

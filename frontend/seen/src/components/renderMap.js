@@ -32,13 +32,8 @@ class Renderz extends Component {
     this.setState({ sidebarOpen: open });
   }
 
-<<<<<<< HEAD
-  onSetSidebarClose = () => {
-    this.setState({sidebarOpen: false});
-=======
   onSetSidebarClose=()=> {
     this.setState({ sidebarOpen: false });
->>>>>>> language
   }
 
   render() {
