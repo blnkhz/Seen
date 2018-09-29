@@ -26,15 +26,14 @@ class Renderz extends Component {
       infoIndex: dataFromChild2
     });
     this.onSetSidebarOpen(true);
-    console.log(this.state.infoIndex);
   };
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
   }
 
-  onSetSidebarClose = () => {
-    this.setState({sidebarOpen: false});
+  onSetSidebarClose=()=> {
+    this.setState({ sidebarOpen: false });
   }
 
   render() {
@@ -48,6 +47,7 @@ class Renderz extends Component {
                 FbUser={this.props.FbUser}
                 indexke={this.state.infoIndex}
                 userDatas={this.state.users}
+                
               />
             </div>
           }

@@ -10,7 +10,7 @@ class About extends Component {
             <img
               src={require("../assets/Mate.jpg")}
               className="aboutphoto"
-              alt="Mate Dugas"
+              alt="Máté Dugas"
             />
             <h4 className="aboutnameofperson">Mate Dugas</h4>
             <p className="aboutintroduction">
@@ -21,7 +21,7 @@ class About extends Component {
             <img
               src={require("../assets/Blank.jpg")}
               className="aboutphoto"
-              alt="Blanka Eszter Hooz"
+              alt="Blanka Eszter Hoóz"
             />
             <h4 className="aboutnameofperson">Blanka Eszter Hooz</h4>
             <p className="aboutintroduction">
@@ -41,7 +41,7 @@ class About extends Component {
             <img
               src={require("../assets/Peti.jpg")}
               className="aboutphoto"
-              alt="Peter Nemeth"
+              alt="Péter Németh"
             />
             <h4 className="aboutnameofperson">Peter Nemeth</h4>
             <p className="aboutintroduction">

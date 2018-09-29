@@ -607,9 +607,9 @@ option[value=""][disabled] {
   background: #6489c2;
   box-shadow: none;
   border-radius: 0px;
-  display: block;
+  display: inline;
   height: 50px;
-  width: 100%;
+  width: 100px;
 }
 
 .user-details {
@@ -677,7 +677,7 @@ option[value=""][disabled] {
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   width: 10%;
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   height: 5vh;
@@ -789,6 +789,13 @@ option[value=""][disabled] {
   border-radius: 10%;
   margin: 0;
   position: absolute;
+}
+
+.flag{
+  border-radius: 50%;
+  width: 25px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
