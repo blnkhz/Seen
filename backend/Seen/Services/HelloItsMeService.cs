@@ -14,7 +14,7 @@ namespace Seen.Services
             this.seenRepository = seenRepository;
         }
 
-        public async Task AddHelloItsMe(string id, HelloItsMe helloItsMe)
+        public async Task AddHelloItsMe(string sId, HelloItsMe helloItsMe)
         {
             var allUsers = await seenRepository.SelectAllAsync();
             string selectedUsersId = null;
@@ -25,7 +25,7 @@ namespace Seen.Services
                 {
                     if (allUsers[i].Sightings[j].HelloItsMes.Count == 0)
                     {
-                        if (id == allUsers[i].Sightings[j].Id.ToString())
+                        if (sId == allUsers[i].Sightings[j].Id.ToString())
                         {
                             selectedUsersId = allUsers[i].FbId.ToString();
                             sightingIndex = j;
@@ -35,12 +35,12 @@ namespace Seen.Services
                     {
                         for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
                         {
-                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle && id == allUsers[i].Sightings[j].Id.ToString())
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle && sId == allUsers[i].Sightings[j].Id.ToString())
                             {
                                 selectedUsersId = null;
                                 break;
                             }
-                            if (id == allUsers[i].Sightings[j].Id.ToString())
+                            if (sId == allUsers[i].Sightings[j].Id.ToString())
                             {
                                 selectedUsersId = allUsers[i].FbId.ToString();
                                 sightingIndex = j;

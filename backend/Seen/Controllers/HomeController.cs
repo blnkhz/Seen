@@ -28,10 +28,10 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("getuser/{id}")]
-        public async Task<IActionResult> SearchById(string id)
+        [Route("getuser/{fbId}")]
+        public async Task<IActionResult> SearchById(string fbId)
         {
-            var selectedUser = await userService.ReadOneUser(id);
+            var selectedUser = await userService.ReadOneUser(fbId);
             return Ok(selectedUser);
         }
 
@@ -44,10 +44,10 @@ namespace Seen.Controllers
         }
 
         [HttpDelete]
-        [Route("deleteuser/{id}")]
-        public async Task<IActionResult> BeenDeleted(string id)
+        [Route("deleteuser/{fbId}")]
+        public async Task<IActionResult> BeenDeleted(string fbId)
         {
-            await userService.DeleteUser(id);
+            await userService.DeleteUser(fbId);
             return RedirectToAction("BeenSeen");
         }
 
@@ -60,10 +60,10 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("matchfilter/{id}")]
-        public async Task<IActionResult> MatchFilter(string id)
+        [Route("matchfilter/{fbId}")]
+        public async Task<IActionResult> MatchFilter(string fbId)
         {
-            var possibleSightings = await sightingService.Finder(id);
+            var possibleSightings = await sightingService.MatchFinder(fbId);
             return Ok(possibleSightings);
         }
 
@@ -76,10 +76,10 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("addsighting/{id}")]
-        public async Task<IActionResult> HaveSeen([FromRoute] string id, [FromBody]Sighting sighting)
+        [Route("addsighting/{fbId}")]
+        public async Task<IActionResult> HaveSeen([FromRoute] string fbId, [FromBody]Sighting sighting)
         {
-            await sightingService.AddSighting(id, sighting);
+            await sightingService.AddSighting(fbId, sighting);
             return Ok(sighting);
         }
 
@@ -95,18 +95,18 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("updateuser/{id}")]
-        public async Task<IActionResult> UpdateUser([FromRoute] string id, [FromBody]User user)
+        [Route("updateuser/{fbId}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] string fbId, [FromBody]User user)
         {
-            await userService.UpdateUserWithFilter(id, user);
+            await userService.UpdateUserWithFilter(fbId, user);
             return RedirectToAction("BeenSeen");
         }
 
         [HttpPost]
-        [Route("addhelloitsme/{id}")]
-        public async Task<IActionResult> AddHelloItsMe([FromRoute] string id, [FromBody] HelloItsMe helloitsme)
+        [Route("addhelloitsme/{sId}")]
+        public async Task<IActionResult> AddHelloItsMe([FromRoute] string sId, [FromBody] HelloItsMe helloitsme)
         {
-            await helloItsMeService.AddHelloItsMe(id, helloitsme);
+            await helloItsMeService.AddHelloItsMe(sId, helloitsme);
             return RedirectToAction("BeenSeen");
         }
 

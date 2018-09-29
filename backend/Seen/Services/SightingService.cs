@@ -14,11 +14,11 @@ namespace Seen.Services
             this.seenRepository = seenRepository;
         }
 
-        public async Task AddSighting(string id, Sighting sighting)
+        public async Task AddSighting(string fbId, Sighting sighting)
         {
-            var selectedUser = await seenRepository.SelectByIdAsync(id);
+            var selectedUser = await seenRepository.SelectByIdAsync(fbId);
             selectedUser.Sightings.Add(sighting);
-            await seenRepository.UpdateSightingsAsync(id, selectedUser.Sightings);
+            await seenRepository.UpdateSightingsAsync(fbId, selectedUser.Sightings);
         }
 
         public async Task RemoveSighting (string fbId, string sId)
@@ -39,9 +39,9 @@ namespace Seen.Services
             }
             return locations;
         }
-        public async Task<List<Sighting>> Finder(string id)
+        public async Task<List<Sighting>> MatchFinder(string fbId)
         {
-            var selectedUser = await seenRepository.SelectByIdAsync(id);
+            var selectedUser = await seenRepository.SelectByIdAsync(fbId);
             List<User> possibleSightings = new List<User>();
             if (selectedUser.Orientation == "straight")
             {
