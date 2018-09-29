@@ -99,7 +99,6 @@ class NavbarFeatures extends Component {
                   {kep}
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>
                     <NavLink className="navlink" to="/profile">
                       <En>profile</En><Hu>profil</Hu>
                     </NavLink>

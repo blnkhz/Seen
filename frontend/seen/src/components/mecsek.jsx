@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Mecsek extends Component {
   constructor() {
     super();
+  this.handleClick = this.handleClick.bind(this);
     this.state = {
       fbuser: null
     };
@@ -16,6 +18,10 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
+handleClick (idke, socialke) {
+  axios.get('http://localhost:52210/removehelloitsme/' + this.state.fbuser.fbId + "/" + idke + "/" + socialke)
+  }
+
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
       return <h1 style={{ margin: "200px" }}></h1>;
@@ -24,11 +30,18 @@ class Mecsek extends Component {
       <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
           <div id="match">
-            {element.helloItsMes.map(hello => (
-              <div className="match-container">
-              <h4 className="match-day">{element.day}</h4>
+            <h4 className="match-day">{element.day}</h4>
+          {element.helloItsMes.map(hello => (
+            <div className="match-container">
                 <div className="match-applicant">
-                <button className="megsem">x</button>
+                
+                {console.log(element.id)}
+                  <button
+                    className="megsem"
+                    onClick={() => this.handleClick(element.id, hello.socialHandle)}
+                  >
+                    x
+                  </button>
                   <img
                     src={hello.picture}
                     className="match-picture"

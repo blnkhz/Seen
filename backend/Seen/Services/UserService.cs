@@ -24,9 +24,9 @@ namespace Seen.Services
             }
         }
 
-        public async Task DeleteUser(string id)
+        public async Task DeleteUser(string fbId)
         {
-            await seenRepository.DeleteAsync(id);
+            await seenRepository.DeleteAsync(fbId);
         }
 
         public async Task<List<User>> ReadAllUsers()
@@ -34,9 +34,9 @@ namespace Seen.Services
             return await seenRepository.SelectAllAsync();
         }
 
-        public async Task<User> ReadOneUser(string id)
+        public async Task<User> ReadOneUser(string fbId)
         {
-            return await seenRepository.SelectByIdAsync(id);
+            return await seenRepository.SelectByIdAsync(fbId);
         }
 
         public async Task<List<User>> FilterUser(string field, string value)
@@ -44,7 +44,7 @@ namespace Seen.Services
             return await seenRepository.SelectByFieldAsync(field, value);
         }
 
-        public async Task UpdateUserWithFilter(string id, User user)
+        public async Task UpdateUserWithFilter(string fbId, User user)
         {
             List<FilterJson> filters = new List<FilterJson>();
             foreach (PropertyInfo prop in user.GetType().GetProperties())
@@ -54,7 +54,7 @@ namespace Seen.Services
                     filters.Add(new FilterJson { Field = prop.Name.ToString(), Value = prop.GetValue(user).ToString() });
                 }
             }
-            await seenRepository.UpdateUserWithFilterAsync(id, filters);
+            await seenRepository.UpdateUserWithFilterAsync(fbId, filters);
         }
     }
 }

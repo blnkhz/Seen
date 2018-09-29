@@ -138,6 +138,7 @@
 .navlink:hover {
   font-weight: 600;
   letter-spacing: 0.3em;
+  background-color: #fff;
 }
 
 .search {
