@@ -84,7 +84,6 @@ class NavbarFeatures extends Component {
                   {kep}
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>
                     <NavLink className="navlink" to="/profile">
                       profile
                     </NavLink>
@@ -92,7 +91,6 @@ class NavbarFeatures extends Component {
                       sightings
                     </NavLink>
                     <a className="navlink" href="/login" onClick={()=>{window.FB.logout()}}>logout</a>
-                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavItem>

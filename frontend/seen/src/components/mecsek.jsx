@@ -26,13 +26,13 @@ class Mecsek extends Component {
       <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
           <div id="match">
-            {element.helloItsMes.map(hello => (
-              <div className="match-container">
-                <h4 className="match-day">{element.day}</h4>
+            <h4 className="match-day">{element.day}</h4>
+          {element.helloItsMes.map(hello => (
+            <div className="match-container">
                 <div className="match-applicant">
                   <button
                     className="megsem"
-                    onClick={axios.get("http://localhost:52210/removehelloitsme/" + this.props.id + "/" + element.id + "/" + hello.socialHandle)}
+                    onClick={console.log("http://localhost:52210/removehelloitsme/" + this.props.id + "/" + element.id + "/" + hello.socialHandle)}
                   >
                     x
                   </button>
