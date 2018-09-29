@@ -106,7 +106,6 @@ class NavbarFeatures extends Component {
                       <En>my sightings</En><Hu>észleléseim</Hu>
                     </NavLink>
                     <a className="navlink" href="/login" onClick={()=>{window.FB.logout()}}><En>logout</En><Hu>kijelentkezés</Hu></a>
-                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavItem>

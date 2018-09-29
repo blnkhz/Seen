@@ -20,6 +20,7 @@ class Mecsek extends Component {
   };
 handleClick (idke, socialke) {
   axios.get('http://localhost:52210/removehelloitsme/' + this.state.fbuser.fbId + "/" + idke + "/" + socialke)
+  setTimeout(this.componentWillMount, 300);
   }
 
   render() {
@@ -30,12 +31,10 @@ handleClick (idke, socialke) {
       <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
           <div id="match">
-            <h4 className="match-day">{element.day}</h4>
+            <h4 className="match-day"><br/>{element.message} <br/> {element.day}</h4>
           {element.helloItsMes.map(hello => (
             <div className="match-container">
                 <div className="match-applicant">
-                
-                {console.log(element.id)}
                   <button
                     className="megsem"
                     onClick={() => this.handleClick(element.id, hello.socialHandle)}
