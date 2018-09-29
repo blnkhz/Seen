@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Mecsek extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
+
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
       return <h1 style={{ margin: "200px" }}>SANYIKAM!</h1>;
@@ -26,9 +28,14 @@ class Mecsek extends Component {
           <div id="match">
             {element.helloItsMes.map(hello => (
               <div className="match-container">
-              <h4 className="match-day">{element.day}</h4>
+                <h4 className="match-day">{element.day}</h4>
                 <div className="match-applicant">
-                <button className="megsem">x</button>
+                  <button
+                    className="megsem"
+                    onClick={axios.get("http://localhost:52210/removehelloitsme/" + this.props.id + "/" + element.id + "/" + hello.socialHandle)}
+                  >
+                    x
+                  </button>
                   <img
                     src={hello.picture}
                     className="match-picture"
