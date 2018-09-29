@@ -137,12 +137,14 @@ class App extends Component {
     const Mecsek = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
+<<<<<<< HEAD
         <Meccsek id={this.state.fbUser.fbId} style={{ marginTop: "200px" }} />
+=======
+        <Meccsek id={this.state.fbUser.fbId} style={{ marginTop: '200px' }} />
+>>>>>>> language
         <FooterPage />
       </div>
     );
-    console.log(this.state.fbUser.isLoggedIn);
-    console.log(this.state.loaded);
     return (
       <Router>
         <div>
@@ -170,6 +172,7 @@ class App extends Component {
             )}
           />
           <Switch>
+<<<<<<< HEAD
             <Route
               exact
               path="/profile"
@@ -232,6 +235,18 @@ class App extends Component {
               }
             />
             <Route exact path="/load" render={() => <Load />} />
+=======
+            <Route exact path="/profile" render={() => (this.state.fbUser.isLoggedIn ? <ProfilePage /> : <Load />)} />
+            <Route exact path="/itsamatch" render={() => (this.state.fbUser.isLoggedIn ? <Mecsek /> : <Load />)} />
+            <Route exact path="/contact" render={() => (this.state.fbUser.isLoggedIn ? <Contact /> : <Load />)} />
+            <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked /> : <Load />)} />
+            <Route exact path="/about" render={() => (this.state.fbUser.isLoggedIn ? <AboutUs /> : <Load />)} />
+            <Route exact path="/" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
+            <Route exact path="/add" render={() => (this.state.fbUser.isLoggedIn ? <Add /> : <Load />)} />
+            <Route exact path="/login" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
+            <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />)} />
+            <Route exact path="/load" render={() => (<Load />)} />
+>>>>>>> language
           </Switch>
         </div>
       </Router>

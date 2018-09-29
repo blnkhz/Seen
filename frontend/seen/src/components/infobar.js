@@ -1,6 +1,10 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 
+var ReactLanguage = require('react-language');
+const Hu = ReactLanguage.create('hu');
+const En = ReactLanguage.create(true);
+
 const niceThings = [
   "You're a gift to those around you.",
   "You look good!",
@@ -29,9 +33,16 @@ class Readgend extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      message: ""
+      message: "",
+      buttonPressed: false
     };
   }
+
+  showSent() {
+    this.setState({ buttonPressed: true });
+    setTimeout(()=> this.setState( {buttonPressed: false}), 1500);
+  }
+
   handleChange(event) {
     console.log(event.target.name, event.target.value);
     this.setState({ [event.target.name]: event.target.value });
@@ -46,7 +57,7 @@ class Readgend extends React.Component {
 
     fetch(
       "http://localhost:52210/addhelloitsme/" +
-        this.props.userDatas[this.props.indexke].id,
+      this.props.userDatas[this.props.indexke].id,
       {
         method: "POST",
         body: JSON.stringify(data),
@@ -56,6 +67,8 @@ class Readgend extends React.Component {
         })
       }
     ).catch(error => `Error: ${error}`);
+
+    this.showSent();
   }
 
   render() {
@@ -65,7 +78,7 @@ class Readgend extends React.Component {
           (element, UnIndex) =>
             UnIndex === this.props.indexke ? (
               <div className="seenswercontainer">
-                <h4 className="infotitle">looks familiar?</h4>
+                <h4 className="infotitle"><En>looks familiar?</En><Hu>Ismerős számodra?</Hu></h4>
                 <img
                   data-tip
                   data-for="aha"
@@ -73,16 +86,16 @@ class Readgend extends React.Component {
                   src={element.picture}
                   alt="hmmm"
                 />
-                <h4 className="seenpropertytitle">WHEN?</h4>
+                <h4 className="seenpropertytitle"><En>WHEN</En><Hu>Amikor láthatott</Hu></h4>
                 <p className="seenswer">{element.day}</p>
-                <h4 className="seenpropertytitle">MESSAGE</h4>
+                <h4 className="seenpropertytitle"><En>MESSAGE</En><Hu>Üzenet</Hu></h4>
                 <p className="seenswer">{element.message}</p>
                 <textarea
                   rows="3"
                   type="text"
                   name="message"
                   onChange={this.handleChange}
-                  placeholder="Send a nice message!"
+                  placeholder={ReactLanguage.getLanguage() === 'en' ? "Write here something nice" : "Írj valami kedveset neki ide"}
                   className="messageinput"
                 />
                 <button
@@ -90,8 +103,9 @@ class Readgend extends React.Component {
                   onClick={this.handleSubmit}
                   className="it-is-me-button"
                 >
-                  YES!
+                <En>YES!</En><Hu>IGEN!</Hu>
                 </button>
+                <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Sent!</En><Hu>  Elküldve!</Hu></span>
                 <ReactTooltip id="aha">
                   {niceThings[Math.floor(Math.random() * niceThings.length)]}
                 </ReactTooltip>

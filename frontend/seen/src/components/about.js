@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 
+var ReactLanguage = require('react-language');
+const Hu = ReactLanguage.create('hu');
+const En = ReactLanguage.create(true);
+
 class About extends Component {
   render() {
+
     const aboutContent = (
       <div className="aboutus">
+<<<<<<< HEAD
         <h1 className="abouttitle">we are seen.</h1>
+=======
+        <h1 className="abouttitle"><En>We are Seen.</En><Hu>Seen csapata</Hu></h1>
+>>>>>>> language
         <div id="about-container">
           <div className="aboutperson">
             <img

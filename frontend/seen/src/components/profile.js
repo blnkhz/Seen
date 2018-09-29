@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import ReactTooltip from "react-tooltip";
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 
+var ReactLanguage = require('react-language');
+const Hu = ReactLanguage.create('hu');
+const En = ReactLanguage.create(true);
 class Profile extends Component {
   constructor() {
     super();
+    this.myRef = React.createRef();
     this.bindEverything();
     this.state = {
       userGender: "",
@@ -15,19 +21,32 @@ class Profile extends Component {
       userAge: "",
       orientation: "",
       isHidden: true,
-      fbuser: null
+      fbuser: null,
+      buttonPressed: false
     };
   }
 
-  componentWillMount = () =>{
-    if(this.props.id === null){
+  componentWillMount = () => {
+    if (this.props.id === null) {
       console.log("THE WOLRDO!!!");
-    }else{
+    } else {
       fetch("http://localhost:52210/getuser/" + this.props.id, {
-        mode: "cors"})
+        mode: "cors"
+      })
         .then(res => res.json())
-        .then(fbuser => {this.setState({ fbuser })});
-  }};
+        .then(fbuser => { this.setState({ fbuser }) });
+    }
+  };
+
+  showSaved() {
+    this.setState({ buttonPressed: true });
+    setTimeout(()=> this.setState( {buttonPressed: false}), 1500);
+  }
+
+  scrollnToggle(){
+    this.toggleHidden();
+    setTimeout(()=>  window.scrollTo(0,1000), 100);
+  }
 
   toggleHidden() {
     this.setState({
@@ -58,7 +77,6 @@ class Profile extends Component {
       userAge: this.state.userAge,
       orientation: this.state.orientation
     };
-    console.log(data);
 
     fetch("http://localhost:52210/updateuser/" + this.props.user.fbId, {
       method: "POST",
@@ -68,162 +86,237 @@ class Profile extends Component {
         "Content-Type": "application/json"
       })
     }).catch(error => `Error: ${error}`);
+
+    this.showSaved();
   }
 
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
-      return <div>SANYIKAM!</div>;}
-      
+      return <div></div>;
+    }
     const { user } = this.props;
     const menjekMarAludni = (
-      <form method="post" onSubmit={this.handleSubmit} className="profile-form">
-        <input
-          type="text"
-          name="socialHandle"
-          placeholder={this.state.fbuser.socialHandle}
-          onChange={this.handleChange}
-          className="handleinput"
-        />
-        <select
-          className="dropdown-newsighting"
-          name="userGender"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Gender? {this.state.fbuser.userGender}
-          </option>
-          <option value="female">female</option>
-          <option value="male">male</option>
-        </select>
+      <div id="33" ref={this.myRef}>
+        <form method="post" onSubmit={this.handleSubmit} className="profile-form">
+          <input
+            data-tip
+            data-for="handle"
+            type="text"
+            name="socialHandle"
+            placeholder={ReactLanguage.getLanguage() === 'en' ? "social handle: " + this.state.fbuser.socialHandle : "elérhetőséged: " + this.state.fbuser.socialHandle}
+            onChange={this.handleChange}
+            className="handleinput"
+          />
+          <ReactTooltip id="handle">
+            <En>your contact information, where you can reach you, if there is a match! Importante!</En><Hu>Az elérhetőséged, ahol elérhetnek, ha valaki Rád talál!</Hu>
+          </ReactTooltip>
+          <select
+            className="dropdown-newsighting"
+            name="userGender"
+            onChange={this.handleChange}
+          >
+              <option value="" disabled selected hidden>
+              {this.state.fbuser.userGender === "male"  && <a><En>Gender: male</En><Hu>Neme: férfi</Hu></a>}
+              {this.state.fbuser.userGender === "female"  && <a><En>Gender: female</En><Hu>Neme: nő</Hu></a>}
+              </option>
+            <En>
+              <option value="female">female</option>
+            </En>
+            <Hu>
+              <option value="female">nő</option>
+            </Hu>
+            <En>
+              <option value="male">male</option>
+            </En>
+            <Hu>
+              <option value="male">férfi</option>
+            </Hu>
+          </select>
 
-        <select
-          className="dropdown-newsighting"
-          name="orientation"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Orientation? {this.state.fbuser.orientation}
-          </option>
-          <option value="straight">straight</option>
-          <option value="gay">gay</option>
-          <option value="bisexual">bisexual</option>
-        </select>
+          <select
+            className="dropdown-newsighting"
+            name="orientation"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.orientation === "straight"  && <a><En>Orientation: straight</En><Hu>Nemi orientáció: hetero</Hu></a>}
+            {this.state.fbuser.orientation === "gay" && <a><En>Orientation: gay</En><Hu>Nemi orientáció: homoszexuális</Hu></a>}
+            {this.state.fbuser.orientation === "bisexual" && <a><En>Orientation: bisexual</En><Hu>Nemi orientáció: biszexuális</Hu></a>}
+            </option>
+            <option value="straight"><En>Straight</En><Hu>Hetero</Hu></option>
+            <option value="gay"><En>gay</En><Hu>homoszexuális</Hu></option>
+            <option value="bisexual"><En>bisexual</En><Hu>biszexuális</Hu></option>
+          </select>
 
-        <select
-          className="dropdown-newsighting"
-          name="userAge"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Age? {this.state.fbuser.userAge}
-          </option>
-          <option value="teen">teen</option>
-          <option value="young adult">young adult</option>
-          <option value="adult">adult</option>
-          <option value="middle-aged">middle-aged</option>
-          <option value="elderly">elderly</option>
-        </select>
+          <select
+            className="dropdown-newsighting"
+            name="userAge"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.userAge === "teen" && <a><En>Age: teen</En><Hu>Kor: tini</Hu></a>}
+            {this.state.fbuser.userAge === "young adult" && <a><En>Age: young adult</En><Hu>Kor: fiatalember/hölgy</Hu></a>}
+            {this.state.fbuser.userAge === "adult" && <a><En>Age: adult</En><Hu>Kor: felnőtt</Hu></a>}
+            {this.state.fbuser.userAge === "middle-aged" && <a><En>Age: middle-aged</En><Hu>Kor: középkorú</Hu></a>}
+            {this.state.fbuser.userAge === "elderly" && <a><En>Age: elderly</En><Hu>Kor: idős</Hu></a>}
+            </option>
+            <option value="teen"><En>teen</En><Hu>tini</Hu></option>
+            <option value="young adult"><En>yound adult</En><Hu>fiatalember/hölgy</Hu></option>
+            <option value="adult"><En>adult</En><Hu>felnőtt</Hu></option>
+            <option value="middle-aged"><En>middle-aged</En><Hu>középkorú</Hu></option>
+            <option value="elderly"><En>elderly</En><Hu>idős</Hu></option>
+          </select>
 
-        <select
-          className="dropdown-newsighting"
-          name="userHeight"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Height? {this.state.fbuser.userHeight}
-          </option>
-          <option value="short">short</option>
-          <option value="average">average</option>
-          <option value="tall">tall</option>
-        </select>
+          <select
+            className="dropdown-newsighting"
+            name="userHeight"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.userHeight === "short" && <a><En>Height: short</En><Hu>Magasság: alacsony</Hu></a>}
+            {this.state.fbuser.userHeight === "average" && <a><En>Height: average</En><Hu>Magasság: átlagos</Hu></a>}
+            {this.state.fbuser.userHeight === "tall" && <a><En>Height: tall</En><Hu>Magasság: magas</Hu></a>}
+            </option>
+            <option value="short"><En>short</En><Hu>alacsony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="tall"><En>tall</En><Hu>magas</Hu></option>
+          </select>
 
-        <select
-          className="dropdown-newsighting"
-          name="userBuild"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Build? {this.state.fbuser.userBuild}
-          </option>
-          <option value="thin">thin</option>
-          <option value="average">average</option>
-          <option value="athletic">athletic</option>
-          <option value="ripped">ripped</option>
-          <option value="chubby">chubby</option>
-        </select>
+          <select
+            className="dropdown-newsighting"
+            name="userBuild"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.userBuild === "thin" && <a><En>Build: thin</En><Hu>Testfelépítés: vékony</Hu></a>}
+            {this.state.fbuser.userBuild === "average" && <a><En>Build: average</En><Hu>Testfelépítés: átlagos</Hu></a>}
+            {this.state.fbuser.userBuild === "athletic" && <a><En>Build: athletic</En><Hu>Testfelépítés: sportos</Hu></a>}
+            {this.state.fbuser.userBuild === "ripped" && <a><En>Build: ripped</En><Hu>Testfelépítés: kigyúrt</Hu></a>}
+            {this.state.fbuser.userBuild === "chubby" && <a><En>Build: chubby</En><Hu>Testfelépítés: husika</Hu></a>}
+            </option>
+            <option value="thin"><En>thin</En><Hu>vékony</Hu></option>
+            <option value="average"><En>average</En><Hu>átlagos</Hu></option>
+            <option value="athletic"><En>athletic</En><Hu>sportos</Hu></option>
+            <option value="ripped"><En>ripped</En><Hu>kigyúrt</Hu></option>
+            <option value="chubby"><En>chubby</En><Hu>husika</Hu></option>
+          </select>
 
-        <select
-          className="dropdown-newsighting"
-          name="userHairColor"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Hair color? {this.state.fbuser.userHairColor}
-          </option>
-          <option value="black">black</option>
-          <option value="brown">brown</option>
-          <option value="blond(e)">blond(e)</option>
-          <option value="red">red</option>
-          <option value="special">special</option>
-          <option value="salt n pepper">salt n pepper</option>
-        </select>
-        <select
-          className="dropdown-newsighting"
-          name="userHairStyle"
-          onChange={this.handleChange}
-        >
-          <option value="" disabled selected hidden>
-            Hairstyle? {this.state.fbuser.userHairStyle}
-          </option>
-          <option value="short">short</option>
-          <option value="medium">medium</option>
-          <option value="long">long</option>
-          <option value="bald">bald</option>
-        </select>
-        <select
-          className="dropdown-newsighting"
-          name="userGlasses"
-          onChange={this.handleChange}
-        >
-          <option value="glasses?" disabled selected hidden>
-            Glasses? {this.state.fbuser.userGlasses}
-          </option>
-          <option value="yes">yes</option>
-          <option value="no">no</option>
-        </select>
+          <select
+            className="dropdown-newsighting"
+            name="userHairColor"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.userHairColor === "black" && <a><En>Hair color: black</En><Hu>Hajszín: fekete</Hu></a>}
+            {this.state.fbuser.userHairColor === "brown" && <a><En>Hair color: brown</En><Hu>Hajszín: barna</Hu></a>}
+            {this.state.fbuser.userHairColor === "blond(e)" && <a><En>Hair color: blond(e)</En><Hu>Hajszín: szőke</Hu></a>}
+            {this.state.fbuser.userHairColor === "red" && <a><En>Hair color: red</En><Hu>Hajszín: red</Hu></a>}
+            {this.state.fbuser.userHairColor === "special" && <a><En>Hair color: special</En><Hu>Hajszín: speckó</Hu></a>}
+            {this.state.fbuser.userHairColor === "salt n pepper" && <a><En>Hair color: salt n pepper</En><Hu>Hajszín: ősz</Hu></a>}
+            </option>
+            <option value="black"><En>black</En><Hu>fekete</Hu></option>
+            <option value="brown"><En>brown</En><Hu>barna</Hu></option>
+            <option value="blond(e)"><En>blond(e)</En><Hu>szőke</Hu></option>
+            <option value="red"><En>red</En><Hu>vörös</Hu></option>
+            <option value="special"><En>special</En><Hu>speckó</Hu></option>
+            <option value="salt n pepper"><En>salt n pepper</En><Hu>ősz</Hu></option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="userHairStyle"
+            onChange={this.handleChange}
+          >
+            <option value="" disabled selected hidden>
+            {this.state.fbuser.userHairStyle === "short" && <a><En>Hairstyle: short</En><Hu>Hajstílus: rövid</Hu></a>}
+            {this.state.fbuser.userHairStyle === "medium" && <a><En>Hairstyle: medium</En><Hu>Hajstílus: középhosszú</Hu></a>}
+            {this.state.fbuser.userHairStyle === "long" && <a><En>Hairstyle: long</En><Hu>Hajstílus: hosszú</Hu></a>}
+            {this.state.fbuser.userHairStyle === "bald" && <a><En>Hairstyle: bald</En><Hu>Hajstílus: kopaszka</Hu></a>}
+            </option>
+            <option value="short"><En>short</En><Hu>rövid</Hu></option>
+            <option value="medium"><En>medium</En><Hu>középhosszú</Hu></option>
+            <option value="long"><En>long</En><Hu>hosszú</Hu></option>
+            <option value="bald"><En>bald</En><Hu>kopaszka</Hu></option>
+          </select>
+          <select
+            className="dropdown-newsighting"
+            name="userGlasses"
+            onChange={this.handleChange}
+          >
+            <option value="glasses?" disabled selected hidden>
+            {this.state.fbuser.userGlasses === "yes" && <a><En>Glasses: yes</En><Hu>Szemüveges: igen</Hu></a>}
+            {this.state.fbuser.userGlasses === "no" && <a><En>Glasses: no</En><Hu>Szemüveges: nem</Hu></a>}
+            </option>
+            <option value="yes"><En>yes</En><Hu>igen</Hu></option>
+            <option value="no"><En>no</En><Hu>nem</Hu></option>
+          </select>
 
-        <a href="">
+          <a href="">
           <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
-            save changes
+          <En>save</En><Hu>mentés</Hu>
           </button>
-        </a>
-      </form>
+          </a>
+          <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Saved!</En><Hu>  Mentve!</Hu></span>
+        </form>
+      </div>
     );
     const profile = (
       <div id="profile-container">
-        <h1 className="profile-greeter">hello, {user.name}</h1>
+        <h1 className="profile-greeter"><En>hello</En><Hu>helló</Hu>, {user.name}</h1>
         <img src={user.picture} className="profile-page-photo" alt="avatar" />
-        <h3 className="profile-details-title">profile details</h3>
+        <h3 className="profile-details-title"><En>Profile details</En><Hu>Profil adatok</Hu></h3>
         <div className="profile-details-container">
           <div className="user-details">
-            <p>email: {this.state.fbuser.email}</p>
-            <p>gender: {this.state.fbuser.userGender}</p>
-            <p>handle: {this.state.fbuser.socialHandle}</p>
+            <p>EMAIL: {this.state.fbuser.email}</p>
+            <p><En>GENDER:</En><Hu>NEME:</Hu> {this.state.fbuser.userGender === "male" ? <a><En>Male</En><Hu>Férfi</Hu></a> : <a><En>Female</En><Hu>Nő</Hu></a>}</p>
+            <p><En>HANDLE:</En><Hu>ELÉRHETŐSÉG:</Hu> {this.state.fbuser.socialHandle}</p>
             <p>
-              hair: {this.state.fbuser.userHairColor},{" "}
-              {this.state.fbuser.userHairStyle}
+              <En>HAIR: </En><Hu>HAJ: </Hu>
+              {this.state.fbuser.userHairColor === "brown" && <a><En>Brown</En><Hu>barna</Hu></a>}
+              {this.state.fbuser.userHairColor === "black" && <a><En>black</En><Hu>fekete</Hu></a>}
+              {this.state.fbuser.userHairColor === "blond(e)" && <a><En>blonde</En><Hu>szőke</Hu></a>}
+              {this.state.fbuser.userHairColor === "red" && <a><En>red</En><Hu>vörös</Hu></a>}
+              {this.state.fbuser.userHairColor === "special" && <a><En>special</En><Hu>speckó</Hu></a>}
+              {this.state.fbuser.userHairColor === "salt n pepper" && <a><En>salt n pepper</En><Hu>ősz</Hu></a>},
+              {" "}
+              {this.state.fbuser.userHairStyle === "short" && <a><En>short</En><Hu>rövid</Hu></a>}
+              {this.state.fbuser.userHairStyle === "medium" && <a><En>medium</En><Hu>középhosszú</Hu></a>}
+              {this.state.fbuser.userHairStyle === "long" && <a><En>long</En><Hu>hosszú</Hu></a>}
+              {this.state.fbuser.userHairStyle === "bald" && <a><En>bald</En><Hu>kopaszka</Hu></a>}
             </p>
-            <p>glasses: {this.state.fbuser.userGlasses}</p>
-            <p>height: {this.state.fbuser.userHeight}</p>
-            <p>build: {this.state.fbuser.userBuild}</p>
-            <p>age: {this.state.fbuser.userAge}</p>
-            <p>orientation: {this.state.fbuser.orientation}</p>
+            <p><En>GLASSES: </En><Hu>SZEMÜVEGES: </Hu> 
+             {this.state.fbuser.userGlasses === "yes" && <a><En>yes</En><Hu>igen</Hu></a>}
+             {this.state.fbuser.userGlasses === "no" && <a><En>no</En><Hu>nem</Hu></a>}
+            </p>
+            <p><En>HEIGHT: </En><Hu>MAGASSÁG: </Hu> 
+            {this.state.fbuser.userHeight === "tall" && <a><En>tall</En><Hu>magas</Hu></a>}
+            {this.state.fbuser.userHeight === "short" && <a><En>short</En><Hu>alacsony</Hu></a>}
+            {this.state.fbuser.userHeight === "average" && <a><En>average</En><Hu>átlagos</Hu></a>}
+            </p>
+            <p><En>BUILD: </En><Hu>TESTALKAT: </Hu> 
+            {this.state.fbuser.userBuild === "thin" && <a><En>thin</En><Hu>vékonyka</Hu></a>}
+            {this.state.fbuser.userBuild === "average" && <a><En>average</En><Hu>átlagos</Hu></a>}
+            {this.state.fbuser.userBuild === "athletic" && <a><En>athletic</En><Hu>sportos</Hu></a>}
+            {this.state.fbuser.userBuild === "ripped" && <a><En>ripped</En><Hu>kigyúrt</Hu></a>}
+            {this.state.fbuser.userBuild === "chubby" && <a><En>chubby</En><Hu>husika</Hu></a>}
+            </p>
+            <p><En>AGE: </En><Hu>KOR: </Hu>
+            {this.state.fbuser.userAge === "teen" && <a><En>teen</En><Hu>tini</Hu></a>}
+            {this.state.fbuser.userAge === "young adult" && <a><En>young adult</En><Hu>fiatalember/hölgy</Hu></a>}
+            {this.state.fbuser.userAge === "adult" && <a><En>adult</En><Hu>felnőtt</Hu></a>}
+            {this.state.fbuser.userAge === "middle-aged" && <a><En>middle-aged</En><Hu>középkorú</Hu></a>}
+            {this.state.fbuser.userAge === "elderly" && <a><En>elderly</En><Hu>idős</Hu></a>}
+            </p>
+            <p><En>ORIENTATION: </En><Hu>NEMI ORIENTÁCIÓ: </Hu>
+            {this.state.fbuser.orientation === "straight" && <a><En>straight</En><Hu>hetero</Hu></a>}
+            {this.state.fbuser.orientation === "gay" && <a><En>gay</En><Hu>homoszexuális</Hu></a>}
+            {this.state.fbuser.orientation === "bisexual" && <a><En>bisexual</En><Hu>biszexuális</Hu></a>}
+            </p>
           </div>
           <button
-            onClick={this.toggleHidden.bind(this)}
+            onClick={()=> this.scrollnToggle()}
             className="edit-profile"
           >
-            EDIT
+          <En>EDIT</En><Hu>Szerkesztés</Hu>
           </button>
           {!this.state.isHidden && menjekMarAludni}
         </div>

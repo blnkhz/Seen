@@ -17,7 +17,11 @@ namespace Seen.Repositories
 
         public SeenRepository(IOptions<AppSettings> appSettings)
         {
+<<<<<<< HEAD:backend/Seen/Repositories/SeenRepository.cs
 			client = new MongoClient(appSettings.Value.ConnectionString);
+=======
+			      client = new MongoClient("mongodb://mablape:numman77@18.216.102.17:27017");
+>>>>>>> language:backend/Seen/Repositories/UserRepository.cs
             database = client.GetDatabase("Seen");
             users = database.GetCollection<User>("Users");
         }
