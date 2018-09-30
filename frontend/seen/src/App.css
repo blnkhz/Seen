@@ -138,7 +138,6 @@
 .navlink:hover {
   font-weight: 600;
   letter-spacing: 0.3em;
-  background-color: #fff;
 }
 
 .search {
@@ -791,11 +790,25 @@ option[value=""][disabled] {
   position: absolute;
 }
 
+.flag-container {
+  height: inherit;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .flag{
   border-radius: 50%;
   width: 25px;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+  opacity: 0.8;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.flag:hover {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {

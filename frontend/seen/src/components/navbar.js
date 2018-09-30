@@ -13,7 +13,7 @@ import {
   DropdownItem
 } from "mdbreact";
 
-var ReactLanguage = require('react-language');
+var ReactLanguage = require("react-language");
 
 class NavbarFeatures extends Component {
   constructor(props) {
@@ -28,10 +28,10 @@ class NavbarFeatures extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  handleClick (lang) {
+  handleClick(lang) {
     ReactLanguage.setLanguage(lang);
     this.forceUpdate();
-    this.setState({refresh: true});
+    this.setState({ refresh: true });
   }
 
   onClick() {
@@ -47,11 +47,15 @@ class NavbarFeatures extends Component {
   }
 
   render() {
-    const Hu = ReactLanguage.create('hu');
+    const Hu = ReactLanguage.create("hu");
     const En = ReactLanguage.create(true);
     const kep = (
       <img
-        src={this.props.user.picture === "" ? require("../assets/loading2.gif") : this.props.user.picture}
+        src={
+          this.props.user.picture === ""
+            ? require("../assets/loading2.gif")
+            : this.props.user.picture
+        }
         className="profilePicture"
         alt="avatar"
       />
@@ -60,7 +64,11 @@ class NavbarFeatures extends Component {
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand>
           <NavLink to="/">
-            <img src={require("../assets/seenlogo.png")} height="40px" alt="seenlogo" />
+            <img
+              src={require("../assets/seenlogo.png")}
+              height="40px"
+              alt="seenlogo"
+            />
           </NavLink>
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}
@@ -68,12 +76,14 @@ class NavbarFeatures extends Component {
           <NavbarNav className="bar" left>
             <NavItem>
               <NavLink className="navlink" to="/add">
-              <En>have seen</En><Hu>láttam őt</Hu>
+                <En>have seen</En>
+                <Hu>láttam őt</Hu>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="navlink" to="/sightings">
-              <En>been seen</En><Hu>láthattak</Hu>
+                <En>been seen</En>
+                <Hu>láthattak</Hu>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -84,14 +94,27 @@ class NavbarFeatures extends Component {
             </NavItem>
             <NavItem>
               <NavLink className="navlink" to="/faq">
-              <En>FAQ</En><Hu>GYIK</Hu>
+                <En>FAQ</En>
+                <Hu>GYIK</Hu>
               </NavLink>
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
-            <NavItem>
-            <a href="" onClick={this.handleClick.bind(this, 'en')}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag"/></a>
-            <a href="" onClick={this.handleClick.bind(this, 'hu')}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag"/></a>
+            <NavItem className="flag-container">
+              <a href="" onClick={this.handleClick.bind(this, "en")}>
+                <img
+                  className="flag"
+                  src={require("../assets/flag_gb.png")}
+                  alt="gb_flag"
+                />
+              </a>
+              <a href="" onClick={this.handleClick.bind(this, "hu")}>
+                <img
+                  className="flag"
+                  src={require("../assets/flag_hu.png")}
+                  alt="hu_flag"
+                />
+              </a>
             </NavItem>
             <NavItem>
               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -99,13 +122,30 @@ class NavbarFeatures extends Component {
                   {kep}
                 </DropdownToggle>
                 <DropdownMenu>
+                  <DropdownItem>
                     <NavLink className="navlink" to="/profile">
-                      <En>profile</En><Hu>profil</Hu>
+                      <En>profile</En>
+                      <Hu>profil</Hu>
                     </NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
                     <NavLink className="navlink" to="/itsamatch">
-                      <En>my sightings</En><Hu>észleléseim</Hu>
+                      <En>my sightings</En>
+                      <Hu>észleléseim</Hu>
                     </NavLink>
-                    <a className="navlink" href="/login" onClick={()=>{window.FB.logout()}}><En>logout</En><Hu>kijelentkezés</Hu></a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a
+                      className="navlink"
+                      href="/login"
+                      onClick={() => {
+                        window.FB.logout();
+                      }}
+                    >
+                      <En>logout</En>
+                      <Hu>kijelentkezés</Hu>
+                    </a>
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavItem>
