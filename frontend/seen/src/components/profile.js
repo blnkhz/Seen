@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 
 var ReactLanguage = require('react-language');
 const Hu = ReactLanguage.create('hu');
 const En = ReactLanguage.create(true);
+
 class Profile extends Component {
   constructor() {
     super();
-    this.myRef = React.createRef();
     this.bindEverything();
     this.state = {
       userGender: "",
@@ -35,7 +34,10 @@ class Profile extends Component {
       })
         .then(res => res.json())
         .then(fbuser => { this.setState({ fbuser }) });
+        // if(this.state.fbuser !== null)
+        //   this.validateProfile();
     }
+
   };
 
   showSaved() {
@@ -88,6 +90,23 @@ class Profile extends Component {
     }).catch(error => `Error: ${error}`);
 
     this.showSaved();
+  }
+
+  validateProfile = () =>{
+    var data;
+    console.log(this.state.fbuser);
+    if(this.state.fbuser.socialHandle === null ||
+      this.state.fbuser.userGender === undefined ||
+      this.state.fbuser.orientation === undefined ||
+      this.state.fbuser.userAge === undefined ||
+      this.state.fbuser.userBuild === undefined ||
+      this.state.fbuser.userGlasses === undefined ||
+      this.state.fbuser.userHeight === undefined ||
+      this.state.fbuser.userHairColor === undefined ||
+      this.state.fbuser.userHairStyle === undefined){
+        data = true;
+      }else{data = false}
+      this.props.empty(data);
   }
 
   render() {
@@ -322,7 +341,7 @@ class Profile extends Component {
         </div>
       </div>
     );
-    return profile;
+    return <div onChange={this.validateProfile}>{profile}</div>;
   }
 }
 

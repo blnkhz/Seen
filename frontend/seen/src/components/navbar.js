@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
+import lng from './Language/language.jsx'; 
 
 var ReactLanguage = require('react-language');
 
@@ -28,10 +29,15 @@ class NavbarFeatures extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  handleClick (lang) {
-    ReactLanguage.setLanguage(lang);
+  _onSetLanguageToEnglish() {
+    localStorage.setItem('lang', 'en');
+    lng.setLanguage(localStorage.getItem('lang'));
     this.forceUpdate();
-    this.setState({refresh: true});
+  }
+  _onSetLanguageToHungarian() {
+    localStorage.setItem('lang', 'hu');
+    lng.setLanguage(localStorage.getItem('lang'));
+    this.forceUpdate();
   }
 
   onClick() {
@@ -47,8 +53,8 @@ class NavbarFeatures extends Component {
   }
 
   render() {
-    const Hu = ReactLanguage.create('hu');
-    const En = ReactLanguage.create(true);
+    const Hu = ReactLanguage.create('hu-hu');
+    const En = ReactLanguage.create('en-us');
     const kep = (
       <img
         src={this.props.user.picture === "" ? require("../assets/loading2.gif") : this.props.user.picture}
@@ -90,8 +96,8 @@ class NavbarFeatures extends Component {
           </NavbarNav>
           <NavbarNav right>
             <NavItem>
-            <a href="" onClick={this.handleClick.bind(this, 'en')}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag"/></a>
-            <a href="" onClick={this.handleClick.bind(this, 'hu')}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag"/></a>
+            <a href="" onClick={this._onSetLanguageToEnglish}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag"/></a>
+            <a href="" onClick={this._onSetLanguageToHungarian}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag"/></a>
             </NavItem>
             <NavItem>
               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

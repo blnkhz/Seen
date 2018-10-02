@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-
-var ReactLanguage = require('react-language');
-const Hu = ReactLanguage.create('hu');
-const En = ReactLanguage.create(true);
+import strings from './Language/language.jsx'; 
 
 class About extends Component {
   render() {
-
+    
     const aboutContent = (
       <div className="aboutus">
-        <h1 className="abouttitle"><En>We are Seen.</En><Hu>Seen csapata</Hu></h1>
+        <h1 className="abouttitle">{strings.how}</h1>
+        <a onClick={()=>this._onSetLanguageToEnglish()}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag" /></a>
+        <a onClick={()=>this._onSetLanguageToHungarian()}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag" /></a>
         <div id="about-container">
           <div className="aboutperson">
             <img
