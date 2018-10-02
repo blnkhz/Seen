@@ -127,11 +127,11 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              height
+              {lng.height}
             </option>
-            <option value="short">short</option>
-            <option value="average">average</option>
-            <option value="tall">tall</option>
+            <option value="short">{lng.short_height}</option>
+            <option value="average">{lng.average_height}</option>
+            <option value="tall">{lng.tall}</option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -140,13 +140,13 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              build
+              {lng.build}
             </option>
-            <option value="thin">thin</option>
-            <option value="average">average</option>
-            <option value="athletic">athletic</option>
-            <option value="ripped">ripped</option>
-            <option value="chubby">chubby</option>
+            <option value="thin">{lng.thin}</option>
+            <option value="average">{lng.average}</option>
+            <option value="athletic">{lng.athletic}</option>
+            <option value="ripped">{lng.ripped}</option>
+            <option value="chubby">{lng.chubby}</option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -155,14 +155,14 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              hair color
+              {lng.hair_color}
             </option>
-            <option value="black">black</option>
-            <option value="brown">brown</option>
-            <option value="blond(e)">blonde</option>
-            <option value="red">red</option>
-            <option value="special">special</option>
-            <option value="salt n pepper">salt n pepper</option>
+            <option value="black">{lng.black}</option>
+            <option value="brown">{lng.brown}</option>
+            <option value="blond(e)">{lng.blonde}</option>
+            <option value="red">{lng.red}</option>
+            <option value="special">{lng.special}</option>
+            <option value="salt n pepper">{lng.salt}</option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -171,12 +171,12 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              hairstyle
+              {lng.hairstyle}
             </option>
-            <option value="short">short</option>
-            <option value="medium">medium</option>
-            <option value="long">long</option>
-            <option value="bald">bald</option>
+            <option value="short">{lng.short}</option>
+            <option value="medium">{lng.medium}</option>
+            <option value="long">{lng.long}</option>
+            <option value="bald">{lng.bald}</option>
           </select>
           <select
             className="dropdown-newsighting"
@@ -185,10 +185,10 @@ class PostForm extends React.Component {
             required
           >
             <option value="" disabled selected>
-              glasses
+              {lng.glasses}
             </option>
-            <option value="yes">yes</option>
-            <option value="no">no</option>
+            <option value="yes">{lng.yes}</option>
+            <option value="no">{lng.no}</option>
           </select>
           <textarea
             rows="3"
@@ -201,7 +201,7 @@ class PostForm extends React.Component {
         </div>
         <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'block' }}>{lng.sent_button}</span>
         <button type="submit" className="submit-button" style={{ display: this.state.selectedDay !== undefined && !this.state.buttonPressed ? 'inline' : 'none' }}>
-          Find Them!
+          {lng.button_find}
         </button>
       </form>
     );

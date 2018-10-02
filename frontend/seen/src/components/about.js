@@ -3,7 +3,6 @@ import strings from './Language/language.jsx';
 
 class About extends Component {
   render() {
-    
     const aboutContent = (
       <div className="aboutus">
         <h1 className="abouttitle">{strings.how}</h1>
