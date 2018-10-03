@@ -51,7 +51,8 @@ let strings = new LocalizedStrings({
      logout:"logout"
    },
    contact_tip:"your contact information, where you can reach you, if there is a match! Importante!",
-   contact:"social handle"
+   contact:"social handle",
+   ori:"orientation",
  },
  hu: {
    date:"Válassz dátumot, amikor láttad őt!",
@@ -103,7 +104,8 @@ let strings = new LocalizedStrings({
     logout:"kijelentkezés"
   },
   contact_tip:"Az elérhetőséged, ahol elérhetnek, ha valaki Rád talál!",
-  contact:"elérhetőséged"
+  contact:"elérhetőséged",
+  ori:"nemi orientáció"
  }
 });
 

@@ -260,11 +260,9 @@ class Profile extends Component {
             <option value="no"><En>no</En><Hu>nem</Hu></option>
           </select>
 
-          <a href="">
           <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
           <En>save</En><Hu>mentés</Hu>
           </button>
-          </a>
           <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Saved!</En><Hu>  Mentve!</Hu></span>
         </form>
       </div>
@@ -332,7 +330,7 @@ class Profile extends Component {
         </div>
       </div>
     );
-    return <div onChange={this.validateProfile}>{profile}</div>;
+    return <div>{profile}</div>;
   }
 }
 
