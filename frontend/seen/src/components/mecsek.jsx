@@ -4,7 +4,7 @@ import axios from "axios";
 class Mecsek extends Component {
   constructor() {
     super();
-  this.handleClick = this.handleClick.bind(this);
+  this.handleClick = this.removeHello.bind(this);
     this.state = {
       fbuser: null
     };
@@ -18,9 +18,13 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
-handleClick (idke, socialke) {
+removeHello (idke, socialke) {
   axios.get('http://localhost:52210/removehelloitsme/' + this.state.fbuser.fbId + "/" + idke + "/" + socialke)
   setTimeout(this.componentWillMount, 300);
+  }
+  removeSighting (idke) {
+    axios.get('http://localhost:52210/removesighting/' + this.state.fbuser.fbId + "/" + idke)
+    setTimeout(this.componentWillMount, 300);
   }
 
   render() {
@@ -37,7 +41,7 @@ handleClick (idke, socialke) {
                 <div className="match-applicant">
                   <button
                     className="megsem"
-                    onClick={() => this.handleClick(element.id, hello.socialHandle)}
+                    onClick={() => this.removeHello(element.id, hello.socialHandle)}
                   >
                     x
                   </button>
