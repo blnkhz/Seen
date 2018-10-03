@@ -42,6 +42,7 @@ class Renderz extends Component {
         <Sidebar
           sidebar={
             <div className="infochild">
+                <button onClick={this.onSetSidebarClose} className="infobar-closebutton"> →</button>
               <Infos
                 FbUser={this.props.FbUser}
                 indexke={this.state.infoIndex}

@@ -26,7 +26,6 @@ class NavbarFeatures extends Component {
     this.onClick = this.onClick.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-
   _onSetLanguageToEnglish() {
     localStorage.setItem('lang', 'en');
     lng.setLanguage(localStorage.getItem('lang'));
@@ -53,7 +52,11 @@ class NavbarFeatures extends Component {
   render() {
     const kep = (
       <img
-        src={this.props.user.picture === "" ? require("../assets/loading2.gif") : this.props.user.picture}
+        src={
+          this.props.user.picture === ""
+            ? require("../assets/loading2.gif")
+            : this.props.user.picture
+        }
         className="profilePicture"
         alt="avatar"
       />
@@ -62,7 +65,11 @@ class NavbarFeatures extends Component {
       <Navbar light color="white" expand="sm" fixed="top">
         <NavbarBrand>
           <NavLink to="/">
-            <img src={require("../assets/seenlogo.png")} height="40px" alt="seenlogo" />
+            <img
+              src={require("../assets/seenlogo.png")}
+              height="40px"
+              alt="seenlogo"
+            />
           </NavLink>
         </NavbarBrand>
         {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick} />}
@@ -104,6 +111,8 @@ class NavbarFeatures extends Component {
                     <NavLink className="navlink" to="/profile">
                       {lng.navbar.profile}
                     </NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
                     <NavLink className="navlink" to="/itsamatch">
                       {lng.navbar.sightings}
                     </NavLink>

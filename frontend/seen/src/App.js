@@ -12,7 +12,7 @@ import Loading from "./components/loading.js";
 import Profile from "./components/profile.js";
 import Meccsek from "./components/mecsek.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 class App extends Component {
   constructor() {
@@ -53,7 +53,11 @@ class App extends Component {
       mode: "cors"
     })
       .then(res => res.json())
-      .then(retek => { this.setState(prevState => ({ fbUser: { ...prevState.fbUser, socialHandle: retek.socialHandle } })) });
+      .then(retek => {
+        this.setState(prevState => ({
+          fbUser: { ...prevState.fbUser, socialHandle: retek.socialHandle }
+        }));
+      });
   };
 
   dataFromProfile = data =>{
@@ -106,7 +110,10 @@ class App extends Component {
     const Add = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <AddMap FbId={this.state.fbUser.fbId} picture={this.state.fbUser.picture} />
+        <AddMap
+          FbId={this.state.fbUser.fbId}
+          picture={this.state.fbUser.picture}
+        />
         <FooterPage />
       </div>
     );
@@ -136,7 +143,7 @@ class App extends Component {
     const Mecsek = () => (
       <div>
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Meccsek id={this.state.fbUser.fbId} style={{ marginTop: '200px' }} />
+        <Meccsek id={this.state.fbUser.fbId} style={{ marginTop: "200px" }} />
         <FooterPage />
       </div>
     );
@@ -150,7 +157,20 @@ class App extends Component {
             callback={this.responseFacebook}
             onFailure={this.puki}
             render={renderProps => (
-              <h3 onClick={renderProps.onClick} style={{ display: !this.state.fbUser.isLoggedIn ? 'block' : 'none' }} className="login-button">login</h3>
+              <div
+                className="login-button"
+                onClick={renderProps.onClick}
+                style={{
+                  display: !this.state.fbUser.isLoggedIn ? "block" : "none"
+                }}
+              >
+                <img
+                  src={require("./assets/fblogo.svg")}
+                  alt="aha"
+                  className="fb-logo"
+                />
+                <h3 className="login-text">login</h3>
+              </div>
             )}
           />
           <Switch>

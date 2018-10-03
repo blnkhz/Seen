@@ -33,6 +33,40 @@
   right: 0;
 }
 
+.addsighting-closebutton {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .formchild {
+    width: 100vw;
+    align-content: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+  .dropsdowns {
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .messageinput {
+    margin-bottom: 10vh;
+  }
+
+  .submit-button {
+    margin-bottom: 10vh;
+  }
+
+  .addsighting-closebutton {
+    display: block;
+    background-color: #6489c2;
+    color: #fff;
+    border-radius: 50%;
+    margin: 15vh 20px 20px 20px;
+  }
+}
+
 /* SIGHTINGS */
 
 .flexdaddy {
@@ -233,18 +267,21 @@
 #about-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .abouttitle {
   font-size: 3em;
   letter-spacing: 0.5em;
   text-align: center;
-  color: #6489c2;
+  color: #dc82a4;
 }
 
 .aboutperson {
   margin-top: 50px;
   margin-bottom: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 @media (max-width: 450px) {
@@ -264,7 +301,7 @@
 
 .aboutphoto {
   border-radius: 50%;
-  border: #dc82a4 4px solid;
+  border: #6489c2 4px solid;
   max-width: 250px;
   min-width: 20%;
 }
@@ -387,6 +424,7 @@
   text-align: center;
   word-wrap: break-word;
   max-width: 80%;
+  margin: auto;
 }
 
 .it-is-me-button {
@@ -450,7 +488,7 @@ option[value=""][disabled] {
   background: #dadada;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 30px;
   letter-spacing: 0.2em;
 }
@@ -473,6 +511,43 @@ option[value=""][disabled] {
   font-weight: 500;
   letter-spacing: 0.2em;
   margin-bottom: 20px;
+}
+
+.infobar-closebutton {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .infobar-closebutton {
+    display: block;
+    background-color: #6489c2;
+    color: #fff;
+    margin: 0 20px 20px 20px;
+    border-radius: 50%;
+  }
+
+  .infochild {
+    width: 100vw;
+  }
+
+  .infobar-picture {
+    max-width: 80vw;
+  }
+
+  .it-is-me-button {
+    margin-bottom: 100px;
+    font-size: 1.5em;
+    border-radius: 5px;
+  }
+
+  .seenswer {
+    text-align: center;
+    margin: auto;
+  }
+
+  .messageinput {
+    margin-top: 30px;
+  }
 }
 
 /* PROFILE */
@@ -595,10 +670,9 @@ option[value=""][disabled] {
 
 .login-button {
   margin: auto;
-  background-color: #dc82a4;
   color: #fff;
   text-align: right;
-  padding-right: 20px;
+  padding-right: 30px;
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   width: 10%;
@@ -607,6 +681,21 @@ option[value=""][disabled] {
   bottom: 0;
   height: 5vh;
   z-index: 9999;
+}
+
+.fb-logo {
+  max-height: 5vh;
+  display: inline;
+}
+
+.login-text {
+  z-index: 9998;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.5em;
 }
 
 .login-button:hover {
@@ -651,7 +740,6 @@ option[value=""][disabled] {
   margin: auto;
   padding: 50px;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .match-text {
@@ -686,15 +774,64 @@ option[value=""][disabled] {
 
 .match-picture {
   order: 1;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 350px;
+  max-height: 350px;
   border-radius: 50%;
   border: #dc82a4 solid 5px;
+}
+
+.megsem {
+  height: 2em;
+  background: rgb(175, 175, 175);
+  border: none;
+  color: #444;
+  border-radius: 10%;
+  margin: 0;
+  position: absolute;
+}
+
+.flag-container {
+  height: inherit;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .flag{
   border-radius: 50%;
   width: 25px;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+  opacity: 0.8;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.flag:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .match-applicant {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .match-picture {
+    align-content: center;
+    margin: auto;
+    max-width: 250px;
+    min-width: 100px;
+    min-height: 100px;
+    max-height: 250px;
+  }
+
+  .match-text {
+    text-align: center;
+  }
+  .match-handle {
+    align-self: flex-end;
+  }
 }

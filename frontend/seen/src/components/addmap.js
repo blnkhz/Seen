@@ -22,7 +22,7 @@ const GoogleMapExample = withGoogleMap(props => (
     }}
   >
     <Marker
-      onClick={(open) => props.onMarker(open)}
+      onClick={open => props.onMarker(open)}
       onRightClick={() => props.onMapRightClick()}
       icon={require("../assets/pin1.svg")}
       {...props.marker}
@@ -85,6 +85,10 @@ class AddMap extends Component {
     this.setState({ sidebarOpen: open });
   }
 
+  onSetSidebarClose = () => {
+    this.setState({ sidebarOpen: false });
+  };
+
   onMarkerClick(open) {
     this.setState(this.onSetSidebarOpen(open));
   }
@@ -94,7 +98,20 @@ class AddMap extends Component {
       <div className="flexmommy">
         <Sidebar
           sidebar={
-            <PostForm FbId={this.props.FbId} picture={this.props.picture} savedPos={this.state.savedPos} className="formchild" />
+            <div>
+              <button
+                onClick={this.onSetSidebarClose}
+                className="addsighting-closebutton"
+              >
+                →
+              </button>
+              <PostForm
+                FbId={this.props.FbId}
+                picture={this.props.picture}
+                savedPos={this.state.savedPos}
+                className="formchild"
+              />
+            </div>
           }
           open={this.state.sidebarOpen}
           onSetOpen={this.onSetSidebarOpen}

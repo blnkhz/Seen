@@ -117,6 +117,7 @@ class Profile extends Component {
           <input
             data-tip
             data-for="handle"
+            pattern="[a-zA-Z0-9]+"
             type="text"
             name="socialHandle"
             placeholder={ lng.contact + ': ' + this.state.fbuser.socialHandle}
