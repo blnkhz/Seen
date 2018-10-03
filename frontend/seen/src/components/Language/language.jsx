@@ -40,6 +40,10 @@ let strings = new LocalizedStrings({
    yes:"yes",
    no:"no",
    button_find:"Find Them!",
+   button_save:"save",
+   button_edit:"EDIT",
+   message_save:"  Saved!",
+   message_hello:"hello",
    seen:"We are seen.",
    navbar:{
      have_seen:"have seen",
@@ -52,7 +56,22 @@ let strings = new LocalizedStrings({
    },
    contact_tip:"your contact information, where you can reach you, if there is a match! Importante!",
    contact:"social handle",
-   ori:"orientation",
+   orientation:{
+    ori:"orientation",
+    straight:"straight",
+    gay:"gay",
+    bisexual:"bisexual"
+  },
+  profile_details:"Profile details",
+  hair:"hair",
+  infobar:{
+    familiar:"looks familiar?",
+    when:"WHEN",
+    message:"MESSAGE",
+    placeholder:"Write here something nice",
+    yes:"YES!",
+    button_sent:"  Sent!"
+  }
  },
  hu: {
    date:"Válassz dátumot, amikor láttad őt!",
@@ -93,6 +112,10 @@ let strings = new LocalizedStrings({
    yes:"igen",
    no:"nem",
    button_find:"Kirakom a jelölést!",
+   button_save:"mentés",
+   button_edit:"Szerkesztés",
+   message_save:"  Mentve!",
+   message_hello:"helló",
    seen:"Seen csapata",
    navbar:{
     have_seen:"láttam",
@@ -105,7 +128,22 @@ let strings = new LocalizedStrings({
   },
   contact_tip:"Az elérhetőséged, ahol elérhetnek, ha valaki Rád talál!",
   contact:"elérhetőséged",
-  ori:"nemi orientáció"
+  orientation:{
+    ori:"nemi orientáció",
+    straight:"hetero",
+    gay:"homoszexuális",
+    bisexual:"biszexuális"
+  },
+  profile_details:"Profil adatok",
+  hair:"haj",
+  infobar:{
+    familiar:"Ismerős számodra?",
+    when:"Amikor láthatott",
+    message:"Üzenet",
+    placeholder:"Írj valami kedveset neki ide",
+    yes:"IGEN!",
+    button_sent:"  Elküldve!"
+  }
  }
 });
 
