@@ -56,6 +56,7 @@
 
   .submit-button {
     margin-bottom: 10vh;
+    cursor: pointer;
   }
 
   .addsighting-closebutton {
@@ -441,6 +442,7 @@
 .it-is-me-button:hover,
 .submit-button:hover {
   background: #dc82a4;
+  cursor: pointer;
 }
 
 .submit-button {
@@ -453,6 +455,7 @@
   background: #6489c2;
   box-shadow: none;
   border-radius: 0px;
+  cursor: pointer;
 }
 
 option[value=""][disabled] {
@@ -609,6 +612,7 @@ option[value=""][disabled] {
   display: inline;
   height: 50px;
   width: 100px;
+  cursor: pointer;
 }
 
 .user-details {
@@ -623,6 +627,7 @@ option[value=""][disabled] {
   border: 0;
   background: #6489c2;
   box-shadow: none;
+  cursor: pointer;
 }
 
 /* LOGIN */
