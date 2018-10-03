@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
-import lng from './Language/language.jsx';
+import lng from "./Language/language.jsx";
 
 class NavbarFeatures extends Component {
   constructor(props) {
@@ -27,13 +27,13 @@ class NavbarFeatures extends Component {
     this.toggle = this.toggle.bind(this);
   }
   _onSetLanguageToEnglish() {
-    localStorage.setItem('lang', 'en');
-    lng.setLanguage(localStorage.getItem('lang'));
+    localStorage.setItem("lang", "en");
+    lng.setLanguage(localStorage.getItem("lang"));
     this.forceUpdate();
   }
   _onSetLanguageToHungarian() {
-    localStorage.setItem('lang', 'hu');
-    lng.setLanguage(localStorage.getItem('lang'));
+    localStorage.setItem("lang", "hu");
+    lng.setLanguage(localStorage.getItem("lang"));
     this.forceUpdate();
   }
 
@@ -98,8 +98,20 @@ class NavbarFeatures extends Component {
           </NavbarNav>
           <NavbarNav right>
             <NavItem>
-              <a href="" onClick={this._onSetLanguageToEnglish}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag" /></a>
-              <a href="" onClick={this._onSetLanguageToHungarian}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag" /></a>
+              <a href="" onClick={this._onSetLanguageToEnglish}>
+                <img
+                  className="flag"
+                  src={require("../assets/flag_gb.png")}
+                  alt="gb_flag"
+                />
+              </a>
+              <a href="" onClick={this._onSetLanguageToHungarian}>
+                <img
+                  className="flag"
+                  src={require("../assets/flag_hu.png")}
+                  alt="hu_flag"
+                />
+              </a>
             </NavItem>
             <NavItem>
               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -116,7 +128,17 @@ class NavbarFeatures extends Component {
                     <NavLink className="navlink" to="/itsamatch">
                       {lng.navbar.sightings}
                     </NavLink>
-                    <a className="navlink" href="/login" onClick={() => { window.FB.logout() }}>{lng.navbar.logout}</a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a
+                      className="navlink"
+                      href="/login"
+                      onClick={() => {
+                        window.FB.logout();
+                      }}
+                    >
+                      {lng.navbar.logout}
+                    </a>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
