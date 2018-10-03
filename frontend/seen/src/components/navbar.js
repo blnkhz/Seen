@@ -49,6 +49,11 @@ class NavbarFeatures extends Component {
     });
   }
 
+  logout_fb(){
+    window.FB.logout();
+    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+  }
+
   render() {
     const kep = (
       <img
@@ -133,10 +138,7 @@ class NavbarFeatures extends Component {
                     <a
                       className="navlink"
                       href="/login"
-                      onClick={() => {
-                        window.FB.logout();
-                      }}
-                    >
+                      onClick={() => {this.logout_fb()}}>
                       {lng.navbar.logout}
                     </a>
                   </DropdownItem>
