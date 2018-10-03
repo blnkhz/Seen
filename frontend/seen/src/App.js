@@ -26,7 +26,8 @@ class App extends Component {
         email: "",
         picture: "",
         socialHandle: ""
-      }
+      },
+      isProfileEmpty: true
     };
   }
 
@@ -59,9 +60,14 @@ class App extends Component {
       });
   };
 
+  dataFromProfile = data =>{
+    console.log(data);
+    this.setState({isProfileEmpty: data});
+  }
+
   render() {
     console.log(window);
-
+    console.log(this.state.isProfileEmpty)
     const Load = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -122,7 +128,7 @@ class App extends Component {
     const ProfilePage = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Profile user={this.state.fbUser} id={this.state.fbUser.fbId} />
+        <Profile empty={this.dataFromProfile} user={this.state.fbUser} id={this.state.fbUser.fbId} />
         <FooterPage />
       </div>
     );
@@ -143,7 +149,7 @@ class App extends Component {
     );
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <FacebookLogin
             appId="322492561654479"
             autoLoad={true}
@@ -179,7 +185,7 @@ class App extends Component {
             <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />)} />
             <Route exact path="/load" render={() => (<Load />)} />
           </Switch>
-        </div>
+        </React.Fragment>
       </Router>
     );
   }

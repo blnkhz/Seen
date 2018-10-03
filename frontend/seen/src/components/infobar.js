@@ -1,9 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
-
-var ReactLanguage = require('react-language');
-const Hu = ReactLanguage.create('hu');
-const En = ReactLanguage.create(true);
+import lng from './Language/language.jsx';
 
 const niceThings = [
   "You're a gift to those around you.",
@@ -78,7 +75,7 @@ class Readgend extends React.Component {
           (element, UnIndex) =>
             UnIndex === this.props.indexke ? (
               <div className="seenswercontainer">
-                <h4 className="infotitle"><En>looks familiar?</En><Hu>Ismerős számodra?</Hu></h4>
+                <h4 className="infotitle">{lng.infobar.familiar}</h4>
                 <img
                   data-tip
                   data-for="aha"
@@ -86,16 +83,16 @@ class Readgend extends React.Component {
                   src={element.picture}
                   alt="hmmm"
                 />
-                <h4 className="seenpropertytitle"><En>WHEN</En><Hu>Amikor láthatott</Hu></h4>
+                <h4 className="seenpropertytitle">{lng.infobar.when}</h4>
                 <p className="seenswer">{element.day}</p>
-                <h4 className="seenpropertytitle"><En>MESSAGE</En><Hu>Üzenet</Hu></h4>
+                <h4 className="seenpropertytitle">{lng.infobar.message}</h4>
                 <p className="seenswer">{element.message}</p>
                 <textarea
                   rows="3"
                   type="text"
                   name="message"
                   onChange={this.handleChange}
-                  placeholder={ReactLanguage.getLanguage() === 'en' ? "Write here something nice" : "Írj valami kedveset neki ide"}
+                  placeholder={lng.infobar.placeholder}
                   className="messageinput"
                 />
                 <button
@@ -103,9 +100,9 @@ class Readgend extends React.Component {
                   onClick={this.handleSubmit}
                   className="it-is-me-button"
                 >
-                <En>YES!</En><Hu>IGEN!</Hu>
+                {lng.infobar.yes}
                 </button>
-                <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}><En>  Sent!</En><Hu>  Elküldve!</Hu></span>
+                <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}>{lng.infobar.button_sent}</span>
                 <ReactTooltip id="aha">
                   {niceThings[Math.floor(Math.random() * niceThings.length)]}
                 </ReactTooltip>
