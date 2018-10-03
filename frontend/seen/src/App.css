@@ -780,7 +780,7 @@ option[value=""][disabled] {
   border: #dc82a4 solid 5px;
 }
 
-.megsem {
+.megsem-meccs {
   height: 2em;
   background: rgb(175, 175, 175);
   border: none;
@@ -788,6 +788,17 @@ option[value=""][disabled] {
   border-radius: 10%;
   margin: 0;
   position: absolute;
+  cursor: pointer;
+}
+
+.megsem-sighting {
+  height: 2em;
+  background: rgb(175, 175, 175);
+  border: none;
+  color: #444;
+  border-radius: 10%;
+  margin-left: 50px;
+  cursor: pointer;
 }
 
 .flag-container {

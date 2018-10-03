@@ -48,7 +48,7 @@ class Mecsek extends Component {
         {this.state.fbuser.sightings.map(element => (
           <div id="match">
             <button
-              className="megsem"
+              className="megsem-sighting"
               onClick={() => this.removeSighting(element.id)}
             >
               x
@@ -61,7 +61,7 @@ class Mecsek extends Component {
               <div className="match-container">
                 <div className="match-applicant">
                   <button
-                    className="megsem"
+                    className="megsem-meccs"
                     onClick={() =>
                       this.removeHello(element.id, hello.socialHandle)
                     }
