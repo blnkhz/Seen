@@ -39,7 +39,8 @@ let strings = new LocalizedStrings({
    glasses:"glasses",
    yes:"yes",
    no:"no",
-   button_find:"Find Them!"
+   button_find:"Find Them!",
+   seen:"We are seen."
  },
  hu: {
    date:"Válassz dátumot, amikor láttad őt!",
@@ -79,10 +80,14 @@ let strings = new LocalizedStrings({
    glasses:"szemüveges",
    yes:"igen",
    no:"nem",
-   button_find:"Kirakom a jelölést!"
+   button_find:"Kirakom a jelölést!",
+   seen:"Seen csapata"
  }
 });
 
+if(!localStorage.getItem('lang')){
+  localStorage.setItem('lang', 'en');
+}
 strings.setLanguage(localStorage.getItem('lang'));
 
 export default strings;

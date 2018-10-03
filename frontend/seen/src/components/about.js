@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import strings from './Language/language.jsx'; 
+import lng from './Language/language.jsx'; 
 
 class About extends Component {
   render() {
     const aboutContent = (
       <div className="aboutus">
-        <h1 className="abouttitle">{strings.how}</h1>
-        <a onClick={()=>this._onSetLanguageToEnglish()}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag" /></a>
-        <a onClick={()=>this._onSetLanguageToHungarian()}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag" /></a>
+        <h1 className="abouttitle">csa</h1>
         <div id="about-container">
           <div className="aboutperson">
             <img
