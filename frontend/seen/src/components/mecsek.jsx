@@ -4,7 +4,7 @@ import axios from "axios";
 class Mecsek extends Component {
   constructor() {
     super();
-  this.handleClick = this.removeHello.bind(this);
+    this.handleClick = this.removeHello.bind(this);
     this.state = {
       fbuser: null
     };
@@ -18,12 +18,24 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
-removeHello (idke, socialke) {
-  axios.get('http://localhost:52210/removehelloitsme/' + this.state.fbuser.fbId + "/" + idke + "/" + socialke)
-  setTimeout(this.componentWillMount, 300);
+  removeHello(idke, socialke) {
+    axios.get(
+      "http://localhost:52210/removehelloitsme/" +
+        this.state.fbuser.fbId +
+        "/" +
+        idke +
+        "/" +
+        socialke
+    );
+    setTimeout(this.componentWillMount, 300);
   }
-  removeSighting (idke) {
-    axios.get('http://localhost:52210/removesighting/' + this.state.fbuser.fbId + "/" + idke)
+  removeSighting(idke) {
+    axios.get(
+      "http://localhost:52210/removesighting/" +
+        this.state.fbuser.fbId +
+        "/" +
+        idke
+    );
     setTimeout(this.componentWillMount, 300);
   }
 
@@ -35,13 +47,24 @@ removeHello (idke, socialke) {
       <React.Fragment>
         {this.state.fbuser.sightings.map(element => (
           <div id="match">
-            <h4 className="match-day"><br/>{element.message} <br/> {element.day}</h4>
-          {element.helloItsMes.map(hello => (
-            <div className="match-container">
+            <button
+              className="megsem"
+              onClick={() => this.removeSighting(element.id)}
+            >
+              x
+            </button>
+            <h4 className="match-day">
+              <br />
+              {element.message} <br /> {element.day}
+            </h4>
+            {element.helloItsMes.map(hello => (
+              <div className="match-container">
                 <div className="match-applicant">
                   <button
                     className="megsem"
-                    onClick={() => this.removeHello(element.id, hello.socialHandle)}
+                    onClick={() =>
+                      this.removeHello(element.id, hello.socialHandle)
+                    }
                   >
                     x
                   </button>
