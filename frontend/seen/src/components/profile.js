@@ -101,6 +101,7 @@ class Profile extends Component {
           <input
             data-tip
             data-for="handle"
+            pattern="[a-zA-Z0-9]+"
             type="text"
             name="socialHandle"
             placeholder={ReactLanguage.getLanguage() === 'en' ? "social handle: " + this.state.fbuser.socialHandle : "elérhetőséged: " + this.state.fbuser.socialHandle}
