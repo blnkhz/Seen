@@ -5,7 +5,7 @@ class About extends Component {
   render() {
     const aboutContent = (
       <div className="aboutus">
-        <h1 className="abouttitle">csa</h1>
+        <h1 className="abouttitle">{lng.seen}</h1>
         <div id="about-container">
           <div className="aboutperson">
             <img

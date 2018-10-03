@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
+import lng from './Language/language.jsx';
 
 var ReactLanguage = require('react-language');
 const Hu = ReactLanguage.create('hu');
@@ -122,12 +123,12 @@ class Profile extends Component {
             data-for="handle"
             type="text"
             name="socialHandle"
-            placeholder={ReactLanguage.getLanguage() === 'en' ? "social handle: " + this.state.fbuser.socialHandle : "elérhetőséged: " + this.state.fbuser.socialHandle}
+            placeholder={ lng.contact + ': ' + this.state.fbuser.socialHandle}
             onChange={this.handleChange}
             className="handleinput"
           />
           <ReactTooltip id="handle">
-            <En>your contact information, where you can reach you, if there is a match! Importante!</En><Hu>Az elérhetőséged, ahol elérhetnek, ha valaki Rád talál!</Hu>
+            {lng.contact_tip}
           </ReactTooltip>
           <select
             className="dropdown-newsighting"
@@ -135,21 +136,11 @@ class Profile extends Component {
             onChange={this.handleChange}
           >
               <option value="" disabled selected hidden>
-              {this.state.fbuser.userGender === "male"  && <a><En>Gender: male</En><Hu>Neme: férfi</Hu></a>}
-              {this.state.fbuser.userGender === "female"  && <a><En>Gender: female</En><Hu>Neme: nő</Hu></a>}
+              {this.state.fbuser.userGender === "male"  && lng.gender + ": " + lng.male}
+              {this.state.fbuser.userGender === "female"  && lng.gender + ": " + lng.female}
               </option>
-            <En>
-              <option value="female">female</option>
-            </En>
-            <Hu>
-              <option value="female">nő</option>
-            </Hu>
-            <En>
-              <option value="male">male</option>
-            </En>
-            <Hu>
-              <option value="male">férfi</option>
-            </Hu>
+              <option value="female">{lng.female}</option>
+              <option value="male">{lng.male}</option>
           </select>
 
           <select

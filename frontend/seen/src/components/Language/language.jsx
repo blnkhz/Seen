@@ -40,7 +40,18 @@ let strings = new LocalizedStrings({
    yes:"yes",
    no:"no",
    button_find:"Find Them!",
-   seen:"We are seen."
+   seen:"We are seen.",
+   navbar:{
+     have_seen:"have seen",
+     been_seen:"been seen",
+     about:"about",
+     faq:"FAQ",
+     profile:"profile",
+     sightings:"sightings",
+     logout:"logout"
+   },
+   contact_tip:"your contact information, where you can reach you, if there is a match! Importante!",
+   contact:"social handle"
  },
  hu: {
    date:"Válassz dátumot, amikor láttad őt!",
@@ -81,7 +92,18 @@ let strings = new LocalizedStrings({
    yes:"igen",
    no:"nem",
    button_find:"Kirakom a jelölést!",
-   seen:"Seen csapata"
+   seen:"Seen csapata",
+   navbar:{
+    have_seen:"láttam",
+    been_seen:"láttak?",
+    about:"rólunk",
+    faq:"GYIK",
+    profile:"profil",
+    sightings:"észleléseim",
+    logout:"kijelentkezés"
+  },
+  contact_tip:"Az elérhetőséged, ahol elérhetnek, ha valaki Rád talál!",
+  contact:"elérhetőséged"
  }
 });
 

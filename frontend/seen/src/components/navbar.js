@@ -12,9 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "mdbreact";
-import lng from './Language/language.jsx'; 
-
-var ReactLanguage = require('react-language');
+import lng from './Language/language.jsx';
 
 class NavbarFeatures extends Component {
   constructor(props) {
@@ -53,8 +51,6 @@ class NavbarFeatures extends Component {
   }
 
   render() {
-    const Hu = ReactLanguage.create('hu-hu');
-    const En = ReactLanguage.create('en-us');
     const kep = (
       <img
         src={this.props.user.picture === "" ? require("../assets/loading2.gif") : this.props.user.picture}
@@ -74,30 +70,29 @@ class NavbarFeatures extends Component {
           <NavbarNav className="bar" left>
             <NavItem>
               <NavLink className="navlink" to="/add">
-              <En>have seen</En><Hu>láttam őt</Hu>
+                {lng.navbar.have_seen}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="navlink" to="/sightings">
-              <En>been seen</En><Hu>láthattak</Hu>
+                {lng.navbar.been_seen}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="navlink" to="/about">
-                <En>about</En>
-                <Hu>rólunk</Hu>
+                {lng.navbar.about}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink className="navlink" to="/faq">
-              <En>FAQ</En><Hu>GYIK</Hu>
+                {lng.navbar.faq}
               </NavLink>
             </NavItem>
           </NavbarNav>
           <NavbarNav right>
             <NavItem>
-            <a href="" onClick={this._onSetLanguageToEnglish}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag"/></a>
-            <a href="" onClick={this._onSetLanguageToHungarian}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag"/></a>
+              <a href="" onClick={this._onSetLanguageToEnglish}><img className="flag" src={require("../assets/flag_gb.png")} alt="gb_flag" /></a>
+              <a href="" onClick={this._onSetLanguageToHungarian}><img className="flag" src={require("../assets/flag_hu.png")} alt="hu_flag" /></a>
             </NavItem>
             <NavItem>
               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -107,12 +102,12 @@ class NavbarFeatures extends Component {
                 <DropdownMenu>
                   <DropdownItem>
                     <NavLink className="navlink" to="/profile">
-                      <En>profile</En><Hu>profil</Hu>
+                      {lng.navbar.profile}
                     </NavLink>
                     <NavLink className="navlink" to="/itsamatch">
-                      <En>my sightings</En><Hu>észleléseim</Hu>
+                      {lng.navbar.sightings}
                     </NavLink>
-                    <a className="navlink" href="/login" onClick={()=>{window.FB.logout()}}><En>logout</En><Hu>kijelentkezés</Hu></a>
+                    <a className="navlink" href="/login" onClick={() => { window.FB.logout() }}>{lng.navbar.logout}</a>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
