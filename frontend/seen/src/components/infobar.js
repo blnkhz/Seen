@@ -54,6 +54,7 @@ class Readgend extends React.Component {
 
     fetch(
       "http://localhost:52210/addhelloitsme/" +
+      this.props.FbUser.fbId + "/" +
       this.props.userDatas[this.props.indexke].id,
       {
         method: "POST",

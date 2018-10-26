@@ -14,7 +14,7 @@ namespace Seen.Services
             this.seenRepository = seenRepository;
         }
 
-        public async Task AddHelloItsMe(string sId, HelloItsMe helloItsMe)
+        public async Task AddHelloItsMe(string fbId, string sId, HelloItsMe helloItsMe)
         {
             var allUsers = await seenRepository.SelectAllAsync();
             string selectedUsersId = null;

@@ -103,10 +103,10 @@ namespace Seen.Controllers
         }
 
         [HttpPost]
-        [Route("addhelloitsme/{sId}")]
-        public async Task<IActionResult> AddHelloItsMe([FromRoute] string sId, [FromBody] HelloItsMe helloitsme)
+        [Route("addhelloitsme/{fbId}/{sId}")]
+        public async Task<IActionResult> AddHelloItsMe([FromRoute] string fbId, [FromRoute] string sId, [FromBody] HelloItsMe helloitsme)
         {
-            await helloItsMeService.AddHelloItsMe(sId, helloitsme);
+            await helloItsMeService.AddHelloItsMe(fbId, sId, helloitsme);
             return RedirectToAction("BeenSeen");
         }
 
