@@ -47,6 +47,7 @@ class Readgend extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = {
+      fbId: this.props.FbUser.fbId,
       socialHandle: this.props.FbUser.socialHandle,
       picture: this.props.FbUser.picture,
       message: this.state.message

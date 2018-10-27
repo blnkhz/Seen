@@ -4,6 +4,8 @@ namespace Seen.Models
 {
     public class HelloItsMe
     {
+        [BsonElement("FbId")]
+        public string FbId { get; set; }
         [BsonElement("SocialHandle")]
         public string SocialHandle { get; set; }
         [BsonElement("Picture")]

@@ -17,8 +17,11 @@ namespace Seen.Services
         public async Task AddSighting(string fbId, Sighting sighting)
         {
             var selectedUser = await seenRepository.SelectByIdAsync(fbId);
-            selectedUser.Sightings.Add(sighting);
-            await seenRepository.UpdateSightingsAsync(fbId, selectedUser.Sightings);
+            if (selectedUser.Sightings.Count < 10)
+            {
+                selectedUser.Sightings.Add(sighting);
+                await seenRepository.UpdateSightingsAsync(fbId, selectedUser.Sightings);
+            }
         }
 
         public async Task RemoveSighting (string fbId, string sId)
