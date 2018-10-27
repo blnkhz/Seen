@@ -14,7 +14,7 @@ namespace Seen.Services
             this.seenRepository = seenRepository;
         }
 
-        public async Task AddHelloItsMe(string fbId, string sId, HelloItsMe helloItsMe)
+        public async Task AddHelloItsMe(string sId, HelloItsMe helloItsMe)
         {
             var allUsers = await seenRepository.SelectAllAsync();
             string selectedUsersId = null;
@@ -35,7 +35,7 @@ namespace Seen.Services
                     {
                         for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
                         {
-                            if (allUsers[i].Sightings[j].HelloItsMes[k].SocialHandle == helloItsMe.SocialHandle && sId == allUsers[i].Sightings[j].Id.ToString())
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].FbId == helloItsMe.FbId && sId == allUsers[i].Sightings[j].Id.ToString())
                             {
                                 selectedUsersId = null;
                                 break;

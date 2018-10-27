@@ -47,6 +47,7 @@ class Readgend extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = {
+      fbId: this.props.FbUser.fbId,
       socialHandle: this.props.FbUser.socialHandle,
       picture: this.props.FbUser.picture,
       message: this.state.message
@@ -54,7 +55,6 @@ class Readgend extends React.Component {
 
     fetch(
       "http://localhost:52210/addhelloitsme/" +
-      this.props.FbUser.fbId + "/" +
       this.props.userDatas[this.props.indexke].id,
       {
         method: "POST",
