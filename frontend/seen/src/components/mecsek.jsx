@@ -18,14 +18,14 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
-  removeHello(idke, socialke) {
+  removeHello(idke, helloFbId) {
     axios.get(
       "http://localhost:52210/removehelloitsme/" +
         this.state.fbuser.fbId +
         "/" +
         idke +
         "/" +
-        socialke
+        helloFbId
     );
     setTimeout(this.componentWillMount, 300);
   }
@@ -38,6 +38,14 @@ class Mecsek extends Component {
     );
     setTimeout(this.componentWillMount, 300);
   }
+  getInfo(helloidke) {
+    axios.get(
+      "http://localhost:52210/readhandle/" +
+        helloidke
+    );
+  }
+
+
 
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
@@ -63,19 +71,19 @@ class Mecsek extends Component {
                   <button
                     className="megsem-meccs"
                     onClick={() =>
-                      this.removeHello(element.id, hello.socialHandle)
+                      this.removeHello(element.id, hello.helloFbId)
                     }
                   >
                     x
                   </button>
-                  <img
+                  {/* <img
                     src={hello.picture}
                     className="match-picture"
                     alt="seems familiar?"
-                  />
+                  /> */}
                   <div className="match-text">
                     <p className="match-message">{hello.message}</p>
-                    <h4 className="match-handle">{hello.socialHandle}</h4>
+                    <h4 className="match-handle">{this.getInfo(hello.helloFbId)}</h4>
                   </div>
                 </div>
               </div>

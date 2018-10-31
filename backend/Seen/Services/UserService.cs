@@ -39,6 +39,12 @@ namespace Seen.Services
             return await seenRepository.SelectByIdAsync(fbId);
         }
 
+        public async Task<string> ReadHandle(string fbId)
+        {
+            User user = await seenRepository.SelectByIdAsync(fbId);
+            return user.SocialHandle;
+        }
+
         public async Task<List<User>> FilterUser(string field, string value)
         {
             return await seenRepository.SelectByFieldAsync(field, value);

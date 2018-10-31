@@ -72,7 +72,7 @@ namespace Seen.Repositories
             await users.FindOneAndUpdateAsync(filter, update);
         }
 
-        public async Task RemoveHelloItsMeAsync(string fbId, string sId, string socialHandle, List<HelloItsMe> hellos)
+        public async Task RemoveHelloItsMeAsync(string fbId, string sId, List<HelloItsMe> hellos)
         {
             await users.UpdateOneAsync(x => x.FbId == fbId,
             Builders<User>.Update.Set("Sightings.$[g].HelloItsMes", hellos),
