@@ -39,10 +39,26 @@ namespace Seen.Services
             return await seenRepository.SelectByIdAsync(fbId);
         }
 
-        public async Task<string> ReadHandle(string fbId)
+        public async Task<User> ReadHandle(string fbId)
         {
             User user = await seenRepository.SelectByIdAsync(fbId);
-            return user.SocialHandle;
+            for (int i = 0; i < user.Sightings.Count; i++)
+            {
+                for (int j = 0; j < user.Sightings[i].HelloItsMes.Count; j++)
+                {
+                    var handleke = seenRepository.SelectByIdAsync(user.Sightings[i].HelloItsMes[j].HelloFbId).Result.SocialHandle;
+                    var message = user.Sightings[i].HelloItsMes[j].Message;
+                    var helloFbId = user.Sightings[i].HelloItsMes[j].HelloFbId;
+
+                    user.Sightings[i].Matches.Add(new MatchDTO
+                    {
+                        HelloFbId = helloFbId,
+                        Message = message,
+                        SocialHandle = handleke
+                    });
+                }
+            }
+            return user;
         }
 
         public async Task<List<User>> FilterUser(string field, string value)

@@ -10,7 +10,7 @@ class Mecsek extends Component {
     };
   }
   componentWillMount = () => {
-    fetch("http://localhost:52210/getuser/" + this.props.id, {
+    fetch("http://localhost:52210/readuserwithmatches/" + this.props.id, {
       mode: "cors"
     })
       .then(res => res.json())
@@ -38,14 +38,6 @@ class Mecsek extends Component {
     );
     setTimeout(this.componentWillMount, 300);
   }
-  getInfo(helloidke) {
-    axios.get(
-      "http://localhost:52210/readhandle/" +
-        helloidke
-    );
-  }
-
-
 
   render() {
     if (this.props.id === null || this.state.fbuser === null) {
@@ -65,7 +57,7 @@ class Mecsek extends Component {
               <br />
               {element.message} <br /> {element.day}
             </h4>
-            {element.helloItsMes.map(hello => (
+            {element.matches.map(hello => (
               <div className="match-container">
                 <div className="match-applicant">
                   <button
@@ -83,7 +75,7 @@ class Mecsek extends Component {
                   /> */}
                   <div className="match-text">
                     <p className="match-message">{hello.message}</p>
-                    <h4 className="match-handle">{this.getInfo(hello.helloFbId)}</h4>
+                    <h4 className="match-handle">{hello.socialHandle}</h4>
                   </div>
                 </div>
               </div>

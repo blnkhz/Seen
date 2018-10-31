@@ -127,11 +127,11 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("readhandle/{hellofbId}")]
-        public async Task<IActionResult> ReadHandle([FromRoute] string helloFbId)
+        [Route("readuserwithmatches/{fbId}")]
+        public async Task<IActionResult> ReadHandle([FromRoute] string fbId)
         {
-            string handle = await userService.ReadHandle(helloFbId);
-            return Ok(handle);
+            var match = await userService.ReadHandle(fbId);
+            return Ok(match);
         }
     }
 }
