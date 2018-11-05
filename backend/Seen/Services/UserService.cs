@@ -1,4 +1,5 @@
 ﻿using Seen.Models;
+using Seen.Models.DTO;
 using Seen.Repositories;
 using System.Collections.Generic;
 using System.Reflection;
@@ -39,26 +40,32 @@ namespace Seen.Services
             return await seenRepository.SelectByIdAsync(fbId);
         }
 
-        public async Task<User> ReadHandle(string fbId)
+        public async Task<ProfileDTO> ReadProfile(string fbId)
         {
             User user = await seenRepository.SelectByIdAsync(fbId);
+            ProfileDTO profile = new ProfileDTO
+            {
+                FbId = user.FbId
+            };
             for (int i = 0; i < user.Sightings.Count; i++)
             {
+                profile.Sightings.Add(new SightingDTO
+                {
+                    Id = user.Sightings[i].Id,
+                    Day = user.Sightings[i].Day
+                });
                 for (int j = 0; j < user.Sightings[i].HelloItsMes.Count; j++)
                 {
-                    var handleke = seenRepository.SelectByIdAsync(user.Sightings[i].HelloItsMes[j].HelloFbId).Result.SocialHandle;
-                    var message = user.Sightings[i].HelloItsMes[j].Message;
-                    var helloFbId = user.Sightings[i].HelloItsMes[j].HelloFbId;
-
-                    user.Sightings[i].Matches.Add(new MatchDTO
+                    profile.Sightings[i].Matches.Add(new MatchDTO
                     {
-                        HelloFbId = helloFbId,
-                        Message = message,
-                        SocialHandle = handleke
+                        HelloFbId = user.Sightings[i].HelloItsMes[j].HelloFbId,
+                        Message = user.Sightings[i].HelloItsMes[j].Message,
+                        SocialHandle = seenRepository.SelectByIdAsync(user.Sightings[i].HelloItsMes[j].HelloFbId).Result.SocialHandle,
+                        Picture = seenRepository.SelectByIdAsync(user.Sightings[i].HelloItsMes[j].HelloFbId).Result.Picture,
                     });
                 }
             }
-            return user;
+            return profile;
         }
 
         public async Task<List<User>> FilterUser(string field, string value)

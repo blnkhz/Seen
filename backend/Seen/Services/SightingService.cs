@@ -1,4 +1,5 @@
 ﻿using Seen.Models;
+using Seen.Models.DTO;
 using Seen.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace Seen.Services
             }
             return locations;
         }
-        public async Task<List<Sighting>> MatchFinder(string fbId)
+        public async Task<List<SightingDTO>> MatchFinder(string fbId)
         {
             var selectedUser = await seenRepository.SelectByIdAsync(fbId);
             List<User> possibleSightings = new List<User>();
@@ -63,7 +64,7 @@ namespace Seen.Services
                 possibleSightings = await seenRepository.SelectAllAsync();
             }
 
-            var filteredSightings = new List<Sighting>();
+            var filteredSightings = new List<SightingDTO>();
             for (int i = 0; i < possibleSightings.Count; i++)
             {
                 for (int j = 0; j < possibleSightings[i].Sightings.Count; j++)
@@ -71,7 +72,16 @@ namespace Seen.Services
                     int realmatch = MatchMeister(selectedUser, possibleSightings[i].Sightings[j]);
                     if (realmatch >= 4 && selectedUser.Email != possibleSightings[i].Email)
                     {
-                        filteredSightings.Add(possibleSightings[i].Sightings[j]);
+                        filteredSightings.Add( new SightingDTO
+                        {
+                            Id = possibleSightings[i].Sightings[j].Id,
+                            Longitude = possibleSightings[i].Sightings[j].Longitude,
+                            Latitude = possibleSightings[i].Sightings[j].Latitude,
+                            Day = possibleSightings[i].Sightings[j].Day,
+                            Picture = possibleSightings[i].Picture,
+                            Message = possibleSightings[i].Sightings[j].Message
+
+                        });
                     }
                 }
             }

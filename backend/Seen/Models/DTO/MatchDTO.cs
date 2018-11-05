@@ -8,7 +8,8 @@ namespace Seen.Models
     public class MatchDTO
     {
         public string HelloFbId { get; set; }
-        public string Message { get; set; }
         public string SocialHandle { get; set; }
+        public string Message { get; set; }
+        public string Picture { get; set; }
     }
 }

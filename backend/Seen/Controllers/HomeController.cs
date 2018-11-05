@@ -128,9 +128,9 @@ namespace Seen.Controllers
 
         [HttpGet]
         [Route("readuserwithmatches/{fbId}")]
-        public async Task<IActionResult> ReadHandle([FromRoute] string fbId)
+        public async Task<IActionResult> ReadProfile([FromRoute] string fbId)
         {
-            var match = await userService.ReadHandle(fbId);
+            var match = await userService.ReadProfile(fbId);
             return Ok(match);
         }
     }

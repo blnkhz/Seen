@@ -68,11 +68,11 @@ class Mecsek extends Component {
                   >
                     x
                   </button>
-                  {/* <img
+                  <img
                     src={hello.picture}
                     className="match-picture"
                     alt="seems familiar?"
-                  /> */}
+                  />
                   <div className="match-text">
                     <p className="match-message">{hello.message}</p>
                     <h4 className="match-handle">{hello.socialHandle}</h4>

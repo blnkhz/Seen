@@ -30,6 +30,8 @@ namespace Seen.Models
         public string UserAge { get; set; }
         [BsonElement("Orientation")]
         public string Orientation { get; set; }
+        [BsonElement("Picture")]
+        public string Picture { get; set; }
         [BsonElement("Sightings")]
         public List<Sighting> Sightings { get; set; }
         public User()

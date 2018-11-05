@@ -28,18 +28,14 @@ namespace Seen.Models
         public string Build { get; set; }
         [BsonElement("Age")]
         public string Age { get; set; }
-		[BsonElement("Picture")]
-        public string Picture { get; set; }
         [BsonElement("Message")]
         public string Message { get; set; }
         [BsonElement("HelloItsMes")]
         public List<HelloItsMe> HelloItsMes { get; set; }
-        public List<MatchDTO> Matches { get; set; }
         public Sighting()
         {
             Id = ObjectId.GenerateNewId().ToString();
             HelloItsMes = new List<HelloItsMe>();
-            Matches = new List<MatchDTO>();
         }
     }
 }
