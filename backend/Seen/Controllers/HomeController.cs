@@ -119,11 +119,19 @@ namespace Seen.Controllers
         }
 
         [HttpGet]
-        [Route("removehelloitsme/{fbId}/{sId}/{socialHandle}")]
-        public async Task<IActionResult> RemoveHelloItsMe([FromRoute] string fbId, [FromRoute] string sId, [FromRoute] string socialHandle)
+        [Route("removehelloitsme/{fbId}/{sId}/{helloFbId}")]
+        public async Task<IActionResult> RemoveHelloItsMe([FromRoute] string fbId, [FromRoute] string sId, [FromRoute] string helloFbId)
         {
-            await helloItsMeService.RemoveHelloItsMe(fbId, sId, socialHandle);
+            await helloItsMeService.RemoveHelloItsMe(fbId, sId, helloFbId);
             return RedirectToAction("BeenSeen");
+        }
+
+        [HttpGet]
+        [Route("readuserwithmatches/{fbId}")]
+        public async Task<IActionResult> ReadProfile([FromRoute] string fbId)
+        {
+            var match = await userService.ReadProfile(fbId);
+            return Ok(match);
         }
     }
 }

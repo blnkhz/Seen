@@ -10,7 +10,7 @@ class Mecsek extends Component {
     };
   }
   componentWillMount = () => {
-    fetch("http://localhost:52210/getuser/" + this.props.id, {
+    fetch("http://localhost:52210/readuserwithmatches/" + this.props.id, {
       mode: "cors"
     })
       .then(res => res.json())
@@ -18,14 +18,14 @@ class Mecsek extends Component {
         this.setState({ fbuser });
       });
   };
-  removeHello(idke, socialke) {
+  removeHello(idke, helloFbId) {
     axios.get(
       "http://localhost:52210/removehelloitsme/" +
         this.state.fbuser.fbId +
         "/" +
         idke +
         "/" +
-        socialke
+        helloFbId
     );
     setTimeout(this.componentWillMount, 300);
   }
@@ -57,13 +57,13 @@ class Mecsek extends Component {
               <br />
               {element.message} <br /> {element.day}
             </h4>
-            {element.helloItsMes.map(hello => (
+            {element.matches.map(hello => (
               <div className="match-container">
                 <div className="match-applicant">
                   <button
                     className="megsem-meccs"
                     onClick={() =>
-                      this.removeHello(element.id, hello.socialHandle)
+                      this.removeHello(element.id, hello.helloFbId)
                     }
                   >
                     x

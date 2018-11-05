@@ -35,7 +35,7 @@ namespace Seen.Services
                     {
                         for (int k = 0; k < allUsers[i].Sightings[j].HelloItsMes.Count; k++)
                         {
-                            if (allUsers[i].Sightings[j].HelloItsMes[k].FbId == helloItsMe.FbId && sId == allUsers[i].Sightings[j].Id.ToString())
+                            if (allUsers[i].Sightings[j].HelloItsMes[k].HelloFbId == helloItsMe.HelloFbId && sId == allUsers[i].Sightings[j].Id.ToString())
                             {
                                 selectedUsersId = null;
                                 break;
@@ -52,12 +52,12 @@ namespace Seen.Services
             await seenRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
         }
 
-        public async Task RemoveHelloItsMe(string fbId, string sId, string socialHandle)
+        public async Task RemoveHelloItsMe(string fbId, string sId, string HelloFbId)
         {
             var user = await seenRepository.SelectByIdAsync(fbId);
             var hellos = user.Sightings.Where(x => x.Id == sId).First().HelloItsMes;
-            hellos.RemoveAll((x => x.SocialHandle == socialHandle));
-            await seenRepository.RemoveHelloItsMeAsync(fbId, sId, socialHandle, hellos);
+            hellos.RemoveAll((x => x.HelloFbId == HelloFbId));
+            await seenRepository.RemoveHelloItsMeAsync(fbId, sId, hellos);
         }
     }
 }
