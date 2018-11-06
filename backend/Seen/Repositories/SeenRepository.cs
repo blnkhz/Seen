@@ -72,17 +72,15 @@ namespace Seen.Repositories
             await users.FindOneAndUpdateAsync(filter, update);
         }
 
-        public async Task RemoveHelloItsMeAsync(string fbId, string sId, List<HelloItsMe> hellos)
+        public async Task RemoveHelloItsMeAsync(string fbId, string sId, string helloFbId)
         {
-            await users.UpdateOneAsync(x => x.FbId == fbId,
-            Builders<User>.Update.Set("Sightings.$[g].HelloItsMes", hellos),
-            new UpdateOptions
-            {
-                ArrayFilters = new List<ArrayFilterDefinition>
-                {
-                    new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("g._id", sId))
-                }
-            });
+            var filter = Builders<User>.Filter.And(
+                 Builders<User>.Filter.Eq("FbId", fbId),
+                 Builders<User>.Filter.Eq("Sightings._id", sId));
+            var update = Builders<User>.Update.PullFilter(
+                "Sightings.$.HelloItsMes",
+                Builders<HelloItsMe>.Filter.Eq("HelloFbId", helloFbId));
+            await users.FindOneAndUpdateAsync(filter, update);
         }
 
         public async Task UpdateUserWithFilterAsync(string fbId, List<FilterJson> filters)

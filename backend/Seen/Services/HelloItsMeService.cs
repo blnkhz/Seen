@@ -52,12 +52,9 @@ namespace Seen.Services
             await seenRepository.UpdateHelloItsMeAsync(selectedUsersId, sightingIndex, helloItsMe);
         }
 
-        public async Task RemoveHelloItsMe(string fbId, string sId, string HelloFbId)
+        public async Task RemoveHelloItsMe(string fbId, string sId, string helloFbId)
         {
-            var user = await seenRepository.SelectByIdAsync(fbId);
-            var hellos = user.Sightings.Where(x => x.Id == sId).First().HelloItsMes;
-            hellos.RemoveAll((x => x.HelloFbId == HelloFbId));
-            await seenRepository.RemoveHelloItsMeAsync(fbId, sId, hellos);
+            await seenRepository.RemoveHelloItsMeAsync(fbId, sId, helloFbId);
         }
     }
 }
