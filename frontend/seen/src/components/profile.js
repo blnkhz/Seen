@@ -23,19 +23,20 @@ class Profile extends Component {
   }
 
   componentWillMount = () => {
-    if (this.props.id === null) {
-      console.log("THE WOLRDO!!!");
-    } else {
       fetch("http://localhost:52210/getuser/" + this.props.id, {
         mode: "cors"
       })
         .then(res => res.json())
         .then(fbuser => { this.setState({ fbuser }) });
-        // if(this.state.fbuser !== null)
-        //   this.validateProfile();
-    }
-
   };
+
+  checkEmpty = () => {
+    if(this.state.socialHandle !== "" && this.state.userGender !== "" && this.state.userAge !== ""
+    && this.state.userBuild !== "" && this.state.userGlasses !== "" && this.state.userHairColor !== ""
+    && this.state.userHairStyle !== "" && this.state.userHeight !== "" && this.state.orientation !== ""){
+      this.props.empty();
+    }
+  }
 
   showSaved() {
     this.setState({ buttonPressed: true });
@@ -87,23 +88,6 @@ class Profile extends Component {
     }).catch(error => `Error: ${error}`);
 
     this.showSaved();
-  }
-
-  validateProfile = () =>{
-    var data;
-    console.log(this.state.fbuser);
-    if(this.state.fbuser.socialHandle === null ||
-      this.state.fbuser.userGender === undefined ||
-      this.state.fbuser.orientation === undefined ||
-      this.state.fbuser.userAge === undefined ||
-      this.state.fbuser.userBuild === undefined ||
-      this.state.fbuser.userGlasses === undefined ||
-      this.state.fbuser.userHeight === undefined ||
-      this.state.fbuser.userHairColor === undefined ||
-      this.state.fbuser.userHairStyle === undefined){
-        data = true;
-      }else{data = false}
-      this.props.empty(data);
   }
 
   render() {
@@ -257,7 +241,7 @@ class Profile extends Component {
             <option value="no">{lng.no}</option>
           </select>
 
-          <button type="submit" className="submit-changes-button" onClick={this.componentWillMount()}>
+          <button type="submit" className="submit-changes-button" onClick={() => setTimeout(() => window.location.reload(), 1000)}>
             {lng.button_save}
           </button>
           <span className="sentMessage" style={{ display: !this.state.buttonPressed ? 'none' : 'inline', color: "green"}}>{lng.message_save}</span>

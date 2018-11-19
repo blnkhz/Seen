@@ -11,7 +11,7 @@ import LoginPage from "./components/loginpage.js";
 import Loading from "./components/loading.js";
 import Profile from "./components/profile.js";
 import Meccsek from "./components/mecsek.jsx";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 class App extends Component {
@@ -27,8 +27,12 @@ class App extends Component {
         picture: "",
         socialHandle: ""
       },
-      isProfileEmpty: true
+      isProfileEmpty: undefined,
+      profilka: null
     };
+  }
+  changeEmpty = () => {
+    this.setState({isProfileEmpty: false})
   }
 
   responseFacebook = response => {
@@ -58,16 +62,26 @@ class App extends Component {
           fbUser: { ...prevState.fbUser, socialHandle: retek.socialHandle }
         }));
       });
-  };
-
-  dataFromProfile = data =>{
-    console.log(data);
-    this.setState({isProfileEmpty: data});
-  }
+      fetch("http://localhost:52210/getuser/" + this.state.fbUser.fbId, {
+        mode: "cors"
+      })
+        .then(res => res.json())
+        .then(profilka => { this.setState({ profilka })
+        if(profilka.socialHandle === null || profilka.userGender === null || profilka.userAge === null
+          || profilka.userBuild === null || profilka.userGlasses === null || profilka.userHairColor === null
+          || profilka.userHairStyle === null || profilka.userHeight === null || profilka.orientation === null)
+      {
+        console.log(profilka)
+        this.setState({isProfileEmpty: true});
+      }
+    else{
+      this.setState({isProfileEmpty: false});
+    }
+  });
+    };
+  
 
   render() {
-    console.log(window);
-    console.log(this.state.isProfileEmpty)
     const Load = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
@@ -128,7 +142,7 @@ class App extends Component {
     const ProfilePage = () => (
       <div className="App">
         <NavbarFeatures user={this.state.fbUser} className="navbar" />
-        <Profile empty={this.dataFromProfile} user={this.state.fbUser} id={this.state.fbUser.fbId} />
+        <Profile empty={this.changeEmpty.bind(this)} user={this.state.fbUser} id={this.state.fbUser.fbId} />
         <FooterPage />
       </div>
     );
@@ -179,10 +193,10 @@ class App extends Component {
             <Route exact path="/contact" render={() => (this.state.fbUser.isLoggedIn ? <Contact /> : <Load />)} />
             <Route exact path="/faq" render={() => (this.state.fbUser.isLoggedIn ? <FrequentlyAsked /> : <Load />)} />
             <Route exact path="/about" render={() => (this.state.fbUser.isLoggedIn ? <AboutUs /> : <Load />)} />
-            <Route exact path="/" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
-            <Route exact path="/add" render={() => (this.state.fbUser.isLoggedIn ? <Add /> : <Load />)} />
+            <Route exact path="/" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />) && (this.state.isProfileEmpty ? <ProfilePage /> : <Start />)} /> {console.log(this.state.isProfileEmpty)} 
+            <Route exact path="/add" render={() => (this.state.fbUser.isLoggedIn ? <Add /> : <Load />) && (this.state.isProfileEmpty ? <ProfilePage /> : <Add />)} />
             <Route exact path="/login" render={() => (this.state.fbUser.isLoggedIn ? <Start /> : <Login />)} />
-            <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />)} />
+            <Route exact path="/sightings" render={() => (this.state.fbUser.isLoggedIn ? <Sightings /> : <Load />) && (this.state.isProfileEmpty ? <ProfilePage /> : <Sightings />)} />
             <Route exact path="/load" render={() => (<Load />)} />
           </Switch>
         </React.Fragment>
