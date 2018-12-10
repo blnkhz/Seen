@@ -26,8 +26,7 @@ class Mecsek extends Component {
         idke +
         "/" +
         helloFbId
-    );
-    setTimeout(this.componentWillMount, 300);
+    ).then(this.componentWillMount);
   }
   removeSighting(idke) {
     axios.get(
@@ -35,8 +34,7 @@ class Mecsek extends Component {
         this.state.fbuser.fbId +
         "/" +
         idke
-    );
-    setTimeout(this.componentWillMount, 300);
+    ).then(this.componentWillMount);
   }
 
   render() {
